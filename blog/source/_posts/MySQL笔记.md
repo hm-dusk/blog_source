@@ -7,13 +7,15 @@ date: 2017-07-18 20:42:01
 categories: mysql
 password: 
 ---
+MySql笔记
+<!-- more -->
 ## 一、常见数据库
+
 Oracle：甲骨文（占有率最高）
 DB2：IBM
 SQL Server：微软
 Sybase：赛尔斯
 MySQL：甲骨文
-<!-- more -->
 
 ## 二、RDBMS（关系型数据库管理系统）
 ![](MySQL笔记/RDBMS.png)
@@ -70,7 +72,7 @@ SQL语句分类：
 在数据库中所有的字符串类型，`必须使用单引`，`不能使用双引！`
 `日期类型也要使用单引！`
 
->>int：整型
+>int：整型
 double：浮点型，double（5，2）：表示最多5位，必须有两位小数
 decimal：浮点型
 char：固定长度字符串类型：char（255）最大255，数据长度不足指定长度，会补足到指定长度
@@ -101,9 +103,9 @@ INTERT INTO 表名 VALUES(列值1, 列值2)
 ```
 UPDATE 表名 SET 列名1=列值1, 列名2=列值2, ... [WHERE 条件]
 ```
->>条件(条件可选的)：
-  条件必须是一个boolean类型的值或表达式：UPDATE t_person SET gender='男', age=age+1 WHERE sid='1';
-  运算符：=、!=、<>、>、<、>=、<=、BETWEEN...AND、IN(...)、IS NULL、NOT、OR、AND
+>条件(条件可选的)：
+  条件必须是一个boolean类型的值或表达式：*UPDATE t_person SET gender='男', age=age+1 WHERE sid='1';*
+  运算符：*=、!=、<>、>、<、>=、<=、BETWEEN...AND、IN(...)、IS NULL、NOT、OR、AND*
 
 ```
 WHERE age >= 18 AND age <= 80
@@ -169,111 +171,115 @@ DROP USER 用户名@IP地址
 ### 一、 基本查询
 
 #### 1. 字段(列)控制
-1) 查询所有列
- SELECT * FROM 表名;
- SELECT * FROM emp;
- --> 其中“*”表示查询所有列
+*1) 查询所有列*
+ >`SELECT * FROM 表名;`
+ `SELECT * FROM emp;`
+  -->其中“ `*` ”表示查询所有列
 
-2) 查询指定列
- SELECT 列1 [, 列2, ... 列N] FROM 表名;
- SELECT empno, ename, sal, comm FROM 表名;
+*2) 查询指定列*
+ >`SELECT 列1 [, 列2, ... 列N] FROM 表名;`
+ `SELECT empno, ename, sal, comm FROM 表名;`
 
-3) 完全重复的记录只一次
- 当查询结果中的多行记录一模一样时，只显示一行。一般查询所有列时很少会有这种情况，但只查询一列（或几列）时，这种可能就大了！
- SELECT DISTINCT * | 列1 [, 列2, ... 列N] FROM 表名;
- SELECT DISTINCT sal FROM emp;
- --> 保查询员工表的工资，如果存在相同的工资只显示一次！
+*3) 完全重复的记录只一次*
+ >当查询结果中的多行记录一模一样时，只显示一行。一般查询所有列时很少会有这种情况，但只查询一列（或几列）时，这种可能就大了！
+ `SELECT DISTINCT * | 列1 [, 列2, ... 列N] FROM 表名;`
+ `SELECT DISTINCT sal FROM emp;`
+ -->保查询员工表的工资，如果存在相同的工资只显示一次！
 
-4) 列运算
- I 数量类型的列可以做加、减、乘、除运算
-   SELECT sal*1.5 FROM emp;
-   SELECT sal+comm FROM emp;
+*4) 列运算*
 
- II 字符串类型可以做连续运算
-   SELECT CONCAT('$', sal) FROM emp;
+ >1. 数量类型的列可以做加、减、乘、除运算
+   `SELECT sal*1.5 FROM emp;`
+   `SELECT sal+comm FROM emp;`
+ >2. 字符串类型可以做连续运算
+   `SELECT CONCAT('$', sal) FROM emp;`
 
- III 转换NULL值
-   有时需要把NULL转换成其它值，例如comm+1000时，如果comm列存在NULL值，那么NULL+1000还是NULL，而我们这时希望把NULL当前0来运算。
-   SELECT IFNULL(comm, 0)+1000 FROM emp;
-   --> IFNULL(comm, 0)：如果comm中存在NULL值，那么当成0来运算。
+ >3. 转换NULL值
+   有时需要把`NULL`转换成其它值，例如*comm+1000*时，如果`comm`列存在`NULL`值，那么*NULL+1000*还是`NULL`，而我们这时希望把`NULL`当前`0`来运算。
+   `SELECT IFNULL(comm, 0)+1000 FROM emp;`
+   -->*IFNULL(comm, 0)*：如果*comm*中存在*NULL*值，那么当成*0*来运算。
 
- IV 给列起别名
+ >4. 给列起别名
    你也许已经注意到了，当使用列运算后，查询出的结果集中的列名称很不好看，这时我们需要给列名起个别名，这样在结果集中列名就显示别名了
-   SELECT IFNULL(comm, 0)+1000 AS '奖金' FROM emp;
+   `SELECT IFNULL(comm, 0)+1000 AS '奖金' FROM emp;`
    --> 其中AS可以省略
 
 #### 2. 条件控制
-1) 条件查询
-  与前面介绍的UPDATE和DELETE语句一样，SELECT语句也可以使用WHERE子句来控制记录。
-  * SELECT empno,ename,sal,comm FROM emp WHERE sal > 10000 AND comm IS NOT NULL;
-  * SELECT empno,ename,sal FROM emp WHERE sal BETWEEN 20000 AND 30000;
-  * SELECT empno,ename,job FROM emp WHERE job IN ('经理', '董事长');
-2) 模糊查询
-  当你想查询姓张，并且姓名一共两个字的员工时，这时就可以使用模糊查询
-  * SELECT * FROM emp WHERE ename LIKE '张_';
-  --> 模糊查询需要使用运算符：LIKE，其中_匹配一个任意字符，注意，只匹配一个字符而不是多个。
+
+1.条件查询
+  >与前面介绍的UPDATE和DELETE语句一样，SELECT语句也可以使用WHERE子句来控制记录。
+`SELECT empno,ename,sal,comm FROM emp WHERE sal > 10000 AND comm IS NOT NULL;`
+`SELECT empno,ename,sal FROM emp WHERE sal BETWEEN 20000 AND 30000;`
+`SELECT empno,ename,job FROM emp WHERE job IN ('经理', '董事长');`
+
+
+2.模糊查询
+  >当你想查询姓张，并且姓名一共两个字的员工时，这时就可以使用模糊查询
+`SELECT * FROM emp WHERE ename LIKE '张_';`
+  --> 模糊查询需要使用运算符：LIKE，其中`_`匹配一个任意字符，注意，只匹配一个字符而不是多个。
   --> 上面语句查询的是姓张，名字由两个字组成的员工。
-  * SELECT * FROM emp WHERE ename LIKE '___'; /*姓名由3个字组成的员工*/
+`SELECT * FROM emp WHERE ename LIKE '___'; `
+  -->姓名由3个字组成的员工
 
-  如果我们想查询姓张，名字几个字可以的员工时就要使用“%”了。
-  SELECT * FROM emp WHERE ename LIKE '张%';
-  --> 其中%匹配0~N个任意字符，所以上面语句查询的是姓张的所有员工。
-  SELECT * FROM emp WHERE ename LIKE '%阿%';
-  --> 千万不要认为上面语句是在查询姓名中间带有阿字的员工，因为%匹配0~N个字符，所以姓名以阿开头和结尾的员工也都会查询到。
-  SELECT * FROM emp WHERE ename LIKE '%';
-  --> 这个条件等同与不存在，但如果姓名为NULL的查询不出来！
-
+>如果我们想查询姓张，名字几个字可以的员工时就要使用“%”了。
+`SELECT * FROM emp WHERE ename LIKE '张%'; `
+--> 其中*%*匹配*0~N*个任意字符，所以上面语句查询的是姓张的所有员工。
+`SELECT * FROM emp WHERE ename LIKE '%阿%';`
+--> 千万不要认为上面语句是在查询姓名中间带有阿字的员工，因为*%*匹配*0~N*个字符，所以姓名以阿开头和结尾的员工也都会查询到。
+`SELECT * FROM emp WHERE ename LIKE '%';`
+--> 这个条件等同与不存在，但如果姓名为*NULL*的查询不出来！
+	
 ### 二、排序
-1) 升序
-  SELECT * FROM WHERE emp ORDER BY sal ASC;
-  --> 按sal排序，升序！
+1. 升序
+  `SELECT * FROM WHERE emp ORDER BY sal ASC;`
+  >--> 按sal排序，升序！
   --> 其中ASC是可以省略的
-2) 降序
-  SELECT * FROM WHERE emp ORDER BY comm DESC;
-  --> 按comm排序，降序！
+2. 降序
+  `SELECT * FROM WHERE emp ORDER BY comm DESC;`
+  >--> 按comm排序，降序！
   --> 其中DESC不能省略
-3) 使用多列作为排序条件
-  SELECT * FROM WHERE emp ORDER BY sal ASC, comm DESC;
-  --> 使用sal升序排，如果sal相同时，使用comm的降序排
+3. 使用多列作为排序条件
+  `SELECT * FROM WHERE emp ORDER BY sal ASC, comm DESC;`
+  >--> 使用sal升序排，如果sal相同时，使用comm的降序排
 
 ### 三、聚合函数
-  聚合函数用来做某列的纵向运算。
-1) COUNT
-  SELECT COUNT(*) FROM emp;
+>  *聚合函数用来做某列的纵向运算。*
+1. COUNT
+  `SELECT COUNT(*) FROM emp;`
   --> 计算emp表中所有列都不为NULL的记录的行数
-  SELECT COUNT(comm) FROM emp;
+  `SELECT COUNT(comm) FROM emp;`
   --> 云计算emp表中comm列不为NULL的记录的行数
-2) MAX
-  SELECT MAX(sal) FROM emp;
+2. MAX
+  `SELECT MAX(sal) FROM emp;`
   --> 查询最高工资
-3) MIN
-  SELECT MIN(sal) FROM emp;
+3. MIN
+  `SELECT MIN(sal) FROM emp;`
   --> 查询最低工资
-4) SUM
-  SELECT SUM(sal) FROM emp;
+4. SUM
+  `SELECT SUM(sal) FROM emp;`
   --> 查询工资合
-5) AVG
-  SELECT AVG(sal) FROM emp;
+5. AVG
+  `SELECT AVG(sal) FROM emp;`
   --> 查询平均工资
 
 ### 四、分组查询
-  分组查询是把记录使用某一列进行分组，然后查询组信息。
+  >分组查询是把记录使用某一列进行分组，然后查询组信息。
   例如：查看所有部门的记录数。
-  SELECT deptno, COUNT(*) FROM emp GROUP BY deptno;
+  `SELECT deptno, COUNT(*) FROM emp GROUP BY deptno;`
   --> 使用deptno分组，查询部门编号和每个部门的记录数
-  SELECT job, MAX(SAL) FROM emp GROUP BY job;
+  `SELECT job, MAX(SAL) FROM emp GROUP BY job;`
   --> 使用job分组，查询每种工作的最高工资
 
-  组条件
+  >组条件
   以部门分组，查询每组记录数。条件为记录数大于3
-  SELECT deptno, COUNT(*) FROM emp GROUP BY deptno HAVING COUNT(*) > 3;
+  `SELECT deptno, COUNT(*) FROM emp GROUP BY deptno HAVING COUNT(*) > 3;`
 
 ### 五、limit子句(方言)
   LIMIT用来限定查询结果的起始行，以及总行数。
-  例如：查询起始行为第5行，一共查询3行记录
-  SELECT * FROM emp LIMIT 4, 3;
+  >例如：查询起始行为第5行，一共查询3行记录
+  `SELECT * FROM emp LIMIT 4, 3;`
   --> 其中4表示从第5行开始，其中3表示一共查询3行。即第5、6、7行记录。
-
+```
   select * from emp limit 0, 5;
 
   1. 一页的记录数：10行
@@ -285,37 +291,39 @@ DROP USER 用户名@IP地址
   (3-1) * 10
 
   (17-1) * 8, 8
+```
 
 ## 九、备份恢复
 数据库 --> sql语句
 sql语句 --> 数据库
 
 1. 数据库导出SQL脚本(备份数据库内容，并不是备份数据库！)
-  > mysqldump –u用户名 –p密码 数据库名>生成的脚本文件路径
-  > 例如：mysqldump -uroot -p123 mydb1>C:\mydb1.sql  (与mysql.exe和mysqld.exe一样, 都在bin目录下)
-  > 注意，不要打分号，不要登录mysql，直接在cmd下运行
-  > 注意，生成的脚本文件中不包含create database语句
+  > `mysqldump –u用户名 –p密码 数据库名>生成的脚本文件路径`
+  > 例如：
+  > `mysqldump -uroot -p123 mydb1>C:\mydb1.sql`(与mysql.exe和mysqld.exe一样, 都在bin目录下)
+  > *注意：*不要打分号，不要登录mysql，直接在cmd下运行
+  > *注意：*生成的脚本文件中不包含create database语句
 
 2. 执行SQL脚本
   第一种方式
-  > mysql -u用户名 -p密码 数据库<脚本文件路径
+  > `mysql -u用户名 -p密码 数据库<脚本文件路径`
   > 例如：
-    * 先删除mydb1库，再重新创建mydb1库
-    * mysql -uroot -p123 mydb1<C:\mydb1.sql
-  > 注意，不要打分号，不要登录mysql，直接在cmd下运行
+  > 先删除mydb1库，再重新创建mydb1库
+  > `mysql -uroot -p123 mydb1<C:\mydb1.sql`
+  > *注意：*不要打分号，不要登录mysql，直接在cmd下运行
 
   第二种方式
   > 登录mysql
   > source SQL脚本路径
   > 例如：
-    * 先删除mydb1库，再重新创建mydb1库
-    * 切换到mydb1库
-    * source c:\mydb1.sql
+  >先删除mydb1库，再重新创建mydb1库
+  >切换到mydb1库
+  >`source c:\mydb1.sql`
 
 ## 十、主键约束（唯一标识）
-  ****非空***
-  ****唯一***
-  ****被引用****（学习外键时）
+  `非空`
+  `唯一`
+  `被引用`（学习外键时）
 
   * 当表的某一列被指定为主键后，该列就不能为空，不能有重复值出现。
   * 创建表时指定主键的两种方式：
