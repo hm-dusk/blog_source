@@ -1,2 +1,2 @@
 # blog_source
-博客源码
+hexo博客源码
