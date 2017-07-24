@@ -1,7 +1,7 @@
 ---
 title: java遍历Map的几种方式
 tags:
-  - map
+  - 集合
   - 遍历
 comments: true
 date: 2017-07-19 19:26:48
