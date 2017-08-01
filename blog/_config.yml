@@ -34,7 +34,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true #图片文件夹选项
+post_asset_folder: false #图片文件夹选项
 relative_link: false
 future: true
 highlight: # 代码高亮

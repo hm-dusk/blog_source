@@ -18,10 +18,10 @@ Sybase：赛尔斯
 MySQL：甲骨文
 
 ## 二、RDBMS（关系型数据库管理系统）
-![](MySQL笔记/RDBMS.png)
-![](MySQL笔记/DATABASE.png)
+![](http://ot87uvd34.bkt.clouddn.com/RDBMS.png)
+![](http://ot87uvd34.bkt.clouddn.com/DATABASE.png)
 表结构：
-![](MySQL笔记/表结构.png)
+![](http://ot87uvd34.bkt.clouddn.com/%E8%A1%A8%E7%BB%93%E6%9E%84.png)
 ## 三、SQL（结构化查询语句）
 SQL语句分类：
 

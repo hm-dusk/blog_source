@@ -39,7 +39,7 @@ sudo apt-get install -y mongodb-org
 >配置文件默认文件目录/etc/mongod.conf
 >默认存储其数据文件/var/lib/mongodb 
 >默认日志文件/var/log/mongodb/mongod.log
-![](/MongoDB的安装以及MongoDB-Replicat-Set复制集的搭建/默认mongodb配置文件.jpg)
+![](http://ot87uvd34.bkt.clouddn.com/%E9%BB%98%E8%AE%A4mongodb%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg)
 
 #### 6. 启动mongodb 
 ```
@@ -182,7 +182,7 @@ db.shutdownServer()
 ## 二、搭建MongoDB Replicat Set复制集
 MongoDB Replica Set是MongoDB官方推荐的主从复制和高可用方案，用于替代原有的Master-Slave主从复制方案。
 不懂原理的可以[点击这里](http://www.linuxidc.com/Linux/2015-02/113296.htm)查看复制集原理（`推荐了解原理后再搭建`）
-![](MongoDB的安装以及MongoDB-Replicat-Set复制集的搭建/复制集.jpg)
+![](http://ot87uvd34.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E9%9B%86.jpg)
 ### 1.搭建环境（电脑配置）
 在需要布置为节点的机器上安装好MongoDB环境，参照上面的教程
 
@@ -341,5 +341,15 @@ admin       0.000GB
 local       0.000GB
 mydatabase  0.000GB
 ```
-### 8.关闭复制集
+### 8.关闭、重启复制集
 参考上边的关闭mongodb的方法，依次在每个节点上执行关闭操作
+`注意关闭顺序，在重启节点的过程中，建议不要直接shutdown Primary，这样可能导致已经写入primary但未同步到secondary的数据丢失`
+>1.shutdown Primary （shutdown会等待Secondary oplog追到10s以内）
+2.Primary退出后，剩余的节点选举出一个新的Primary（复制集只包含1或2节点例外）
+3.Primary重新启动，因为当前复制集已经有了新的Primary，这个Primary将以Secondary的角色运行。
+4.从新的Primary同步的过程中，发现自己有无效的oplog，会先进行rollback。（rollback的数据只要不超过300M是可以找回的）
+
+上面这种操作可能会导致数据丢失
+>1.逐个重启复制集里所有的Secondary节点
+2.对Primary发送stepDown命令，等待primary降级为Secondary
+3.重启降级后的Primary
