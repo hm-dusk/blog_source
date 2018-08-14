@@ -90,7 +90,17 @@ HOSTNAME=hadoop001
 
 有需要就可以修改主机名。配置完三个文件重启一下机器。
 
-### 3.Windows IP设置
+### 3.确保Linux虚拟机网络适配器选项
+
+1. 选择虚拟机，点击右键→【设置】
+
+![虚拟机右键设置](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8F%B3%E9%94%AE%E8%AE%BE%E7%BD%AE.png)
+
+2. 【硬件】→【网络适配器】→选择【NAT模式】
+
+![网络适配器NAT](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/%E7%BD%91%E7%BB%9C%E9%80%82%E9%85%8D%E5%99%A8NAT%E6%A8%A1%E5%BC%8F.png)
+
+### 4.Windows IP设置
 
 设置VMWare给我们配置的网络适配器，就是那个NAT8。右键属性
 
