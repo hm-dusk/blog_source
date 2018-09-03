@@ -167,5 +167,79 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 alias x='xcall.sh'
 ```
 
+### \\+回车
 
+#### 命令格式
+
+[未输完的命令] `\+回车` [继续未输完的命令]
+
+#### 命令功能
+
+当输入指令过长时，使用`\+回车`可以跳到下一行继续输入指令
+
+#### 使用实例
+
+```shell
+[root@hadoopCDH mnt]# ls -al
+总用量 0
+drwxr-xr-x.  3 root root  19 8月  30 16:22 .
+dr-xr-xr-x. 18 root root 235 8月  31 09:07 ..
+drwxr-xr-x.  3 root root  53 8月  30 16:23 nginx
+[root@hadoopCDH mnt]# ls \	 #输入\后再回车直接进入换行输入模式
+> -al
+总用量 0
+drwxr-xr-x.  3 root root  19 8月  30 16:22 .
+dr-xr-xr-x. 18 root root 235 8月  31 09:07 ..
+drwxr-xr-x.  3 root root  53 8月  30 16:23 nginx
+[root@hadoopCDH mnt]# 
+```
+
+### echo
+
+#### 命令格式
+
+`echo ${变量名}`
+
+#### 命令功能
+
+查看当前变量的值
+
+**设置变量需遵从的规则**
+
+1. 变量与变量内容之间只能用`=`来连接，不能有任何空格
+    `myname=liming`
+2. 如果要在变量内容里面输入空格，则用双引号
+    `myname="li ming"`
+3. 变数名称只能是英文字母与数字，但是开头字符不能是数字，如下为`错误示范`： 
+    `2myname=VBird`
+4. 变量内容若有空白字符可使用双引号`"`或单引号`'`将变量内容结合起来，但
+   * 双引号内的特殊字符如`$`等，可以保有原本的特性，如下所示：
+     `var="lang is $LANG"`则`echo $var`可得`lang is zh_TW.UTF-8`
+   * 单引号内的特殊字符则仅为一般字符(纯文字)，如下所示：
+     `var='lang is $LANG'`则`echo $var`可得`lang is $LANG`
+
+1. 可用字符` \`将特殊符号(如[Enter], $, \,空白字符, '等)变成一般字符，如：
+    `myname=VBird\ Tsai`
+2. 一串指令的执行中，还需要藉由其他额外的指令所提供的资讯时，可以使用反单引号『\`指令\`』或『$(指令)』。**特别注意**，那个\`是键盘上方的数字键1左边那个按键，而不是单引号！例如想要取得核心版本的设定：
+    `version=$(uname -r)`再`echo $version`可得`3.10.0-229.el7.x86_64`
+3. 若该变量为扩增变量内容时，则可用`"$变量名称"`或`${变量}`累加内容，如下所示：
+    `PATH="$PATH":/home/bin`或`PATH=${PATH} :/home/bin`
+4. 若该变量需要在其他子程序执行，则需要以export来使变量变成环境变量：
+    `export PATH`
+5. 通常大写字符为系统预设变量，自行设定变量可以使用小写字符，方便判断(纯粹依照使用者兴趣与爱好) ；
+6. 取消变量的方法为使用`unset 变量名称`例如取消myname的设定：
+    `unset myname`
+
+#### 使用实例
+
+```shell
+[root@hadoopCDH mnt]# echo $NGINX_HOME
+/usr/local/nginx
+[root@hadoopCDH mnt]# myname=liming
+[root@hadoopCDH mnt]# echo $myname
+liming
+[root@hadoopCDH mnt]# echo ${myname}
+liming
+[root@hadoopCDH mnt]# 
+```
 
