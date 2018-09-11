@@ -243,3 +243,26 @@ liming
 [root@hadoopCDH mnt]# 
 ```
 
+### ntpdate（服务器时间同步）
+
+#### 命令格式
+
+`ntpdate time1.aliyun.com`
+
+#### 命令功能
+
+同步时间，与阿里云服务器时间同步。
+
+#### 使用实例
+
+```shell
+[root@hadoopmaster bin]# xcall.sh ntpdate time1.aliyun.com
+========== hadoopmaster ==========
+11 Sep 09:45:55 ntpdate[6548]: adjust time server 203.107.6.88 offset 0.007047 sec
+========== hadoop001 ==========
+11 Sep 09:46:02 ntpdate[6278]: adjust time server 203.107.6.88 offset 0.002663 sec
+========== hadoop002 ==========
+11 Sep 09:46:08 ntpdate[4192]: adjust time server 203.107.6.88 offset 0.005169 sec
+[root@hadoopmaster bin]# 
+```
+
