@@ -9,8 +9,7 @@ categories: Linux
 password:
 ---
 Linux下安装Java
-<--! more -->
-
+<!-- more -->
 ### 将Java压缩包传到Linux
 使用`rz`命令将tar包上传到Linux系统
 ![rz命令](http://ot87uvd34.bkt.clouddn.com/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/rz%E6%88%AA%E5%9B%BE.jpg)
