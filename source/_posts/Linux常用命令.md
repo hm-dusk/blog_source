@@ -266,3 +266,42 @@ liming
 [root@hadoopmaster bin]# 
 ```
 
+### history
+
+#### 命令格式
+
+`history`
+
+#### 命令功能
+
+查看历史执行命令
+
+#### 使用实例
+
+1. 设置显示命令时间
+
+   ```
+   [root@hadoopmaster ~]# echo 'export HISTTIMEFORMAT='%F %T ' "' >> /etc/profile # 将`export HISTTIMEFORMAT='%F %T '`添加进配置文件`/etc/profile`
+   [root@hadoopmaster ~]# source /etc/profile # 刷新配置文件使其生效
+   [root@hadoopmaster ~]# history 5 # 查看最近5条记录，发现显示了时间
+    1063  2018-09-15 11:00:39 history --help
+    1064  2018-09-15 11:04:14 cd ~
+    1065  2018-09-15 11:04:50 echo 'HISTTIMEFORMAT="%F %T "' >> /etc/profile
+    1066  2018-09-15 11:05:01 vim /etc/profile
+    1067  2018-09-15 11:07:07 history 5
+   ```
+
+2. 执行历史某条命令
+
+   ```
+   [root@hadoopmaster ~]# history 4 # 显示最近4条记录
+    1066  2018-09-15 11:05:01 vim /etc/profile
+    1067  2018-09-15 11:07:07 history 5
+    1068  2018-09-15 11:08:30 ls
+    1069  2018-09-15 11:08:37 history 5
+   [root@hadoopmaster ~]# !1068 # 执行1068条，也就是ls命令
+   ls
+   anaconda-ks.cfg  zookeeper.out
+   [root@hadoopmaster ~]# 
+   ```
+

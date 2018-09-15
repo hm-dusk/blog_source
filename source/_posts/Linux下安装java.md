@@ -13,9 +13,11 @@ Linux下安装Java
 ### 将Java压缩包传到Linux
 使用`rz`命令将tar包上传到Linux系统
 ![rz命令](http://ot87uvd34.bkt.clouddn.com/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/rz%E6%88%AA%E5%9B%BE.jpg)
+
 > 没用过`rz`命令的，使用`yum install -y lrzsz`安装rz软件
 
 ### 解压安装包
+
 ```shell
 [root@hadoopmaster mnt]# ls
 jdk-8u101-linux-x64.tar.gz
@@ -29,6 +31,7 @@ jdk1.8.0_101  jdk-8u101-linux-x64.tar.gz
 ```
 
 ### 配置环境变量
+
 1. `vim /etc/profile`编辑配置文件，添加如下代码
     ```shell
     # java
@@ -40,6 +43,7 @@ jdk1.8.0_101  jdk-8u101-linux-x64.tar.gz
 3. `source /etc/profile`刷新配置文件
 
 ### 验证安装状态
+
 ```shell
 [root@hadoopmaster mnt]# java -version
 java version "1.8.0_101"
@@ -47,3 +51,4 @@ Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 [root@hadoopmaster mnt]# 
 ```
+
