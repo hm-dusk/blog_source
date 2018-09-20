@@ -94,23 +94,30 @@ CentOS7下直接运行`yum -y install docker`
 
 ### 其他命令
 
-1. 退出容器bash
+1. 查看容器
+
+   `docker ps`查看正在运行的容器。
+
+   `docker container ls --all`查看所有存在的容器。
+
+2. 退出容器bash
    在容器的命令行，按下 Ctrl + c 停止 Node 进程，然后按下 Ctrl + d （或者输入 exit）退出容器。此外，也可以用`docker container kill`终止容器运行。
 
-2. 删除容器文件
+3. 删除容器文件
 
-   容器停止运行后，不会消失，使用`docker container ls --all`或者`docker ps`查看所有存在的容器（id等信息）。
+   容器停止运行后，不会消失，使用`docker container ls --all`查看所有存在的容器（id等信息）。
 
    使用`docker container rm [容器id]`或者`docker rm [容器id]`删除容器。
 
-3. 运行已存在的容器
+4. 运行已存在的容器
 
    `docker container start [容器id]`或者`docker start [容器id]`
 
-4. 进入已经运行的容器
+5. 进入已经运行的容器
 
    `docker container exec -it [容器id] [/bin/bash]`
 
-5. 将容器里的文件拷贝到本机
+6. 将容器里的文件拷贝到本机
 
    `docker container cp [容器id]:[/path/to/file] .`
+
