@@ -11,6 +11,7 @@ categories: Linux
 password:
 ---
 Linux集群配置免密码登录
+![ssh](http://ot87uvd34.bkt.clouddn.com/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh.jpg)
 <!-- more -->
 **本文环境：**
 

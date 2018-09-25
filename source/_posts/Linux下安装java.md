@@ -9,6 +9,7 @@ categories: Linux
 password:
 ---
 Linux下安装Java
+![java](http://ot87uvd34.bkt.clouddn.com/linux%E4%B8%8B%E9%85%8D%E7%BD%AEjava/java.jpg)
 <!-- more -->
 ### 将Java压缩包传到Linux
 使用`rz`命令将tar包上传到Linux系统

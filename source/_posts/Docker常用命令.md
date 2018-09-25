@@ -11,6 +11,7 @@ categories: 容器
 password:
 ---
 Docker常用命令
+![docker](http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker.jpg)
 <!-- more -->
 
 ### 安装
