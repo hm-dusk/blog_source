@@ -19,7 +19,7 @@ CentOS7下搭建Hadoop集群
 配置静态IP教程请点击[这里](http://blog.cyanide.top/2018/08/09/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/)
 #### 配置DNS（每个节点）
 进入配置文件，添加主节点和从节点的映射关系
-`vim /etc/profile`，添加如下代码（ip以及主机名以自己配置为准）
+`vim /etc/hosts`，添加如下代码（ip以及主机名以自己配置为准）
 ```shell
 192.168.171.10 hadoopmaster
 192.168.171.11 hadoop001
