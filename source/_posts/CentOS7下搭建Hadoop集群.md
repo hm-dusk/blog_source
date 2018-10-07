@@ -51,6 +51,10 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 ```
+完成后刷新一下
+```shell
+[root@hadoopmaster ~]# source /etc/profile
+```
 
 #### 配置环境脚本文件的JAVA_HOME参数
 进入hadoop安装目录下的`etc/hadoop`目录
