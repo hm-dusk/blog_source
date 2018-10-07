@@ -125,9 +125,77 @@ HOSTNAME=hadoop001
 
 ## Bridged（桥接模式）
 ### 1.VM设置
-1. 虚拟机点击【编辑】→【虚拟网络编辑器】
-![虚拟网络编辑器](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/vm%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C%E7%BC%96%E8%BE%91%E5%99%A8.png)
+1. 查看物理机网卡名称
+![物理机网络信息](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/%E7%89%A9%E7%90%86%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF.jpg)
+2. 根据网卡，查看物理机ip网段信息
+进入cmd命令行，执行`ipconfig /all`
+![物理机](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/%E7%89%A9%E7%90%86%E6%9C%BAcmd%EF%BC%8Cip%E4%BF%A1%E6%81%AF.jpg)
+3. 虚拟机点击【编辑】→【虚拟网络编辑器】
+选择正确的网卡
+![虚拟网络编辑器](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/vm%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E7%95%8C%E9%9D%A2.jpg)
 
-
-2. 设置将要使用的虚拟机网络适配器，将其改为桥接模式。
+4. 设置将要使用的虚拟机网络适配器，将其改为桥接模式。
 ![桥接模式](http://ot87uvd34.bkt.clouddn.com/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E8%AE%BE%E7%BD%AE.JPG)
+
+### 2.设置虚拟机IP地址
+
+**涉及文件列表：**
+
+`/etc/sysconfig/network-scripts/ifcfg-*`（网卡）（*根据实际情况不同，本文为ens33）
+
+`/etc/sysconfig/network`（主机名）
+
+`/etc/resolv.conf`（DNS）
+
+1. 网卡信息修改
+
+`vi /etc/sysconfig/network-scripts/ifcfg-ens33`
+
+```
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=static
+DEFROUTE=yes
+NAME=ens33
+UUID=d7a7196e-5033-4849-bcc5-f8c52acd245c
+DEVICE=ens33
+ONBOOT=yes
+IPADDR=192.168.88.3       # 这里网段要和物理机网段一致
+NETMASK=255.255.255.0
+GATEWAY=192.168.88.1     # 网关也要和物理机一样
+```
+
+`ONBOOT`：开机启动。
+
+`NM_CONTROLLED`：网络管理组件是否启用，精简版的是没有这个组件的。所以就不需要开启。
+
+`BOOTPROTO`：网络分配方式，静态。
+
+`IPPADDR`：手动指定ip地址。
+
+`NETMASK`：子网掩码。
+
+`GATEWAY`：网关ip。编辑好以后保存退出。
+
+2. DNS配置
+
+`vi /etc/resolv.conf`
+
+```
+nameserver 192.168.88.1
+```
+
+`nameserver`：这里应该填对应的dns域名解析服务器的ip的。但是不清楚填什么，就填网关地址了。 
+
+3. 主机名修改
+
+`vi /etc/sysconfig/network`
+
+```
+# Created by anaconda
+NETWORKING=yes
+HOSTNAME=hadoop001
+```
+
+有需要就可以修改主机名。配置完三个文件重启一下机器。
