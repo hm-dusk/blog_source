@@ -27,9 +27,9 @@ CentOS7下搭建Hadoop集群
 ```
 #### 关闭防火墙（每个节点）
 关闭服务
-`service iptables stop`
+`systemctl stop firewalld`
 关闭开机自启动
-`chkconfig iptables off`
+`systemctl disable firewalld`
 #### 配置免密码登录
 配置免密码登录教程请点击[这里](http://blog.cyanide.top/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
 #### 配置java环境（每个节点）
@@ -42,7 +42,7 @@ CentOS7下搭建Hadoop集群
 > 通过`yum -y install lrzsz`安装rz命令软件
 
 解压`tar -zxvf hadoop-*.tar.gz`
-配置环境变量
+配置环境变量（每个节点）
 `vim /etc/profile`
 添加如下代码
 ```shell
@@ -51,6 +51,177 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 ```
+
+#### 配置环境脚本文件的JAVA_HOME参数
+进入hadoop安装目录下的`etc/hadoop`目录
+分别在`hadoop-env.sh`、`mapred-env.sh`、`yarn-env.sh`文件中添加或修改参数：
+```
+export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
+```
 #### 修改配置文件
-> 一共需要修改`core-site.xml`、`hdfs-site.xml`、`yarn-site.xml`、`mapred-site.xml`、`slaves`文件，按实际情况修改配置信息
+> hadoop安装目录下的`etc/hadoop`目录,一共需要修改`core-site.xml`、`hdfs-site.xml`、`yarn-site.xml`、`mapred-site.xml`、`slaves`(3.0之后为`workers`)文件，按实际情况修改配置信息
+##### 1.core-site.xml
+```xml
+<configuration>
+<property>
+	<!-- 配置hdfs地址 -->
+	<name>fs.defaultFS</name>
+	<value>hdfs://hadoopmaster:9000</value>
+</property>
+<property>
+	<!-- 保存临时文件目录 -->
+	<name>hadoop.tmp.dir</name>
+	<value>/opt/hadoop/tmp</value>
+</property>
+</configuration>
+```
+##### 2.hdfs-site.xml
+```xml
+<configuration>
+    <property>
+        <!-- 主节点地址 -->
+        <name>dfs.namenode.http-address</name>
+        <value>hadoopmaster:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/opt/hadoop/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/opt/hadoop/dfs/data</value>
+    </property>
+    <property>
+        <!-- 备份份数 -->
+        <name>dfs.replication</name>
+        <value>2</value>
+    </property>
+    <property>
+        <!-- 第二节点地址 -->
+        <name>dfs.namenode.secondary.http-address</name>
+        <value>hadoop001:9001</value>
+    </property>
+    <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+    </property>
+</configuration>
+```
+##### 3.mapred-site.xml
+```xml
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>hadoopmaster:10020</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>hadoopmaster:19888</value>
+    </property>
+</configuration>
+```
+##### 4.yarn-site.xml
+```xml
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>hadoopmaster:8032</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>hadoopmaster:8030</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>hadoopmaster:8031</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.admin.address</name>
+        <value>hadoopmaster:8033</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>hadoopmaster:8088</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <!-- 这里配置过小可能导致nodemanager启动不起来 -->
+        <value>8192</value>
+    </property>
+</configuration>
+```
+##### 5.slaves文件（3.0之后为workers文件）
+```
+# 增加从节点地址（这里由于配置了hosts，直接使用的名字，也可以配ip地址）
+hadoop001
+hadoop002
+```
+
+#### 将文件夹copy到其他子节点
+通过[`scp`命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)将修改好的文件夹拷贝到各个从节点上
+```shell
+[root@hadoopmaster ~]# scp -r /opt/hadoop/ root@hadoop001:/opt
+...
+[root@hadoopmaster ~]# scp -r /opt/hadoop/ root@hadoop002:/opt
+```
+#### 初始化、启动
+```shell
+[root@hadoopmaster hadoop]# bin/hdfs namenode -format
+```
+全部启动`sbin/start-all.sh`，也可以分开`sbin/start-dfs.sh`、`sbin/start-yarn.sh`启动
+
+> 报错：
+> Starting namenodes on [hadoopmaster]
+> ERROR: Attempting to operate on hdfs namenode as root
+> ERROR: but there is no HDFS_NAMENODE_USER defined. Aborting operation.
+> Starting datanodes
+> ERROR: Attempting to operate on hdfs datanode as root
+> ERROR: but there is no HDFS_DATANODE_USER defined. Aborting operation.
+> Starting secondary namenodes [hadoop001]
+> ERROR: Attempting to operate on hdfs secondarynamenode as root
+> ERROR: but there is no HDFS_SECONDARYNAMENODE_USER defined. Aborting operation.
+> Starting resourcemanager
+> ERROR: Attempting to operate on yarn resourcemanager as root
+> ERROR: but there is no YARN_RESOURCEMANAGER_USER defined. Aborting operation.
+> Starting nodemanagers
+> ERROR: Attempting to operate on yarn nodemanager as root
+> ERROR: but there is no YARN_NODEMANAGER_USER defined. Aborting operation.
+> 
+> 原因：是因为缺少用户定义造成的，所以分别编辑开始和关闭脚本
+> $ vim sbin/start-dfs.sh
+> $ vim sbin/stop-dfs.sh 
+> 在顶部空白处添加内容： 
+> HDFS_DATANODE_USER=root
+> HADOOP_SECURE_DN_USER=hdfs
+> HDFS_NAMENODE_USER=root
+> HDFS_SECONDARYNAMENODE_USER=root 
+> 
+> start-yarn.sh，stop-yarn.sh顶部也需添加以下：
+> YARN_RESOURCEMANAGER_USER=root
+> HADOOP_SECURE_DN_USER=yarn
+> YARN_NODEMANAGER_USER=root
+
+#### Web访问，要先开放端口或者直接关闭防火墙
+1. 关闭防火墙
+```shell
+//临时关闭
+systemctl stop firewalld
+//禁止开机启动
+systemctl disable firewalld
+```
+2. 浏览器打开[http://hadoopmaster:8088/](http://hadoopmaster:8088/)
+3. 浏览器打开[http://hadoopmaster:50070/](http://hadoopmaster:50070/)
+
 
