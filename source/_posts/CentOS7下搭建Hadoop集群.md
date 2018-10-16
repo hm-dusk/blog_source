@@ -51,7 +51,7 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
 export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 ```
-完成后刷新一下
+完成后刷新一下，使profile生效
 ```shell
 [root@hadoopmaster ~]# source /etc/profile
 ```
@@ -109,6 +109,11 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
     <name>dfs.webhdfs.enabled</name>
     <value>true</value>
     </property>
+    <property>
+        <name>dfs.permissions</name>
+        <value>false</value>
+        <description>配置为false后，可以允许不要检查权限就生成dfs上的文件，方便倒是方便了，但是你需要防止误删除.</description>
+    </property>
 </configuration>
 ```
 ##### 3.mapred-site.xml
@@ -128,7 +133,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
     </property>
 </configuration>
 ```
-##### 4.yarn-site.xml
+##### 4.yarn-site.xml（资源管理器）
 ```xml
 <configuration>
     <property>
@@ -163,6 +168,11 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
         <name>yarn.nodemanager.resource.memory-mb</name>
         <!-- 这里配置过小可能导致nodemanager启动不起来 -->
         <value>8192</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+        <discription>忽略虚拟内存的检查，如果你是安装在虚拟机上，这个配置很有用，配上去之后后续操作不容易出问题。</discription>
     </property>
 </configuration>
 ```

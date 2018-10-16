@@ -95,7 +95,7 @@ NETWORKING=yes
 HOSTNAME=hadoop001
 ```
 
-有需要就可以修改主机名。配置完三个文件重启一下机器。
+有需要就可以修改主机名。配置完三个文件重启一下机器（或者`/etc/rc.d/init.d/network restart`重启网络）。
 
 ### 3.确保Linux虚拟机网络适配器选项
 
@@ -198,4 +198,4 @@ NETWORKING=yes
 HOSTNAME=hadoop001
 ```
 
-有需要就可以修改主机名。配置完三个文件重启一下机器。
+有需要就可以修改主机名。配置完三个文件重启一下机器（或者`/etc/rc.d/init.d/network restart`重启网络）。
