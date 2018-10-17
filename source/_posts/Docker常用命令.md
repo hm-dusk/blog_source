@@ -128,6 +128,29 @@ Docker 官方中国区
 > demo:0.0.1：image 文件的名字（如果有标签，还需要提供标签，默认是 latest 标签）。
 > /bin/bash：容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell。
 
+### 将运行的容器打包成镜像
+1. 登录docker hub网站[https://hub.docker.com/](https://hub.docker.com/)注册账号。
+2. `docker login`命令登录，输入相应用户名和密码
+    ```bash
+    Username: cyanidehm
+    Password: 
+    Login Succeeded  # 表示登录成功
+    ```
+3. 使用`docker ps`查看当前运行的容器
+    ```bash
+    [root@hadoopCDH opt]# docker ps
+    CONTAINER ID   IMAGE    COMMAND        CREATED             STATUS              PORTS     NAMES
+    9bffe3a2142e   centos   "/bin/bash"    About an hour ago   Up About an hour              vigilant_dijkstra
+    ```
+    得到容器id：9bffe3a2142e
+4. 使用`docker commit 9bffe3a2142e my_centos`命令提交到本地镜像，my_centos为镜像名（自己取名）
+5. 查看本地镜像
+    ```bash
+    [root@hadoopCDH opt]# docker images
+    REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
+    my_centos      latest    bcc2cf471c38   11 seconds ago   400 MB
+    ```
+
 ### 其他命令
 
 1. 查看容器
