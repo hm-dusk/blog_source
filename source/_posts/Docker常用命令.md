@@ -129,7 +129,8 @@ Docker 官方中国区
 > /bin/bash：容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell。
 
 ### 将运行的容器打包成镜像
-1. 登录docker hub网站[https://hub.docker.com/](https://hub.docker.com/)注册账号。
+1. 登录**docker hub**网站注册账号。
+    [https://hub.docker.com/](https://hub.docker.com/)
 2. `docker login`命令登录，输入相应用户名和密码
     ```bash
     Username: cyanidehm
@@ -142,7 +143,7 @@ Docker 官方中国区
     CONTAINER ID   IMAGE    COMMAND        CREATED             STATUS              PORTS     NAMES
     9bffe3a2142e   centos   "/bin/bash"    About an hour ago   Up About an hour              vigilant_dijkstra
     ```
-    得到容器id：9bffe3a2142e
+    得到容器id：`9bffe3a2142e`
 4. 使用`docker commit 9bffe3a2142e my_centos`命令提交到本地镜像，my_centos为镜像名（自己取名）
 5. 查看本地镜像
     ```bash
