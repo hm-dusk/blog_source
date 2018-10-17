@@ -187,3 +187,24 @@ Docker 官方中国区
 
    `docker container cp [容器id]:[/path/to/file] .`
 
+7. 将镜像保存为tar文件、将tar文件加载到docker镜像
+    1. 保存镜像
+    `docker save -o [路径/文件名] [镜像名]`或者`docker save [镜像名] > [路径/文件名]`
+    ```bash
+    [root@hadoopCDH opt]# docker save -o my_centos.tar cyanidehm/my_centos:latest
+    [root@hadoopCDH opt]# ll my_centos.tar 
+    -rw-------. 1 root root 779944960 10月 17 03:40 my_centos.tar
+    ```
+    2. 加载镜像
+    `docker load < [路径/文件名]`
+    ```bash
+    [root@hadoopmaster opt]# docker load < my_centos.tar 
+    1d31b5806ba4: Loading layer [==================================================>] 208.3 MB/208.3 MB
+    a5789abfb72a: Loading layer [==================================================>] 571.6 MB/571.6 MB
+    Loaded image: cyanidehm/my_centos:latest
+    [root@hadoopmaster opt]# docker images
+    REPOSITORY            TAG                 IMAGE ID            CREATED                  SIZE
+    cyanidehm/my_centos   latest              3ced2987d19a        Less than a second ago   765 MB
+    ```
+    
+
