@@ -1,16 +1,17 @@
 ---
-title: Docker常用命令
+title: Docker替换镜像源与常用命令
 tags:
   - docker
   - 容器
   - 命令
+  - 镜像源
 comments: true
 date: 2018-09-18 17:25:53
-updated: 2018-09-18 17:25:53
+updated: 2018-10-17 9:35:53
 categories: 容器
 password:
 ---
-Docker常用命令
+Docker替换镜像源与常用命令
 ![docker](http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker.jpg)
 <!-- more -->
 
@@ -25,6 +26,35 @@ CentOS7下直接运行`yum -y install docker`
 ### 启动docker服务
 
 `service docker start`或者`systemctl start docker`
+
+### 替换为国内镜像源
+#### 1. 修改或新增`/etc/docker/daemon.json`文件
+```bash
+{
+"registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+```
+修改之后重启一下docker服务
+```bash
+systemctl restart docker.service 或者 service docker restart
+```
+#### 2. 修改或新增 `/etc/sysconfig/docker`
+在OPTIONS变量后追加参数  `--registry-mirror=https://docker.mirrors.ustc.edu.cn`
+```bash
+OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=https://docker.mirrors.ustc.edu.cn'
+```
+#### 3. Docker国内源
+Docker 官方中国区
+[https://registry.docker-cn.com](https://registry.docker-cn.com)
+
+网易
+[http://hub-mirror.c.163.com](http://hub-mirror.c.163.com)
+
+中国科技大学
+[https://docker.mirrors.ustc.edu.cn](https://docker.mirrors.ustc.edu.cn)
+
+阿里云
+[https://pee6w651.mirror.aliyuncs.com](https://pee6w651.mirror.aliyuncs.com)
 
 ### 列出本地所有image文件
 
@@ -53,11 +83,16 @@ CentOS7下直接运行`yum -y install docker`
 1. 编写Dockerfile文件
 
    ```dockerfile
-   FROM node:8.4 # ：该 image 文件继承官方的 node image，冒号表示标签，这里标签是8.4，即8.4版本的 node。
-   COPY . /app # 将当前目录下的所有文件（除了.dockerignore排除的路径），都拷贝进入 image 文件的/app目录。
-   WORKDIR /app # 指定接下来的工作路径为/app。
-   RUN npm install --registry=https://registry.npm.taobao.org # 在/app目录下，运行npm install命令安装依赖。注意，安装后所有的依赖，都将打包进入 image 文件。
-   EXPOSE 3000 # 将容器 3000 端口暴露出来， 允许外部连接这个端口。
+   #该 image 文件继承官方的 node image，冒号表示标签，这里标签是8.4，即8.4版本的 node。
+   FROM node:8.4
+   #将当前目录下的所有文件（除了.dockerignore排除的路径），都拷贝进入 image 文件的/app目录。
+   COPY . /app
+   #指定接下来的工作路径为/app。
+   WORKDIR /app
+   # 在/app目录下，运行npm install命令安装依赖。注意，安装后所有的依赖，都将打包进入 image 文件。
+   RUN npm install --registry=https://registry.npm.taobao.org
+   # 将容器 3000 端口暴露出来， 允许外部连接这个端口。
+   EXPOSE 3000
    ```
 
 2. 编写.dockerignore文件
