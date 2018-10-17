@@ -130,6 +130,7 @@ Docker 官方中国区
 
 ### 将运行的容器打包成镜像
 1. 登录**docker hub**网站注册账号。
+
     [https://hub.docker.com/](https://hub.docker.com/)
 2. `docker login`命令登录，输入相应用户名和密码
     ```bash
