@@ -152,6 +152,11 @@ Docker 官方中国区
     REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
     my_centos      latest    bcc2cf471c38   11 seconds ago   400 MB
     ```
+6. 将镜像改到自己账户名下，推送到`docker hub`
+    ```bash
+    [root@hadoopCDH opt]# docker tag my_centos cyanidehm/my_centos
+    [root@hadoopCDH opt]# docker push cyanidehm/my_centos:latest
+    ```
 
 ### 其他命令
 
