@@ -306,3 +306,24 @@ liming
    [root@hadoopmaster ~]# 
    ```
 
+### passwd
+
+#### 命令格式
+
+`passwd [用户名]`
+
+#### 命令功能
+
+修改账户密码
+
+#### 使用实例
+
+```bash
+[root@slave001 /]# passwd root   	# 修改root密码
+Changing password for user root.
+New password: 						# 设置新密码
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 				# 确认新密码
+passwd: all authentication tokens updated successfully.
+```
+
