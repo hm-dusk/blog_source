@@ -326,4 +326,8 @@ BAD PASSWORD: The password is shorter than 8 characters
 Retype new password: 				# 确认新密码
 passwd: all authentication tokens updated successfully.
 ```
+修改root密码也可以使用下面一句命令搞定
+```bash
+[root@a3c8baf6961e /]# echo "1234" | passwd --stdin root  # 将root密码设置为1234
+```
 

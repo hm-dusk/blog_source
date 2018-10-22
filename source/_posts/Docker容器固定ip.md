@@ -10,6 +10,7 @@ updated: 2018-10-20 15:13:14
 categories: 容器
 password:
 ---
+Docker启动容器后一般是分配随机ip，本文将介绍如何使用Docker生成静态ip
 <!-- more -->
 1. 创建自定义网络
 ```bash
@@ -28,5 +29,9 @@ bb4ac16f1205        host                host                local
 docker run -itd --net my_network --ip 172.18.0.100 --add-host hdp001:172.18.0.101 --add-host hdp002:172.18.0.102 -h hdpmaster --name hdpmaster -p 8088:8088 -p 50070:50070 cyanidehm/hadoop:0.3 /bin/bash
 docker run -itd --net my_network --ip 172.18.0.101 --add-host hdpmaster:172.18.0.100 --add-host hdp002:172.18.0.102 -h hdp001 --name hdp001 cyanidehm/hadoop:0.3 /bin/bash
 docker run -itd --net my_network --ip 172.18.0.102 --add-host hdp001:172.18.0.101 --add-host hdpmaster:172.18.0.100 -h hdp002 --name hdp002 cyanidehm/hadoop:0.3 /bin/bash
-ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 ```
+    > --net 指定网络类型。
+    > --ip 指定ip地址。
+    > --add-host 添加主机到hosts文件。
+    > -h 指定hostname主机名。
+    > --name 指定容器名称

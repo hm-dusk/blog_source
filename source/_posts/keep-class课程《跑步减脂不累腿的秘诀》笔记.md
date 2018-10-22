@@ -11,7 +11,7 @@ categories: 运动
 password:
 ---
 跑步减脂不累腿的秘诀，跑步入门。
-![跑步封面](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E6%AD%A5%E5%B0%81%E9%9D%A22.jpg)
+![跑步封面](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E6%AD%A5%E5%B0%81%E9%9D%A23.jpg)
 <!-- more -->
 keep《跑步减脂不累腿的秘诀》--笔记
 

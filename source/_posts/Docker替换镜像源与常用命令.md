@@ -7,12 +7,12 @@ tags:
   - 镜像源
 comments: true
 date: 2018-09-18 17:25:53
-updated: 2018-10-17 9:35:53
+updated: 2018-10-22 9:35:53
 categories: 容器
 password:
 ---
 Docker替换镜像源与常用命令
-![docker](http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker.jpg)
+![docker](http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker2.jpg)
 <!-- more -->
 
 ### 安装
@@ -119,12 +119,13 @@ Docker 官方中国区
 4. 生成容器
 
    ```bash
-   $ docker container run -p 8000:3000 -it demo /bin/bash
+   $ docker container run -p 8000:3000 -itd demo /bin/bash
    # 或者
-   $ docker container run -p 8000:3000 -it demo:0.0.1 /bin/bash
+   $ docker container run -p 8000:3000 -itd demo:0.0.1 /bin/bash
    ```
 > -p参数：容器的 3000 端口映射到本机的 8000 端口。
 > -it参数：容器的 Shell 映射到当前的 Shell，然后你在本机窗口输入的命令，就会传入容器。
+> -d参数：容器后台运行。
 > demo:0.0.1：image 文件的名字（如果有标签，还需要提供标签，默认是 latest 标签）。
 > /bin/bash：容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell。
 
@@ -146,6 +147,11 @@ Docker 官方中国区
     ```
     得到容器id：`9bffe3a2142e`
 4. 使用`docker commit 9bffe3a2142e my_centos`命令提交到本地镜像，my_centos为镜像名（自己取名）
+
+    > `docker commit [OPTIONS] [容器id或名称] [镜像名称：版本]`，OPTIONS选项包括：
+    > -a，--author=""作者信息。
+    > -m，--message=""提交信息。
+    > -p，--pause=true提交时暂停容器运行。
 5. 查看本地镜像
     ```bash
     [root@hadoopCDH opt]# docker images
@@ -196,7 +202,7 @@ Docker 官方中国区
     -rw-------. 1 root root 779944960 10月 17 03:40 my_centos.tar
     ```
     2. 加载镜像
-    `docker load < [路径/文件名]`
+    `docker load --input [路径/文件名]`或者`docker load < [路径/文件名]`
     ```bash
     [root@hadoopmaster opt]# docker load < my_centos.tar 
     1d31b5806ba4: Loading layer [==================================================>] 208.3 MB/208.3 MB
