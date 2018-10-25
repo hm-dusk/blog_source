@@ -8,7 +8,9 @@ tags:
 comments: true
 date: 2018-09-18 17:25:53
 updated: 2018-10-22 9:35:53
-categories: 容器
+categories: 
+  - 容器
+  - docker
 password:
 ---
 Docker替换镜像源与常用命令

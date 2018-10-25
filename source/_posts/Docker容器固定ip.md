@@ -7,7 +7,9 @@ tags:
 comments: true
 date: 2018-10-20 15:13:14
 updated: 2018-10-20 15:13:14
-categories: 容器
+categories: 
+  - 容器
+  - docker
 password:
 ---
 Docker启动容器后一般是分配随机ip，本文将介绍如何使用Docker生成静态ip
