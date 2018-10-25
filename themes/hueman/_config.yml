@@ -33,7 +33,7 @@ widgets:
     - recent_posts
     - category
     - archive
-    - tag
+#    - tag
     - tagcloud
     - links
 
@@ -81,14 +81,14 @@ comment:
         pageSize: 10 # comments of one page
 
 # 分享
-share: addtoany # options: jiathis, bdshare, addtoany, default
+share: bdshare # options: jiathis, bdshare, addtoany, default
 
 # 插件
 plugins:
     lightgallery: true # options: true, false
     justifiedgallery: true # options: true, false
     google_analytics: # enter the tracking ID for your Google Analytics
-    baidu_analytics: # enter Baidu Analytics hash key
+    baidu_analytics: 0553c7251ea9196da47dc9ff8733b921 # enter Baidu Analytics hash key
     bing_site_verification: # enter Bing verification key here
     statcounter:
       sc_project: # enter statcounter project id
