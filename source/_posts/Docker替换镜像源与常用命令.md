@@ -17,7 +17,7 @@ Docker替换镜像源与常用命令
 ![docker](http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker2.jpg)
 <!-- more -->
 
-### 安装
+### 一、安装
 
 CentOS7下直接运行`yum -y install docker`
 
@@ -25,11 +25,11 @@ CentOS7下直接运行`yum -y install docker`
 
 > `docker info`显示内容需要启动docker服务才能看见
 
-### 启动docker服务
+### 二、启动docker服务
 
 `service docker start`或者`systemctl start docker`
 
-### 替换为国内镜像源
+### 三、替换为国内镜像源
 #### 1. 修改或新增`/etc/docker/daemon.json`文件
 ```bash
 {
@@ -58,7 +58,7 @@ Docker 官方中国区
 阿里云
 [https://pee6w651.mirror.aliyuncs.com](https://pee6w651.mirror.aliyuncs.com)
 
-### 基本命令
+### 四、基本命令
 #### 1.列出本地所有image文件
 
 `docker images` 或者`docker image ls`
@@ -81,7 +81,7 @@ Docker 官方中国区
 
 `docker container kill [容器id]`或者`docker kill [容器id]`或者`docker stop [容器id]`
 
-### 制作docker容器步骤
+### 五、制作docker容器步骤
 
 1. 编写Dockerfile文件
 
@@ -135,7 +135,7 @@ Docker 官方中国区
     > demo:0.0.1：镜像文件的名字（如果有标签，还需要提供标签，这里标签为0.0.1，如果不提供，默认是 latest 标签）。
     > /bin/bash：容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell。
     
-### 将运行的容器打包成镜像
+### 六、将运行的容器打包成镜像
 1. 登录**docker hub**网站注册账号。
 
     [https://hub.docker.com/](https://hub.docker.com/)
@@ -170,7 +170,7 @@ Docker 官方中国区
     [root@hadoopCDH opt]# docker push cyanidehm/my_centos:latest
     ```
 
-### 其他命令
+### 七、其他命令
 #### 1.查看容器
 
    `docker ps`查看正在运行的容器。
@@ -227,3 +227,10 @@ docker run -itd cyanidehm/base_ssh /bin/bash -c "sh /home/ssh.sh;/bin/bash"
 > 引号内的 `;` 表示命令分割，执行多条命令时用`;`进行分割
 > 引号内最后的`/bin/bash`表示容器启动以bash方式运行（如果容器启动后没有线程在运行，容器会停止退出） 
 
+#### 9.查看容器相关信息
+在容器外面不进入容器查看容器信息
+`docker inspect [容器名/id]`：查看到容器的相关信息
+```bash
+# 查看容器的具体IP地址，如果输出是空的说明没有配置IP地址
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' [容器名/id]
+```
