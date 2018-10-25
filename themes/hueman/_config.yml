@@ -13,10 +13,10 @@ customize:
         height: 60
         url: images/head_image.jpg
     theme_color: '#006bde'
-    highlight: androidstudio
-    sidebar: left # sidebar position, options: left, right
-    thumbnail: true # enable posts thumbnail, options: true, false
-    favicon: images/favicon.ico # path to favicon
+    highlight: androidstudio # 目录../themes/hueman/source/css/_highlight/下选择css样式，去掉.styl后缀
+    sidebar: left # 侧边栏布局, options: left, right
+    thumbnail: true # 是否启用文章缩略图, options: true, false
+    favicon: css/images/favicon.ico # 网站小图标
     # 社交链接
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
         github: https://github.com/hm-dusk
@@ -39,13 +39,14 @@ widgets:
 
 # 搜索
 search:
-    insight: true # you need to install `hexo-generator-json-content` before using Insight Search
+    insight: false # you need to install `hexo-generator-json-content` before using Insight Search
     swiftype: # enter swiftype install key here
-    baidu: false # you need to disable other search engines to use Baidu search, options: true, false
+    baidu: true # you need to disable other search engines to use Baidu search, options: true, false
 
 # 评论
 comment:
-    disqus: hexo-theme-hueman # enter disqus shortname here
+#    disqus: hexo-theme-hueman # enter disqus shortname here
+    disqus: cyanidehm # enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
     facebook: # enter true to enable
