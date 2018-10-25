@@ -7,7 +7,9 @@ tags:
 comments: true
 date: 2018-09-25 20:15:24
 updated: 2018-09-25 20:15:24
-categories: 运动
+categories: 
+  - 运动
+  - 跑步
 password:
 ---
 跑步减脂不累腿的秘诀，跑步入门。

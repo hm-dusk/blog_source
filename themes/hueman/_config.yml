@@ -5,7 +5,7 @@ menu:
     Categories:
     About: /about/index.html
 
-# Customize
+# 定制化
 customize:
     # logo图片地址：../themes/hueman/source/css/images/logo-header.png
     logo:
@@ -19,11 +19,11 @@ customize:
     favicon: images/favicon.ico # path to favicon
     # 社交链接
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
+        github: https://github.com/hm-dusk
+        zhihu: https://www.zhihu.com/people/huang-ming-3-28/activities
 #        twitter: /
 #        facebook: /
 #        google-plus: /
-        github: https://github.com/hm-dusk
-        zhihu: https://www.zhihu.com/people/huang-ming-3-28/activities
 #        weibo: /
 #        rss: /
 
@@ -37,13 +37,13 @@ widgets:
     - tagcloud
     - links
 
-# Search
+# 搜索
 search:
     insight: true # you need to install `hexo-generator-json-content` before using Insight Search
     swiftype: # enter swiftype install key here
     baidu: false # you need to disable other search engines to use Baidu search, options: true, false
 
-# Comment
+# 评论
 comment:
     disqus: hexo-theme-hueman # enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
@@ -77,12 +77,12 @@ comment:
         placeholder: Just Do It # enter the comment box placeholder
         avatar: identicon # (''/mm/identicon/monsterid/wavatar/retro/hide), more to see https://valine.js.org/avatar/
         avatar_cdn: https://gravatar.loli.net/avatar/ # avatar CDN address, default gravatar.loli.net
-        pageSize: 16 # comments of one page
+        pageSize: 10 # comments of one page
 
-# Share
-share: jiathis # options: jiathis, bdshare, addtoany, default
+# 分享
+share: bdshare # options: jiathis, bdshare, addtoany, default
 
-# Plugins
+# 插件
 plugins:
     lightgallery: true # options: true, false
     justifiedgallery: true # options: true, false
@@ -106,3 +106,7 @@ miscellaneous:
         google_plus:
     links:
         Hexo: http://hexo.io
+        前端大佬博客: https://software22.github.io/myblog
+        Linux之鸟哥私房菜: http://linux.vbird.org/linux_basic/
+        后台大佬博客: https://liumian.win/
+        陶老师github: https://immno.github.io/

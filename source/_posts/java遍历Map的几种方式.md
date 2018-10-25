@@ -5,7 +5,9 @@ tags:
   - 遍历
 comments: true
 date: 2017-07-19 19:26:48
-categories: java
+categories: 
+ - java
+ - map
 password:
 ---
 今天突然要用到Map的遍历，在此总结几种Map的遍历方法

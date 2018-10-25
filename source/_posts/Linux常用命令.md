@@ -3,7 +3,9 @@ title: Linux常用命令
 date: 2018-08-15 13:42:08
 tags: [Linux,命令]
 comments: true
-categories: Linux
+categories: 
+  - Linux
+  - 命令
 password:
 ---
 

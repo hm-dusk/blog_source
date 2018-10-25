@@ -4,7 +4,9 @@ tags:
   - 字符串
 comments: true
 date: 2017-07-25 10:55:07
-categories: java
+categories: 
+  - java
+  - 字符串
 password:
 ---
 java中利用Unicode编码过滤字符串中特定字符的方法

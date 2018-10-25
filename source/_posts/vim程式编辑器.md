@@ -3,7 +3,9 @@ title: vim程式编辑器
 tags: [编辑器,Linux]
 comments: true
 date: 2017-07-26 09:47:27
-categories: Linux
+categories: 
+  - Linux
+  - vim
 password:
 ---
 Linux下的vim编辑器

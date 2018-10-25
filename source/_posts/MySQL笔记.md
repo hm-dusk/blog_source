@@ -4,7 +4,9 @@ tags:
   - mysql
 comments: true
 date: 2017-07-18 20:42:01
-categories: 数据库
+categories: 
+  - 数据库
+  - mysql
 password: 
 ---
 MySql笔记

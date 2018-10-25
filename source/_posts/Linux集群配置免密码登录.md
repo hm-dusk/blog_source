@@ -7,7 +7,9 @@ tags:
 comments: true
 date: 2018-09-16 18:12:14
 updated: 2018-09-16 18:12:14
-categories: Linux
+categories: 
+  - Linux
+  - ssh
 password:
 ---
 Linux集群配置免密码登录

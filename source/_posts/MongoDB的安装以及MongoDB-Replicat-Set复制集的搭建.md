@@ -5,7 +5,9 @@ tags:
   - Linux
 comments: true
 date: 2017-07-29 11:32:03
-categories: 数据库
+categories: 
+  - 数据库
+  - mongodb
 password:
 ---
 记录MongoDB在Linux下的安装过程和MongoDB Replicat Set复制集的搭建过程。

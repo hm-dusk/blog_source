@@ -4,7 +4,9 @@ tags:
   - mongodb
 comments: true
 date: 2017-07-26 19:03:26
-categories: 数据库
+categories: 
+  - 数据库
+  - mongodb
 password:
 ---
 MongoDB笔记

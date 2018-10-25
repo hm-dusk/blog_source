@@ -5,7 +5,9 @@ tags:
   - java
   - Linux
 comments: true
-categories: Linux
+categories: 
+  - Linux
+  - java
 password:
 ---
 Linux下安装Java

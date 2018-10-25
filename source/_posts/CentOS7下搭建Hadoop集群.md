@@ -8,7 +8,9 @@ tags:
 comments: true
 date: 2018-09-16 23:40:16
 updated: 2018-09-16 23:40:16
-categories: 大数据
+categories: 
+  - 大数据
+  - hadoop
 password:
 ---
 CentOS7下搭建Hadoop集群
