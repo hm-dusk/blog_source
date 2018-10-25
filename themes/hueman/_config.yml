@@ -81,7 +81,7 @@ comment:
         pageSize: 10 # comments of one page
 
 # 分享
-share: bdshare # options: jiathis, bdshare, addtoany, default
+share: addtoany # options: jiathis, bdshare, addtoany, default
 
 # 插件
 plugins:
