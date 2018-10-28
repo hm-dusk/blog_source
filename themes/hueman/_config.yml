@@ -9,9 +9,9 @@ menu:
 customize:
     # logo图片地址：../themes/hueman/source/css/images/logo-header.png
     logo:
-        width: 60
+        width: 165
         height: 60
-        url: images/head_image.jpg
+        url: images/cyanide3.png
     theme_color: '#006bde'
     highlight: androidstudio # 目录../themes/hueman/source/css/_highlight/下选择css样式，去掉.styl后缀
     sidebar: left # 侧边栏布局, options: left, right

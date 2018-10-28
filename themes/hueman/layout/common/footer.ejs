@@ -1,4 +1,5 @@
 <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <div class="container">
         <div class="container-inner">
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
@@ -6,8 +7,12 @@
                 <h1 class="logo-wrap">
                     <a href="<%- url_for() %>" class="logo"></a>
                 </h1>
-                <p>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %></p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                <p>&copy; 2016 -<%= date(new Date(), 'YYYY') %> &#10084; <%= config.author || config.title %></p>
+                <!--<p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>-->
+                <p><%= config.description %></p>
+                <span id="busuanzi_container_site_uv">
+                    &#9822;本站已被<span id="busuanzi_value_site_uv"></span>人访问
+                </span>
             </div>
             <div class="footer-plugins">
               <%- partial('plugin/scripts', { isFooter: true }) %>
