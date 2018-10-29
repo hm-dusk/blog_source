@@ -305,9 +305,11 @@
   content: "\f02a";
 }
 .fa-tag:before {
+  /*单个标签图标*/
   content: "\f02b";
 }
 .fa-tags:before {
+  /*多个标签图标*/
   content: "\f02c";
 }
 .fa-book:before {

@@ -1,9 +1,10 @@
 <% if (post.tags && post.tags.length) { %>
     <div class="article-tag">
-        <i class="fa fa-tag"></i>
+        <i class="fa fa-tags"></i>
         <%- list_tags(post.tags, { show_count: false, style: 'link' }) %>
     </div>
     <span id="busuanzi_container_page_pv">
-        &#9822;本文已被阅读<span id="busuanzi_value_page_pv"></span>次
+        <i class="fa fa-eye"></i>
+        本文已被阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
 <% } %>
