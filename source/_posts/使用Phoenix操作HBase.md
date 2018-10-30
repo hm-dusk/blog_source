@@ -61,6 +61,7 @@ Caused by: org.apache.hadoop.hbase.TableNotFoundException: SYSTEM.CATALOG
 > 1. 停止HBase，保留zookeeper启动
 > 2. 执行`hbase clean --cleanZk`命令
 > 3. 重新启动HBase，使用Phoenix连接
+> 参考链接：[stackoverflow](https://stackoverflow.com/questions/33176081/org-apache-hadoop-hbase-tablenotfoundexception-system-catalog-exception-with-ph)
 
 ### 5.连接成功
 ```bash
