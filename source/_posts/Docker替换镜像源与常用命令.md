@@ -185,20 +185,30 @@ Docker 官方中国区
    容器停止运行后，不会消失，使用`docker container ls --all`查看所有存在的容器（id等信息）。
 
    使用`docker container rm [容器id]`或者`docker rm [容器id]`删除容器。
+   
+#### 4.清除所有容器
+1. 停止所有容器
+```bash
+docker stop $(docker ps -aq)
+```
+2. 删除所有容器
+```bash
+docker rm $(docker ps -aq)
+```
 
-#### 4.运行已存在的容器
+#### 5.运行已存在的容器
 
    `docker container start [容器id]`或者`docker start [容器id]`
 
-#### 5.进入已经运行的容器
+#### 6.进入已经运行的容器
 
    `docker container exec -it [容器id] [/bin/bash]`
 
-#### 6.将容器里的文件拷贝到本机
+#### 7.将容器里的文件拷贝到本机
 
    `docker container cp [容器id]:[/path/to/file] .`
 
-#### 7.将镜像保存为tar文件、将tar文件加载到docker镜像
+#### 8.将镜像保存为tar文件、将tar文件加载到docker镜像
 1. 保存镜像
 `docker save -o [路径/文件名] [镜像名]`或者`docker save [镜像名] > [路径/文件名]`
 ```bash
@@ -217,7 +227,7 @@ Loaded image: cyanidehm/my_centos:latest
 REPOSITORY            TAG                 IMAGE ID            CREATED                  SIZE
 cyanidehm/my_centos   latest              3ced2987d19a        Less than a second ago   765 MB
 ```
-#### 8.容器启动后自动运行脚本
+#### 9.容器启动后自动运行脚本
 情景：1、镜像已经存在。2、镜像内包含脚本`/home/ssh.sh`需要在容器启动后运行
 ```bash
 docker run -itd cyanidehm/base_ssh /bin/bash -c "sh /home/ssh.sh;/bin/bash"
@@ -227,7 +237,7 @@ docker run -itd cyanidehm/base_ssh /bin/bash -c "sh /home/ssh.sh;/bin/bash"
 > 引号内的 `;` 表示命令分割，执行多条命令时用`;`进行分割
 > 引号内最后的`/bin/bash`表示容器启动以bash方式运行（如果容器启动后没有线程在运行，容器会停止退出） 
 
-#### 9.查看容器相关信息
+#### 10.查看容器相关信息
 在容器外面不进入容器查看容器信息
 `docker inspect [容器名/id]`：查看到容器的相关信息
 ```bash
