@@ -82,10 +82,11 @@ GATEWAY=192.168.40.2
 `vi /etc/resolv.conf`
 
 ```
-nameserver 192.168.40.2
+nameserver 8.8.8.8
+nameserver 8.8.4.4
 ```
 
-`nameserver`：这里应该填对应的dns域名解析服务器的ip的。但是不清楚填什么，就填网关地址了。 
+`nameserver`：这里填对应的dns域名解析服务器的ip。 可以指定多个，其他的默认为备用DNS
 
 3. 主机名修改
 
@@ -185,10 +186,11 @@ GATEWAY=192.168.88.1     # 网关也要和物理机一样
 `vi /etc/resolv.conf`
 
 ```
-nameserver 192.168.88.1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
 ```
 
-`nameserver`：这里应该填对应的dns域名解析服务器的ip的。但是不清楚填什么，就填网关地址了。 
+`nameserver`：这里填对应的dns域名解析服务器的ip。 可以指定多个，其他的默认为备用DNS
 
 3. 主机名修改
 
@@ -200,4 +202,5 @@ NETWORKING=yes
 HOSTNAME=hadoop001
 ```
 
-有需要就可以修改主机名。配置完三个文件重启一下机器（或者`/etc/rc.d/init.d/network restart`重启网络）。
+有需要就可以修改主机名。
+配置完三个文件重启一下机器（或者`/etc/rc.d/init.d/network restart`重启网络）。

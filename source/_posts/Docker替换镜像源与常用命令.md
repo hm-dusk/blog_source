@@ -29,6 +29,9 @@ CentOS7下直接运行`yum -y install docker`
 
 `service docker start`或者`systemctl start docker`
 
+设置开机自启动
+`systemctl enable docker`
+
 ### 三、替换为国内镜像源
 #### 1. 修改或新增`/etc/docker/daemon.json`文件
 ```bash
@@ -41,9 +44,9 @@ CentOS7下直接运行`yum -y install docker`
 systemctl restart docker.service 或者 service docker restart
 ```
 #### 2. 修改或新增 `/etc/sysconfig/docker`
-在OPTIONS变量后追加参数  `--registry-mirror=https://docker.mirrors.ustc.edu.cn`
+在OPTIONS变量后追加参数  `--registry-mirror=http://hub-mirror.c.163.com`
 ```bash
-OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=https://docker.mirrors.ustc.edu.cn'
+OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=http://hub-mirror.c.163.com'
 ```
 #### 3. Docker国内源
 Docker 官方中国区
