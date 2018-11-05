@@ -14,14 +14,14 @@ password:
 ---
 使用Phoenix操作HBase
 <!-- more -->
-### 1.下载与HBase版本兼容的Phoenix
+### 下载与HBase版本兼容的Phoenix
 `apache-phoenix-4.14.0-HBase-1.2-bin.tar.gz`
 [下载地址](http://phoenix.apache.org/download.html)
 
-### 2.解压
+### 解压
 复制`phoenix-4.14.0-HBase-1.2-server.jar`到`hbase/lib`下并分发
 
-### 3.重启HBase
+### 重启HBase
 ```bash
 [root@hadoopmaster bin]# stop-hbase.sh
 ...
@@ -29,7 +29,7 @@ password:
 ...
 ```
 
-### 4.使用sqlline.py命令行终端
+### 使用sqlline.py命令行终端
 运行`phoenix/bin/sqlline.py`脚本，连接zookeeper
 ```bash
 [root@hadoopmaster bin]# pwd
@@ -63,7 +63,7 @@ Caused by: org.apache.hadoop.hbase.TableNotFoundException: SYSTEM.CATALOG
 > 3. 重新启动HBase，使用Phoenix连接
 > 参考链接：[stackoverflow](https://stackoverflow.com/questions/33176081/org-apache-hadoop-hbase-tablenotfoundexception-system-catalog-exception-with-ph)
 
-### 5.连接成功
+### 连接成功
 ```bash
 [root@hadoopmaster bin]# ./sqlline.py hadoop001:2181
 Setting property: [incremental, false]
@@ -86,7 +86,7 @@ sqlline version 1.2.0
 0: jdbc:phoenix:hadoop001:2181>|
 ```
 
-### 6.基本操作（常用命令）
+### 基本操作（常用命令）
 ```bash
 //查看帮助
 $sqlline>!help

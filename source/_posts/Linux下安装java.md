@@ -1,6 +1,7 @@
 ---
 title: Linux下安装java
 date: 2018-09-14 00:20:12
+updated: 2018-09-14 00:20:12
 tags:
   - java
   - Linux

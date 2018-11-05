@@ -3,6 +3,7 @@ title: VMware虚拟机静态ip配置
 tags: [虚拟机,Linux,ip]
 comments: true
 date: 2018-08-09 16:21:22
+updated: 2018-08-09 16:21:22
 categories: 
   - Linux
   - 虚拟机

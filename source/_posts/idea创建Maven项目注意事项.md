@@ -1,6 +1,7 @@
 ---
 title: idea创建Maven项目注意事项
 date: 2016-07-23 17:15:19
+updated: 2016-07-23 17:15:19
 categories: 
   - java
   - maven

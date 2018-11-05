@@ -21,13 +21,6 @@ keep《跑步减脂不累腿的秘诀》--笔记
 > 链接：[https://www.jianshu.com/p/894f942005c9](https://www.jianshu.com/p/894f942005c9)
 > 转载來源：简书
 
-**一、怎么跑才能不粗腿**
-
-**二、怎么跑步不容易受伤**
-
-**三、提升跑步速度与距离**
-
-**四、跑步常见的困扰与危险信号**
 ![class课程](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/keep%E8%B7%91%E6%AD%A5class%E8%AF%BE%E7%A8%8B.jpg)
 
 ### 怎么跑才能不粗腿

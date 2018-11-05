@@ -20,7 +20,11 @@
     <div class="widgets-container">
         <% if (theme.widgets) { %>
             <% theme.widgets.forEach(function(widget) { %>
-                <%- partial('widget/' + widget, {post: page}) %>
+                <!-- 如果是在文章中，就不显示分类 -->
+                <% if (is_post() && widget=='category') { %>
+                <% } else {%>
+                    <%- partial('widget/' + widget, {post: page}) %>
+                <% } %>
             <% }) %>
         <% } %>
     </div>

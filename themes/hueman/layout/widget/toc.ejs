@@ -1,0 +1,9 @@
+<%if(is_post()){ %>
+<div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <%- toc(page.content,{
+        class: 'post-toc',
+        list_number: true
+    }) %>
+</div>
+<%}%>

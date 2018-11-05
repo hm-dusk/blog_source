@@ -17,7 +17,7 @@ Docker替换镜像源与常用命令
 ![docker](http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker2.jpg)
 <!-- more -->
 
-### 一、安装
+### 安装
 
 CentOS7下直接运行`yum -y install docker`
 
@@ -25,15 +25,15 @@ CentOS7下直接运行`yum -y install docker`
 
 > `docker info`显示内容需要启动docker服务才能看见
 
-### 二、启动docker服务
+### 启动docker服务
 
 `service docker start`或者`systemctl start docker`
 
 设置开机自启动
 `systemctl enable docker`
 
-### 三、替换为国内镜像源
-#### 1. 修改或新增`/etc/docker/daemon.json`文件
+### 替换为国内镜像源
+#### 修改或新增`/etc/docker/daemon.json`文件
 ```bash
 {
 "registry-mirrors": ["http://hub-mirror.c.163.com"]
@@ -43,12 +43,12 @@ CentOS7下直接运行`yum -y install docker`
 ```bash
 systemctl restart docker.service 或者 service docker restart
 ```
-#### 2. 修改或新增 `/etc/sysconfig/docker`
+#### 修改或新增 `/etc/sysconfig/docker`
 在OPTIONS变量后追加参数  `--registry-mirror=http://hub-mirror.c.163.com`
 ```bash
 OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=http://hub-mirror.c.163.com'
 ```
-#### 3. Docker国内源
+#### Docker国内源
 Docker 官方中国区
 [https://registry.docker-cn.com](https://registry.docker-cn.com)
 
@@ -61,30 +61,30 @@ Docker 官方中国区
 阿里云
 [https://pee6w651.mirror.aliyuncs.com](https://pee6w651.mirror.aliyuncs.com)
 
-### 四、基本命令
-#### 1.列出本地所有image文件
+### 基本命令
+#### 列出本地所有image文件
 
 `docker images` 或者`docker image ls`
 
-#### 2.删除本地镜像
+#### 删除本地镜像
 
 `docker image rm [镜像名]`
 
-#### 3.拉取镜像
+#### 拉取镜像
 
 `docker image pull [镜像组/镜像名]`
 
-#### 4.运行镜像生成容器
+#### 运行镜像生成容器
 
 `docker container run [镜像名]`或者`docker run [镜像名]`
 
 > 如果本地没有该镜像，或自动去仓库pull
 
-#### 5.终止容器
+#### 终止容器
 
 `docker container kill [容器id]`或者`docker kill [容器id]`或者`docker stop [容器id]`
 
-### 五、制作docker容器步骤
+### 制作docker容器步骤
 
 1. 编写Dockerfile文件
 
@@ -138,7 +138,7 @@ Docker 官方中国区
     > demo:0.0.1：镜像文件的名字（如果有标签，还需要提供标签，这里标签为0.0.1，如果不提供，默认是 latest 标签）。
     > /bin/bash：容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell。
     
-### 六、将运行的容器打包成镜像
+### 将运行的容器打包成镜像
 1. 登录**docker hub**网站注册账号。
 
     [https://hub.docker.com/](https://hub.docker.com/)
@@ -173,23 +173,23 @@ Docker 官方中国区
     [root@hadoopCDH opt]# docker push cyanidehm/my_centos:latest
     ```
 
-### 七、其他命令
-#### 1.查看容器
+### 其他命令
+#### 查看容器
 
    `docker ps`查看正在运行的容器。
    
    `docker ps -a`或`docker container ls --all`查看所有存在的容器。
 
-#### 2.退出容器bash
+#### 退出容器bash
    在容器的命令行，按下 Ctrl + c 停止 Node 进程，然后按下 Ctrl + d （或者输入 exit）退出容器。此外，也可以用`docker container kill`终止容器运行。
 
-#### 3.删除容器文件
+#### 删除容器文件
 
    容器停止运行后，不会消失，使用`docker container ls --all`查看所有存在的容器（id等信息）。
 
    使用`docker container rm [容器id]`或者`docker rm [容器id]`删除容器。
    
-#### 4.清除所有容器
+#### 清除所有容器
 1. 停止所有容器
 ```bash
 docker stop $(docker ps -aq)
@@ -199,19 +199,19 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 ```
 
-#### 5.运行已存在的容器
+#### 运行已存在的容器
 
    `docker container start [容器id]`或者`docker start [容器id]`
 
-#### 6.进入已经运行的容器
+#### 进入已经运行的容器
 
    `docker container exec -it [容器id] [/bin/bash]`
 
-#### 7.将容器里的文件拷贝到本机
+#### 将容器里的文件拷贝到本机
 
    `docker container cp [容器id]:[/path/to/file] .`
 
-#### 8.将镜像保存为tar文件、将tar文件加载到docker镜像
+#### 将镜像保存为tar文件、将tar文件加载到docker镜像
 1. 保存镜像
 `docker save -o [路径/文件名] [镜像名]`或者`docker save [镜像名] > [路径/文件名]`
 ```bash
@@ -230,7 +230,7 @@ Loaded image: cyanidehm/my_centos:latest
 REPOSITORY            TAG                 IMAGE ID            CREATED                  SIZE
 cyanidehm/my_centos   latest              3ced2987d19a        Less than a second ago   765 MB
 ```
-#### 9.容器启动后自动运行脚本
+#### 容器启动后自动运行脚本
 情景：1、镜像已经存在。2、镜像内包含脚本`/home/ssh.sh`需要在容器启动后运行
 ```bash
 docker run -itd cyanidehm/base_ssh /bin/bash -c "sh /home/ssh.sh;/bin/bash"
@@ -240,7 +240,7 @@ docker run -itd cyanidehm/base_ssh /bin/bash -c "sh /home/ssh.sh;/bin/bash"
 > 引号内的 `;` 表示命令分割，执行多条命令时用`;`进行分割
 > 引号内最后的`/bin/bash`表示容器启动以bash方式运行（如果容器启动后没有线程在运行，容器会停止退出） 
 
-#### 10.查看容器相关信息
+#### 查看容器相关信息
 在容器外面不进入容器查看容器信息
 `docker inspect [容器名/id]`：查看到容器的相关信息
 ```bash

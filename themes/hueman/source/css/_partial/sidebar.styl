@@ -249,11 +249,36 @@
     a
         margin-right: 5px
 
-.toc-article
-    margin: 0
-    padding: 0
-    .toc
-        padding: 0
-        margin: 10px 0 0
-        .toc-item
-            list-style: none
+#toc
+  //position fixed //模块固定
+  //box-shadow 1px 2px 3px #ddd //模块阴影
+  padding 10px 15px
+  line-height 1.5 //目录间距
+  margin-bottom 25px  //目录距下个模块的距离
+  strong
+    font-size 15px
+  ol
+    margin-top 5px
+    margin-left 0
+    padding-left 20px //层级缩进像素
+    font-size: 15px;  //目录字体大小
+    a {
+      text-decoration : none  //不显示a标签自带下划线
+      color: #006bde;
+      border-bottom: none;
+      //border-bottom: 1px solid #0593d3; //下划线样式
+
+      &:hover { //hover时状态
+        color: #fc6423;
+        border-bottom: none;
+        border-bottom: 1px solid #fc6423; //下划线
+      }
+    }
+  .toc
+    vertical-align: baseline;
+    .toc-item
+      list-style: none
+    li
+      list-style-type none
+  .toc-child
+      padding-left 20px

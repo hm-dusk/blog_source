@@ -29,6 +29,7 @@ customize:
 
 # Widgets
 widgets:
+    - toc
     - catalog
     - recent_posts
     - category
