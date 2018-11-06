@@ -43,11 +43,6 @@ CentOS7下直接运行`yum -y install docker`
 ```bash
 systemctl restart docker.service 或者 service docker restart
 ```
-#### 修改或新增 `/etc/sysconfig/docker`
-在OPTIONS变量后追加参数  `--registry-mirror=http://hub-mirror.c.163.com`
-```bash
-OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=http://hub-mirror.c.163.com'
-```
 #### Docker国内源
 Docker 官方中国区
 [https://registry.docker-cn.com](https://registry.docker-cn.com)
