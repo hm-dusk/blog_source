@@ -1,7 +1,7 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2018-08-15 13:42:08
+updated: 2018-11-6 10:42:55
 tags: [Linux,命令]
 comments: true
 categories: 
@@ -334,3 +334,71 @@ passwd: all authentication tokens updated successfully.
 [root@a3c8baf6961e /]# echo "1234" | passwd --stdin root  # 将root密码设置为1234
 ```
 
+### ss
+
+#### 命令格式
+
+`ss [参数]`
+
+`ss [参数] [过滤]`
+
+#### 命令功能
+
+ss(Socket Statistics的缩写)命令可以用来获取 socket统计信息（查询端口占用），比 netstat 更快速高效
+
+#### 命令参数
+
+> -h, --help	帮助信息
+  -V, --version	程序版本信息
+  -n, --numeric	不解析服务名称
+  -r, --resolve        解析主机名
+  -a, --all	显示所有套接字（sockets）
+  -l, --listening	显示监听状态的套接字（sockets）
+  -o, --options        显示计时器信息
+  -e, --extended       显示详细的套接字（sockets）信息
+  -m, --memory         显示套接字（socket）的内存使用情况
+  -p, --processes	显示使用套接字（socket）的进程
+  -i, --info	显示 TCP内部信息
+  -s, --summary	显示套接字（socket）使用概况
+  -4, --ipv4           仅显示IPv4的套接字（sockets）
+  -6, --ipv6           仅显示IPv6的套接字（sockets）
+  -0, --packet	        显示 PACKET 套接字（socket）
+  -t, --tcp	仅显示 TCP套接字（sockets）
+  -u, --udp	仅显示 UCP套接字（sockets）
+  -d, --dccp	仅显示 DCCP套接字（sockets）
+  -w, --raw	仅显示 RAW套接字（sockets）
+  -x, --unix	仅显示 Unix套接字（sockets）
+
+#### 使用实例
+##### 显示Sockets摘要
+`ss -s`
+```bash
+[root@localhost ~]# ss -s
+Total: 7089 (kernel 10238)
+TCP:   600 (estab 267, closed 279, orphaned 0, synrecv 0, timewait 195/0), ports 0
+
+Transport Total     IP        IPv6
+*	  10238     -         -        
+RAW	  0         0         0        
+UDP	  3         2         1        
+TCP	  321       203       118      
+INET	  324       205       119      
+FRAG	  0         0         0  
+```
+##### 显示TCP连接
+`ss -t -a`
+```bash
+[root@localhost ~]# ss -t -a
+State      Recv-Q Send-Q        Local Address:Port      Peer Address:Port   
+LISTEN     0      0                 127.0.0.1:smux                 *:*       
+LISTEN     0      0                         *:3690                 *:*       
+LISTEN     0      0                         *:ssh                  *:*       
+ESTAB      0      0           192.168.120.204:ssh          10.2.0.68:49368   
+```
+##### 找出占用套接字/端口的应用程序
+`ss -anlp | grep 8080`
+```bash
+[root@localhost ~]# ss -anlp | grep 8088
+tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("java",pid=11935,fd=225))
+
+```
