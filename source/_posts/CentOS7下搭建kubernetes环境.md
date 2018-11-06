@@ -39,15 +39,16 @@ docker-ce-selinux-17.03.1.ce-1.el7.centos
 
 ```bash
 # 配置源
-[root@master ~]# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-> [kubernetes]
-> name=Kubernetes
-> baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
-> enabled=1
-> gpgcheck=1
-> repo_gpgcheck=1
-> gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
-> EOF
+[root@master ~]# 
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
 
 # 安装
 [root@master ~]# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
