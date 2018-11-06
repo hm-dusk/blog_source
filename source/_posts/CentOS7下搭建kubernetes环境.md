@@ -9,7 +9,7 @@ categories:
   - 容器
   - k8s
 date: 2018-10-31 20:32:27
-updated: 2018-11-5 20:32:27
+updated: 2018-11-6 11:37:57
 password:
 ---
 CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用（进行中）
@@ -52,3 +52,8 @@ docker-ce-selinux-17.03.1.ce-1.el7.centos
 # 安装
 [root@master ~]# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 ```
+
+### k8s1.6 pod api
+Pod是kubernetes REST API中的顶级资源类型。
+在kuberentes1.6的V1 core API版本中的Pod的数据结构如下图所示：
+![pod api](https://jimmysong.io/kubernetes-handbook/images/kubernetes-pod-cheatsheet.png)
