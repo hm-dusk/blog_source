@@ -7,7 +7,7 @@ tags:
   - 镜像源
 comments: true
 date: 2018-09-18 17:25:53
-updated: 2018-10-22 9:35:53
+updated: 2018-11-6 15:26:28
 categories: 
   - 容器
   - docker
@@ -78,7 +78,7 @@ Docker 官方中国区
 
 `docker container run [镜像名]`或者`docker run [镜像名]`
 
-> 如果本地没有该镜像，或自动去仓库pull
+> 如果本地没有该镜像，会自动去仓库pull
 
 #### 终止容器
 
@@ -105,7 +105,7 @@ Docker 官方中国区
 
 2. 编写.dockerignore文件
 
-   ```
+   ```dockerfile
    .git
    node_modules
    npm-debug.log
@@ -230,6 +230,30 @@ Loaded image: cyanidehm/my_centos:latest
 REPOSITORY            TAG                 IMAGE ID            CREATED                  SIZE
 cyanidehm/my_centos   latest              3ced2987d19a        Less than a second ago   765 MB
 ```
+3. **批量save/load镜像**
+脚本地址[hydra1983/docker_images.sh](https://gist.github.com/hydra1983/22b2bed38b4f5f56caa87c830c96378d#file-docker_images-sh)
+批量保存
+`./docker_images.sh save-images`
+批量加载
+`./docker_images.sh load-images`
+> 脚本将镜像文件保存到`./images`目录下，另外一个`images.db`文件与之对应
+> 将这两个东西拷贝到其他主机，执行批量加载命令就行实现批量转移镜像
+```bash
+[root@localhost save]# ./docker_images.sh save-images 
+Create /opt/save/images.db
+Read /opt/save/images.db
+Create /opt/save/images
+[DEBUG] save 00ead811e8ae docker.io/portainer/portainer:latest to /opt/save/images/00ead811e8ae.dim
+real	0m27.343s
+[DEBUG] save d63b9b4bd205 rancher/server:v1.6.14 to /opt/save/images/d63b9b4bd205.dim
+real	4m46.480s
+[DEBUG] save 34a453d374b9 docker.io/rancher/agent:v1.2.9 to /opt/save/images/34a453d374b9.dim
+real	0m28.037s
+
+[root@localhost save]# ./docker_images.sh load-images
+...
+```
+
 #### 容器启动后自动运行脚本
 情景：1、镜像已经存在。2、镜像内包含脚本`/home/ssh.sh`需要在容器启动后运行
 ```bash
