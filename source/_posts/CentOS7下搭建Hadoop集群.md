@@ -12,9 +12,9 @@ categories:
   - 大数据
   - hadoop
 password:
+thumbnail: 'http://ot87uvd34.bkt.clouddn.com/hadoop%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/hadoop.jpg'
 ---
 CentOS7下搭建Hadoop集群
-![hadoop](http://ot87uvd34.bkt.clouddn.com/hadoop%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/hadoop.jpg)
 <!-- more -->
 ### 准备环境
 #### 虚拟机创建多个Linux系统并配置静态IP

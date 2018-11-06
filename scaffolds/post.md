@@ -11,5 +11,6 @@ categories:
   - 
   - 
 password:
+thumbnail: ''
 ---
 <!-- more -->

@@ -6,18 +6,17 @@ tags:
   - 运动
 comments: true
 date: 2018-09-25 20:15:24
-updated: 2018-09-25 20:15:24
+updated: 2018-11-6 14:14:02
 categories: 
   - 运动
   - 跑步
 password:
+thumbnail: 'http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E6%AD%A5%E5%B0%81%E9%9D%A23.jpg'
 ---
-跑步减脂不累腿的秘诀，跑步入门。
-![跑步封面](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E6%AD%A5%E5%B0%81%E9%9D%A23.jpg)
-<!-- more -->
 keep《跑步减脂不累腿的秘诀》--笔记
+<!-- more -->
 
-> 作者：Amazing_H
+> 原文作者：Amazing_H
 > 链接：[https://www.jianshu.com/p/894f942005c9](https://www.jianshu.com/p/894f942005c9)
 > 转载來源：简书
 

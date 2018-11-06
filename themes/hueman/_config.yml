@@ -12,7 +12,8 @@ customize:
         width: 165
         height: 60
         url: images/cyanide3.png
-    theme_color: '#006bde'
+    theme_color: '#006bde'  # 主题全局颜色
+#    theme_color: '#d35'
     highlight: androidstudio # 目录../themes/hueman/source/css/_highlight/下选择css样式，去掉.styl后缀
     sidebar: left # 侧边栏布局, options: left, right
     thumbnail: true # 是否启用文章缩略图, options: true, false
