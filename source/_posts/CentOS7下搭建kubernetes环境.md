@@ -58,3 +58,5 @@ EOF
 Pod是kubernetes REST API中的顶级资源类型。
 在kuberentes1.6的V1 core API版本中的Pod的数据结构如下图所示：
 ![pod api](https://jimmysong.io/kubernetes-handbook/images/kubernetes-pod-cheatsheet.png)
+### docker指令和k8s指令对比
+[指令对比](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
