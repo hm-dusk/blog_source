@@ -407,9 +407,9 @@ tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("ja
 #### 命令功能
 监测一个命令的运行结果，周期性刷新结果，省得一遍遍的手动运行
 #### 命令参数
-> -n或--interval  watch缺省每2秒运行一下程序，可以用-n或-interval来指定间隔的时间。
-  -d或--differences  用-d或--differences 选项watch 会高亮显示变化的区域。 而-d=cumulative选项会把变动过的地方(不管最近的那次有没有变动)都高亮显示出来。
-  -t 或-no-title  会关闭watch命令在顶部的时间间隔,命令，当前时间的输出。
+> - `-n`或--interval  watch缺省每2秒运行一下程序，可以用-n或-interval来指定间隔的时间。
+> - `-d`或--differences  用-d或--differences 选项watch 会高亮显示变化的区域。 而-d=cumulative选项会把变动过的地方(不管最近的那次有没有变动)都高亮显示出来。
+> - `-t`或-no-title  会关闭watch命令在顶部的时间间隔,命令，当前时间的输出。
 #### 命令实例
 `watch -n 1 -d netstat -ant` 每隔一秒高亮显示网络链接数的变化情况
 `watch -n 10 'cat /proc/loadavg'` 10秒一次输出系统的平均负载
