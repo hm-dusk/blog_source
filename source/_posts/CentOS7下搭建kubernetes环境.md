@@ -9,7 +9,7 @@ categories:
   - 容器
   - k8s
 date: 2018-10-31 20:32:27
-updated: 2018-11-6 11:37:57
+updated: 2018-11-14 20:36:28
 password:
 ---
 CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用（进行中）
@@ -52,6 +52,37 @@ EOF
 
 # 安装
 [root@master ~]# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+```
+
+### 禁用交换分区swap
+查看交换分区：`free -h`
+```bash
+[root@localhost ~]# free -h
+              total        used        free      shared  buff/cache   available
+Mem:           2.8G        159M        404M        112M        2.2G        2.3G
+Swap:          3.0G        2.8M        3.0G
+```
+`swapoff -a` 临时禁用所有交换
+```bash
+[root@k8s003 save]# swapoff -a
+[root@k8s003 save]# free -h
+              total        used        free      shared  buff/cache   available
+Mem:           2.8G        158M        403M        113M        2.2G        2.3G
+Swap:            0B          0B          0B
+```
+永久禁用，`vim /etc/fstab`注释swap行，重启
+```bash
+#
+# /etc/fstab
+# Created by anaconda on Mon Nov  5 19:49:25 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/centos-root /                       xfs     defaults        0 0
+UUID=daffff7e-bc4d-4cf0-bcdd-9b4a99a77ccc /boot                   xfs     defaults        0 0
+# 注释该行
+# /dev/mapper/centos-swap swap                    swap    defaults        0 0
 ```
 
 ### k8s1.6 pod api
