@@ -105,19 +105,18 @@ public class HiveJdbcConfig {
 
 ### 在代码中使用JdbcTemplate
 ```java
-	@Resource(name = "hiveJdbcTemplate")
-	private JdbcTemplate hiveJdbcTemplate;
+@Resource(name = "hiveJdbcTemplate")
+private JdbcTemplate hiveJdbcTemplate;
 
-
-	public boolean loadFileToTable(String filePath, String tableName) {
-//		String filePath = "/home/hadoop/user_sample.txt";
-		String sql = "load data local inpath '" + filePath + "' into table " + tableName;
-		try {
-			hiveJdbcTemplate.execute(sql);
-			return true;
-		} catch (DataAccessException dae) {
-			logger.error("Load data into table encounter an error: " + dae.getMessage());
-			return false;
-		}
+public boolean loadFileToTable(String filePath, String tableName) {
+//	String filePath = "/home/hadoop/user_sample.txt";
+	String sql = "load data local inpath '" + filePath + "' into table " + tableName;
+	try {
+		hiveJdbcTemplate.execute(sql);
+		return true;
+	} catch (DataAccessException dae) {
+		logger.error("Load data into table encounter an error: " + dae.getMessage());
+		return false;
 	}
+}
 ```
