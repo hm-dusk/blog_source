@@ -14,7 +14,8 @@ password:
 ---
 CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用（进行中）
 <!-- more -->
-[https://www.kubernetes.org.cn/4256.html](https://www.kubernetes.org.cn/4256.html)
+[1.11多主高可用](https://www.kubernetes.org.cn/4256.html)
+[1.10kubeadm安装](https://www.qikqiak.com/post/use-kubeadm-install-kubernetes-1.10/)
 ### 安装配置docker
 > v1.11.0版本推荐使用docker v17.03,
   v1.11,v1.12,v1.13, 也可以使用，再高版本的docker可能无法正常使用。
@@ -83,6 +84,11 @@ Swap:            0B          0B          0B
 UUID=daffff7e-bc4d-4cf0-bcdd-9b4a99a77ccc /boot                   xfs     defaults        0 0
 # 注释该行
 # /dev/mapper/centos-swap swap                    swap    defaults        0 0
+```
+
+### 初始化
+```bash
+[root@k8smaster opt]#  kubeadm init --kubernetes-version=v1.10.0 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.40.100
 ```
 
 ### k8s1.6 pod api
