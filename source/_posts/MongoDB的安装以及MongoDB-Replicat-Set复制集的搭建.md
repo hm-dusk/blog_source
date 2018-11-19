@@ -1,14 +1,14 @@
 ---
 title: MongoDB的安装以及MongoDB Replicat Set复制集的搭建
 tags:
-  - mongodb
+  - Mongodb
   - Linux
 comments: true
 date: 2017-07-29 11:32:03
 updated: 2017-07-29 11:32:03
 categories: 
   - 数据库
-  - mongodb
+  - Mongodb
 password:
 ---
 记录MongoDB在Linux下的安装过程和MongoDB Replicat Set复制集的搭建过程。

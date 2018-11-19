@@ -1,13 +1,13 @@
 ---
 title: MySQL笔记
 tags:
-  - mysql
+  - MySQL
 comments: true
 date: 2017-07-18 20:42:01
 updated: 2017-07-29 19:03:26
 categories: 
   - 数据库
-  - mysql
+  - MySQL
 password: 
 ---
 MySql笔记

@@ -1,15 +1,15 @@
 ---
-title: Docker容器固定ip
+title: Docker容器固定IP
 tags:
-  - docker
+  - Docker
   - 容器
-  - ip
+  - IP
 comments: true
 date: 2018-10-20 15:13:14
 updated: 2018-10-28 15:13:14
 categories: 
   - 容器
-  - docker
+  - Docker
 password:
 thumbnail: 'http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker2.jpg'
 ---

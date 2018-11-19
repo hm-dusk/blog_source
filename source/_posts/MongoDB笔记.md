@@ -1,13 +1,13 @@
 ---
 title: MongoDB笔记
 tags:
-  - mongodb
+  - Mongodb
 comments: true
 date: 2017-07-26 19:03:26
 updated: 2017-07-29 19:03:26
 categories: 
   - 数据库
-  - mongodb
+  - Mongodb
 password:
 ---
 MongoDB笔记

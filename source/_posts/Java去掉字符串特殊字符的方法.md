@@ -1,12 +1,12 @@
 ---
-title: java去掉字符串特殊字符的方法
+title: Java去掉字符串特殊字符的方法
 tags:
   - 字符串
 comments: true
 date: 2017-07-25 10:55:07
 updated: 2017-07-25 10:55:07
 categories: 
-  - java
+  - Java
   - 字符串
 password:
 ---

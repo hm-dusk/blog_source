@@ -2,13 +2,13 @@
 title: HTTP协议
 tags:
   - 网络
-  - http
+  - Http
 comments: true
 date: 2017-08-09 22:27:24
 updated: 2017-08-09 22:27:24
 categories: 
   - 网络协议
-  - http
+  - Http
 password:
 ---
 HTTP协议

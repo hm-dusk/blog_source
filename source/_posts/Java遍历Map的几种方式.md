@@ -1,5 +1,5 @@
 ---
-title: java遍历Map的几种方式
+title: Java遍历Map的几种方式
 tags:
   - 集合
   - 遍历
@@ -7,8 +7,8 @@ comments: true
 date: 2017-07-19 19:26:48
 updated: 2017-07-19 19:26:48
 categories: 
- - java
- - map
+ - Java
+ - Map
 password:
 ---
 今天突然要用到Map的遍历，在此总结几种Map的遍历方法

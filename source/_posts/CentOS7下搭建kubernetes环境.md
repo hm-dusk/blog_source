@@ -1,13 +1,13 @@
 ---
-title: CentOS7下搭建kubernetes环境
+title: CentOS7下搭建Kubernetes环境
 tags:
-  - k8s
+  - K8s
   - 容器
   - 集群
 comments: true
 categories:
   - 容器
-  - k8s
+  - K8s
 date: 2018-10-31 20:32:27
 updated: 2018-11-14 20:36:28
 password:

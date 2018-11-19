@@ -1,8 +1,8 @@
 ---
-title: keep-class课程《跑步减脂不累腿的秘诀》笔记
+title: Keep-Class课程《跑步减脂不累腿的秘诀》笔记
 tags:
   - 跑步
-  - keep
+  - Keep
   - 运动
 comments: true
 date: 2018-09-25 20:15:24

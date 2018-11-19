@@ -1,5 +1,5 @@
 ---
-title: hadoop修改端口后hive连接方法
+title: Hadoop修改端口后Hive连接方法
 tags:
   - Hadoop
   - 大数据

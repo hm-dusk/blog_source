@@ -3,13 +3,13 @@ title: Linux集群配置免密码登录
 tags:
   - Linux
   - 集群
-  - ssh
+  - SSH
 comments: true
 date: 2018-09-16 18:12:14
 updated: 2018-09-16 18:12:14
 categories: 
   - Linux
-  - ssh
+  - SSH
 password:
 thumbnail: 'http://ot87uvd34.bkt.clouddn.com/ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh.jpg'
 ---

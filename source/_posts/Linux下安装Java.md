@@ -1,14 +1,14 @@
 ---
-title: Linux下安装java
+title: Linux下安装Java
 date: 2018-09-14 00:20:12
 updated: 2018-09-14 00:20:12
 tags:
-  - java
+  - Java
   - Linux
 comments: true
 categories: 
   - Linux
-  - java
+  - Java
 password:
 thumbnail: 'http://ot87uvd34.bkt.clouddn.com/linux%E4%B8%8B%E9%85%8D%E7%BD%AEjava/java.jpg'
 ---

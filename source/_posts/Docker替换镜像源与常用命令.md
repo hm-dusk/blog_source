@@ -1,7 +1,7 @@
 ---
 title: Docker替换镜像源与常用命令
 tags:
-  - docker
+  - Docker
   - 容器
   - 命令
   - 镜像源
@@ -10,7 +10,7 @@ date: 2018-09-18 17:25:53
 updated: 2018-11-6 15:26:28
 categories: 
   - 容器
-  - docker
+  - Docker
 password:
 thumbnail: 'http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker2.jpg'
 ---

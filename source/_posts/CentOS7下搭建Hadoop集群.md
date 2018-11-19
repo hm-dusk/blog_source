@@ -10,7 +10,7 @@ date: 2018-09-16 23:40:16
 updated: 2018-09-16 23:40:16
 categories: 
   - 大数据
-  - hadoop
+  - Hadoop
 password:
 thumbnail: 'http://ot87uvd34.bkt.clouddn.com/hadoop%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/hadoop.jpg'
 ---

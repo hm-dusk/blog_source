@@ -1,10 +1,10 @@
 ---
-title: idea创建Maven项目注意事项
+title: Idea创建Maven项目注意事项
 date: 2016-07-23 17:15:19
 updated: 2016-07-23 17:15:19
 categories: 
-  - java
-  - maven
+  - Java
+  - Maven
 tags: [maven,idea,编辑器]
 ---
 新建项目的时候选择maven项目。
