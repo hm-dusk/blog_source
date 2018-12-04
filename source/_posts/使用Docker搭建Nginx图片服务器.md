@@ -62,9 +62,13 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 ```
 ### 构建镜像
-`docker build -t image-nginx .`
+```bash
+docker build -t image-nginx .
+```
 ### 运行生成容器
-`docker run -d --name image-enginx -p 80:80 -v /mnt/nginx/images:/mnt/images image-nginx`
+```bash
+docker run -d --name image-enginx -p 80:80 -v /mnt/nginx/images:/mnt/images image-nginx
+```
 > -v 将服务器本地`/mnt/nginx/images`映射到容器内`/mnt/images`目录，容器目录与`default.conf`文件中配置对应
 ### 访问图片
 通过`ip地址/images/aaa.jpg`访问图片
