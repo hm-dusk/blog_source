@@ -140,7 +140,7 @@ deploy:
 # className <canvas> 元素的类名 默认值： live2d
 # id <canvas> 元素的id 默认值： live2dcanvas
 # bottom <canvas> 元素的底部偏移 默认值： -20 如果嫌模型位置不正确 可以调整这个参数
-live2d:
-  model: haru
-  bottom: -30
-  mobileShow: true # 手机页面不显示
+#live2d:
+#  model: haru
+#  bottom: -30
+#  mobileShow: true # 手机页面不显示
