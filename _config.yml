@@ -76,22 +76,36 @@ pagination_dir: page
 theme: hueman
 
 jsonContent:
-    meta: false
-    pages: false
-    posts:
+    meta: true
+    pages:
       title: true
+      slug: true
       date: true
+      updated: true
+      comments: true
       path: true
-      text: false
+      link: true
+      permalink: true
+      excerpt: true
+      keywords: true # but only if root keywords option language was set
+      text: true
       raw: false
       content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
+    posts:
+      title: true
+      slug: true
+      date: true
+      updated: true
+      comments: true
+      path: true
+      link: true
+      permalink: true
+      excerpt: true
+      keywords: true # but only if root keywords option language was set
+      text: true
+      raw: false
+      content: false
+      categories: true
       tags: true
 
 # Deployment 发布
