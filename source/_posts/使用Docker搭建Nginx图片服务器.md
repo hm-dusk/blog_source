@@ -8,7 +8,7 @@ comments: true
 categories:
   - Linux
   - Nginx
-thumbnail: ''
+thumbnail: 'http://image.cyanide.top/logo/nginx+docker.png'
 date: 2018-12-05 00:04:13
 updated: 2018-12-05 00:04:13
 password:

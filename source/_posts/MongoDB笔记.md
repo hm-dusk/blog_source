@@ -9,6 +9,7 @@ categories:
   - 数据库
   - Mongodb
 password:
+thumbnail: 'http://image.cyanide.top/logo/mongodb.png'
 ---
 MongoDB笔记
 <!-- more -->
@@ -135,7 +136,7 @@ db.dept.findOne( {"url":"hm-dusk.github.io"},{"_id":0} );
 ```
 ### 关系运算
 在MongoDB里面支持的关系查询操作：大于（`$gt`）、小于（`$lt`）、大于等于（`$gte`）、小于等于（`$lte`）、不等于（`$ne`）、等于（`key:value`、`$eq`）。但是要想让这些操作可以正常使用，那么需要准备出一个数据集合。
-![](http://ot87uvd34.bkt.clouddn.com/mongodb%E7%AC%94%E8%AE%B0/%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88.JPG)
+![](http://image.cyanide.top/mongodb笔记/%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88.JPG)
 
 范例：查询姓名是张三的信息
 ```
@@ -218,7 +219,7 @@ db.students.find({"name": {"$nin":["张三","李四","王五"]} }).pretty();
 首先在mongoDB里面是支持数组保存的，一旦支持了数组保存，就需要针对于数组的数据进行匹配。
 
 范例：保存一部分数组内容
-![](http://ot87uvd34.bkt.clouddn.com/mongodb%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%BB%84%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88.JPG)
+![](http://image.cyanide.top/mongodb笔记/%E6%95%B0%E7%BB%84%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88.JPG)
 此时的数据包含有数组内容，而后需要针对于数组数据进行判断，可以使用几个运算符：`$all`、`$size`、`$slice`、`$elemMatch`。
 
 范例：查询同时参加语文和数学课程的学生
@@ -267,7 +268,7 @@ db.students.find({"age":19},{"course":{"$slice":[1,2]}}).pretty();
 在MongoDB数据里面每一个集合数据可以继续保存其它的集合数据，例如：有些学生需要保存家长信息。
 
 范例：增加数据
-![](http://ot87uvd34.bkt.clouddn.com/mongodb%E7%AC%94%E8%AE%B0/%E5%B5%8C%E5%A5%97%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88.JPG)
+![](http://image.cyanide.top/mongodb笔记/%E5%B5%8C%E5%A5%97%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88.JPG)
 此时给出的内容是嵌套的集合，而这种集合的数据的判断只能够通过“`$elemMatch`”完成。
 
 范例：查询出年龄大于等于19岁且父母有人是局长的信息

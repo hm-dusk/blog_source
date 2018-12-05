@@ -11,6 +11,7 @@ categories:
 date: 2018-10-30 20:09:11
 updated: 2018-10-30 20:09:11
 password:
+thumbnail: 'http://image.cyanide.top/logo/phoenix+hbase.png'
 ---
 使用Phoenix操作HBase
 <!-- more -->

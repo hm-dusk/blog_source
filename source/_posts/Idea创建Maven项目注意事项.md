@@ -6,6 +6,7 @@ categories:
   - Java
   - Maven
 tags: [Maven,Idea,编辑器]
+thumbnail: 'http://image.cyanide.top/logo/maven.jpeg'
 ---
 新建项目的时候选择maven项目。
 <!-- more -->

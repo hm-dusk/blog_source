@@ -11,7 +11,7 @@ categories:
   - 运动
   - 跑步
 password:
-thumbnail: 'http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E6%AD%A5%E5%B0%81%E9%9D%A23.jpg'
+thumbnail: 'http://image.cyanide.top/keep跑步秘诀/跑步封面.jpg'
 ---
 keep《跑步减脂不累腿的秘诀》--笔记
 <!-- more -->
@@ -20,7 +20,7 @@ keep《跑步减脂不累腿的秘诀》--笔记
 > 链接：[https://www.jianshu.com/p/894f942005c9](https://www.jianshu.com/p/894f942005c9)
 > 转载來源：简书
 
-![class课程](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/keep%E8%B7%91%E6%AD%A5class%E8%AF%BE%E7%A8%8B.jpg)
+![class课程](http://image.cyanide.top/keep跑步秘诀/keep跑步class课程.jpg)
 
 ### 怎么跑才能不粗腿
 
@@ -69,13 +69,13 @@ keep《跑步减脂不累腿的秘诀》--笔记
 髂腰肌，在大腿根部，足够放松，才能不阻碍腿向后摆
 
 **`动作1--箭步蹲--这是激活臀大肌常用的动作--每侧15-30次，每次2-3组`**
-![箭步蹲图片示意](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E7%AE%AD%E6%AD%A5%E8%B9%B2%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
+![箭步蹲图片示意](http://image.cyanide.top/keep跑步秘诀/箭步蹲示意图.jpg)
 腰部挺直，两手叉腰，向前迈出一步，和自己腿长差不多相等的距离，下蹲成弓步，注意膝关节和髋关节呈90度。然后，想象自己后面的脚踩在冰面上，稍微一用力就会踩碎，靠前面的腿、臀部的力量推动自己身体站起来。这样可以帮你找到臀部发力的感觉，避免过多使用腿部的力量。
 
 注意：做这个动作的时候，不要向前移动中心，或者前倾身体。或者后面的腿发力过多，这样都不利于找到臀部发力的感觉。
 
 **`动作2--弓箭步拉伸--可以放松髂腰肌--每侧拉伸2次，每次60秒。`**
-![弓箭步拉伸图片示意](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E5%BC%93%E7%AE%AD%E6%AD%A5%E6%8B%89%E4%BC%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
+![弓箭步拉伸图片示意](http://image.cyanide.top/keep跑步秘诀/弓箭步拉伸示意图.jpg)
 
 首先做一个弓箭步，让后面的腿放在地上，身体挺直，重心向前下方移动。然后用力挺胯，让大腿的根部得到拉伸。还可以让身体转向被拉伸的另外一侧，可以体会到更明显的拉伸感。
 
@@ -84,21 +84,21 @@ keep《跑步减脂不累腿的秘诀》--笔记
 跑后是肌肉最需要冷身和放松的时候，跑后腿部肌肉拉伸或者按摩，可以避免疲劳累积到第二天，也可以有效缓解第二天的酸痛、不适等症状的出现。
 
 以下两个跑后拉伸动作，结合`keep`的`《跑后拉伸课程》`和`《小腿按摩课程》`可以有效实现。
-![跑后拉伸和小腿按摩示意图](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E5%90%8E%E6%8B%89%E4%BC%B8%E5%92%8C%E5%B0%8F%E8%85%BF%E6%8C%89%E6%91%A9%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
-![跑后拉伸示意图](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E5%90%8E%E6%8B%89%E4%BC%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)![小腿按摩示意图](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E5%B0%8F%E8%85%BF%E6%8C%89%E6%91%A9%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
+![跑后拉伸和小腿按摩示意图](http://image.cyanide.top/keep跑步秘诀/%E8%B7%91%E5%90%8E%E6%8B%89%E4%BC%B8%E5%92%8C%E5%B0%8F%E8%85%BF%E6%8C%89%E6%91%A9%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
+![跑后拉伸示意图](http://image.cyanide.top/keep跑步秘诀/%E8%B7%91%E5%90%8E%E6%8B%89%E4%BC%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)![小腿按摩示意图](http://image.cyanide.top/keep跑步秘诀/%E5%B0%8F%E8%85%BF%E6%8C%89%E6%91%A9%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
 
 **`另外的两个动作：`**
 
 **`动作1--髂胫束拉伸--可以缓解髂胫束的紧张造成的膝外侧疼痛--每侧30-60秒，每次1-2组`**
 
-![髂胫束拉伸图片示意](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E9%AB%82%E8%83%AB%E6%9D%9F%E6%8B%89%E4%BC%B8%E5%9B%BE%E7%89%87%E7%A4%BA%E6%84%8F.jpg)
+![髂胫束拉伸图片示意](http://image.cyanide.top/keep跑步秘诀/%E9%AB%82%E8%83%AB%E6%9D%9F%E6%8B%89%E4%BC%B8%E5%9B%BE%E7%89%87%E7%A4%BA%E6%84%8F.jpg)
 
 左脚向右脚前方交叉，身体倒向前偏左侧的方向，手摸到地面或者脚踝，膝盖保持平衡。体会拉伸大腿右外侧的部位。另外一侧的拉伸同理。
 
 
 **`动作2--小腿拉伸--让小腿深层的肌肉得到充分地放松--每侧30-60秒，每次1-2组`**
 
-![小腿拉伸图片示意](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E5%B0%8F%E8%85%BF%E6%8B%89%E4%BC%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
+![小腿拉伸图片示意](http://image.cyanide.top/keep跑步秘诀/%E5%B0%8F%E8%85%BF%E6%8B%89%E4%BC%B8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
 
 伸直腿后，将被拉伸的腿向前移动40cm左右的距离，继续弯曲膝盖，中心下降拉伸小腿。体会靠近跟腱部位，及小腿深层的肌肉被拉伸。
 每一侧做30到60秒，重复1到2组。
@@ -110,7 +110,7 @@ keep《跑步减脂不累腿的秘诀》--笔记
 在跑步姿势对的前提下，跑步时最简单有效的减脂运动方式之一。有效地慢跑每个小时可以消耗600-900大卡的热量，是单位时间里卡路里消耗最高的持续运动方式。但是，如果不注意跑步姿势和技巧，对身体的损伤则不堪设想。
 
 **正确的跑步姿势**
-![正确跑步姿势](http://ot87uvd34.bkt.clouddn.com/keep%E8%B7%91%E6%AD%A5%E7%A7%98%E8%AF%80/%E8%B7%91%E6%AD%A5%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
+![正确跑步姿势](http://image.cyanide.top/keep跑步秘诀/%E8%B7%91%E6%AD%A5%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg)
 
 一个远离受伤的跑步姿势，需要满足两个条件：
 

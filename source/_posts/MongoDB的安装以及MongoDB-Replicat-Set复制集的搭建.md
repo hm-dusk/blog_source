@@ -10,6 +10,7 @@ categories:
   - 数据库
   - Mongodb
 password:
+thumbnail: 'http://image.cyanide.top/logo/mongodb.png'
 ---
 记录MongoDB在Linux下的安装过程和MongoDB Replicat Set复制集的搭建过程。
 <!-- more -->
@@ -42,7 +43,7 @@ sudo apt-get install -y mongodb-org
 >配置文件默认文件目录/etc/mongod.conf
 >默认存储其数据文件/var/lib/mongodb 
 >默认日志文件/var/log/mongodb/mongod.log
-![](http://ot87uvd34.bkt.clouddn.com/%E9%BB%98%E8%AE%A4mongodb%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg)
+![](http://image.cyanide.top/mongodb复制集搭建/%E9%BB%98%E8%AE%A4mongodb%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg)
 
 #### 6. 启动mongodb 
 ```
@@ -185,7 +186,7 @@ db.shutdownServer()
 ## 二、搭建MongoDB Replicat Set复制集
 MongoDB Replica Set是MongoDB官方推荐的主从复制和高可用方案，用于替代原有的Master-Slave主从复制方案。
 不懂原理的可以[点击这里](http://www.linuxidc.com/Linux/2015-02/113296.htm)查看复制集原理（`推荐了解原理后再搭建`）
-![](http://ot87uvd34.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E9%9B%86.jpg)
+![](http://image.cyanide.top/mongodb复制集搭建/%E5%A4%8D%E5%88%B6%E9%9B%86.jpg)
 ### 1.搭建环境（电脑配置）
 在需要布置为节点的机器上安装好MongoDB环境，参照上面的教程
 

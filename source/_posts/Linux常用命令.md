@@ -8,7 +8,7 @@ categories:
   - Linux
   - 命令
 password:
-thumbnail: 'http://ot87uvd34.bkt.clouddn.com/linux%E5%91%BD%E4%BB%A4/linux2.jpg'
+thumbnail: 'http://image.cyanide.top/logo/linux.jpg'
 ---
 常用Linux命令
 <!-- more-->

@@ -8,10 +8,10 @@ comments: true
 categories:
   - 大数据
   - Hive
-thumbnail: ''
 date: 2018-11-19 19:57:43
 updated: 2018-11-19 19:57:43
 password:
+thumbnail: 'http://image.cyanide.top/logo/spring-boot.png'
 ---
 项目中需要使用SpringBoot操作Hive进行开发，这里记录SpringBoot使用JdbcTemplate连接Hive的方法。开发环境使用Maven。
 <!-- more -->

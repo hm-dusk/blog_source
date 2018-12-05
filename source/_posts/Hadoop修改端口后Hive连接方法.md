@@ -8,10 +8,10 @@ comments: true
 categories:
   - 大数据
   - Hive
-thumbnail: ''
 date: 2018-11-16 14:31:10
 updated: 2018-11-19 19:48:44
 password:
+thumbnail: 'http://image.cyanide.top/logo/hadoop.jpg'
 ---
 Hadoop修改端口后，hive继续操作会报错，找不到HDFS，此时需要到元数据库中（本文为mysql）修改对应数据
 <!-- more -->

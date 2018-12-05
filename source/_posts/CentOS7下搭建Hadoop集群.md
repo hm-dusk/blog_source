@@ -12,7 +12,7 @@ categories:
   - 大数据
   - Hadoop
 password:
-thumbnail: 'http://ot87uvd34.bkt.clouddn.com/hadoop%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/hadoop.jpg'
+thumbnail: 'http://image.cyanide.top/logo/hadoop.jpg'
 ---
 CentOS7下搭建Hadoop集群
 <!-- more -->

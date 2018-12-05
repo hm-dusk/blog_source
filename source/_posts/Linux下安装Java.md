@@ -10,13 +10,13 @@ categories:
   - Linux
   - Java
 password:
-thumbnail: 'http://ot87uvd34.bkt.clouddn.com/linux%E4%B8%8B%E9%85%8D%E7%BD%AEjava/java.jpg'
+thumbnail: 'http://image.cyanide.top/logo/java.jpg'
 ---
 Linux下安装Java
 <!-- more -->
 ### 将Java压缩包传到Linux
 使用`rz`命令将tar包上传到Linux系统
-![rz命令](http://ot87uvd34.bkt.clouddn.com/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/rz%E6%88%AA%E5%9B%BE.jpg)
+![rz命令](http://image.cyanide.top/linux下安装java/rz%E6%88%AA%E5%9B%BE.jpg)
 
 > 没用过`rz`命令的，使用`yum install -y lrzsz`安装rz软件
 

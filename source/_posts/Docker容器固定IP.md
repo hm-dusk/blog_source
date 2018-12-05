@@ -11,7 +11,7 @@ categories:
   - 容器
   - Docker
 password:
-thumbnail: 'http://ot87uvd34.bkt.clouddn.com/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/docker2.jpg'
+thumbnail: 'http://image.cyanide.top/logo/docker.jpg'
 ---
 Docker启动容器后一般是分配随机ip，本文将介绍如何使用Docker生成静态ip
 <!-- more -->
