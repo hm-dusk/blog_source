@@ -42,7 +42,7 @@ widgets:
 # 搜索
 search:
     insight: false # you need to install `hexo-generator-json-content` before using Insight Search
-    swiftype: hqJc2WYf8Cx7NNQbACJq # enter swiftype install key here
+    swiftype: # enter swiftype install key here
     baidu: false # you need to disable other search engines to use Baidu search, options: true, false
 
 # 评论
