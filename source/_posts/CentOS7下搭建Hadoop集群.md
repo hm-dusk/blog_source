@@ -40,8 +40,7 @@ CentOS7下搭建Hadoop集群
 > 在各个节点上安装与配置Hadoop的过程都基本相同，因此可以在每个节点上安装好Hadoop后，在主节点master上进行统一配置，然后通过[`scp`命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)将修改的配置文件拷贝到各个从节点上即可。
 #### 下载hadoop安装包，解压，配置环境变量
 点击[这里](http://archive.apache.org/dist/hadoop/common/)选择适合的版本进行安装包下载
-找个目录（本文为/opt目录），`rz`命令上传到Linux系统
-> 通过`yum -y install lrzsz`安装rz命令软件
+找个目录（本文为/opt目录），[rz 命令](http://http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传到Linux系统
 
 解压`tar -zxvf hadoop-*.tar.gz`
 配置环境变量（每个节点）
@@ -186,7 +185,7 @@ hadoop002
 ```
 
 #### 将文件夹copy到其他子节点
-通过[`scp`命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)将修改好的文件夹拷贝到各个从节点上
+通过[scp 命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#scp%EF%BC%88%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%B7%E8%B4%9D%EF%BC%89)将修改好的文件夹拷贝到各个从节点上
 ```shell
 [root@hadoopmaster ~]# scp -r /opt/hadoop/ root@hadoop001:/opt
 ...
@@ -232,9 +231,11 @@ hadoop002
 #### Web访问，要先开放端口或者直接关闭防火墙
 1. 关闭防火墙
 ```shell
-//临时关闭
+# 查看防火墙状态
+firewall-cmd --state
+# 临时关闭
 systemctl stop firewalld
-//禁止开机启动
+# 禁止开机启动
 systemctl disable firewalld
 ```
 2. 浏览器打开[http://hadoopmaster:8088/](http://hadoopmaster:8088/)

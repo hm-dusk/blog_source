@@ -437,3 +437,47 @@ tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("ja
 `watch -n 10 'cat /proc/loadavg'` 10秒一次输出系统的平均负载
 #### 其他操作
 `Ctrl+c`退出观察模式
+
+### rz与sz（上传、下载文件）
+当我们使用虚拟终端软件，如Xshell、SecureCRT或PuTTY来连接远程服务器后，需要上传、下载文件到本地，可以使用该命令。
+使用前可能需要安装`lrzsz`软件：
+`yum -y install lrzsz`
+#### rz（Receive ZMODEM）
+##### 命令格式
+`rz [选项]`
+##### 命令功能
+使用ZMODEM协议，将本地文件批量上传到远程Linux/Unix服务器，注意不能上传文件夹。
+##### 命令参数
+> `-+`, --append:将文件内容追加到已存在的同名文件
+> `-a`,--ascii:以文本方式传输
+> `-b`, --binary:以二进制方式传输，推荐使用
+> `--delay-startup N`:等待N秒
+> `-e`, --escape:对所有控制字符转义，建议使用
+> `-E`, --rename:已存在同名文件则重命名新上传的文件，以点和数字作为后缀
+> `-p`, --protect:对ZMODEM协议有效，如果目标文件已存在则跳过
+> `-q`, --quiet:安静执行，不输出提示信息
+> `-v`, --verbose:输出传输过程中的提示信息
+> `-y`, --overwrite:存在同名文件则替换
+> `-X`, --xmodem:使用XMODEM协议
+> `--ymodem`:使用YMODEM协议
+> `-Z`, --zmodem:使用ZMODEM协议
+> `--version`：显示版本信息
+> `--h`, --help：显示帮助信息
+##### 命令实例
+1. 输入rz，然后回车，选择本地文件上传![rz上传jdk](http://image.cyanide.top/linux下安装java/rz%E6%88%AA%E5%9B%BE.jpg)
+2. 以二进制，并对控制字符进行转义，替换已存在的同名文件。
+```bash
+[root@hadoopmaster opt]# rz -bye
+```
+#### sz（Send ZMODEM）
+##### 命令格式
+`sz [选项] [filelist]`
+##### 命令功能
+通过ZMODEM协议，可将多个文件从远程服务器下载到本地。注意不能下载文件夹，如果下载文件夹，请先打包再下载
+##### 命令参数
+选项参数与`rz`相同，请参考上文中`rz`命令参数，或者运行命令`sz -h`查看
+##### 命令实例
+下载多个文件
+```bash
+[root@hadoopmaster opt]# sz  file1 file2 file3
+```
