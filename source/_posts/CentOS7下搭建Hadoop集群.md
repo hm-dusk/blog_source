@@ -37,7 +37,7 @@ CentOS7下搭建Hadoop集群
 #### 配置java环境（每个节点）
 配置java环境教程点击[这里](http://blog.cyanide.top/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85java/)
 ### 搭建Hadoop完全分布式集群
-> 在各个节点上安装与配置Hadoop的过程都基本相同，因此可以在每个节点上安装好Hadoop后，在主节点master上进行统一配置，然后通过[`scp`命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)将修改的配置文件拷贝到各个从节点上即可。
+> 在各个节点上安装与配置Hadoop的过程都基本相同，因此可以在每个节点上安装好Hadoop后，在主节点master上进行统一配置，然后通过[scp 命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#scp%EF%BC%88%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%B7%E8%B4%9D%EF%BC%89)将修改的配置文件拷贝到各个从节点上即可。
 #### 下载hadoop安装包，解压，配置环境变量
 点击[这里](http://archive.apache.org/dist/hadoop/common/)选择适合的版本进行安装包下载
 找个目录（本文为/opt目录），[rz 命令](http://http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传到Linux系统

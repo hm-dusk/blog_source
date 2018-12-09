@@ -137,7 +137,7 @@ export HIVE_HOME=/home/hive #hive安装目录
 ```
 ### 复制mysql驱动到hive安装目录的lib下
 `mysql-connector-java-5.1.46.jar`
-驱动包下载链接[https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/)
+[点我查看驱动包下载方式](http://blog.cyanide.top/2018/12/09/MySQL连接驱动包下载方法/)
 
 ### 初始化元数据
 1. 在mysql中创建hive数据库
