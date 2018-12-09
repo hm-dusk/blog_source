@@ -78,6 +78,15 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 	<name>hadoop.tmp.dir</name>
 	<value>/opt/hadoop/tmp</value>
 </property>
+
+<property>-->
+    <name>hadoop.proxyuser.root.hosts</name>
+    <value>*</value>
+</property>
+<property>
+    <name>hadoop.proxyuser.root.groups</name>
+    <value>*</value>
+</property>
 </configuration>
 ```
 ##### 2.hdfs-site.xml

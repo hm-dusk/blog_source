@@ -112,25 +112,25 @@ export HIVE_HOME=/home/hive #hive安装目录
   </property>
   <property>
     <name>hive.exec.local.scratchdir</name>
-    <value>/tmp/hive</value>
+    <value>/home/hive</value>
     <description>Hive作业的本地临时空间</description>
   </property>
 
   <property>
     <name>hive.downloaded.resources.dir</name>
-    <value>/tmp/hive/downloads</value>
+    <value>/home/hive/downloads</value>
     <description>用于在远程文件系统中添加资源的临时本地目录。</description>
   </property>
 
   <property>
     <name>hive.querylog.location</name>
-    <value>/tmp/hive/querylog</value>
+    <value>/home/hive/querylog</value>
     <description>Hive 实时查询日志所在的目录，如果该值为空，将不创建实时的查询日志。</description>
   </property>
   
   <property>
     <name>hive.server2.logging.operation.log.location</name>
-    <value>/tmp/hive/server2_logs</value>
+    <value>/home/hive/server2_logs</value>
     <description>如果启用了日志记录功能，则存储操作日志的顶级目录</description>
   </property>
 </configuration>
