@@ -7,7 +7,7 @@ tags:
   - 集群
 comments: true
 date: 2018-09-16 23:40:16
-updated: 2018-09-16 23:40:16
+updated: 2018-12-15 15:52:25
 categories: 
   - 大数据
   - Hadoop
@@ -16,6 +16,12 @@ thumbnail: 'http://image.cyanide.top/logo/hadoop.jpg'
 ---
 CentOS7下搭建Hadoop集群
 <!-- more -->
+### 本文环境
+|节点|IP地址|
+|:---:|:---:|
+|hadoopmaster|192.168.171.10|
+|hadoop001|192.168.171.11|
+|hadoop002|192.168.171.12|
 ### 准备环境
 #### 虚拟机创建多个Linux系统并配置静态IP
 配置静态IP教程请点击[这里](http://blog.cyanide.top/2018/08/09/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/)
@@ -188,7 +194,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 ```
 ##### 5.slaves文件（3.0之后为workers文件）
 ```
-# 增加从节点地址（这里由于配置了hosts，直接使用的名字，也可以配ip地址）
+# 增加从节点地址（这里由于配置了hosts，直接使用主机名，也可以配ip地址）
 hadoop001
 hadoop002
 ```

@@ -9,19 +9,29 @@ categories:
   - 大数据
   - HBase
 date: 2018-10-30 20:09:11
-updated: 2018-10-30 20:09:11
+updated: 2018-12-15 16:45:51
 password:
 thumbnail: 'http://image.cyanide.top/logo/phoenix+hbase.png'
 ---
 使用Phoenix操作HBase
 <!-- more -->
+HBase集群环境搭建参考：[CentOS7下搭建HBase集群+HBase基本操作](http://blog.cyanide.top/2018/12/15/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHBase%E9%9B%86%E7%BE%A4+HBase%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)
 ### 下载与HBase版本兼容的Phoenix
-`apache-phoenix-4.14.0-HBase-1.2-bin.tar.gz`
+`apache-phoenix-4.14.1-HBase-1.4-bin.tar.gz`
 [下载地址](http://phoenix.apache.org/download.html)
 
 ### 解压
-复制`phoenix-4.14.0-HBase-1.2-server.jar`到`hbase/lib`下并分发
-
+复制`phoenix-4.14.1-HBase-1.4-server.jar`到`hbase/lib`下并分发到从节点
+```bash
+[root@hadoopmaster phoenix]# pwd
+/home/phoenix
+[root@hadoopmaster phoenix]# cp phoenix-4.14.1-HBase-1.4-server.jar /home/hbase/lib/
+//分发
+[root@hadoopmaster phoenix]# scp phoenix-4.14.1-HBase-1.4-server.jar hadoop001:/home/hbase/lib/
+phoenix-4.14.1-HBase-1.4-server.jar                     100%   40MB  60.4MB/s   00:00    
+[root@hadoopmaster phoenix]# scp phoenix-4.14.1-HBase-1.4-server.jar hadoop002:/home/hbase/lib/
+phoenix-4.14.1-HBase-1.4-server.jar                     100%   40MB  55.1MB/s   00:00    
+```
 ### 重启HBase
 ```bash
 [root@hadoopmaster bin]# stop-hbase.sh
@@ -35,7 +45,7 @@ thumbnail: 'http://image.cyanide.top/logo/phoenix+hbase.png'
 ```bash
 [root@hadoopmaster bin]# pwd
 /home/phoenix/bin
-[root@hadoopmaster bin]# ./sqlline.py hadoop001:2181
+[root@hadoopmaster bin]# ./sqlline.py hadoopmaster:2181
 ```
 **报错：**
 ```bash
@@ -84,27 +94,27 @@ Building list of tables and columns for tab-completion (set fastconnect to true 
 133/133 (100%) Done
 Done
 sqlline version 1.2.0
-0: jdbc:phoenix:hadoop001:2181>|
+0: jdbc:phoenix:hadoopmaster:2181>|
 ```
 
 ### 基本操作（常用命令）
 ```bash
 //查看帮助
-$sqlline>!help
+$sqlline> !help
 //列出连接
-$sqlline>!list
+$sqlline> !list
 //显式表
-$sqlilne>!tables
+$sqlilne> !tables
 //列出所有列
-$sqlline>!columns myns.test
+$sqlline> !columns myns.test
 //创建表
-$sqlline>create table ns1.test(id integer primary key ,name varchar,age integer) ;
+$sqlline> create table ns1.test(id integer primary key ,name varchar,age integer) ;
 //插入数据和更新数据
-$sqlline>upsert into myns.test(id,name,age) values(1,’tom’,12)
+$sqlline> upsert into myns.test(id,name,age) values(1,’tom’,12)
 //删除
-$sqlline>delete from myns.test where id = 1 ; 
+$sqlline> delete from myns.test where id = 1 ; 
 //条件查询
-$sqlline>select * from myns.test where name like ‘t%’ ;
+$sqlline> select * from myns.test where name like ‘t%’ ;
 ```
 
 

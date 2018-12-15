@@ -9,7 +9,7 @@ categories:
   - Zookeeper
 thumbnail: 'http://image.cyanide.top/logo/zookeeper.png'
 date: 2018-12-15 11:18:14
-updated: 2018-12-15 11:18:14
+updated: 2018-12-15 16:29:28
 password:
 ---
 搭建zookeeper完全分布式环境
@@ -29,6 +29,15 @@ password:
 ```bash
 [root@hadoopmaster opt]# tar -zxvf zookeeper-3.4.12.tar.gz 
 ```
+### 配置环境变量（每个节点都需要配置）
+`vim /etc/profile`
+```bash
+# zookeeper
+export ZK_HOME=/home/zookeeper # zookeeper解压安装目录
+export PATH=$PATH:$ZK_HOME/bin
+```
+配置后使用`source /etc/profile`刷新配置文件
+
 ### 配置参数文件
 1. 配置`conf/zoo.cfg`文件
     拷贝配置文件`cp zoo_sample.cfg zoo.cfg`
@@ -40,7 +49,7 @@ password:
     configuration.xsl  log4j.properties  zoo.cfg  zoo_sample.cfg
     ```
     编辑配置文件`(每个节点配置一样)`
-    ```properties
+    ```bash
     tickTime=2000
     initLimit=5
     syncLimit=2
