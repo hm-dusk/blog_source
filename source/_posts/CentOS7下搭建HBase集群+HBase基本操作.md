@@ -10,7 +10,7 @@ categories:
   - HBase
 thumbnail: 'http://image.cyanide.top/logo/hbase.jpg'
 date: 2018-12-15 15:47:39
-updated: 2018-12-15 15:47:39
+updated: 2018-12-18 11:12:45
 password:
 ---
 搭建HBase集群，使用外部Zookeeper集群
@@ -102,6 +102,14 @@ start-dfs.sh
 running master, logging to /home/hbase/logs/hbase-root-master-hadoopmaster.out
 hadoop001: running regionserver, logging to /home/hbase/bin/../logs/hbase-root-regionserver-hadoop001.out
 hadoop002: running regionserver, logging to /home/hbase/bin/../logs/hbase-root-regionserver-hadoop002.out
+```
+**`出现警告：Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0`**
+解决方法：
+注释`hbase/conf/hbase-env.sh`脚本中以下代码，分发到节点
+```bash
+# Configure PermSize. Only needed in JDK7. You can safely remove it for JDK8+
+export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m -XX:ReservedCodeCacheSize=256m"
+export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m -XX:ReservedCodeCacheSize=256m"
 ```
 ### 验证web界面
 访问：[http://hadoopmaster:16010](http://hadoopmaster:16010)
