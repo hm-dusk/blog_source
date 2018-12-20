@@ -184,13 +184,15 @@ $sqlline> create schema wndb;
 //删除表结构
 $sqlline> drop table "test";
 //创建表
-$sqlline> create table ns1.test(id integer primary key ,name varchar,age integer) ;
+$sqlline> create table "ns1"."test"(id integer primary key ,name varchar,age integer) ;
+//创建表并指定列族
+$sqlline> create table "ns1"."test"(id integer primary key ,"cf1".name varchar,"cf2".age integer) ;
 //插入数据和更新数据
-$sqlline> upsert into myns.test(id,name,age) values(1,'tom',12)
+$sqlline> upsert into "myns"."test"(id,name,age) values(1,'tom',12)
 //删除
-$sqlline> delete from myns.test where id = 1 ; 
+$sqlline> delete from "myns"."test" where id = 1 ; 
 //条件查询
-$sqlline> select * from myns.test where name like 't%' ;
+$sqlline> select * from "myns"."test" where name like 't%' ;
 ```
 
 

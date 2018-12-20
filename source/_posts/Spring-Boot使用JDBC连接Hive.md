@@ -26,6 +26,7 @@ thumbnail: 'http://image.cyanide.top/logo/spring-boot.png'
 <!-- hive === end -->
 ```
 ### 编写配置文件
+数据库连接池使用HikariCP，参数设置参考：[https://github.com/brettwooldridge/HikariCP](https://github.com/brettwooldridge/HikariCP)
 1. 在../resources目录下创建配置文件`application-hive.yml`，文件格式也可以使用`properties`格式
     ```yaml
     hive:
@@ -33,24 +34,19 @@ thumbnail: 'http://image.cyanide.top/logo/spring-boot.png'
       driver-class-name: org.apache.hive.jdbc.HiveDriver
       username: root
       password: 123456
-      fetch:
-        task:
-          conversion: more
       # 下面为连接池的补充设置，应用到上面所有数据源中
-      # 初始化大小，最小，最大
+      # 初始化大小，最小连接数，最大连接数
       initialSize: 1
       minimumIdle: 3
-      maximumPoolSize: 20
-      # 等待来自池的连接的最大毫秒数
+      maximumPoolSize: 10
+      # 等待来自池的连接的最大毫秒数(创建连接超时时间)
       connectionTimeout: 120000
+      # 验证超时时间
+      validationTimeout: 10000
       # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-      idleTimeout: 60000
-      # 配置一个连接在池中最小生存的时间，单位是毫秒
-      minEvictableIdleTimeMillis: 60000
-      connectionTestQuery: select 1
-      # 打开PSCache，并且指定每个连接上PSCache的大小
-      poolPreparedStatements: true
-      maxPoolPreparedStatementPerConnectionSize: 20
+      idleTimeout: 30000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxLifeTime: 600000
     ```
 2. 在`application.yml`文件中指定激活`application-hive.yml`配置文件（这里也可以不配置，在config类中另外配置）。
     ```yaml
@@ -99,12 +95,20 @@ public class HiveJdbcConfig {
 		dataSourceProperties.setPassword(env.getProperty("hive.password"));
 		HikariDataSource dataSource = dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class).build();
 		//下面的配置根据实际情况添加、修改
-		dataSource.setConnectionTimeout(Long.valueOf(Objects.requireNonNull(env.getProperty("hive.connectionTimeout"))));
-		dataSource.setConnectionInitSql(env.getProperty("hive.connectionTestQuery"));
-		dataSource.setMaximumPoolSize(Integer.valueOf(Objects.requireNonNull(env.getProperty("hive.maximumPoolSize"))));
+		//连接超时时间
+        dataSource.setConnectionTimeout(Long.valueOf(Objects.requireNonNull(env.getProperty("hive.connectionTimeout"))));
+        //连接池最大连接数
+        dataSource.setMaximumPoolSize(Integer.valueOf(Objects.requireNonNull(env.getProperty("hive.maximumPoolSize"))));
+        //最小闲置连接数
 		dataSource.setMinimumIdle(Integer.valueOf(Objects.requireNonNull(env.getProperty("hive.minimumIdle"))));
-		logger.debug("Hive DataSource Inject Successfully...");
-		return dataSource;
+        //配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        dataSource.setIdleTimeout(Long.parseLong(Objects.requireNonNull(env.getProperty("hive.idleTimeout"))));
+        //连接最大生存时间
+        dataSource.setMaxLifetime(Long.parseLong(Objects.requireNonNull(env.getProperty("hive.maxLifeTime"))));
+        //验证超时时间
+        dataSource.setValidationTimeout(Long.parseLong(Objects.requireNonNull(env.getProperty("hive.validationTimeout"))));
+        logger.debug("Hive DataSource Inject Successfully...");
+        return dataSource;
 	}
 
 	@Bean(name = "hiveJdbcTemplate")

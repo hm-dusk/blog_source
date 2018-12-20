@@ -7,7 +7,7 @@ tags:
   - 镜像源
 comments: true
 date: 2018-09-18 17:25:53
-updated: 2018-11-6 15:26:28
+updated: 2018-12-20 19:10:48
 categories: 
   - 容器
   - Docker
@@ -122,7 +122,7 @@ Docker 官方中国区
 4. 生成容器
 
    ```bash
-   $ docker container run -p 8000:3000 -itd --name my_demo -h master -v /opt/java:/home/java demo:0.0.1 /bin/bash
+   $ docker container run -p 8000:3000 -itd --name my_demo -h master -v /opt/java:/home/java --privileged=true demo:0.0.1 /bin/bash
    ```
     > -p参数：容器的 3000 端口映射到本机的 8000 端口。
     > -it参数：容器的 Shell 映射到当前的 Shell，然后你在本机窗口输入的命令，就会传入容器。
@@ -132,7 +132,8 @@ Docker 官方中国区
     > -v参数：表示主机地址/opt/java和容器中地址/home/java映射，上传到/opt/java目录就能同步上传到容器内。
     > demo:0.0.1：镜像文件的名字（如果有标签，还需要提供标签，这里标签为0.0.1，如果不提供，默认是 latest 标签）。
     > /bin/bash：容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell。
-    
+    > `--privileged`: CentOS7中安全模块selinux会把容器读写权限禁掉，添加该参数赋予容器权限，也可以禁用CentOS7的selinux模块。
+
 ### 将运行的容器打包成镜像
 1. 登录**docker hub**网站注册账号。
 
