@@ -9,7 +9,7 @@ categories:
   - 大数据
   - HBase
 date: 2018-10-30 20:09:11
-updated: 2018-12-18 11:12:53
+updated: 2018-12-22 18:07:12
 password:
 thumbnail: 'http://image.cyanide.top/logo/phoenix+hbase.png'
 ---
@@ -112,6 +112,7 @@ sqlline version 1.2.0
 ```
 2. 如果HBase是分布式，则需要将文件分发到其他节点
 （最好是将该文件也复制到`phoenix/bin/`保证客户端与服务端的一致性）
+3. Phoenix其他相关配置参照：[https://phoenix.apache.org/tuning.html](https://phoenix.apache.org/tuning.html)
 ```bash
 [root@hadoopmaster conf]# scp hbase-site.xml hadoop001:/home/hbase/conf/
 hbase-site.xml                              100% 1569     2.2MB/s   00:00    
@@ -194,5 +195,90 @@ $sqlline> delete from "myns"."test" where id = 1 ;
 //条件查询
 $sqlline> select * from "myns"."test" where name like 't%' ;
 ```
+### 创建ID自增的表
+`Phoenix中创建表时，必须制定主键。`
+在关系型数据库中（如：mysql）设置主键自增非常容易，但是Phoenix中不能直接设置主键自增，需要额外新建一个自增序列`sequence`，当插入表数据时，根据`sequence`的值，来进行自增id的插入。
 
-
+1. 语法
+    ```sql
+    CREATE SEQUENCE [IF NOT EXISTS] SCHEMA.SEQUENCE_NAME
+    [START WITH number]
+    [INCREMENT BY number]
+    [MINVALUE number]
+    [MAXVALUE number]
+    [CYCLE]
+    [CACHE number]
+    ```
+2. 参数说明
+    * `start`用于指定第一个值。如果不指定默认为1。
+    * `increment`指定每次调用`next value for`后自增大小。 如果不指定默认为1。
+    * `minvalue`和`maxvalue`一般与`cycle`连用, 让自增数据形成一个环，从最小值到最大值，再从最大值到最小值。
+    * `cache`默认为100, 表示server端生成100个自增序列缓存在客户端，可以减少rpc次数。此值也可以通过`phoenix.sequence.cacheSize`来配置。
+3. 案例与注意事项
+    **`注意cache值：如果一次插入个数小于该数n，则断开连接后，由于缓存在客户端，下次重新连接后插入会接着生成n个缓存数来使用，导致自增序列不连续`**
+    案例如下：
+    ```bash
+    # 演示表a中无数据
+    $sqlline> select * from a;
+    +-----+------+-------+
+    | ID  | AGE  | NAME  |
+    +-----+------+-------+
+    +-----+------+-------+
+    # 1、创建一个自增序列test，缓存大小设置为50
+    $sqlline> create sequence test cache 50;
+    No rows affected (0.016 seconds)
+    # 查看序列详情
+    $sqlline> select * from system."SEQUENCE";
+    +---------+---------------+-------------+----------+-------------+------------+----------+--------------------+-----------------+
+    |TENANT_ID|SEQUENCE_SCHEMA|SEQUENCE_NAME|START_WITH|CURRENT_VALUE|INCREMENT_BY|CACHE_SIZE|      MIN_VALUE     |     MAX_VALUE   |
+    +---------+---------------+-------------+----------+-------------+------------+----------+--------------------+-----------------+
+    |         |               |TEST         |1         |1            |1           |50        |-9223372036854775808|92233720368547758|
+    +---------+---------------+-------------+----------+-------------+------------+----------+--------------------+-----------------+
+    # 2、向演示表a中插入数据，id使用test序列中的值
+    $sqlline> upsert into a values(next value for test, 20, 'zhangsan');
+    1 row affected (0.019 seconds)
+    $sqlline> upsert into a values(next value for test, 30, 'zhangsan1');
+    1 row affected (0.019 seconds)
+    $sqlline> upsert into a values(next value for test, 40, 'zhangsan2');
+    1 row affected (0.019 seconds)
+    # 成功插入多条数据，id自增
+    $sqlline> select * from a;
+    +-----+-------+-----------+
+    | ID  |  AGE  |   NAME    |
+    +-----+-------+-----------+
+    | 1   | 20.0  | zhangsan  |
+    | 2   | 30.0  | zhangsan1 |
+    | 3   | 40.0  | zhangsan2 |
+    +-----+-------+-----------+
+    # 3、退出当前连接
+    $sqlline> !quit
+    Closing: org.apache.phoenix.jdbc.PhoenixConnection
+    
+    # 4、重新连接
+    [root@hadoopmaster shell]# sqlline.py hadoopmaster,hadoop001,hadoop002:2181
+    ...
+    155/155 (100%) Done
+    Done
+    sqlline version 1.2.0
+    # 查看当前自增序列状态，发现当前值CURRENT_VALUE已经变为51
+    $sqlline> select * from system."SEQUENCE";
+    +---------+---------------+-------------+----------+-------------+------------+----------+--------------------+-----------------+
+    |TENANT_ID|SEQUENCE_SCHEMA|SEQUENCE_NAME|START_WITH|CURRENT_VALUE|INCREMENT_BY|CACHE_SIZE|      MIN_VALUE     |     MAX_VALUE   |
+    +---------+---------------+-------------+----------+-------------+------------+----------+--------------------+-----------------+
+    |         |               |TEST         |1         |51           |1           |50        |-9223372036854775808|92233720368547758|
+    +---------+---------------+-------------+----------+-------------+------------+----------+--------------------+-----------------+
+    # 5、继续使用test序列值插入演示表a
+    $sqlline> upsert into a values(next value for test, 21, 'lisi');
+    1 row affected (0.067 seconds)
+    # 6、发现id已经变为51，导致id不连续的问题
+    $sqlline> select * from a;
+    +-----+-------+-----------+
+    | ID  |  AGE  |   NAME    |
+    +-----+-------+-----------+
+    | 1   | 20.0  | zhangsan  |
+    | 2   | 30.0  | zhangsan1 |
+    | 3   | 40.0  | zhangsan2 |
+    | 51  | 21.0  | lisi      |
+    +-----+-------+-----------+
+    ```
+### 分页查询
