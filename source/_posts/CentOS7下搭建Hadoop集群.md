@@ -7,7 +7,7 @@ tags:
   - 集群
 comments: true
 date: 2018-09-16 23:40:16
-updated: 2018-12-15 15:52:25
+updated: 2018-12-25 18:36:48
 categories: 
   - 大数据
   - Hadoop
@@ -72,6 +72,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 #### 修改配置文件
 > hadoop安装目录下的`etc/hadoop`目录,一共需要修改`core-site.xml`、`hdfs-site.xml`、`yarn-site.xml`、`mapred-site.xml`、`slaves`(3.0之后为`workers`)文件，按实际情况修改配置信息
 ##### 1.core-site.xml
+更多参数配置参考：[core-default.xml](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/core-default.xml)
 ```xml
 <configuration>
 <property>
@@ -85,7 +86,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 	<value>/opt/hadoop/tmp</value>
 </property>
 
-<property>-->
+<property>
     <name>hadoop.proxyuser.root.hosts</name>
     <value>*</value>
 </property>
@@ -96,6 +97,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 </configuration>
 ```
 ##### 2.hdfs-site.xml
+更多参数配置参考：[hdfs-default.xml](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)
 ```xml
 <configuration>
     <property>
@@ -133,6 +135,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 </configuration>
 ```
 ##### 3.mapred-site.xml
+更多参数配置参考：[mapred-default.xml](http://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml)
 ```xml
 <configuration>
     <property>
@@ -150,6 +153,7 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
 </configuration>
 ```
 ##### 4.yarn-site.xml（资源管理器）
+更多参数配置参考：[yarn-default.xml](http://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)
 ```xml
 <configuration>
     <property>
@@ -180,10 +184,32 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
         <name>yarn.resourcemanager.webapp.address</name>
         <value>hadoopmaster:8088</value>
     </property>
+    
     <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
-        <!-- 这里配置过小可能导致nodemanager启动不起来 -->
-        <value>8192</value>
+        <!-- NodeManage中的配置，这里配置过小可能导致nodemanager启动不起来
+                          大小应该大于 spark中 executor-memory + driver的内存 -->
+        <value>6144</value>
+    </property>
+    <property>
+        <!-- RsourceManager中配置
+                          大小应该大于 spark中 executor-memory + driver的内存 -->
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>61440</value>
+    </property>
+    <property>
+        <!-- 使用核数 -->
+        <name>yarn.nodemanager.resource.cpu-vcores</name>
+        <value>2</value>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>604800</value>
     </property>
     <property>
         <name>yarn.nodemanager.vmem-check-enabled</name>

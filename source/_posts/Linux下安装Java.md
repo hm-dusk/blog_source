@@ -16,7 +16,7 @@ Linux下安装Java
 <!-- more -->
 ### 将Java压缩包传到Linux
 使用`rz`命令将tar包上传到Linux系统
-![rz命令](http://image.cyanide.top/linux下安装java/rz%E6%88%AA%E5%9B%BE.jpg)
+![rz命令](http://image.cyanide.top/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/rz%E6%88%AA%E5%9B%BE.jpg)
 
 > 关于rz命令，[点击查看介绍](http://http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)
 
