@@ -216,6 +216,11 @@ export JAVA_HOME="/opt/jdk1.8"  # 路径为jdk安装路径
         <value>false</value>
         <discription>忽略虚拟内存的检查，如果你是安装在虚拟机上，这个配置很有用，配上去之后后续操作不容易出问题。</discription>
     </property>
+    <property>
+       <!-- 调度策略，设置为公平调度器 -->
+       <name>yarn.resourcemanager.scheduler.class</name>
+       <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+    </property>
 </configuration>
 ```
 ##### 5.slaves文件（3.0之后为workers文件）
@@ -281,5 +286,11 @@ systemctl disable firewalld
 ```
 2. 浏览器打开[http://hadoopmaster:8088/](http://hadoopmaster:8088/)
 3. 浏览器打开[http://hadoopmaster:50070/](http://hadoopmaster:50070/)
+### 单例管理每个节点
+```bash
+$> sbin/hadoop-daemon.sh start datanode     # 启动数据节点
+$> sbin/yarn-daemon.sh start nodemanager    # 启动数据管理节点
+$> bin/hadoop-daemon.sh start tasktracker   # 启动任务管理器
+```
 
 

@@ -48,6 +48,7 @@ export HBASE_MANAGES_ZK=fakse
 ```
 ### 修改配置文件
 1. 修改`hbase/conf/hbase-site.xml`配置文件
+    更多参数配置参考：[hbase_default_configurations](http://hbase.apache.org/book.html#hbase_default_configurations)
     ```xml
     <configuration>
         <property>
@@ -57,6 +58,16 @@ export HBASE_MANAGES_ZK=fakse
         <property>
                 <name>hbase.rootdir</name>
                 <value>hdfs://hadoopmaster:9000/hbase</value>
+        </property>
+        <property>
+                 <!-- 配置master节点ip地址/主机名 -->
+                 <name>hbase.master.hostname</name>
+                 <value>hadoopmaster</value>
+        </property>
+        <property>
+                 <!-- 配置master节点端口 -->
+                 <name>hbase.master.port</name>
+                 <value>16000</value>
         </property>
         <property>
                 <name>dfs.replication</name>

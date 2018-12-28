@@ -10,7 +10,7 @@ categories:
   - Hive
 thumbnail: 'http://image.cyanide.top/logo/hive.png'
 date: 2018-12-06 15:18:49
-updated: 2018-12-06 15:18:49
+updated: 2018-12-28 14:41:06
 password:
 ---
 CentOS7下搭建Hive，Hive元数据
@@ -112,7 +112,7 @@ export HIVE_HOME=/home/hive #hive安装目录
   </property>
   <property>
     <name>hive.exec.local.scratchdir</name>
-    <value>/home/hive</value>
+    <value>/home/hive/tmp</value>
     <description>Hive作业的本地临时空间</description>
   </property>
 
