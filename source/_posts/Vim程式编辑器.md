@@ -3,7 +3,7 @@ title: Vim程式编辑器
 tags: [编辑器,Linux]
 comments: true
 date: 2017-07-26 09:47:27
-updated: 2018-11-10 10:56:48
+updated: 2019-1-2 11:44:58
 categories: 
   - Linux
   - Vim
@@ -91,5 +91,10 @@ Linux下的vim编辑器
 | :---------- | :-------------------- |
 | `:set nu`   | 设置vim编辑器显示行号 |
 | `:set nonu` | 取消行号              |
+设置vim编辑器打开默认显示行号：
+新建或修改`$HOME/.vimrc`文件，在文件中添加
+```vim
+set number
+```
 
 参考文档：[鸟哥的Linux私房菜之vim程式编辑器](http://linux.vbird.org/linux_basic/0310vi.php)
