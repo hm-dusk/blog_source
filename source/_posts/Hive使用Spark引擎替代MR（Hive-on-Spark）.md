@@ -1,6 +1,7 @@
 ---
 title: Hive使用Spark引擎替代MR（Hive on Spark）
 tags:
+  - 大数据
   - Hive
   - Spark
 comments: true

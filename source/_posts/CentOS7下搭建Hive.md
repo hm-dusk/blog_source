@@ -10,7 +10,7 @@ categories:
   - Hive
 thumbnail: 'http://image.cyanide.top/logo/hive.png'
 date: 2018-12-06 15:18:49
-updated: 2018-12-28 14:41:06
+updated: 2019-1-3 20:45:43
 password:
 ---
 CentOS7下搭建Hive，Hive元数据
@@ -65,6 +65,7 @@ export HIVE_HOME=/home/hive #hive安装目录
 [root@hadoopmaster conf]# cp hive-default.xml.template  hive-site.xml
 ```
 2. 修改`/home/hive/conf/hive-site.xml`，找到文件中以下配置，根据实际情况修改
+hive其他配置参考：[Hive Configuration Properties](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 ```xml
 <configuration>
   <!-- mysql数据库配置 -->
