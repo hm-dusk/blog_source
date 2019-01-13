@@ -7,7 +7,7 @@ tags:
   - 集群
 comments: true
 date: 2018-09-16 23:40:16
-updated: 2018-12-25 18:36:48
+updated: 2019-1-14 00:17:02
 categories: 
   - 大数据
   - Hadoop
@@ -41,7 +41,7 @@ CentOS7下搭建Hadoop集群
 #### 配置免密码登录
 配置免密码登录教程请点击[这里](http://blog.cyanide.top/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
 #### 配置java环境（每个节点）
-配置java环境教程点击[这里](http://blog.cyanide.top/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85java/)
+配置java环境教程点击[这里](http://blog.cyanide.top/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/)
 ### 搭建Hadoop完全分布式集群
 > 在各个节点上安装与配置Hadoop的过程都基本相同，因此可以在每个节点上安装好Hadoop后，在主节点master上进行统一配置，然后通过[scp 命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#scp%EF%BC%88%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%B7%E8%B4%9D%EF%BC%89)将修改的配置文件拷贝到各个从节点上即可。
 #### 下载hadoop安装包，解压，配置环境变量

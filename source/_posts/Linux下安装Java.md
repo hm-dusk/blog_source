@@ -39,7 +39,7 @@ jdk1.8.0_101  jdk-8u101-linux-x64.tar.gz
 1. `vim /etc/profile`编辑配置文件，添加如下代码
     ```shell
     # java
-    export JAVA_HOME=/mnt/jdk1.8.0_101  # 该路径为java安装路径
+    export JAVA_HOME=/home/jdk  # 该路径为java安装路径
     export CLASSPATH=$JAVA_HOME/lib/
     export PATH=$PATH:$JAVA_HOME/bin
     ```
