@@ -13,7 +13,7 @@ date: 2019-01-09 20:07:15
 updated: 2019-1-14 00:18:18
 password:
 ---
-CentOS7离线安装HDP
+CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 <!-- more -->
 参考链接：[hdp-hadoop离线安装](https://blog.csdn.net/qq_35094452/article/details/81329003)
 主要步骤：
@@ -60,16 +60,60 @@ Query OK, 1 row affected (0.00 sec)
 Redirecting to /bin/systemctl restart httpd.service
 ```
 访问服务器80端口，查看httpd服务是否开启
+**注：配置信息如端口、映射路径可以通过编辑`/etc/httpd/conf/httpd.conf`文件进行修改**
 #### 将压缩包解压到/var/www/html/下
 ```bash
 [root@hdp001 ambari]# ls
 ambari-2.7.3.0-centos7.tar.gz  HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UTILS-1.1.0.22-centos7.tar.gz
-...
+# 解压...
+[root@hdp001 ambari]# ls
+ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UTILS HDP-UTILS-1.1.0.22-centos7.tar.gz
+```
+访问服务器80端口相应/ambari/地址，可以访问到文件和文件夹即可
+### 制作本地源
+1. 安装工具
+```bash
+[root@hdp001 ambari]# yum -y install createrepo
+[root@hdp001 ambari]# createrepo ./
+```
+2. 修改repo源文件
+```bash
+[root@hdp001 ambari]# vim ambari/centos7/2.7.3.0-139/ambari.repo
+```
+修改`baseurl`与`gpgkey`值为Apache httpd服务能访问到的地址，如下：
+```bash
+#VERSION_NUMBER=2.7.3.0-139
+[ambari-2.7.3.0]
+#json.url = http://public-repo-1.hortonworks.com/HDP/hdp_urlinfo.json
+name=ambari Version - ambari-2.7.3.0
+baseurl=http://192.168.0.148:80/ambari/ambari/centos7/2.7.3.0-139
+gpgcheck=1
+gpgkey=http://192.168.0.148:80/ambari/
+priority=1
+```
+将repo文件拷贝到`/etc/yum.repos.d/`目录
+```bash
+[root@hdp001 ambari]# cp ambari/centos7/2.7.3.0-139/ambari.repo /etc/yum.repos.d/
+```
+HDP源修改方式同上
+```bash
 
 ```
-### 制作本地源
-1. yum -y install createrepo
-2. 
+3. 清除yum缓存
+```bashambari/centos7/2.7.3.0-139/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+[root@hdp001 ambari]# yum clean all
+[root@hdp001 ambari]# yum makecache
+[root@hdp001 ambari]# yum repolist
+```
+
+4. 将repo文件拷贝到子节点
+
+### 安装Ambari-server
+本次安装使用第三方数据库MySQL模式，默认为PostgreSQL模式（生产环境不推荐）。
+需提前准备好MySQL数据库连接jar包
+#### 初始化设置
+
 ### 使用HDP
 #### HDP安装路径
 HDP各组件默认安装目录：/usr/hdp/版本号
