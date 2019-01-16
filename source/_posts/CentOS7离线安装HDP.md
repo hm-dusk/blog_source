@@ -81,7 +81,7 @@ ambari-2.7.3.0-centos7.tar.gz  HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UTILS-1.1.0.2
 ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UTILS HDP-UTILS-1.1.0.22-centos7.tar.gz
 ```
 访问服务器80端口相应/ambari/地址，可以访问到文件和文件夹即可
-![ambari地址](http://image.cyanide.top/logo/CentOS7离线安装HDP/httpd访问ambari地址.png)
+![ambari地址](http://image.cyanide.top/CentOS7离线安装HDP/httpd访问ambari地址.png)
 ### 制作本地源
 1. 安装工具
     ```bash
@@ -293,17 +293,17 @@ Ambari Server 'start' completed successfully.
 
 #### 访问服务器8080端口
 默认用户名和密码都为admin
-![ambari登录页面](http://image.cyanide.top/logo/CentOS7离线安装HDP/ambari登录页面.png)
+![ambari登录页面](http://image.cyanide.top/CentOS7离线安装HDP/ambari登录页面.png)
 根据提示安装集群
-![根据提示安装集群](http://image.cyanide.top/logo/CentOS7离线安装HDP/根据提示安装集群.png)
+![根据提示安装集群](http://image.cyanide.top/CentOS7离线安装HDP/根据提示安装集群.png)
 设置集群名字，比如my_hadoop
-![为集群起名字](http://image.cyanide.top/logo/CentOS7离线安装HDP/为集群起名字.png)
+![为集群起名字](http://image.cyanide.top/CentOS7离线安装HDP/为集群起名字.png)
 选择HDP版本，配置yum源地址
-![HDP版本选择](http://image.cyanide.top/logo/CentOS7离线安装HDP/HDP版本选择与yum源地址配置.png)
+![HDP版本选择](http://image.cyanide.top/CentOS7离线安装HDP/HDP版本选择与yum源地址配置.png)
 配置host与ssh
-![配置host与ssh](http://image.cyanide.top/logo/CentOS7离线安装HDP/配置host与ssh.png)
+![配置host与ssh](http://image.cyanide.top/CentOS7离线安装HDP/配置host与ssh.png)
 确认后开始在节点上安装ambari-agent
-![agent安装页面](http://image.cyanide.top/logo/CentOS7离线安装HDP/agent安装页面.png)
+![agent安装页面](http://image.cyanide.top/CentOS7离线安装HDP/agent安装页面.png)
 
 > 安装agent时可能报错：
 > ```bash
@@ -330,22 +330,22 @@ Ambari Server 'start' completed successfully.
 > ```
 
 ambari-agent安装成功
-![agent安装成功](http://image.cyanide.top/logo/CentOS7离线安装HDP/agent安装成功.png)
+![agent安装成功](http://image.cyanide.top/CentOS7离线安装HDP/agent安装成功.png)
 选择hadoop组件进行安装，建议安装少量组件，之后可以再添加
-![选择需要安装的hadoop组件](http://image.cyanide.top/logo/CentOS7离线安装HDP/选择需要安装的hadoop组件.png)
+![选择需要安装的hadoop组件](http://image.cyanide.top/CentOS7离线安装HDP/选择需要安装的hadoop组件.png)
 选择主节点安装位置（如NameNode）
-![选择主节点](http://image.cyanide.top/logo/CentOS7离线安装HDP/选择主节点.png)
+![选择主节点](http://image.cyanide.top/CentOS7离线安装HDP/选择主节点.png)
 选择从节点安装位置（如DataNode）
-![选择从节点](http://image.cyanide.top/logo/CentOS7离线安装HDP/选择从节点.png)
+![选择从节点](http://image.cyanide.top/CentOS7离线安装HDP/选择从节点.png)
 进行其他设置（如密码、数据保存路径、用户/用户组、参数配置等）
-![其他设置1](http://image.cyanide.top/logo/CentOS7离线安装HDP/其他设置1.png)
-![其他设置2](http://image.cyanide.top/logo/CentOS7离线安装HDP/其他设置2.png)
-![其他设置3](http://image.cyanide.top/logo/CentOS7离线安装HDP/其他设置3.png)
-![其他设置4](http://image.cyanide.top/logo/CentOS7离线安装HDP/其他设置4.png)
+![其他设置1](http://image.cyanide.top/CentOS7离线安装HDP/其他设置1.png)
+![其他设置2](http://image.cyanide.top/CentOS7离线安装HDP/其他设置2.png)
+![其他设置3](http://image.cyanide.top/CentOS7离线安装HDP/其他设置3.png)
+![其他设置4](http://image.cyanide.top/CentOS7离线安装HDP/其他设置4.png)
 配置完成后，查看配置项是否无误，确认无误后点击发布开始安装
-![配置完成确认安装](http://image.cyanide.top/logo/CentOS7离线安装HDP/配置完成确认安装.png)
+![配置完成确认安装](http://image.cyanide.top/CentOS7离线安装HDP/配置完成确认安装.png)
 等待安装进度完成即可，如果安装过程中出错，可根据报错信息进行修改直到安装成功
-![hadoop组件安装进度](http://image.cyanide.top/logo/CentOS7离线安装HDP/hadoop组件安装进度.png)
+![hadoop组件安装进度](http://image.cyanide.top/CentOS7离线安装HDP/hadoop组件安装进度.png)
 
 ### 使用HDP
 #### HDP安装路径
