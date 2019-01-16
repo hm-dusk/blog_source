@@ -10,7 +10,7 @@ categories:
   - HDP
 thumbnail: ''
 date: 2019-01-09 20:07:15
-updated: 2019-1-15 20:40:20
+updated: 2019-1-16 20:40:20
 password:
 ---
 CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
