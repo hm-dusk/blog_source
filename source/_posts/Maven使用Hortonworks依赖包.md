@@ -9,9 +9,9 @@ comments: true
 categories:
   - 大数据
   - HDP
-thumbnail: ''
+thumbnail: 'http://image.cyanide.top/logo/hortonworks.png'
 date: 2019-01-12 11:32:16
-updated: 2019-01-12 11:32:16
+updated: 2019-1-17 08:53:14
 password:
 ---
 在项目中连接HDP时，会出现HortonWorks的Maven依赖包下载不了的情况，本文提供解决方案。
