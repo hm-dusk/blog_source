@@ -367,3 +367,4 @@ ambari-agent安装成功
 |ambari-server安装目录|/usr/lib/ambari-server|
 |ambari-agent安装目录|/usr/lib/ambari-agent|
 |日志安装目录|/var/log|
+ambari安装的hdp路径是不能更改的，但是可以用软链接将以上路径链接到其他路径。
