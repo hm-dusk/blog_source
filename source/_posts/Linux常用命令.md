@@ -1,7 +1,7 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2018-11-10 10:56:56
+updated: 2019-1-18 10:45:09
 tags: [Linux,命令]
 comments: true
 categories: 
@@ -31,6 +31,16 @@ thumbnail: 'http://image.cyanide.top/logo/linux.jpg'
 | `Ctrl+a` | 移动到当前行的开头                                 |
 | `Ctrl+e` | 移动到当前行的结尾                                 |
 | `Ctrl+l` | 清屏                                               |
+
+### 清理缓存命令
+| 说明 | 命令 |
+| -------- | --------------------- |
+| 查看内存使用情况 | `free -h` |
+| 仅清除页面缓存（PageCache） | `echo 1 > /proc/sys/vm/drop_caches` |
+| 清除目录项和inode | `echo 2 > /proc/sys/vm/drop_caches   ` |
+| 清除页面缓存，目录项和inode | `echo 3 > /proc/sys/vm/drop_caches ` |
+每个 Linux 系统有三种选项来清除缓存而不需要中断任何进程或服务。
+（LCTT 译注：Cache，译作“缓存”，指 CPU 和内存之间高速缓存。Buffer，译作“缓冲区”，指在写入磁盘前的存储再内存中的内容。）
 
 ### scp（跨服务器拷贝）
 
