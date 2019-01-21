@@ -7,7 +7,7 @@ comments: true
 categories:
   - 数据库
   - MySQL
-thumbnail: 'http://image.cyanide.top/logo/mysql.png'
+thumbnail: 'http://image.hming.org/logo/mysql.png'
 date: 2018-12-08 14:22:14
 updated: 2018-12-08 14:22:14
 password:
@@ -18,9 +18,9 @@ CentOS7下离线安装MySQL
 本文为`mysql-5.7.24-1.el7.x86_64.rpm-bundle.tar`
 下载路径：[https://dev.mysql.com/downloads/mysql/5.7.html#downloads](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
 1. 选择适合CentOS的版本
-![下载页面1](http://image.cyanide.top/centos7下安装mysql/下载页面1.png)
+![下载页面1](http://image.hming.org/centos7下安装mysql/下载页面1.png)
 2. 跳过登录直接下载
-![下载页面2](http://image.cyanide.top/centos7下安装mysql/下载页面2.png)
+![下载页面2](http://image.hming.org/centos7下安装mysql/下载页面2.png)
 ### 卸载系统自带的mariadb-lib
 ```bash
 [root@hadoopmaster opt]# rpm -qa|grep mariadb
@@ -28,7 +28,7 @@ mariadb-libs-5.5.56-2.el7.x86_64
 [root@hadoopmaster opt]# rpm -e --nodeps mariadb-libs-5.5.56-2.el7.x86_64
 ```
 ### 解压mysql
-1. 使用[rz 命令](http://http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传文件到服务器
+1. 使用[rz 命令](http://http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传文件到服务器
 2. 解压
 ```bash
 [root@hadoopmaster mysql]# tar -xf mysql-5.7.24-1.el7.x86_64.rpm-bundle.tar

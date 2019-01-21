@@ -12,7 +12,7 @@ categories:
   - 容器
   - Docker
 password:
-thumbnail: 'http://image.cyanide.top/logo/docker.jpg'
+thumbnail: 'http://image.hming.org/logo/docker.jpg'
 ---
 Docker替换镜像源与常用命令
 <!-- more -->

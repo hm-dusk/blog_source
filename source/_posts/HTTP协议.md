@@ -10,7 +10,7 @@ categories:
   - 网络协议
   - Http
 password:
-thumbnail: 'http://image.cyanide.top/logo/http.jpg'
+thumbnail: 'http://image.hming.org/logo/http.jpg'
 ---
 HTTP协议
 <!-- more -->

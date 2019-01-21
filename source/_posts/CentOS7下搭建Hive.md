@@ -8,7 +8,7 @@ comments: true
 categories:
   - 大数据
   - Hive
-thumbnail: 'http://image.cyanide.top/logo/hive.png'
+thumbnail: 'http://image.hming.org/logo/hive.png'
 date: 2018-12-06 15:18:49
 updated: 2019-1-3 20:45:43
 password:
@@ -16,7 +16,7 @@ password:
 CentOS7下搭建Hive，Hive元数据
 <!-- more -->
 ### 搭建Hadoop集群
-参考[CentOS7下搭建Hadoop集群](http://blog.cyanide.top/2018/09/16/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHadoop%E9%9B%86%E7%BE%A4/)
+参考[CentOS7下搭建Hadoop集群](http://blog.hming.org/2018/09/16/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHadoop%E9%9B%86%E7%BE%A4/)
 
 ### 下载Hive压缩包
 找到合适版本下载hive，本文压缩包为`apache-hive-2.3.4-bin.tar.gz`
@@ -138,7 +138,7 @@ hive其他配置参考：[Hive Configuration Properties](https://cwiki.apache.or
 ```
 ### 复制mysql驱动到hive安装目录的lib下
 `mysql-connector-java-5.1.46.jar`
-[点我查看驱动包下载方式](http://blog.cyanide.top/2018/12/09/MySQL连接驱动包下载方法/)
+[点我查看驱动包下载方式](http://blog.hming.org/2018/12/09/MySQL连接驱动包下载方法/)
 
 ### 初始化元数据
 1. 在mysql中创建hive数据库

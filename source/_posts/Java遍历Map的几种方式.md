@@ -10,7 +10,7 @@ categories:
  - Java
  - Map
 password:
-thumbnail: 'http://image.cyanide.top/logo/java.jpg'
+thumbnail: 'http://image.hming.org/logo/java.jpg'
 ---
 今天突然要用到Map的遍历，在此总结几种Map的遍历方法
 <!-- more -->

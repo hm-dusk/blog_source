@@ -7,7 +7,7 @@ comments: true
 categories:
   - 大数据
   - Zookeeper
-thumbnail: 'http://image.cyanide.top/logo/zookeeper.png'
+thumbnail: 'http://image.hming.org/logo/zookeeper.png'
 date: 2018-12-15 11:18:14
 updated: 2018-12-15 16:29:28
 password:
@@ -25,7 +25,7 @@ password:
 根据需要选择合适的版本，本文为`zookeeper-3.4.12.tar.gz`
 
 ### 上传、解压
-使用[rz 命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传到服务器并解压
+使用[rz 命令](http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传到服务器并解压
 ```bash
 [root@hadoopmaster opt]# tar -zxvf zookeeper-3.4.12.tar.gz 
 ```

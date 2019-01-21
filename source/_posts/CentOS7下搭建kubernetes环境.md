@@ -11,7 +11,7 @@ categories:
 date: 2018-10-31 20:32:27
 updated: 2018-11-14 20:36:28
 password:
-thumbnail: 'http://image.cyanide.top/logo/kubernetes.png'
+thumbnail: 'http://image.hming.org/logo/kubernetes.png'
 ---
 CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用（进行中）
 <!-- more -->

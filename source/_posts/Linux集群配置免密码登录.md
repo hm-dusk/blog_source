@@ -11,7 +11,7 @@ categories:
   - Linux
   - SSH
 password:
-thumbnail: 'http://image.cyanide.top/logo/ssh.jpg'
+thumbnail: 'http://image.hming.org/logo/ssh.jpg'
 ---
 Linux集群配置免密码登录
 <!-- more -->
@@ -66,7 +66,7 @@ ssh-rsa AAAAB.....TnYjJ root@hadoop001
 ssh-rsa AAAAB.....Ah+n9 root@hadoopmaster
 [root@hadoop001 .ssh]# 
 ```
-> 关于scp命令请点击[这里](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)查看
+> 关于scp命令请点击[这里](http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)查看
 
 ### 重复上一步动作，将每个节点的ssh秘钥都加入`authorized_keys`文件中
 ### 将最后节点生成的`authorized_keys`文件复制到每个节点下即可

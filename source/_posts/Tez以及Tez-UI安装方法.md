@@ -7,7 +7,7 @@ comments: true
 categories:
   - 大数据
   - Tez
-thumbnail: 'http://image.cyanide.top/logo/tez.png'
+thumbnail: 'http://image.hming.org/logo/tez.png'
 date: 2019-01-03 15:16:17
 updated: 2019-01-03 15:16:17
 password:

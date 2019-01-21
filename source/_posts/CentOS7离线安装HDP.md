@@ -8,7 +8,7 @@ comments: true
 categories:
   - 大数据
   - HDP
-thumbnail: 'http://image.cyanide.top/logo/hortonworks.png'
+thumbnail: 'http://image.hming.org/logo/hortonworks.png'
 date: 2019-01-09 20:07:15
 updated: 2019-1-17 08:59:14
 password:
@@ -25,7 +25,7 @@ CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 #### 磁盘准备
 离线安装包共计10G左右，解压后共计11G左右，请保证有足够空间。
 #### 配置免密登录
-配置免密码登录教程请点击[这里](http://blog.cyanide.top/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
+配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
 #### 关闭防火墙
 ```shell
 # 查看防火墙状态
@@ -45,9 +45,9 @@ setenforce 0
 修改 `/etc/selinux/config` 文件中的 `SELINUX=""` 为 `disabled` ，然后重启。
 
 #### 安装jdk、Python（所有节点）、MySQL（安装一个即可）
-1. 配置java环境教程点击[这里](http://blog.cyanide.top/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/)
+1. 配置java环境教程点击[这里](http://blog.hming.org/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/)
 2. 安装/更新Python `yum -y install python`
-3. 离线安装MySQL教程点击[这里](http://blog.cyanide.top/2018/12/08/CentOS7%E4%B8%8B%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85MySQL/)
+3. 离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/CentOS7%E4%B8%8B%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85MySQL/)
 新建数据库hive、ambari（为后续安装做准备）。
 ```bash
 mysql> create database hive;
@@ -90,7 +90,7 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
 ```
 
 访问服务器80端口相应/ambari/地址，可以访问到文件和文件夹即可
-![](http://image.cyanide.top/CentOS7离线安装HDP/httpd访问ambari地址.png)
+![](http://image.hming.org/CentOS7离线安装HDP/httpd访问ambari地址.png)
 ### 制作本地源
 1. 安装工具
     ```bash
@@ -166,7 +166,7 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
     ```
 ### 安装Ambari-server
 本次安装使用第三方数据库MySQL模式，默认为PostgreSQL模式（生产环境不推荐）。
-需提前准备好MySQL数据库连接jar包，[MySQL连接驱动包下载方法](http://blog.cyanide.top/2018/12/09/MySQL%E8%BF%9E%E6%8E%A5%E9%A9%B1%E5%8A%A8%E5%8C%85%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%B3%95/)
+需提前准备好MySQL数据库连接jar包，[MySQL连接驱动包下载方法](http://blog.hming.org/2018/12/09/MySQL%E8%BF%9E%E6%8E%A5%E9%A9%B1%E5%8A%A8%E5%8C%85%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%B3%95/)
 #### Ambari-server节点（主节点）安装Ambari-server
 ```bash
 [root@hdp001 ~]# yum -y install ambari-server
@@ -305,17 +305,17 @@ Ambari Server 'start' completed successfully.
 
 #### 访问服务器8080端口
 默认用户名和密码都为admin
-![](http://image.cyanide.top/CentOS7离线安装HDP/ambari登录页面.png)
+![](http://image.hming.org/CentOS7离线安装HDP/ambari登录页面.png)
 根据提示安装集群
-![](http://image.cyanide.top/CentOS7离线安装HDP/根据提示安装集群.png)
+![](http://image.hming.org/CentOS7离线安装HDP/根据提示安装集群.png)
 设置集群名字，比如my_hadoop
-![](http://image.cyanide.top/CentOS7离线安装HDP/为集群起名字.png)
+![](http://image.hming.org/CentOS7离线安装HDP/为集群起名字.png)
 选择HDP版本，配置yum源地址
-![](http://image.cyanide.top/CentOS7离线安装HDP/HDP版本选择与yum源地址配置.png)
+![](http://image.hming.org/CentOS7离线安装HDP/HDP版本选择与yum源地址配置.png)
 配置host与ssh
-![](http://image.cyanide.top/CentOS7离线安装HDP/配置host与ssh.png)
+![](http://image.hming.org/CentOS7离线安装HDP/配置host与ssh.png)
 确认后开始在节点上安装ambari-agent
-![](http://image.cyanide.top/CentOS7离线安装HDP/agent安装页面.png)
+![](http://image.hming.org/CentOS7离线安装HDP/agent安装页面.png)
 
 > 安装agent时可能报错：
 > ```bash
@@ -342,22 +342,22 @@ Ambari Server 'start' completed successfully.
 > ```
 
 ambari-agent安装成功
-![](http://image.cyanide.top/CentOS7离线安装HDP/agent安装成功.png)
+![](http://image.hming.org/CentOS7离线安装HDP/agent安装成功.png)
 选择hadoop组件进行安装，建议安装少量组件，之后可以再添加
-![](http://image.cyanide.top/CentOS7离线安装HDP/选择需要安装的hadoop组件.png)
+![](http://image.hming.org/CentOS7离线安装HDP/选择需要安装的hadoop组件.png)
 选择主节点安装位置（如NameNode）
-![](http://image.cyanide.top/CentOS7离线安装HDP/选择主节点.png)
+![](http://image.hming.org/CentOS7离线安装HDP/选择主节点.png)
 选择从节点安装位置（如DataNode）
-![](http://image.cyanide.top/CentOS7离线安装HDP/选择从节点.png)
+![](http://image.hming.org/CentOS7离线安装HDP/选择从节点.png)
 进行其他设置（如密码、数据保存路径、用户/用户组、参数配置等）
-![](http://image.cyanide.top/CentOS7离线安装HDP/其他设置1.png)
-![](http://image.cyanide.top/CentOS7离线安装HDP/其他设置2.png)
-![](http://image.cyanide.top/CentOS7离线安装HDP/其他设置3.png)
-![](http://image.cyanide.top/CentOS7离线安装HDP/其他设置4.png)
+![](http://image.hming.org/CentOS7离线安装HDP/其他设置1.png)
+![](http://image.hming.org/CentOS7离线安装HDP/其他设置2.png)
+![](http://image.hming.org/CentOS7离线安装HDP/其他设置3.png)
+![](http://image.hming.org/CentOS7离线安装HDP/其他设置4.png)
 配置完成后，查看配置项是否无误，确认无误后点击发布开始安装
-![](http://image.cyanide.top/CentOS7离线安装HDP/配置完成确认安装.png)
+![](http://image.hming.org/CentOS7离线安装HDP/配置完成确认安装.png)
 等待安装进度完成即可，如果安装过程中出错，可根据报错信息进行修改直到安装成功
-![](http://image.cyanide.top/CentOS7离线安装HDP/hadoop组件安装进度.png)
+![](http://image.hming.org/CentOS7离线安装HDP/hadoop组件安装进度.png)
 
 ### 使用HDP
 #### HDP安装路径

@@ -8,7 +8,7 @@ comments: true
 categories:
   - 大数据
   - HBase
-thumbnail: 'http://image.cyanide.top/logo/hbase.jpg'
+thumbnail: 'http://image.hming.org/logo/hbase.jpg'
 date: 2018-12-15 15:47:39
 updated: 2018-12-18 11:12:45
 password:
@@ -26,7 +26,7 @@ password:
 根据需要选择合适的版本，本文为`hbase-1.4.8-bin.tar.gz`
 
 ### 上传、解压
-使用[rz 命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传到服务器并解压
+使用[rz 命令](http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传到服务器并解压
 ```bash
 [root@hadoopmaster opt]# tar -zxvf hbase-1.4.8-bin.tar.gz
 ```
@@ -86,8 +86,8 @@ export HBASE_MANAGES_ZK=fakse
     </configuration>
     ```
     **注意：**
-    * 需要指定HDFS中储存路径，hadoop集群搭建参考：[CentOS7下搭建Hadoop集群](http://blog.cyanide.top/2018/09/16/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHadoop%E9%9B%86%E7%BE%A4/)
-    * 需要指定Zookeeper服务，Zookeeper集群搭建参考：[搭建Zookeeper集群](http://blog.cyanide.top/2018/12/15/%E6%90%AD%E5%BB%BAZookeeper%E9%9B%86%E7%BE%A4/)
+    * 需要指定HDFS中储存路径，hadoop集群搭建参考：[CentOS7下搭建Hadoop集群](http://blog.hming.org/2018/09/16/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHadoop%E9%9B%86%E7%BE%A4/)
+    * 需要指定Zookeeper服务，Zookeeper集群搭建参考：[搭建Zookeeper集群](http://blog.hming.org/2018/12/15/%E6%90%AD%E5%BB%BAZookeeper%E9%9B%86%E7%BE%A4/)
 2. 修改`hbase/conf/regionservers`文件
     ```bash
     # 增加从节点地址（这里由于配置了hosts，直接使用主机名，也可以配ip地址）
@@ -95,14 +95,14 @@ export HBASE_MANAGES_ZK=fakse
     hadoop002
     ```
 ### 将文件夹copy到其他子节点
-通过[scp 命令](http://blog.cyanide.top/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#scp%EF%BC%88%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%B7%E8%B4%9D%EF%BC%89)将修改好的文件夹拷贝到各个从节点上
+通过[scp 命令](http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#scp%EF%BC%88%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%B7%E8%B4%9D%EF%BC%89)将修改好的文件夹拷贝到各个从节点上
 ```shell
 [root@hadoopmaster ~]# scp -r /opt/hbase-1.4.8/ hadoop001:/opt
 ...
 [root@hadoopmaster ~]# scp -r /opt/hbase-1.4.8/ hadoop002:/opt
 ```
 ### 确保HDFS与Zookeeper启动
-`xzk_cluster`脚本参考：[zk集群脚本编写](http://blog.cyanide.top/2018/12/15/%E6%90%AD%E5%BB%BAZookeeper%E9%9B%86%E7%BE%A4/#zk%E9%9B%86%E7%BE%A4%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99)
+`xzk_cluster`脚本参考：[zk集群脚本编写](http://blog.hming.org/2018/12/15/%E6%90%AD%E5%BB%BAZookeeper%E9%9B%86%E7%BE%A4/#zk%E9%9B%86%E7%BE%A4%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99)
 ```bash
 xzk-cluster.sh start
 start-dfs.sh

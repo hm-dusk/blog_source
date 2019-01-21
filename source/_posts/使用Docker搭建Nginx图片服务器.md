@@ -8,7 +8,7 @@ comments: true
 categories:
   - Linux
   - Nginx
-thumbnail: 'http://image.cyanide.top/logo/nginx+docker.png'
+thumbnail: 'http://image.hming.org/logo/nginx+docker.png'
 date: 2018-12-05 00:04:13
 updated: 2018-12-05 00:04:13
 password:
@@ -16,7 +16,7 @@ password:
 使用Docker搭建Nginx图片服务器
 <!-- more -->
 ### 安装Docker
-见[Docker常用命令](http://blog.cyanide.top/2018/09/18/Docker%E6%9B%BF%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)
+见[Docker常用命令](http://blog.hming.org/2018/09/18/Docker%E6%9B%BF%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)
 ### 编写Nginx配置文件
 `vim default.conf`
 ```bash

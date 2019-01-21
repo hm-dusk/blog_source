@@ -8,7 +8,7 @@ categories:
   - Linux
   - Vim
 password:
-thumbnail: 'http://image.cyanide.top/logo/vim.jpg'
+thumbnail: 'http://image.hming.org/logo/vim.jpg'
 ---
 Linux下的vim编辑器
 <!-- more -->

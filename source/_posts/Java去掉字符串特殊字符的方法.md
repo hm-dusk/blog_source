@@ -9,7 +9,7 @@ categories:
   - Java
   - 字符串
 password:
-thumbnail: 'http://image.cyanide.top/logo/java.jpg'
+thumbnail: 'http://image.hming.org/logo/java.jpg'
 ---
 java中利用Unicode编码过滤字符串中特定字符的方法
 <!-- more -->

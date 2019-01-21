@@ -11,11 +11,11 @@ categories:
 date: 2018-10-30 20:09:11
 updated: 2018-12-22 18:07:12
 password:
-thumbnail: 'http://image.cyanide.top/logo/phoenix+hbase.png'
+thumbnail: 'http://image.hming.org/logo/phoenix+hbase.png'
 ---
 使用Phoenix操作HBase
 <!-- more -->
-HBase集群环境搭建参考：[CentOS7下搭建HBase集群+HBase基本操作](http://blog.cyanide.top/2018/12/15/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHBase%E9%9B%86%E7%BE%A4+HBase%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)
+HBase集群环境搭建参考：[CentOS7下搭建HBase集群+HBase基本操作](http://blog.hming.org/2018/12/15/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHBase%E9%9B%86%E7%BE%A4+HBase%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)
 ### 下载与HBase版本兼容的Phoenix
 `apache-phoenix-4.14.1-HBase-1.4-bin.tar.gz`
 下载地址：[http://archive.apache.org/dist/phoenix/](http://archive.apache.org/dist/phoenix/)
