@@ -51,7 +51,7 @@ highlight: # 代码高亮
 index_generator:
   path: ''
   per_page: 10
-  order_by: -updated
+  order_by: -date
 
 # Category & Tag # 分类与标签
 default_category: uncategorized
