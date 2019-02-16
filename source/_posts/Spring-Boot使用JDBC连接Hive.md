@@ -9,7 +9,7 @@ categories:
   - 大数据
   - Hive
 date: 2018-11-19 19:57:43
-updated: 2018-12-18 15:16:40
+updated: 2019-2-16 12:01:41
 password:
 thumbnail: 'http://image.hming.org/logo/spring-boot.png'
 ---
@@ -30,7 +30,7 @@ thumbnail: 'http://image.hming.org/logo/spring-boot.png'
 1. 在../resources目录下创建配置文件`application-hive.yml`，文件格式也可以使用`properties`格式
     ```yaml
     hive:
-      url: jdbc:hive2://10.75.4.31:10000/mydb
+      jdbcurl: jdbc:hive2://10.75.4.31:10000/mydb
       driver-class-name: org.apache.hive.jdbc.HiveDriver
       username: root
       password: 123456
@@ -57,6 +57,7 @@ thumbnail: 'http://image.hming.org/logo/spring-boot.png'
         active: hive
     ```
 ### 编写config配置类，将Hive的JdbcTemplate加载到Spring容器中
+1. 采用手动加载DataSource配置方式（不推荐）
 ```java
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
@@ -113,6 +114,52 @@ public class HiveJdbcConfig {
 
 	@Bean(name = "hiveJdbcTemplate")
 	public JdbcTemplate hiveJdbcTemplate(@Qualifier("hiveJdbcDataSource") DataSource dataSource) {
+		return new JdbcTemplate(dataSource);
+	}
+}
+```
+2. 采用自动加载DataSource配置方式（推荐）
+该方式需要yml配置文件中变量名与DataSource类里面的变量名对应
+```java
+package tech.segma.bi.config;
+
+import com.zaxxer.hikari.HikariDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+
+/**
+ * Hive-JDBC配置
+ *
+ * @author liming
+ * @date Created in 2018/11/15 11:58
+ */
+@Configuration
+public class HiveJdbcConfig {
+	private static final Logger LOGGER = LoggerFactory.getLogger(HiveJdbcConfig.class);
+
+	@Bean
+	@ConfigurationProperties(prefix = "hive")//需要配置前缀
+	public DataSourceProperties dataSourceProperties() {
+		return new DataSourceProperties();
+	}
+
+	@Bean(name = "hiveJdbcDataSource")
+	@ConfigurationProperties(prefix = "hive")//需要配置前缀
+	public DataSource dataSource() {
+		return dataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
+	}
+
+	@Bean(name = "hiveJdbcTemplate")
+	public JdbcTemplate hiveJdbcTemplate(@Qualifier("hiveJdbcDataSource") DataSource dataSource) {
+		LOGGER.debug("Hive DataSource Inject Successfully...");
 		return new JdbcTemplate(dataSource);
 	}
 }
