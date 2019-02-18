@@ -7,7 +7,7 @@ tags:
   - 集群
 comments: true
 date: 2018-09-16 23:40:16
-updated: 2019-1-14 00:17:02
+updated: 2019-2-18 15:05:06
 categories: 
   - 大数据
   - Hadoop
@@ -292,5 +292,39 @@ $> sbin/hadoop-daemon.sh start datanode     # 启动数据节点
 $> sbin/yarn-daemon.sh start nodemanager    # 启动数据管理节点
 $> bin/hadoop-daemon.sh start tasktracker   # 启动任务管理器
 ```
+### yarn application命令介绍
+`yarn application`后接参数：
+1. `-list` 列出所有application信息
+    ```bash
+    [root@master ~]# yarn application -list
+    ```
 
+2. `-appStates <States>` 跟 -list 一起使用，用来筛选不同状态的 application，多个用","分隔；
+    所有状态：ALL, NEW, NEW_SAVING, SUBMITTED, ACCEPTED, RUNNING, FINISHED, FAILED, KILLED
+    ```bash
+    [root@master ~]# yarn application -list -appStates RUNNING
+    ```
+
+3. `-appTypes <Types>` 跟 -list 一起使用，用来筛选不同类型的 application，多个用","分隔；
+    如 MAPREDUCE,TEZ
+    ```bash
+    [root@master ~]# yarn  application -list -appTypes MAPREDUCE
+    ```
+
+4. `-kill <Application ID>` 杀死一个 application，需要指定一个 Application ID
+    ```bash
+    [root@master ~]# yarn application -kill application_1526100291229_206393
+    ```
+
+5. `-status <Application ID>` 列出 某个application 的状态
+    ```bash
+    [root@master ~]# yarn application -status application_1526100291229_206393
+    ```
+
+6. `-movetoqueue <Application ID>` 移动 application 到其他的 queue，不能单独使用
+
+7. `-queue <Queue Name>` 与 movetoqueue 命令一起使用，指定移动到哪个 queue
+    ```bash
+    [root@master ~]# yarn application -movetoqueue application_1526100291229_206393 -queue other
+    ```
 
