@@ -1,7 +1,7 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2019-1-18 10:45:09
+updated: 2019-3-20 16:01:28
 tags: [Linux,命令]
 comments: true
 categories: 
@@ -490,4 +490,75 @@ tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("ja
 下载多个文件
 ```bash
 [root@hadoopmaster opt]# sz  file1 file2 file3
+```
+
+### wc（Word Count单词统计）
+#### 命令格式
+`wc [选项] [文件]`
+#### 命令功能
+统计指定文件中的字节数、字数、行数，并将统计结果显示输出。
+#### 命令参数
+> `-c` 统计字节数。
+> `-l` 统计行数。
+> `-m` 统计字符数。这个标志不能与 -c 标志一起使用。
+> `-w` 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。
+> `-L` 打印最长行的长度。
+#### 使用实例
+```bash
+[hdfs@centos3 log]$ wc -l mysqld.log 
+7756 mysqld.log
+```
+```bash
+[hdfs@centos3 log]$ jps
+10842 Jps
+19566 DataNode
+[hdfs@centos3 log]$ jps | wc -l
+2
+```
+
+### w（显示目前登入系统的用户信息）
+#### 命令格式
+`w [选项]`
+#### 命令功能
+目前登入系统的用户有哪些人，以及他们正在执行的程序。
+#### 命令参数
+> `-f` 开启或关闭显示用户从何处登入系统。
+> `-h` 不显示各栏位的标题信息列。
+> `-l` 使用详细格式列表，此为预设值。
+> `-s` 使用简洁格式列表，不显示用户登入时间，终端机阶段作业和程序所耗费的CPU时间。
+> `-u` 忽略执行程序的名称，以及该程序耗费CPU时间的信息。
+#### 使用实例
+```bash
+[root@centos3 ~]# w
+ 16:23:23 up 29 days, 21:28,  5 users,  load average: 0.41, 0.42, 0.40
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root     pts/0    10.75.4.14       16:11   27.00s  9.31s  9.28s /home/jdk/bin/java -Dproc_jar -Dhdp.version=3.1.0.0-78 -Djava.net.preferIPv4Stack=true -Dhdp.version=3.1.0.0-78 -Xmx1024m -Xmx256m -Dlog4j.configurationFile=hive-log4j2.pr
+root     pts/1    10.75.4.12       15:43   19.00s 43.79s 43.79s -bash
+root     pts/2    10.76.34.243     09:22    7:00m  1.69s  1.62s vim messages
+root     pts/3    10.75.4.12       16:23    3.00s  0.00s  0.00s -bash
+root     pts/5    10.75.4.11       Mon15    3.00s  0.06s  0.06s -bash
+```
+查看相应ssh连接进程号，可以通过kill -9 命令杀掉进程
+```bash
+[root@centos3 ~]# w
+ 16:36:49 up 29 days, 21:41,  4 users,  load average: 2.03, 0.96, 0.66
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root     pts/0    10.75.4.14       16:26    9:05   0.00s  0.00s -bash
+root     pts/1    10.75.4.12       15:43    2:49   2:15   2:15  -bash
+root     pts/2    10.75.4.11       16:35    1.00s 20.22s  0.00s w
+root     pts/3    10.75.4.12       16:23    2:49   1:27   1:27  -bash
+[root@centos3 ~]#  ps aux | grep sshd
+root      1105  0.0  0.0 112796  1280 ?        Ss   Feb18   0:00 /usr/sbin/sshd -D
+root      4368  1.2  0.0 161400  6192 ?        Ss   15:43   0:40 sshd: root@pts/1
+root     19926 11.3  0.0 161400  6200 ?        Ss   16:23   1:39 sshd: root@pts/3
+root     21314  0.8  0.0 161400  6044 ?        Ss   16:26   0:05 sshd: root@pts/0
+root     24001  0.0  0.0 161400  6044 ?        Ss   16:35   0:00 sshd: root@pts/2
+root     24932  0.0  0.0 112728   996 pts/2    S+   16:37   0:00 grep --color=auto sshd
+[root@centos3 ~]# kill -9 4368
+[root@centos3 ~]# w
+ 16:38:35 up 29 days, 21:43,  4 users,  load average: 1.55, 1.18, 0.78
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root     pts/0    10.75.4.14       16:26   10:51   0.00s  0.00s -bash
+root     pts/2    10.75.4.11       16:35    3.00s 20.23s  0.00s w
+root     pts/3    10.75.4.12       16:23    4:35   2:33   2:33  -bash
 ```
