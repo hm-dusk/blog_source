@@ -1,7 +1,7 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2019-3-20 16:01:28
+updated: 2019-3-21 17:14:35
 tags: [Linux,命令]
 comments: true
 categories: 
@@ -561,4 +561,61 @@ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 root     pts/0    10.75.4.14       16:26   10:51   0.00s  0.00s -bash
 root     pts/2    10.75.4.11       16:35    3.00s 20.23s  0.00s w
 root     pts/3    10.75.4.12       16:23    4:35   2:33   2:33  -bash
+```
+
+### hostnamectl（查看修改主机名）
+#### 命令格式
+`hostnamectl [选项]`
+#### 命令功能
+查看和修改主机名。
+> 在CentOS中，有三种定义的主机名:静态的（static），瞬态的（transient），和灵活的（pretty）。静态主机名也称为内核主机名，是系统在启动时从/etc/hostname自动初始化的主机名。瞬态主机名是在系统运行时临时分配的主机名，例如，通过DHCP或mDNS服务器分配。静态主机名和瞬态主机名都遵从作为互联网域名同样的字符限制规则。而另一方面，灵活主机名则允许使用自由形式（包括特殊/空白字符）的主机名，以展示给终端用户（如hdp001）。
+#### 命令参数
+```bash
+[root@hdp001 ~]# hostnamectl --help
+hostnamectl [OPTIONS...] COMMAND ...
+
+Query or change system hostname.
+
+  -h --help              查看帮助
+     --version           显示包版本
+     --no-ask-password   不要提示输入密码
+  -H --host=[USER@]HOST  在远程主机上运行
+  -M --machine=CONTAINER 在本地容器上操作
+     --transient         仅设置瞬态主机名
+     --static            仅设置静态主机名
+     --pretty            只设置灵活的主机名
+
+Commands:
+  status                 显示当前主机名设置
+  set-hostname NAME      设置系统主机名
+  set-icon-name NAME     设置主机的图标名称
+  set-chassis NAME       设置主机的机箱类型
+  set-deployment NAME    为主机设置部署环境
+  set-location NAME      设置主机的位置
+```
+#### 使用实例
+查看当前主机名
+```bash
+[root@hdp002 ~]# hostnamectl
+   Static hostname: hdp002
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: e47dbc1c37d64b7ebcb988e0ecf1836a
+           Boot ID: 93fa221f8aae49a183970941c4ad5d48
+    Virtualization: vmware
+  Operating System: CentOS Linux 7 (Core)
+       CPE OS Name: cpe:/o:centos:centos:7
+            Kernel: Linux 3.10.0-862.el7.x86_64
+      Architecture: x86-64
+```
+仅查看静态主机名
+```bash
+[root@hdp002 ~]# hostnamectl --static
+hdp002
+```
+修改主机名
+```bash
+[root@hdp002 ~]# hostnamectl set-hostname hdp002.segma.tech
+[root@hdp002 ~]# hostnamectl --static
+hdp002.segma.tech
 ```
