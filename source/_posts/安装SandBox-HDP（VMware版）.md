@@ -50,10 +50,10 @@ hortonworks/sandbox-hdp-security   3.0     ae1d1779b081    4 months ago   27.5GB
 成功运行后窗口会打印一些信息，可以通过这些信息连接到虚拟机
 ![运行成功后打印信息](http://image.hming.org/安装sandbox-VMware/运行成功后打印信息.png)
 上图中的1080端口为sandbox端口，可以通过浏览器访问该端口，得到以下界面：
-![sandbox页面](http://image.hming.org/安装sandbox-VMware/sandbox页面.png)
+![sandbox页面](http://image.hming.org/sandbox-hdp使用详解/sandbox页面.png)
 左侧launch dashboard直接进入ambari管理界面，右侧则是一些链接，包括ambari管理地址、Ranger地址、DAS地址等
 4200端口则提供了一个浏览器访问命令行的接口：
-![浏览器访问虚拟机](http://image.hming.org/安装sandbox-VMware/浏览器访问虚拟机.png)
-使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码
+![浏览器访问hdp容器](http://image.hming.org/sandbox-hdp使用详解/浏览器访问hdp容器.png)
+使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码，对密码强度会有要求
 
 本文到此为止，更详细的使用教程，请参照[SandBox-HDP使用详解](http://blog.hming.org/2019/04/04/SandBox-HDP使用详解/)

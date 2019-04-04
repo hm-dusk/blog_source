@@ -20,8 +20,8 @@ SandBox HDP版本3.0.1，安装环境为CentOS7
 ### 环境准备
 |方面|要求|
 |:--:|:--:|
-|软件|安装docker足以|
-|内存|官方推荐至少10G|
+|软件|[安装docker](http://blog.hming.org/2018/09/18/Docker%E6%9B%BF%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#%E5%AE%89%E8%A3%85)|
+|内存|官方推荐docker容器至少10G|
 |磁盘|docker镜像目录至少30G（sandbox镜像27.5G）|
 ### 下载脚本文件
 到[官网](https://hortonworks.com/downloads/#sandbox)下载zip格式的shell脚本文件
@@ -156,11 +156,11 @@ docker rmi hortonworks/sandbox-hdp:{release}
 ### 如何使用
 
 上图中的1080端口为sandbox端口，可以通过浏览器访问该端口，得到以下界面：
-![sandbox页面](http://image.hming.org/安装sandbox-VMware/sandbox页面.png)
+![sandbox页面](http://image.hming.org/sandbox-hdp使用详解/sandbox页面.png)
 左侧launch dashboard直接进入ambari管理界面，右侧则是一些链接，包括ambari管理地址、Ranger地址、DAS地址等
 4200端口则提供了一个浏览器访问命令行的接口：
-![浏览器访问虚拟机](http://image.hming.org/安装sandbox-VMware/浏览器访问虚拟机.png)
-使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码
+![浏览器访问hdp容器](http://image.hming.org/sandbox-hdp使用详解/浏览器访问hdp容器.png)
+使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码，对密码强度会有要求
 
 本文到此为止，更详细的使用教程，请参照[SandBox-HDP使用详解](http://blog.hming.org/2019/04/04/SandBox-HDP使用详解/)
 
