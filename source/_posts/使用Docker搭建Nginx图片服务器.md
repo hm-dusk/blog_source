@@ -82,7 +82,7 @@ docker build -t image-nginx .
 ```
 ### 运行生成容器
 ```bash
-docker run -d --name image-enginx -p 80:80 -v /mnt/nginx/images:/mnt/images image-nginx
+docker run -d --name image-nginx -p 80:80 -v /mnt/nginx/images:/mnt/images image-nginx
 ```
 > -v 将服务器本地`/mnt/nginx/images`映射到容器内`/mnt/images`目录，容器目录与`default.conf`文件中配置对应
 ### 访问图片

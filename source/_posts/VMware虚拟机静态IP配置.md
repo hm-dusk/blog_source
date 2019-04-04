@@ -1,6 +1,6 @@
 ---
 title: VMware虚拟机静态IP配置
-tags: [虚拟机,Linux,IP]
+tags: [虚拟机,VMware,Linux,IP]
 comments: true
 date: 2018-08-09 16:21:22
 updated: 2018-08-09 16:21:22

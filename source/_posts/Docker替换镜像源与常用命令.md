@@ -215,6 +215,9 @@ docker rm $(docker ps -aq)
 [root@hadoopCDH opt]# ll my_centos.tar 
 -rw-------. 1 root root 779944960 10月 17 03:40 my_centos.tar
 ```
+> 可以通过指定打包格式来打包成压缩文件：
+> `docker save [镜像名] | gzip > [路径/文件名.tar.gz]`
+
 2. 加载镜像
 `docker load --input [路径/文件名]`或者`docker load < [路径/文件名]`
 ```bash
