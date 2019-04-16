@@ -113,4 +113,4 @@ Ambari中有些内部链接是通过`sandbox-hdp.hortonworks.com`域名去访问
 
 ### 常见错误
 #### 远程向HDFS上传文件失败问题
-参照[SandBox HDFS上传文件失败问题]()
+参照[SandBox HDFS上传文件失败问题](http://blog.hming.org/2019/04/16/SandBox-HDFS%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/)

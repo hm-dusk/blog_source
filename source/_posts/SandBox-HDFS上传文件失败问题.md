@@ -44,12 +44,39 @@ java.io.IOException: File /tmp/1.csv could only be written to 0 of the 1 minRepl
 ### 解决方案
 #### 方案一（推荐）
 修改代码和增加端口映射
-java代码修改：
+因为NameNode返回的是Docker的ip，Client访问不了DataNode，所以可以让NameNode返回主机名，然后Client配置host的方式请求到宿主机的地址
+1. 修改Client host文件配置，增加host映射
+```bash
+10.75.4.32 sandbox-hdp.hortonworks.com
+```
+2. java代码修改：
 ```java
 Configuration conf = new Configuration();
 conf.set("fs.defaultFS", "hdfs://10.75.4.32:8020/");
 //增加下面一行，设置返回DataNode的主机名而不是ip
 conf.set("dfs.client.use.datanode.hostname","true");
+```
+此时还是不能访问到DataNode，因为`sandbox-proxy`容器并没有映射DataNode的端口（默认为`50010`）。
+3. 修改`sandbox-proxy`端口映射，增加`50010`端口
+停止、删除`sandbox-proxy`容器
+```bash
+```
+修改`./assets/generate-proxy-deploy-script.sh`脚本，在`tcpPortsHDP=(...)`部分新增`50010`端口映射
+```bash
+...
+tcpPortsHDP=(
+...
+[50010]=50010
+...
+)
+```
+4. 重新执行`docker-deploy-hdp30.sh`脚本中配置代理容器的脚本
+```bash
+#Deploy the proxy container.
+sed 's/sandbox-hdp-security/sandbox-hdp/g' assets/generate-proxy-deploy-script.sh > assets/generate-proxy-deploy-script.sh.new
+mv -f assets/generate-proxy-deploy-script.sh.new assets/generate-proxy-deploy-script.sh
+chmod +x assets/generate-proxy-deploy-script.sh
+assets/generate-proxy-deploy-script.sh 2>/dev/null
 ```
 
 #### 方案二（不推荐）
