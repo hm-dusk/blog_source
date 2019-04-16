@@ -10,7 +10,7 @@ categories:
   - HDP
 thumbnail: 'http://image.hming.org/logo/hortonworks.png'
 date: 2019-01-09 20:07:15
-updated: 2019-1-17 08:59:14
+updated: 2019-4-9 09:52:24
 password:
 ---
 CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
@@ -92,14 +92,7 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
 访问服务器80端口相应/ambari/地址，可以访问到文件和文件夹即可
 ![](http://image.hming.org/CentOS7离线安装HDP/httpd访问ambari地址.png)
 ### 制作本地源
-1. 安装工具
-    ```bash
-    [root@hdp001 ambari]# yum -y install createrepo
-    [root@hdp001 ambari]# pwd
-    /var/www/html/ambari
-    [root@hdp001 ambari]# createrepo ./
-    ```
-2. 修改repo源文件
+1. 修改repo源文件
     ```bash
     [root@hdp001 ambari]# vim ambari/centos7/2.7.3.0-139/ambari.repo
     ```
@@ -141,7 +134,7 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
     [root@hdp001 ambari]# cp ambari/centos7/2.7.3.0-139/ambari.repo /etc/yum.repos.d/
     [root@hdp001 ambari]# cp HDP/centos7/3.1.0.0-78/hdp.repo /etc/yum.repos.d/
     ```
-3. 将repo文件拷贝到子节点
+2. 将repo文件拷贝到子节点
     ```bash
     [root@hdp001 ambari]# cd /etc/yum.repos.d/
     [root@hdp001 yum.repos.d]# pwd
@@ -155,7 +148,8 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
     [root@hdp001 yum.repos.d]# scp hdp.repo hdp003:/etc/yum.repos.d/
     hdp.repo                                                                    100%  483   352.4KB/s   00:00 
     ```
-4. 每个节点清除yum缓存
+3. 每个节点清除yum缓存，重新建立缓存
+    该环节遇到报错说明yum源配置不正确，检查一下所有repo文件
     ```bash
     [root@hdp001 ambari]# yum clean all
     ...

@@ -110,3 +110,7 @@ REASON: Server not yet listening on http port 8080 after 90 seconds. Exiting.
 ### 新增host映射
 Ambari中有些内部链接是通过`sandbox-hdp.hortonworks.com`域名去访问的，比如`HDFS NameNode UI`
 可以在需要访问的主机上增加host映射方便访问
+
+### 常见错误
+#### 远程向HDFS上传文件失败问题
+参照[SandBox HDFS上传文件失败问题]()
