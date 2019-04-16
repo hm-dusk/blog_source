@@ -60,8 +60,14 @@ conf.set("dfs.client.use.datanode.hostname","true");
 3. 修改`sandbox-proxy`端口映射，增加`50010`端口
 停止、删除`sandbox-proxy`容器
 ```bash
+[root@sandbox-host ~]# docker stop sandbox-proxy
+sandbox-proxy
+[root@sandbox-host ~]# docker rm sandbox-proxy
+sandbox-proxy
 ```
-修改`./assets/generate-proxy-deploy-script.sh`脚本，在`tcpPortsHDP=(...)`部分新增`50010`端口映射
+修改`generate-proxy-deploy-script.sh`脚本，在`tcpPortsHDP=(...)`部分新增`50010`端口映射
+VMware版本脚本路径：`/sandbox/proxy/generate-proxy-deploy-script.sh`
+纯Docker版脚本路径：`./assets/generate-proxy-deploy-script.sh`
 ```bash
 ...
 tcpPortsHDP=(
