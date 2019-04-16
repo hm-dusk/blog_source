@@ -10,7 +10,7 @@ comments: true
 categories:
   - 大数据
   - SandBox
-thumbnail: 'http://image.hming.org/logo/sandbox.png'
+thumbnail: 'http://image.hming.org/logo/sandbox+vmware.png'
 date: 2019-04-02 11:28:35
 updated: 2019-04-02 11:28:35
 password:

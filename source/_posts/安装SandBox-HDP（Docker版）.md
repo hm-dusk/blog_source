@@ -9,7 +9,7 @@ comments: true
 categories:
   - 大数据
   - SandBox
-thumbnail: 'http://image.hming.org/logo/sandbox.png'
+thumbnail: 'http://image.hming.org/logo/sandbox+docker.png'
 date: 2019-04-02 11:28:17
 updated: 2019-04-02 11:28:17
 password:
