@@ -17,6 +17,8 @@
         <%- partial('comment/changyan') %>
     <% } else if (theme.comment.valine.on) { %>
         <%- partial('comment/valine') %>
+    <% } else if (theme.comment.gitalk.on) { %>
+        <%- partial('comment/gitalk') %>
     <% } %>
     </section>
 <% } %>

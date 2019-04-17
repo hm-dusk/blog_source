@@ -15,4 +15,6 @@
     <%- partial('comment/changyan', { script: true }) %>
 <% } else if (theme.comment.valine.on) { %>
     <%- partial('comment/valine', { script: true }) %>
+<% } else if (theme.comment.gitalk.on) { %>
+    <%- partial('comment/gitalk', { script: true }) %>
 <% } %>
