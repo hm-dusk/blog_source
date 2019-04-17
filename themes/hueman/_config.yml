@@ -100,6 +100,9 @@ comment:
 # 分享
 share: bdshare # options: jiathis, bdshare, addtoany, default
 
+# 动态背景
+canvas_nest: true
+
 # 插件
 plugins:
     lightgallery: true # options: true, false
