@@ -5,11 +5,12 @@
         <ul class="social-links">
             <% for (var i in theme.customize.social_links) { %>
                 <% if (theme.customize.social_links[i]) { %>
-                <li>
-                    <a class="social-tooltip" title="<%= i %>" href="<%- url_for(theme.customize.social_links[i]) %>" target="_blank" rel="noopener">
-                        <i class="icon fa fa-<%= i %>"></i>
-                    </a>
-                </li>
+                    <li>
+                        <a class="social-tooltip" title="<%= i %>"
+                           href="<%- url_for(theme.customize.social_links[i]) %>" target="_blank" rel="noopener">
+                            <i class="icon fa fa-<%= i %>"></i>
+                        </a>
+                    </li>
                 <% } %>
             <% } %>
         </ul>
@@ -20,9 +21,11 @@
     <div class="widgets-container">
         <% if (theme.widgets) { %>
             <% theme.widgets.forEach(function(widget) { %>
-                <!-- 如果是在文章中，就不显示分类 -->
-                <% if (is_post() && widget=='category') { %>
-                <% } else {%>
+                <!-- 如果是在文章中，就只显示toc小部件（目录） -->
+                <% if (is_post() && widget == 'toc') { %>
+                    <%- partial('widget/' + widget, {post: page}) %>
+                <% } else if (is_post()) { %>
+                <% } else { %>
                     <%- partial('widget/' + widget, {post: page}) %>
                 <% } %>
             <% }) %>
