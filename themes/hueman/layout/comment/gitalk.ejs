@@ -8,12 +8,12 @@
         id: '<%= md5(page.path) %>',
         repo: '<%= theme.comment.gitalk.repo %>',
         owner: '<%= theme.comment.gitalk.owner %>',
-        admin: '<%- JSON.stringify(theme.comment.gitalk.admin)%>',
-        perPage: '<%= theme.comment.gitalk.perPage %>',
+        admin: <%- JSON.stringify(theme.comment.gitalk.admin)%>,
+        perPage: <%= theme.comment.gitalk.perPage %>,
         pagerDirection: '<%= theme.comment.gitalk.pagerDirection %>',
-        createIssueManually: '<%= theme.comment.gitalk.createIssueManually %>',
-        distractionFreeMode: '<%= theme.comment.gitalk.distractionFreeMode %>'
-
+        createIssueManually: <%= theme.comment.gitalk.createIssueManually %>,
+        distractionFreeMode: <%= theme.comment.gitalk.distractionFreeMode %>,
+        enableHotKey: <%= theme.comment.gitalk.enableHotKey %>
     })
     gitalk.render('comment-container')
 </script>

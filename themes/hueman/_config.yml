@@ -85,16 +85,17 @@ comment:
         on: true # true为开启gitalk
         clientID: 5d9119965bca0418a356 # OAuth application client id
         clientSecret: 9f807f3b84131fb73cd00b374d87d2829674d456 # OAuth application client secret
-        repo: gitalk # 要存放评论（issues）的项目名，最好新建一个
-        owner: hm-dusk # 这个项目名的拥有者（GitHub账号或组织）
+        repo: gitalk # 要存放评论（issues）的项目名，最好新建一个。
+        owner: hm-dusk # 这个项目名的拥有者（GitHub账号或组织）。
         admin: hm-dusk # GitHub repo owner and collaborators who can initialize github issues.
                        #Can either be a string or an array.
-#        labels: gitalk #GitHub issues的标签
-        perPage: 10 #每页多少个评论
-        pagerDirection: first #排序方式是从旧到新（first）还是从新到旧（last）
+#        labels: gitalk #GitHub issues的标签，字符数组，Default: ['Gitalk']。
+        perPage: 10 #每页多少个评论。
+        pagerDirection: first #排序方式是从旧到新（first）还是从新到旧（last）。
         createIssueManually: true #如果当前页面没有相应的 isssue ，且登录的用户属于 admin，则会自动创建 issue。
                                   #如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
-        distractionFreeMode: false #类似Facebook评论框的全屏遮罩效果.
+        distractionFreeMode: false #类似Facebook评论框的全屏遮罩效果。
+        enableHotKey: true #启用快捷键(cmd|ctrl + enter) 提交评论。
 
 # 分享
 share: bdshare # options: jiathis, bdshare, addtoany, default
