@@ -1,9 +1,12 @@
-<%if(is_post()){ %>
-<div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <%- toc(page.content,{
-        class: 'post-toc',
-        list_number: true
-    }) %>
-</div>
-<%}%>
+<% if(is_post()){ %>
+    <!--  添加一个父div是为了实时计算原本toc距离窗口顶端的距离  -->
+    <div id="toc-parent">
+        <div id="toc">
+            <strong class="toc-title">文章目录</strong>
+            <%- toc(page.content, {
+                class: 'post-toc',
+                list_number: true
+            }) %>
+        </div>
+    </div>
+<% } %>
