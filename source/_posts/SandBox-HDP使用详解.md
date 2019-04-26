@@ -112,10 +112,8 @@ Ambari中有些内部链接是通过`sandbox-hdp.hortonworks.com`域名去访问
 可以在需要访问的主机上增加host映射方便访问
 
 ### 数据库初始密码
-#### MySQL
-内置MySQL使用的是Hive新建的MySQL，初始密码为`hortonworks1`
 #### PostgreSQL
-查看ambari用户的密码，默认为bigdata
+查看ambari用户的密码，默认为`bigdata`
 ```bash
 [root@sandbox-hdp ~]# grep "password" /etc/ambari-server/conf/ambari.properties
 server.jdbc.rca.user.passwd=/etc/ambari-server/conf/password.dat
@@ -132,6 +130,9 @@ Type "help" for help.
 
 ambari=> 
 ```
+
+#### MySQL
+内置MySQL使用的是Hive新建的MySQL，初始密码为`hortonworks1`
 登录ambari postgreSQL查找密码
 ```bash
 [root@sandbox-hdp ~]# psql -U ambari -W
@@ -139,10 +140,9 @@ Password for user ambari:
 psql (9.6.11)
 Type "help" for help.
 
-ambari=> select config_id,type_name,config_data from clusterconfig where type_name='hive-site';
+ambari=> select version,config_id,type_name,config_data from clusterconfig where type_name='hive-site';
 ```
 在结果里查找内容：javax.jdo.option.ConnectionPassword
-
 ### 常见错误
 #### 远程向HDFS上传文件失败问题
 参照[SandBox HDFS上传文件失败问题](http://blog.hming.org/2019/04/16/SandBox-HDFS%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/)
