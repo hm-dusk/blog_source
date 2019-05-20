@@ -6,7 +6,7 @@ tags:
   - SSH
 comments: true
 date: 2018-09-16 18:12:14
-updated: 2018-09-16 18:12:14
+updated: 2019-5-20 16:45:43
 categories: 
   - Linux
   - SSH
@@ -44,14 +44,34 @@ id_rsa  id_rsa.pub
 > 执行生成秘钥命令时会让用户选择生成地址，如果想直接使用默认地址（不想交互），则可以使用
 > `ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa`命令
 
-### 在主节点上将公钥拷贝到一个特定文件中
+### 将每个节点的id拷贝到所有节点的`authorized_keys`中
+#### 方法一（推荐）
+##### 每个节点执行ssh自带命令，将该节点的id拷贝到其他节点中
+```bash
+[root@hadoopmaster /]# ssh-copy-id hadoopmaster
+[root@hadoopmaster /]# ssh-copy-id hadoop001
+[root@hadoopmaster /]# ssh-copy-id hadoop002
+```
+```bash
+[root@hadoop001 /]# ssh-copy-id hadoopmaster
+[root@hadoop001 /]# ssh-copy-id hadoop001
+[root@hadoop001 /]# ssh-copy-id hadoop002
+```
+```bash
+[root@hadoop002 /]# ssh-copy-id hadoopmaster
+[root@hadoop002 /]# ssh-copy-id hadoop001
+[root@hadoop002 /]# ssh-copy-id hadoop002
+```
+
+#### 方法二
+##### 在主节点上将公钥拷贝到一个特定文件中
 ```shell
 [root@hadoopmaster /]# cd ~/.ssh
 [root@hadoopmaster .ssh]# cp id_rsa.pub authorized_keys # 拷贝到authorized_keys文件中
 [root@hadoopmaster .ssh]# ls
 authorized_keys  id_rsa  id_rsa.pub
 ```
-### 将`authorized_keys`文件拷贝至下一个节点，并将该节点的ssh秘钥加入该文件中
+##### 将`authorized_keys`文件拷贝至下一个节点，并将该节点的ssh秘钥加入该文件中
 ```shell
 [root@hadoopmaster .ssh]# scp authorized_keys root@hadoop001:/root/.ssh/
 root@hadoop001's password:      # 此时会提示输入密码，输入hadoop001主机root密码即可
@@ -68,8 +88,8 @@ ssh-rsa AAAAB.....Ah+n9 root@hadoopmaster
 ```
 > 关于scp命令请点击[这里](http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)查看
 
-### 重复上一步动作，将每个节点的ssh秘钥都加入`authorized_keys`文件中
-### 将最后节点生成的`authorized_keys`文件复制到每个节点下即可
+##### 重复上一步动作，将每个节点的ssh秘钥都加入`authorized_keys`文件中
+##### 将最后节点生成的`authorized_keys`文件复制到每个节点下即可
 ```shell
 [root@hadoop002 .ssh]# scp authorized_keys root@hadoopmaster:/root/.ssh
 ...
