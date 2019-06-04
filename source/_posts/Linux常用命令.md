@@ -1,7 +1,7 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2019-3-21 17:14:35
+updated: 2019-6-4 09:51:03
 tags: [Linux,命令]
 comments: true
 categories: 
@@ -41,6 +41,30 @@ thumbnail: 'http://image.hming.org/logo/linux.jpg'
 | 清除页面缓存，目录项和inode | `echo 3 > /proc/sys/vm/drop_caches ` |
 每个 Linux 系统有三种选项来清除缓存而不需要中断任何进程或服务。
 （LCTT 译注：Cache，译作“缓存”，指 CPU 和内存之间高速缓存。Buffer，译作“缓冲区”，指在写入磁盘前的存储再内存中的内容。）
+
+### 查看CPU信息
+总核数 = 物理CPU个数 X 每颗物理CPU的核数 
+总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数
+1. 查看物理CPU个数
+```bash
+[root@centos4 ~]# cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+1
+```
+2. 查看每个物理CPU中core的个数（核数）
+```bash
+[root@centos4 ~]# cat /proc/cpuinfo| grep "cpu cores"| uniq
+cpu cores	: 4
+```
+3. 查看逻辑CPU的个数
+```bash
+[root@centos4 ~]# cat /proc/cpuinfo| grep "processor"| wc -l
+4
+```
+4. 查看CPU信息（型号）
+```bash
+[root@centos4 ~]# cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+      4  Intel(R) Xeon(R) CPU E5-1603 0 @ 2.80GHz
+```
 
 ### scp（跨服务器拷贝）
 
