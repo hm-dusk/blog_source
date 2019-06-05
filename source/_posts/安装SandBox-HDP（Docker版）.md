@@ -11,7 +11,7 @@ categories:
   - SandBox
 thumbnail: 'http://image.hming.org/logo/sandbox+docker.png'
 date: 2019-04-02 11:28:17
-updated: 2019-04-02 11:28:17
+updated: 2019-6-5 12:00:53
 password:
 ---
 SandBox HDP版本3.0.1，安装环境为CentOS7
@@ -170,3 +170,5 @@ docker rmi hortonworks/sandbox-hdp:{release}
 2019/04/04 05:53:28 [emerg] 1#1: host not found in upstream "sandbox-hdp" in /etc/nginx/conf.d/http-hdp.conf:9
 nginx: [emerg] host not found in upstream "sandbox-hdp" in /etc/nginx/conf.d/http-hdp.conf:9
 ```
+这种情况是因为docker网络没有配置好，导致proxy容器无法使用nginx代理hdp容器
+检查docker网络配置
