@@ -103,5 +103,12 @@ CDH版本更新比Apache版本慢。
 
 ### CDH免费版和企业版区别
 
-[官网参考地址](https://www.cloudera.com/content/dam/www/marketing/resources/datasheets/cloudera-enterprise-datasheet.pdf.landing.html)
 ![免费版和企业版功能对比图](http://image.hming.org/HDP与CDH对比/CDH免费版和付费版功能对比图.png)
+注：
+1.snmp traps：SNMP是指简单网络管理协议，trap是它规定的一种通信方式，用于被管理的设备主动向充当管理者的设备报告自己的异常信息。
+
+[官网参考地址](https://www.cloudera.com/content/dam/www/marketing/resources/datasheets/cloudera-enterprise-datasheet.pdf.landing.html)
+![](http://image.hming.org/HDP与CDH对比/官网表1.jpg)
+![](http://image.hming.org/HDP与CDH对比/官网表2.jpg)
+
+
