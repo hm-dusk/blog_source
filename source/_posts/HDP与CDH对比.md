@@ -10,48 +10,12 @@ categories:
   - 选型
 thumbnail: ''
 date: 2019-07-03 14:25:43
-updated: 2019-07-03 14:25:43
+updated: 2019-07-04 10:18:23
 password:
 ---
 Hortonworks HDP与Cloudera CDH对比。
 <!-- more -->
-### CDH版本说明
-
-#### CDH6.X组件版本对应
-
-https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_packaging.html
-
-#### CDH5.X组件版本对应
-
-https://www.cloudera.com/documentation/enterprise/release-notes/topics/cdh_vd_cdh_package_tarball.html
-
-#### Impala版本说明
-
-Impala在3.1之后才支持ORC格式HDFS文件，目前最高版本为3.2，CDH6.1对应的Impala版本为3.1，CDH6.2对应的Impala版本为3.2
-
-#### Docker QuickStart版本说明
-
-Cloudera Quickstart和HDP的sandbox类似，都是单机版的供学习交流使用的大数据集群。
-目前Docker版启动的quickstart CDH版本最新为**5.13.0**，对应部分组件版本为：
-
-| **组件**        | **组件包版本**                             | **压缩包下载地址**                                           | **版本发布说明**                                             | **更改文件**                                                 |
-| --------------- | ------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | :----------------------------------------------------------- |
-| Apache Hadoop   | hadoop-2.6.0+cdh5.13.0+2639                | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.13.0.CHANGES.txt) |
-| Hadoop Mrv1     | hadoop-0.20-mapreduce-2.6.0+cdh5.13.0+2639 | (none)                                                       | (none)                                                       | (none)                                                       |
-| Hbase           | hbase-1.2.0+cdh5.13.0+411                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hbase-1.2.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hbase-1.2.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hbase-1.2.0-cdh5.13.0.CHANGES.txt) |
-| Apache Hive     | hive-1.1.0+cdh5.13.0+1269                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.13.0.CHANGES.txt) |
-| Hue             | hue-3.9.0+cdh5.13.0+7079                   | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hue-3.9.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hue-3.9.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hue-3.9.0-cdh5.13.0.CHANGES.txt) |
-| Apache Impala   | impala-2.10.0+cdh5.13.0+0                  | (none)                                                       | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/impala-2.10.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/impala-2.10.0-cdh5.13.0.CHANGES.txt) |
-| Apache Kudu     | kudu-1.5.0+cdh5.13.0+0                     | (none)                                                       | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/kudu-1.5.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/kudu-1.5.0-cdh5.13.0.CHANGES.txt) |
-| Apache Oozie    | oozie-4.1.0+cdh5.13.0+458                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/oozie-4.1.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/oozie-4.1.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/oozie-4.1.0-cdh5.13.0.CHANGES.txt) |
-| Cloudera Search | search-1.0.0+cdh5.13.0+0                   | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/search-1.0.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/search-1.0.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/search-1.0.0-cdh5.13.0.CHANGES.txt) |
-| Apache Solr     | solr-4.10.3+cdh5.13.0+519                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/solr-4.10.3-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/solr-4.10.3-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/solr-4.10.3-cdh5.13.0.CHANGES.txt) |
-| Apache Spark    | spark-1.6.0+cdh5.13.0+530                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/spark-1.6.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/spark-1.6.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/spark-1.6.0-cdh5.13.0.CHANGES.txt) |
-| Apache Sqoop    | sqoop-1.4.6+cdh5.13.0+116                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.13.0.CHANGES.txt) |
-| Apache Sqoop2   | sqoop2-1.99.5+cdh5.13.0+46                 | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/sqoop2-1.99.5-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/sqoop2-1.99.5-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/sqoop2-1.99.5-cdh5.13.0.CHANGES.txt) |
-| Zookeeper       | zookeeper-3.4.5+cdh5.13.0+118              | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.13.0.CHANGES.txt) |
-
-### HDP与CDH的区别
+### HDP与CDH的对比
 
 #### 版本更新对比
 
@@ -100,6 +64,52 @@ CDH版本更新比Apache版本慢。
 | Flume                                      | √（HDP3.0之后不再支持） | √                                  |
 | Pig                                        | √                       | ×（CDH6.X不再支持）                |
 | Avro                                       | ×                       | √                                  |
+
+#### 安全权限模块对比
+1. HDP
+包含Ranger组件，即使在没有Kerberos的情况下，也能作一些简单的权限分配管理。由于100%开源，所以支持Ldap+Kerberos+Ranger的权限配置方式，分配权限简单易用。另外，Kerberos配置具有向导式界面。
+
+2. CDH
+不具有类似Ranger的组件，想要做权限只能加Kerberos认证，然而express免费版只支持集成Kerberos，需要Ldap支持的需要企业版，Kerberos向导页面也只有企业版才支持（[CDH免费版和企业版区别对比](#CDH免费版和企业版区别)）。
+
+#### 运维管理对比
+
+
+### CDH版本说明
+
+#### CDH6.X组件版本对应
+
+https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_packaging.html
+
+#### CDH5.X组件版本对应
+
+https://www.cloudera.com/documentation/enterprise/release-notes/topics/cdh_vd_cdh_package_tarball.html
+
+#### Impala版本说明
+
+Impala在3.1之后才支持ORC格式HDFS文件，目前最高版本为3.2，CDH6.1对应的Impala版本为3.1，CDH6.2对应的Impala版本为3.2
+
+#### Docker QuickStart版本说明
+
+Cloudera `Quickstart`和HDP的`sandbox`类似，都是单机版的供学习交流使用的大数据集群。
+目前Docker版启动的quickstart CDH版本最新为**5.13.0**，对应部分组件版本为：
+
+| **组件**        | **组件包版本**                             | **压缩包下载地址**                                           | **版本发布说明**                                             | **更改文件**                                                 |
+| --------------- | ------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | :----------------------------------------------------------- |
+| Apache Hadoop   | hadoop-2.6.0+cdh5.13.0+2639                | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.13.0.CHANGES.txt) |
+| Hadoop Mrv1     | hadoop-0.20-mapreduce-2.6.0+cdh5.13.0+2639 | (none)                                                       | (none)                                                       | (none)                                                       |
+| Hbase           | hbase-1.2.0+cdh5.13.0+411                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hbase-1.2.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hbase-1.2.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hbase-1.2.0-cdh5.13.0.CHANGES.txt) |
+| Apache Hive     | hive-1.1.0+cdh5.13.0+1269                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.13.0.CHANGES.txt) |
+| Hue             | hue-3.9.0+cdh5.13.0+7079                   | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/hue-3.9.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/hue-3.9.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/hue-3.9.0-cdh5.13.0.CHANGES.txt) |
+| Apache Impala   | impala-2.10.0+cdh5.13.0+0                  | (none)                                                       | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/impala-2.10.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/impala-2.10.0-cdh5.13.0.CHANGES.txt) |
+| Apache Kudu     | kudu-1.5.0+cdh5.13.0+0                     | (none)                                                       | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/kudu-1.5.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/kudu-1.5.0-cdh5.13.0.CHANGES.txt) |
+| Apache Oozie    | oozie-4.1.0+cdh5.13.0+458                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/oozie-4.1.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/oozie-4.1.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/oozie-4.1.0-cdh5.13.0.CHANGES.txt) |
+| Cloudera Search | search-1.0.0+cdh5.13.0+0                   | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/search-1.0.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/search-1.0.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/search-1.0.0-cdh5.13.0.CHANGES.txt) |
+| Apache Solr     | solr-4.10.3+cdh5.13.0+519                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/solr-4.10.3-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/solr-4.10.3-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/solr-4.10.3-cdh5.13.0.CHANGES.txt) |
+| Apache Spark    | spark-1.6.0+cdh5.13.0+530                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/spark-1.6.0-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/spark-1.6.0-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/spark-1.6.0-cdh5.13.0.CHANGES.txt) |
+| Apache Sqoop    | sqoop-1.4.6+cdh5.13.0+116                  | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.13.0.CHANGES.txt) |
+| Apache Sqoop2   | sqoop2-1.99.5+cdh5.13.0+46                 | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/sqoop2-1.99.5-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/sqoop2-1.99.5-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/sqoop2-1.99.5-cdh5.13.0.CHANGES.txt) |
+| Zookeeper       | zookeeper-3.4.5+cdh5.13.0+118              | [Tarball](https://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.13.0.tar.gz) | [Release notes](https://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.13.0.releasenotes.html) | [Changes](https://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.13.0.CHANGES.txt) |
 
 ### CDH免费版和企业版区别
 
