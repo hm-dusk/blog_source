@@ -10,7 +10,7 @@ categories:
   - 选型
 thumbnail: ''
 date: 2019-07-03 14:25:43
-updated: 2019-07-04 10:18:23
+updated: 2019-7-19 11:22:22
 password:
 ---
 Hortonworks HDP与Cloudera CDH对比。
@@ -73,6 +73,35 @@ CDH版本更新比Apache版本慢。
 不具有类似Ranger的组件，想要做权限只能加Kerberos认证，然而express免费版只支持集成Kerberos，需要Ldap支持的需要企业版，Kerberos向导页面也只有企业版才支持（[CDH免费版和企业版区别对比](#CDH免费版和企业版区别)）。
 
 #### 运维管理对比
+##### HDP
+采用Apache Ambari进行统一管理，Ambari2.7之后的版本相对2.6有很大的改动，2.6个人看来也不够人性化，2.7界面布局更加人性化。
+1. Ambari不支持中文，整个管理页面都是英文呈现。
+2. 组件比较重要的基本配置都以图形化的方式呈现，比直接配文字版体验效果好。
+![](http://image.hming.org/HDP与CDH对比/HDP配置界面1.png)
+![](http://image.hming.org/HDP与CDH对比/HDP配置界面2.png)
+鼠标hover到配置项上面会有该项配置的说明。
+![](http://image.hming.org/HDP与CDH对比/HDP配置界面2-1.png)
+3. 其他配置都是按照节点（如下图中的NameNode）、配置文件（如下图中的Advanced hdfs-site）来进行组织的，方便运维人员快速定位。
+![](http://image.hming.org/HDP与CDH对比/HDP配置界面3.png)
+4. 组件界面可以直接看到该组件的哪些服务以及服务情况，右边就有该服务的快速链接，下图为Yarn的界面。
+![](http://image.hming.org/HDP与CDH对比/HDP组件界面1.png)
+5. 部分组件可以看到链接地址，比如Hive。
+![](http://image.hming.org/HDP与CDH对比/HDP组件界面2.png)
+
+
+##### CDH
+采用Cloudera Manager（下文统一用cm代替）进行统一管理。
+1. cm可以根据浏览器配置进行语言选择，支持中文。
+![](http://image.hming.org/HDP与CDH对比/CDH配置界面0.png)
+2. 配置页面比较有意思的是，cm支持新/老布局的切换。
+![](http://image.hming.org/HDP与CDH对比/CDH配置界面1.png)
+新布局界面左边将所有配置按照范围、类别、状态进行分类，也能很方便的找到配置。
+![](http://image.hming.org/HDP与CDH对比/CDH配置界面2.png)
+右边提供每个配置的说明，点看可以看到各项配置的说明。
+![](http://image.hming.org/HDP与CDH对比/CDH配置界面2-1.png)
+3. 组件服务的快速链接在tab页上
+![](http://image.hming.org/HDP与CDH对比/CDH配置界面3.png)
+ 
 
 
 ### CDH版本说明
@@ -118,7 +147,26 @@ Cloudera `Quickstart`和HDP的`sandbox`类似，都是单机版的供学习交�
 1.snmp traps：SNMP是指简单网络管理协议，trap是它规定的一种通信方式，用于被管理的设备主动向充当管理者的设备报告自己的异常信息。
 
 [官网参考地址](https://www.cloudera.com/content/dam/www/marketing/resources/datasheets/cloudera-enterprise-datasheet.pdf.landing.html)
+截图来自[CSDN](https://blog.csdn.net/levy_cui/article/details/51143092)
 ![](http://image.hming.org/HDP与CDH对比/官网表1.jpg)
 ![](http://image.hming.org/HDP与CDH对比/官网表2.jpg)
 
 
+### CDH官方文档地址（基于6.2.x版本）
+安装教程：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/installation.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/installation.html)  
+
+Impala安装要求：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/impala_prereqs.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/impala_prereqs.html)  
+
+集群所使用端口：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_ports.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_ports.html)  
+
+集群组件服务主机分配建议：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_host_allocations.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_host_allocations.html)  
+
+定制化安装（离线安装）：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_custom_installation.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_custom_installation.html)  
+
+Cloudera Manager API：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_intro_api.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_intro_api.html)  
+
+基于裸金属部署参考文档：[https://www.cloudera.com/documentation/other/reference-architecture/topics/ra_bare_metal_deployment.html](https://www.cloudera.com/documentation/other/reference-architecture/topics/ra_bare_metal_deployment.html)  
+
+Cloudera Manager常见问题（FAQ）[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_faqs.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_faqs.html)  
+
+CHD各组件服务依赖项[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_service_dependencies.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_service_dependencies.html)
