@@ -181,7 +181,7 @@ mysql> show databases;
 `grant all privileges on *.* to 'root'@'%' identified by '1234' with grant option;`
 `flush privileges;`
 > `*.*` 表示授权任何库任何表，如果想只授权test库的user表可以写为：`test.user`
-> `'root'@'%'` 表示root表示以root用户授权，`@`为连接符，`%`表示匹配所有的主机，如果想单独给某主机授权，可以将`%`替换为需要授权的主机`ip地址`
+> `'root'@'%'` 其中root表示以root用户授权，`@`为连接符，`%`表示匹配所有的主机，如果想单独给某主机授权，可以将`%`替换为需要授权的主机`ip地址`
 > `'1234'` 表示授权访问的密码，可以自行设置密码 
 > 设置授权后需要用`flush privileges`命令刷新一下
 
