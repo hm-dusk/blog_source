@@ -9,7 +9,7 @@ categories:
   - MySQL
 thumbnail: 'http://image.hming.org/logo/mysql.png'
 date: 2018-12-08 14:22:14
-updated: 2018-12-08 14:22:14
+updated: 2019-7-22 15:06:59
 password:
 ---
 CentOS7下离线安装MySQL
@@ -56,6 +56,11 @@ mysql-community-libs-5.7.24-1.el7.x86_64.rpm
 mysql-community-client-5.7.24-1.el7.x86_64.rpm
 mysql-community-server-5.7.24-1.el7.x86_64.rpm
 ```
+有时可能需要安装以下包
+```bash
+mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm
+```
+
 安装具体如下
 ```bash
 [root@hadoopmaster mysql]# rpm -ivh mysql-community-common-5.7.24-1.el7.x86_64.rpm 
@@ -172,6 +177,15 @@ mysql> show databases;
 4 rows in set (0.00 sec)
 ```
 ### 远程登录授权
+命令为：
+`grant all privileges on *.* to 'root'@'%' identified by '1234' with grant option;`
+`flush privileges;`
+> `*.*` 表示授权任何库任何表，如果想只授权test库的user表可以写为：`test.user`
+> `'root'@'%'` 表示root表示以root用户授权，`@`为连接符，`%`表示匹配所有的主机，如果想单独给某主机授权，可以将`%`替换为需要授权的主机`ip地址`
+> `'1234'` 表示授权访问的密码，可以自行设置密码 
+> 设置授权后需要用`flush privileges`命令刷新一下
+
+示例：
 ```bash
 mysql> grant all privileges on *.* to 'root'@'%' identified by '1234' with grant option;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
