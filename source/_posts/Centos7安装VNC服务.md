@@ -46,7 +46,8 @@ password:
     
     # Clean any existing files in /tmp/.X11-unix environment
     ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-    ExecStart=/usr/sbin/runuser -l root -c "/usr/bin/vncserver %i"      #将这里的User改为root
+    #将这里的User改为root，-geometry 1920x1080选项指定连接分辨率，也可以不指定
+    ExecStart=/usr/sbin/runuser -l root -c "/usr/bin/vncserver -geometry 1920x1080 %i"
     PIDFile=/root/.vnc/%H%i.pid         #这里指向root根目录地址
     ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
     
