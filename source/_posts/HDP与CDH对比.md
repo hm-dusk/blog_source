@@ -81,28 +81,29 @@ CDH版本更新比Apache版本慢。
 ![](http://image.hming.org/HDP与CDH对比/HDP配置界面2.png)
 鼠标hover到配置项上面会有该项配置的说明。
 ![](http://image.hming.org/HDP与CDH对比/HDP配置界面2-1.png)
-3. 其他配置都是按照节点（如下图中的NameNode）、配置文件（如下图中的Advanced hdfs-site）来进行组织的，方便运维人员快速定位。
+3. 其他配置都是按照节点（如下图中的NameNode）、配置文件（如下图中的Advanced hdfs-site）来进行组织的，方便运维人员快速定位。另外配置有版本记录，可以回退到任意版本。
 ![](http://image.hming.org/HDP与CDH对比/HDP配置界面3.png)
 4. 组件界面可以直接看到该组件的哪些服务以及服务情况，右边就有该服务的快速链接，下图为Yarn的界面。
 ![](http://image.hming.org/HDP与CDH对比/HDP组件界面1.png)
 5. 部分组件可以看到链接地址，比如Hive。
 ![](http://image.hming.org/HDP与CDH对比/HDP组件界面2.png)
+6. Ambari服务本身不支持高可用。
 
 
 ##### CDH
 采用Cloudera Manager（下文统一用cm代替）进行统一管理。
 1. cm可以根据浏览器配置进行语言选择，支持中文。
 ![](http://image.hming.org/HDP与CDH对比/CDH配置界面0.png)
-2. 配置页面比较有意思的是，cm支持新/老布局的切换。
-![](http://image.hming.org/HDP与CDH对比/CDH配置界面1.png)
-新布局界面左边将所有配置按照范围、类别、状态进行分类，也能很方便的找到配置。
+2. 配置界面左边将所有配置按照范围、类别、状态进行分类，也能很方便的找到配置。
 ![](http://image.hming.org/HDP与CDH对比/CDH配置界面2.png)
 右边提供每个配置的说明，点看可以看到各项配置的说明。
 ![](http://image.hming.org/HDP与CDH对比/CDH配置界面2-1.png)
-3. 组件服务的快速链接在tab页上
+3. 配置版本控制免费版不支持
+参考官网：[Viewing and Reverting Configuration Changes](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_mc_revert_configs.html)
+4. 组件服务的快速链接在tab页上
 ![](http://image.hming.org/HDP与CDH对比/CDH配置界面3.png)
- 
-
+5. cm服务可以配置高可用
+参考官网：[Installing and Configuring Cloudera Manager Server for High Availability](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/admin_cm_ha_server.html)
 
 ### CDH版本说明
 
