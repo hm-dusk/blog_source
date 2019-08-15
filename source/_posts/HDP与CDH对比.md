@@ -104,6 +104,9 @@ CDH版本更新比Apache版本慢。
 ![](http://image.hming.org/HDP与CDH对比/CDH配置界面3.png)
 5. cm服务可以配置高可用
 参考官网：[Installing and Configuring Cloudera Manager Server for High Availability](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/admin_cm_ha_server.html)
+6. cm支持数据加密，无论是静态加密或保护数据传输，但是可惜的是免费版cm支持很有限。另外加密前官方强烈建议安装Kerberos
+参考官网：[Encryption Overview](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/sg_enc_overview.html)
+![](http://image.hming.org/HDP与CDH对比/CDH加密配置页面.png)
 
 ### CDH版本说明
 
