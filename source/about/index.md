@@ -1,6 +1,7 @@
 ---
 title: 关于我
 date: 2017-07-17 19:49:44
+layout: "about"
 comments: false
 ---
 

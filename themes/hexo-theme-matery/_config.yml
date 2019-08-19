@@ -76,8 +76,8 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: /favicon.png
-logo: /medias/logo.png
+favicon: /favicon.ico
+logo: /medias/cyanide3.png
 
 # The configuration of the second button in the home banner,
 # including the display name of the button, the font awesome icon, and the hyperlink to the button.
@@ -86,15 +86,15 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github-alt
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/hm-dusk
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  qq: 123123123
-  github:
-  email: xxx@xx.xx
+  qq: 1322260665@qq.com
+  github: https://github.com/hm-dusk
+  email: 1322260665@qq.com
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # You can add `toc: false` to the Front-matter of a post to turn off the TOC.
@@ -102,17 +102,17 @@ socialLink:
 # 可以在某篇文章的 Front-matter 中再加上`toc: false`，使该篇文章关闭TOC目录功能
 toc:
   enable: true
-  heading: h2, h3, h4
+  heading: h1, h2, h3, h4, h5
   showToggleBtn: true # 是否显示切换TOC目录展开收缩的按钮
 
 # Whether the code is broken.
 # 代码是否折行
 code:
-  break: true
+  break: false
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
-  enable: true
+  enable: false
   title: 你的赏识是我前进的动力
   wechat: /medias/reward/wechat.png
   alipay: /medias/reward/alipay.jpg
@@ -140,7 +140,7 @@ mathjax:
 # 文章字数统计、阅读时长、总字数统计
 # 激活前请确认你已经安装了 hexo-wordcount 插件，安装命令: `npm i --save hexo-wordcount`
 wordCount:
-  enable: false
+  enable: true
   postWordCount: true
   min2read: true
   totalCount: true
@@ -148,7 +148,7 @@ wordCount:
 # Whether to activate the 'love' effect of clicking on the page.
 # 是否激活点击页面的'爱心'效果，默认激活.
 clicklove:
-  enable: true
+  enable: false
 
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
@@ -161,7 +161,7 @@ profile:
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的项目"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myProjects:
-  enable: true
+  enable: false
   data:
     hexo-theme-matery:
       icon: fa-meetup
@@ -188,15 +188,12 @@ mySkills:
     Java:
       background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
       percent: 85%
-    JavaScript:
+    Hadoop:
       background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
-      percent: 80%
-    HTML5:
-      background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
-      percent: 80%
-    CSS:
-      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
       percent: 70%
+    Linux:
+      background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
+      percent: 68%
     SQL:
       background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
       percent: 90%
@@ -221,13 +218,19 @@ postCalendar: true
 # the Gitalk config，default disabled
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: false
-  owner:
-  repo:
+  enable: true # true为开启gitalk
+  owner: hm-dusk # 这个项目名的拥有者（GitHub账号或组织）。
+  repo: gitalk # 要存放评论（issues）的项目名，最好新建一个。
   oauth:
-    clientId:
-    clientSecret:
-  admin:
+    clientId: 5d9119965bca0418a356 # OAuth application client id
+    clientSecret: 9f807f3b84131fb73cd00b374d87d2829674d456 # OAuth application client secret
+  admin: hm-dusk # GitHub repo owner and collaborators who can initialize github issues.
+  perPage: 10 #每页多少个评论。
+  pagerDirection: first #排序方式是从旧到新（first）还是从新到旧（last）。
+  createIssueManually: true #如果当前页面没有相应的 isssue ，且登录的用户属于 admin，则会自动创建 issue。
+  #如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
+  distractionFreeMode: false #类似Facebook评论框的全屏遮罩效果。
+  enableHotKey: true #启用快捷键(cmd|ctrl + enter) 提交评论。
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
@@ -269,7 +272,7 @@ valine:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: true
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/hm-dusk
   title: Fork Me
 
 # The password verification feature of read post. To use this feature,
@@ -376,5 +379,5 @@ featureImages:
   # noreprint（不允许转载 not allowed to reprint）
   # pay（付费转载 pay for reprinting）
 reprint:
-  enable: true # whether enable reprint section 是否启用“转载规则限定模块”
+  enable: false # whether enable reprint section 是否启用“转载规则限定模块”
   default: cc_by

@@ -27,22 +27,20 @@ CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 #### 配置免密登录
 配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
 #### 关闭防火墙
-```shell
-# 查看防火墙状态
-firewall-cmd --state
-# 临时关闭
-systemctl stop firewalld
-# 禁止开机启动
-systemctl disable firewalld
-```
-#### 关闭selinux
+查看防火墙状态
+`firewall-cmd --state`或`systemctl status firewalld`
+临时关闭防火墙
+`systemctl stop firewalld`
+禁止开机启动
+`systemctl disable firewalld`
+
+#### 设置SELinux模式
 不关闭可能导致Apache http服务无法访问。
-1. 即时生效
-```shell
-setenforce 0
-```
-2. 永久有效
-修改 `/etc/selinux/config` 文件中的 `SELINUX=""` 为 `disabled` ，然后重启。
+1. 查看SELinux状态：`getenforce`
+如果是`Permissive`或者`Disabled`则可以继续安装，如果显示`enforcing`，则需要进行以下步骤修改模式
+2. 编辑`/etc/selinux/config`文件
+3. 修改`SELINUX=enforcing`行内容为`SELINUX=permissive`或者`SELINUX=disabled`
+4. 重启系统或者运行`setenforce 0`命令禁用SELinux
 
 #### 安装jdk、Python（所有节点）、MySQL（安装一个即可）
 1. 配置java环境教程点击[这里](http://blog.hming.org/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/)
