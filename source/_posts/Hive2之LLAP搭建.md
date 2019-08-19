@@ -8,7 +8,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - Hive
 thumbnail: 'http://image.hming.org/logo/hive.png'
 date: 2019-01-03 19:22:48
 updated: 2019-01-03 19:22:48

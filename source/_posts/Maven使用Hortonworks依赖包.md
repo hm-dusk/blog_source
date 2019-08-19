@@ -8,7 +8,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - HDP
 thumbnail: 'http://image.hming.org/logo/hortonworks.png'
 date: 2019-01-12 11:32:16
 updated: 2019-1-17 08:53:14

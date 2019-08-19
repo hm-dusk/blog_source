@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - Linux
-  - Nginx
 thumbnail: 'http://image.hming.org/logo/nginx+docker.png'
 date: 2018-12-05 00:04:13
 updated: 2018-12-05 00:04:13

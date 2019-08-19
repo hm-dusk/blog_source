@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - SandBox
 thumbnail: 'http://image.hming.org/logo/sandbox.png'
 date: 2019-04-04 09:36:23
 updated: 2019-04-04 09:36:23

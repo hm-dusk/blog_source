@@ -4,7 +4,6 @@ date: 2016-07-23 17:15:19
 updated: 2016-07-23 17:15:19
 categories: 
   - Java
-  - Maven
 tags: [Maven,Idea,编辑器]
 thumbnail: 'http://image.hming.org/logo/maven.jpeg'
 ---

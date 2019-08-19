@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - HDF
 thumbnail: 'http://image.hming.org/logo/hdf.png'
 date: 2019-02-14 08:48:27
 updated: 2019-02-14 08:48:27

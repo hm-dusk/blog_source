@@ -10,7 +10,6 @@ date: 2018-09-16 23:40:16
 updated: 2019-2-18 15:05:06
 categories: 
   - 大数据
-  - Hadoop
 password:
 thumbnail: 'http://image.hming.org/logo/hadoop.jpg'
 ---

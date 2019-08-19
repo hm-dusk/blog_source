@@ -8,7 +8,6 @@ date: 2017-08-09 22:27:24
 updated: 2017-08-09 22:27:24
 categories: 
   - 网络协议
-  - Http
 password:
 thumbnail: 'http://image.hming.org/logo/http.jpg'
 ---

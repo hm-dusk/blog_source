@@ -8,7 +8,6 @@ tags:
 comments: true
 categories: 
   - Linux
-  - Java
 password:
 thumbnail: 'http://image.hming.org/logo/java.jpg'
 ---

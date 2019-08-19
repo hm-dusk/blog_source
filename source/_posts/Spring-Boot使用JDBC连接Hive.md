@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - Hive
 date: 2018-11-19 19:57:43
 updated: 2019-2-16 12:01:41
 password:

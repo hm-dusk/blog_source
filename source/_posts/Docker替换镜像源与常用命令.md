@@ -10,7 +10,6 @@ date: 2018-09-18 17:25:53
 updated: 2018-12-20 19:10:48
 categories: 
   - 容器
-  - Docker
 password:
 thumbnail: 'http://image.hming.org/logo/docker.jpg'
 ---

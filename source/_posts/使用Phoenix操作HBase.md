@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - HBase
 date: 2018-10-30 20:09:11
 updated: 2018-12-22 18:07:12
 password:

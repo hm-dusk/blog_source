@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 数据库
-  - MySQL
 thumbnail: 'http://image.hming.org/logo/mysql.png'
 date: 2018-12-09 14:43:33
 updated: 2018-12-09 14:43:33

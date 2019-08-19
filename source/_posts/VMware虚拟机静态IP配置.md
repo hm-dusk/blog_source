@@ -6,7 +6,6 @@ date: 2018-08-09 16:21:22
 updated: 2018-08-09 16:21:22
 categories: 
   - Linux
-  - 虚拟机
 password:
 thumbnail: 'http://image.hming.org/logo/vmware.png'
 ---

@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - HBase
 thumbnail: 'http://image.hming.org/logo/hbase.jpg'
 date: 2018-12-15 15:47:39
 updated: 2018-12-18 11:12:45

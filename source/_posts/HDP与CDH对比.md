@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - 选型
 thumbnail: ''
 date: 2019-07-03 14:25:43
 updated: 2019-7-19 11:22:22

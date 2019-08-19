@@ -6,7 +6,6 @@ tags:
 comments: true
 categories:
   - Linux
-  - 远程连接
 thumbnail: 'http://image.hming.org/logo/linux.jpg'
 date: 2019-08-06 16:00:24
 updated: 2019-08-06 16:00:24

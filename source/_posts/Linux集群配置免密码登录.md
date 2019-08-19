@@ -9,7 +9,6 @@ date: 2018-09-16 18:12:14
 updated: 2019-5-20 16:45:43
 categories: 
   - Linux
-  - SSH
 password:
 thumbnail: 'http://image.hming.org/logo/ssh.jpg'
 ---

@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 容器
-  - K8s
 date: 2018-10-31 20:32:27
 updated: 2018-11-14 20:36:28
 password:

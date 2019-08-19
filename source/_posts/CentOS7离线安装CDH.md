@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - CDH
 thumbnail: ''
 date: 2019-08-16 15:03:41
 updated: 2019-08-16 15:03:41

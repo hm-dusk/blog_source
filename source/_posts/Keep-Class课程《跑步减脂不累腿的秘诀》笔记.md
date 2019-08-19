@@ -9,7 +9,6 @@ date: 2018-09-25 20:15:24
 updated: 2018-11-6 14:14:02
 categories: 
   - 运动
-  - 跑步
 password:
 thumbnail: 'http://image.hming.org/keep跑步秘诀/跑步封面.jpg'
 ---

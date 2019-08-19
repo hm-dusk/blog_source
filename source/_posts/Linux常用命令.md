@@ -6,7 +6,6 @@ tags: [Linux,命令]
 comments: true
 categories: 
   - Linux
-  - 命令
 password:
 thumbnail: 'http://image.hming.org/logo/linux.jpg'
 ---

@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - Linux
-  - yum源
 thumbnail: 'http://image.hming.org/logo/linux.jpg'
 date: 2019-03-29 14:40:35
 updated: 2019-03-29 14:40:35

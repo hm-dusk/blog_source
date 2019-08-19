@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - HDP
 thumbnail: 'http://image.hming.org/logo/hdp.png'
 date: 2019-01-09 20:07:15
 updated: 2019-4-9 09:52:24

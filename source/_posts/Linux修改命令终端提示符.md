@@ -6,7 +6,6 @@ tags:
 comments: true
 categories:
   - Linux
-  - 命令行
 thumbnail: 'http://image.hming.org/logo/linux.jpg'
 date: 2019-03-29 11:47:18
 updated: 2019-03-29 11:47:18

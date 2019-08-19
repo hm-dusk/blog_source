@@ -7,7 +7,6 @@ date: 2017-07-26 19:03:26
 updated: 2017-07-29 19:03:26
 categories: 
   - 数据库
-  - Mongodb
 password:
 thumbnail: 'http://image.hming.org/logo/mongodb.png'
 ---

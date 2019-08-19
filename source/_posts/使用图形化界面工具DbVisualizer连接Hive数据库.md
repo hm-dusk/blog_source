@@ -7,7 +7,6 @@ tags:
 comments: true
 categories:
   - 大数据
-  - Hive
 thumbnail: 'http://image.hming.org/logo/DbVisualizer.png'
 date: 2018-12-08 10:53:42
 updated: 2018-12-08 10:53:42

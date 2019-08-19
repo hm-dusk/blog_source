@@ -6,7 +6,6 @@ date: 2017-07-26 09:47:27
 updated: 2019-1-2 11:44:58
 categories: 
   - Linux
-  - Vim
 password:
 thumbnail: 'http://image.hming.org/logo/vim.jpg'
 ---

@@ -7,7 +7,6 @@ date: 2017-07-25 10:55:07
 updated: 2017-07-25 10:55:07
 categories: 
   - Java
-  - 字符串
 password:
 thumbnail: 'http://image.hming.org/logo/java.jpg'
 ---
