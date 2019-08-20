@@ -21,6 +21,7 @@ CentOS7离线安装HDF，Ambari版本：2.7.3.0，HDF版本：3.3.1.0
 [HDF仓库地址](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.3.1/release-notes/content/hdf_repository_locations.html)
 找到对应操作系统的包，下载HDF Management Pack与HDF RPM tarball两个包即可。（本文为CentOS7的包）
 > 注意：HDF RPM tarball包大小`3.6G`左右，HDF Management Pack包`96M`左右，请确保保存路径有足够空间
+
 ```bash
 [root@master ambari]# ll -h
 total 3.7G
@@ -35,6 +36,7 @@ drwxr-xr-x 3 ambari-qa users 4.0K Aug 13  2018 HDP-UTILS
 ### 制作HDF yum镜像源
 参考[制作本地源](https://blog.hming.org/2019/01/09/CentOS7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85HDP/#%E5%88%B6%E4%BD%9C%E6%9C%AC%E5%9C%B0%E6%BA%90)，将`HDF-3.3.1.0-centos7-rpm.tar.gz`包解压，制作yum本地源。
 1. 解压到`httpd`服务路径(本文httpd服务路径为`/cloud/ambari`)
+
 ```bash
 [root@master ambari]# pwd
 /cloud/ambari
@@ -48,7 +50,9 @@ drwxr-xr-x 3 ambari-qa users 4.0K Dec 15 02:19 HDF
 drwxr-xr-x 3 ambari-qa users 4.0K Dec 11 11:49 HDP
 drwxr-xr-x 3 ambari-qa users 4.0K Aug 13  2018 HDP-UTILS
 ```
+
 2. 修改`./HDF/centos7/3.3.1.0-10/hdf.repo`文件为以下内容
+
 ```bash
 #VERSION_NUMBER=3.3.1.0-10
 [HDF-3.3.1.0]
@@ -85,6 +89,7 @@ priority=1
 ### 安装HDF Management Pack
 此处参考[官方文档](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.3.1/installing-hdf-on-hdp/content/installing_the_hdf_management_pack.html)
 1. 使用`ambari-server install-mpack`命令安装Management Pack
+
 ```bash
 [root@master ambari]# ambari-server install-mpack --mpack=./hdf-ambari-mpack-3.3.1.0-10.tar.gz --verbose
 Using python  /usr/bin/python
@@ -101,7 +106,9 @@ INFO: Successfully switched addon services using config file /var/lib/ambari-ser
 INFO: Loading properties from /etc/ambari-server/conf/ambari.properties
 Ambari Server 'install-mpack' completed successfully.
 ```
+
 2. 使用`ambari-server restart`命令重启ambari服务
+
 ```bash
 [root@master ambari]# ambari-server restart
 Using python  /usr/bin/python

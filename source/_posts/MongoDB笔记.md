@@ -21,7 +21,9 @@ MongoDB笔记
 |行|文档|
 |列|成员|
 |主键|Object ID（自动维护）|
+
 `与Node.js捆绑。`
+
 ### 启动MongoDB服务
 * 默认端口启动
 `mongod --dbpath E:\MongoDB\db`
@@ -37,6 +39,7 @@ MongoDB笔记
 |切换到admin数据库|use admin|
 |关闭数据库服务|db.shutdownServer() `(必须在admin下才能执行成功)`|
 |重启服务|mongod -f E:\MongoDB\mongodb.conf|
+
 ## 二、基本语法
 ### 查看所有数据库
 `db.showDatabases;`

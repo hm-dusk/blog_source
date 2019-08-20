@@ -13,7 +13,9 @@ updated: 2019-08-16 15:03:41
 password:
 ---
 CentOS7.6离线安装CDP，Cloudera Manager版本：6.3.0，CDH版本：6.3.0-1
+
 <!-- more -->
+
 ### 本文环境
 |节点|IP地址|
 |:---:|:---:|
@@ -32,6 +34,7 @@ CDH支持IPV4，不支持IPV6
 1. 将主机名设置为全限定域名格式（FQDN：Fully Qualified Domain Name）
 `sudo hostnamectl set-hostname foo-1.example.com`
 2. 配置/etc/hosts文件，添加集群中所有全限定域名，也可以添加非限定名
+
 ```bash
 1.1.1.1 foo-1.example.com foo-1
 2.2.2.2 foo-2.example.com foo-2

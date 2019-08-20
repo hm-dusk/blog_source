@@ -209,13 +209,15 @@ docker rm $(docker ps -aq)
 #### 将镜像保存为tar文件、将tar文件加载到docker镜像
 1. 保存镜像
 `docker save -o [路径/文件名] [镜像名]`或者`docker save [镜像名] > [路径/文件名]`
-```bash
-[root@hadoopCDH opt]# docker save -o my_centos.tar cyanidehm/my_centos:latest
-[root@hadoopCDH opt]# ll my_centos.tar 
--rw-------. 1 root root 779944960 10月 17 03:40 my_centos.tar
-```
-> 可以通过指定打包格式来打包成压缩文件：
-> `docker save [镜像名] | gzip > [路径/文件名.tar.gz]`
+
+    ```bash
+    [root@hadoopCDH opt]# docker save -o my_centos.tar cyanidehm/my_centos:latest
+    [root@hadoopCDH opt]# ll my_centos.tar 
+    -rw-------. 1 root root 779944960 10月 17 03:40 my_centos.tar
+    ```
+    
+    > 可以通过指定打包格式来打包成压缩文件：
+    > `docker save [镜像名] | gzip > [路径/文件名.tar.gz]`
 
 2. 加载镜像
 `docker load --input [路径/文件名]`或者`docker load < [路径/文件名]`
@@ -236,21 +238,22 @@ cyanidehm/my_centos   latest              3ced2987d19a        Less than a second
 `./docker_images.sh load-images`
 > 脚本将镜像文件保存到`./images`目录下，另外一个`images.db`文件与之对应
 > 将这两个东西拷贝到其他主机，执行批量加载命令就行实现批量转移镜像
-```bash
-[root@localhost save]# ./docker_images.sh save-images 
-Create /opt/save/images.db
-Read /opt/save/images.db
-Create /opt/save/images
-[DEBUG] save 00ead811e8ae docker.io/portainer/portainer:latest to /opt/save/images/00ead811e8ae.dim
-real	0m27.343s
-[DEBUG] save d63b9b4bd205 rancher/server:v1.6.14 to /opt/save/images/d63b9b4bd205.dim
-real	4m46.480s
-[DEBUG] save 34a453d374b9 docker.io/rancher/agent:v1.2.9 to /opt/save/images/34a453d374b9.dim
-real	0m28.037s
-
-[root@localhost save]# ./docker_images.sh load-images
-...
-```
+    
+    ```bash
+    [root@localhost save]# ./docker_images.sh save-images 
+    Create /opt/save/images.db
+    Read /opt/save/images.db
+    Create /opt/save/images
+    [DEBUG] save 00ead811e8ae docker.io/portainer/portainer:latest to /opt/save/images/00ead811e8ae.dim
+    real	0m27.343s
+    [DEBUG] save d63b9b4bd205 rancher/server:v1.6.14 to /opt/save/images/d63b9b4bd205.dim
+    real	4m46.480s
+    [DEBUG] save 34a453d374b9 docker.io/rancher/agent:v1.2.9 to /opt/save/images/34a453d374b9.dim
+    real	0m28.037s
+    
+    [root@localhost save]# ./docker_images.sh load-images
+    ...
+    ```
 
 #### 容器启动后自动运行脚本
 情景：1、镜像已经存在。2、镜像内包含脚本`/home/ssh.sh`需要在容器启动后运行

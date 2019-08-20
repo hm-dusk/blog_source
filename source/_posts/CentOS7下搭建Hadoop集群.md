@@ -21,6 +21,7 @@ CentOS7下搭建Hadoop集群
 |hadoopmaster|192.168.171.10|
 |hadoop001|192.168.171.11|
 |hadoop002|192.168.171.12|
+
 ### 准备环境
 #### 虚拟机创建多个Linux系统并配置静态IP
 配置静态IP教程请点击[这里](http://blog.hming.org/2018/08/09/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/)

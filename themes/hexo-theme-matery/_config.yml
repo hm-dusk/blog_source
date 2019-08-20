@@ -207,10 +207,12 @@ mySkills:
 myGallery:
   enable: true
   data:
-    - /medias/featureimages/0.jpg
-    - /medias/featureimages/1.jpg
-    - /medias/featureimages/2.jpg
     - /medias/cycling/cycling2.jpg
+    - /medias/cycling/cycling3.jpg
+    - /medias/cycling/cycling4.jpg
+#    - /medias/featureimages/0.jpg
+#    - /medias/featureimages/1.jpg
+#    - /medias/featureimages/2.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件

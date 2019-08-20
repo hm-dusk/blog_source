@@ -20,6 +20,7 @@ CentOS7下离线安装MySQL
 ![下载页面1](http://image.hming.org/centos7下安装mysql/下载页面1.png)
 2. 跳过登录直接下载
 ![下载页面2](http://image.hming.org/centos7下安装mysql/下载页面2.png)
+
 ### 卸载系统自带的mariadb-lib
 ```bash
 [root@hadoopmaster opt]# rpm -qa|grep mariadb
@@ -46,6 +47,7 @@ mysql-community-server-5.7.24-1.el7.x86_64.rpm
 mysql-community-server-minimal-5.7.24-1.el7.x86_64.rpm
 mysql-community-test-5.7.24-1.el7.x86_64.rpm
 ```
+
 ### 安装
 使用`rpm -ivh`命令依次进行安装
 按顺序安装以下软件包
@@ -83,23 +85,25 @@ mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm
 正在升级/安装...
    1:mysql-community-server-5.7.24-1.e################################# [100%]
 ```
-`注意：安装mysql-community-server-5.7.24-1.el7.x86_64.rpm时可能会遇到问题:`
-```bash
-[root@hadoopmaster mysql]# rpm -ivh mysql-community-server-5.7.24-1.el7.x86_64.rpm 
-警告：mysql-community-server-5.7.24-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
-错误：依赖检测失败：
-   libaio.so.1()(64bit) 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
-   libaio.so.1(LIBAIO_0.1)(64bit) 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
-   libaio.so.1(LIBAIO_0.4)(64bit) 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
-   net-tools 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
-```
-解决办法：
-```bash
-1）缺少libaio
-[root@hadoopmaster mysql]# yum -y install libaio
-2）缺少net-tools
-[root@hadoopmaster mysql]# yum -y install net-tools
-```
+
+> 注意：安装mysql-community-server-5.7.24-1.el7.x86_64.rpm时可能会遇到问题:`
+> ```bash
+> [root@hadoopmaster mysql]# rpm -ivh mysql-community-server-5.7.24-1.el7.x86_64.rpm 
+> 警告：mysql-community-server-5.7.24-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
+> 错误：依赖检测失败：
+>    libaio.so.1()(64bit) 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
+>    libaio.so.1(LIBAIO_0.1)(64bit) 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
+>    libaio.so.1(LIBAIO_0.4)(64bit) 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
+>    net-tools 被 mysql-community-server-5.7.24-1.el7.x86_64 需要
+> ```
+> 解决办法：
+> ```bash
+> 1）缺少libaio
+> [root@hadoopmaster mysql]# yum -y install libaio
+> 2）缺少net-tools
+> [root@hadoopmaster mysql]# yum -y install net-tools
+> ```
+
 ### 初始化数据库
 初始化后会在`/var/log/mysqld.log`生成随机密码
 ```bash

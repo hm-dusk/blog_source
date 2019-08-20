@@ -19,6 +19,7 @@ password:
 |hadoopmaster|192.168.171.10|
 |hadoop001|192.168.171.11|
 |hadoop002|192.168.171.12|
+
 ### 下载安装包
 下载地址：[http://mirrors.shu.edu.cn/apache/zookeeper/](http://mirrors.shu.edu.cn/apache/zookeeper/)
 根据需要选择合适的版本，本文为`zookeeper-3.4.12.tar.gz`

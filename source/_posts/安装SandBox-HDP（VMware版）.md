@@ -18,10 +18,12 @@ SandBox HDP版本3.0.1，安装环境为Windows 10
 <!-- more -->
 参考官网教程：[Deploying Hortonworks Sandbox on VMWare](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/2/)
 ### 环境准备
+
 |方面|要求|
 |:--:|:--:|
 |软件|[安装VMware](https://my.vmware.com/cn/web/vmware/downloads)|
 |内存|推荐16G以上（会开一个内存为10G的虚拟机）|
+
 ### 运行原理
 VMware启动了一个Linux虚拟机，在Linux虚拟机里面会启动两个docker容器
 ```bash

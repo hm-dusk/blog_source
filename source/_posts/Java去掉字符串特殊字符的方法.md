@@ -28,7 +28,7 @@ java中利用Unicode编码过滤字符串中特定字符的方法
 |**`C`**|其他字符|
 
 例：
-```
+```java
 String result = 
   ",.!，，D_NAME。！；‘’”“《》**dfs  #$%^&()-+1431221厉害123漢字どうかのjavaを決繁体";
 result = result.replaceAll("[\\pP\\pZ\\pS\\pC\\pM]", "");

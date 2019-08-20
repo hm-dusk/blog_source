@@ -41,9 +41,11 @@ SandBox提供三种安装方式：`VirtualBox虚拟机`、`VMware虚拟机`、`D
 4200端口则提供了一个浏览器访问命令行的接口：
 ![浏览器访问hdp容器](http://image.hming.org/sandbox-hdp使用详解/浏览器访问hdp容器.png)
 使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码，对密码强度会有要求
+
 ### 登录到HDP环境主机
 在运行docker的主机上可以通过`2222`端口登录到HDP docker主机中，也可以通过`docker exec`命令进入
 在其他机器上想登录到HDP主机就只能通过SSH了
+
 ```bash
 # SSH登录需要输入密码，root初始密码为hadoop
 [root@sandbox opt]# ssh 127.0.0.1 -p 2222
@@ -55,6 +57,7 @@ Last login: Thu Apr  4 08:22:27 2019 from 172.18.0.3
 [root@sandbox opt]# docker exec -it sandbox-hdp /bin/bash
 [root@sandbox-hdp /]# 
 ```
+
 ### 登录到Ambari界面
 默认提供的账户，更多账号信息参考[官网](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#login-credentials)
 
@@ -68,13 +71,16 @@ Last login: Thu Apr  4 08:22:27 2019 from 172.18.0.3
 
 ### 重置Ambari管理员密码
 1. 以root用户登录到HDP主机
+
 ```bash
 [root@sandbox opt]# ssh 127.0.0.1 -p 2222
 root@127.0.0.1`s password: 
 Last login: Thu Apr  4 08:22:27 2019 from 172.18.0.3
 [root@sandbox-hdp ~]# 
 ```
+
 2. 运行`ambari-admin-password-reset`命令，根据提示修改密码
+
 ```bash
 [root@sandbox-hdp /]# ambari-admin-password-reset
 Please set the password for admin: 
@@ -98,6 +104,7 @@ DB configs consistency check: no errors and warnings were found.
 ERROR: Exiting with exit code 1. 
 REASON: Server not yet listening on http port 8080 after 90 seconds. Exiting.
 ```
+
 > 可能会遇到报错
   `ERROR: Exiting with exit code 1. 
    REASON: Server not yet listening on http port 8080 after 90 seconds. Exiting.`

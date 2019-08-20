@@ -15,11 +15,13 @@ password:
 搭建HBase集群，使用外部Zookeeper集群
 <!-- more -->
 ### 本文环境
+
 |节点|IP地址|
 |:---:|:---:|
 |hadoopmaster|192.168.171.10|
 |hadoop001|192.168.171.11|
 |hadoop002|192.168.171.12|
+
 ### 下载安装包
 下载地址：[http://archive.apache.org/dist/hbase/](http://archive.apache.org/dist/hbase/)
 根据需要选择合适的版本，本文为`hbase-1.4.8-bin.tar.gz`
@@ -138,6 +140,7 @@ $> hbase-daemon.sh start regionserver	//启动单个rs节点
 |/hbase/data|数据|
 |/hbase/data/default|hbase内置默认名字空间|
 |/hbase/data/hbase|hbase内置的名字空间（相当于hive中的数据库）|
+
 文件表示完整路径示意：
 `/hbase/data/${namespace}/${tablename}/${region_name}/${column_family}/${file_name}`
 ### HBase常用命令

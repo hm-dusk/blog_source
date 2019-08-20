@@ -96,7 +96,7 @@ tcp6       0      0 :::6002                 :::*                    LISTEN      
 
 ### 配置防火墙，开通端口
 如果没有开启防火墙，则这一步可以跳过
-根据监听的端口，进行端口开放，每个用户会对应一个端口，第一个用户默认为`5901`端口，如果配置多个，则需要开发相应端口
+根据监听的端口，进行端口开放，每个用户会对应一个端口，第一个用户默认为`5901`端口，如果配置多个，则需要开放相应端口
 ```bash
 [root@AccessGateway ~]# firewall-cmd --add-port=5901/tcp --permanent
 [root@AccessGateway ~]# firewall-cmd --reload

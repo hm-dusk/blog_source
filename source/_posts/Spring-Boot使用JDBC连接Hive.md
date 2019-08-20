@@ -55,8 +55,10 @@ thumbnail: 'http://image.hming.org/logo/spring-boot.png'
       profiles:
         active: hive
     ```
+
 ### 编写config配置类，将Hive的JdbcTemplate加载到Spring容器中
 1. 采用手动加载DataSource配置方式（不推荐）
+
 ```java
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
@@ -117,8 +119,10 @@ public class HiveJdbcConfig {
 	}
 }
 ```
+
 2. 采用自动加载DataSource配置方式（推荐）
 该方式需要yml配置文件中变量名与DataSource类里面的变量名对应
+
 ```java
 package tech.segma.bi.config;
 

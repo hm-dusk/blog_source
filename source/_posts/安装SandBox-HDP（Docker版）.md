@@ -22,6 +22,7 @@ SandBox HDP版本3.0.1，安装环境为CentOS7
 |软件|[安装docker](http://blog.hming.org/2018/09/18/Docker%E6%9B%BF%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#%E5%AE%89%E8%A3%85)|
 |内存|官方推荐docker容器至少10G|
 |磁盘|docker镜像目录至少30G（sandbox镜像27.5G）|
+
 ### 下载脚本文件
 到[官网](https://hortonworks.com/downloads/#sandbox)下载zip格式的shell脚本文件
 ![脚本下载](http://image.hming.org/安装sandbox-docker/docker脚本文件下载.png)

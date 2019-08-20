@@ -135,6 +135,7 @@ hive其他配置参考：[Hive Configuration Properties](https://cwiki.apache.or
   </property>
 </configuration>
 ```
+
 ### 复制mysql驱动到hive安装目录的lib下
 `mysql-connector-java-5.1.46.jar`
 [点我查看驱动包下载方式](http://blog.hming.org/2018/12/09/MySQL连接驱动包下载方法/)

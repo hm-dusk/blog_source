@@ -20,11 +20,15 @@ CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 |hdp001|192.168.171.10|
 |hdp002|192.168.171.11|
 |hdp003|192.168.171.12|
+
 ### 环境准备
+
 #### 磁盘准备
 离线安装包共计10G左右，解压后共计11G左右，请保证有足够空间。
+
 #### 配置免密登录
 配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
+
 #### 关闭防火墙
 查看防火墙状态
 `firewall-cmd --state`或`systemctl status firewalld`
@@ -46,6 +50,7 @@ CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 2. 安装/更新Python `yum -y install python`
 3. 离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/CentOS7%E4%B8%8B%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85MySQL/)
 新建数据库hive、ambari（为后续安装做准备）。
+
 ```bash
 mysql> create database hive;
 Query OK, 1 row affected (0.00 sec)
@@ -53,6 +58,7 @@ Query OK, 1 row affected (0.00 sec)
 mysql> create database ambari;
 Query OK, 1 row affected (0.00 sec)
 ```
+
 #### 下载离线包（包含HDP、ambari、HDP-UTILS、HDP-GPL（非必须））
 [Ambari-2.7.3.0下载地址](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-installation/content/ambari_repositories.html)
 [HDP-3.1.0.0相关包下载地址](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-installation/content/hdp_31_repositories.html)
@@ -155,14 +161,17 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
     [root@hdp001 ambari]# yum repolist
     ...
     ```
+
 ### 安装Ambari-server
 本次安装使用第三方数据库MySQL模式，默认为PostgreSQL模式（生产环境不推荐）。
 需提前准备好MySQL数据库连接jar包，[MySQL连接驱动包下载方法](http://blog.hming.org/2018/12/09/MySQL%E8%BF%9E%E6%8E%A5%E9%A9%B1%E5%8A%A8%E5%8C%85%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%B3%95/)
 #### Ambari-server节点（主节点）安装Ambari-server
+
 ```bash
 [root@hdp001 ~]# yum -y install ambari-server
 ...
 ```
+
 #### 初始化设置
 使用`ambari-server setup`命令进行初始化操作。
 
@@ -228,8 +237,10 @@ Ambari repo file contains latest json url http://public-repo-1.hortonworks.com/H
 Adjusting ambari-server permissions and ownership...
 Ambari Server 'setup' completed successfully.
 ```
+
 根据上文提示执行DDL语句。
 将`/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql`文件拷贝到MySQL安装节点，并在ambari数据库中执行该脚本。
+
 ```bash
 [root@hdp001 home]# scp /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql hdp002:/home
 Ambari-DDL-MySQL-CREATE.sql                                        100%   82KB  39.1MB/s   00:00
@@ -262,6 +273,7 @@ mysql> source /home/Ambari-DDL-MySQL-CREATE.sql;
 ```
 #### 启动ambari-server
 执行`ambari-server start`命令启动服务
+
 ```bash
 [root@hdp001 home]# ambari-server start
 Using python  /usr/bin/python
@@ -271,6 +283,7 @@ ERROR: Exiting with exit code -1.
 REASON: Before starting Ambari Server, you must copy the MySQL JDBC driver JAR file to
 /usr/share/java and set property "server.jdbc.driver.path=[path/to/custom_jdbc_driver]" in ambari.properties.
 ```
+
 报错。根据提示信息，将MySQL连接包拷贝到`/usr/share/java/`目录下，并设置参数路径（也可在之后安装hive相关组件时设置该参数）。
 可能会遇到`/usr/share/java`不是一个目录的情况，此时删掉该文件，新建一个java目录即可。
 ```bash
@@ -358,4 +371,5 @@ ambari-agent安装成功
 |ambari-server安装目录|/usr/lib/ambari-server|
 |ambari-agent安装目录|/usr/lib/ambari-agent|
 |日志安装目录|/var/log|
-ambari安装的hdp路径是不能更改的，但是可以用软链接将以上路径链接到其他路径。
+
+> ambari安装的hdp路径是不能更改的，但是可以用软链接将以上路径链接到其他路径。

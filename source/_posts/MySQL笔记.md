@@ -36,7 +36,7 @@ SQL语句分类：
 ## 四、DDL（数据库或表的结构操作）
 **操作库：**
 
-```java
+```sql
 查看所有数据库：SHOW DATABASES
 切换（选择要操作的）数据库：USE 数据库名
 创建数据库：CREATE DATABASE [IF NOT EXISTS] 数据库名
@@ -46,7 +46,7 @@ SQL语句分类：
 
 **操作表：**
 
-```java
+```sql
 创建表：
      CREATE TABLE [IF NOT EXISTS] 表名（
           列名 列类型，
@@ -54,13 +54,13 @@ SQL语句分类：
           。。。
      ）；
 ```
-```
+```sql
 查看当前数据库中所有表：SHOW TABLES
 查询某一张表结构：DESC 表名
 删除表：DROP TABLE 表名
 修改表：前缀：ALTER TABLE 表名称
 ```
-```
+```sql
 添加列：add（
           列名 列类型，
           列名 列类型，
@@ -88,14 +88,14 @@ timestamp：时间戳类型
 
 ## 六、DML（对表的记录更新（增、删、改））
 ### 插入数据
-```
+```sql
 INSERT INTO 表名（列名1，列名2，。。。）VALUES（列值1，列值2，。。。）；
 ```
   > 在表名后给出要插入的列名，其他没有指定的列等同与插入null值。`所以插入记录总是插入一行，不可能是半行`。
   > 在VALUES后给出列值，值的顺序和个数必须与前面指定的列`对应`
 如果表中有自增的主键，那么可以用这种方法不指定主键列，也可以用null和0代替，MySQL会自己处理
 
-```
+```sql
 INTERT INTO 表名 VALUES(列值1, 列值2)
 ```
   > 没有给出要插入的列，那么表示插入所有列。
@@ -103,18 +103,18 @@ INTERT INTO 表名 VALUES(列值1, 列值2)
   > 值的顺序，必须与表创建时给出的列的顺序相同。
 
 ### 修改数据
-```
+```sql
 UPDATE 表名 SET 列名1=列值1, 列名2=列值2, ... [WHERE 条件]
 ```
 >条件(条件可选的)：
   条件必须是一个boolean类型的值或表达式：*UPDATE t_person SET gender='男', age=age+1 WHERE sid='1';*
   运算符：*=、!=、<>、>、<、>=、<=、BETWEEN...AND、IN(...)、IS NULL、NOT、OR、AND*
 
-```
+```sql
 WHERE age >= 18 AND age <= 80
 等价于WHERE age BETWEEN 18 AND 80
 ```
-```
+```sql
 WHERE name='zhangSan' OR name='liSi'
 等价于WHERE name IN ('zhangSan', 'liSi')
 WHERE age IS NULL, 不能使用等号
@@ -122,7 +122,7 @@ WHERE age IS NOT NULL
 ```
 
 ### 删除数据
-```
+```sql
 DELETE FROM 表名 [WHERE 条件];
 TRUNCATE TABLE 表名：TRUNCATE是DDL语句，它是先删除drop该表，再create该表。而且无法回滚！！！
 ```
@@ -132,14 +132,14 @@ TRUNCATE TABLE 表名：TRUNCATE是DDL语句，它是先删除drop该表，再cr
 * 这个用户只能对这个数据库有权限，其他数据库你就操作不了了！
 
 ### 创建用户
-```
+```sql
 CREATE USER 用户名@IP地址 IDENTIFIED BY '密码';
     > 用户只能在指定的IP地址上登录
 CREATE USER 用户名@'%' IDENTIFIED BY '密码';
     > 用户可以在任意IP地址上登录
 ```
 ### 给用户授权
-```
+```sql
 GRANT 权限1, … , 权限n ON 数据库.* TO 用户名@IP地址
     > 权限、用户、数据库
     > 给用户分派在指定的数据库上的指定的权限
@@ -147,13 +147,13 @@ GRANT 权限1, … , 权限n ON 数据库.* TO 用户名@IP地址
     > 例如；GRANT,CREATE,ALTER,DROP,INSERT,UPDATE,DELETE,SELECT ON mydb1.* TO user1@localhost;
     > 	给user1用户分派在mydb1数据库上的create、alter、drop、insert、update、delete、select权限
 ```
-```
+```sql
   * GRANT ALL ON 数据库.* TO 用户名@IP地址;
     > 给用户分派指定数据库上的所有权限
 ```
 
 ### 撤销授权
-```
+```sql
   * REVOKE 权限1, … , 权限n ON 数据库.* FROM 用户名@IP地址;
     > 撤消指定用户在指定数据库上的指定权限
     > 
@@ -162,12 +162,12 @@ GRANT 权限1, … , 权限n ON 数据库.* TO 用户名@IP地址
 ```
 
 ### 查看权限
-```
+```sql
 SHOW GRANTS FOR 用户名@IP地址
     > 查看指定用户的权限
 ```
 ### 删除用户
-```
+```sql
 DROP USER 用户名@IP地址
 ```
 ## 八、DQL数据库查询语言
@@ -282,7 +282,8 @@ DROP USER 用户名@IP地址
   >例如：查询起始行为第5行，一共查询3行记录
   `SELECT * FROM emp LIMIT 4, 3;`
   --> 其中4表示从第5行开始，其中3表示一共查询3行。即第5、6、7行记录。
-```
+  
+```sql
   select * from emp limit 0, 5;
 
   1. 一页的记录数：10行
@@ -330,27 +331,27 @@ sql语句 --> 数据库
 
   **当表的某一列被指定为主键后，该列就不能为空，不能有重复值出现。**
 *创建表时指定主键的两种方式：*
-    ```
-
-    1.
-    CREATE TABLE stu(
-    sid        CHAR(6) PRIMARY KEY,
-    sname    VARCHAR(20),
-    age        INT,
-    gender    VARCHAR(10)
-    );
-    指定sid列为主键列，即为sid列添加主键约束
-
-   	2.
-    CREATE TABLE stu(
-    sid        CHAR(6),
-    sname    VARCHAR(20),
-    age        INT,
-    gender    VARCHAR(10),
-    PRIMARY KEY(sid)
-    );
-    指定sid列为主键列，即为sid列添加主键约束
-    ```
+1.
+```sql
+CREATE TABLE stu(
+sid        CHAR(6) PRIMARY KEY,
+sname    VARCHAR(20),
+age        INT,
+gender    VARCHAR(10)
+);
+指定sid列为主键列，即为sid列添加主键约束
+```
+2.
+```sql
+CREATE TABLE stu(
+sid        CHAR(6),
+sname    VARCHAR(20),
+age        INT,
+gender    VARCHAR(10),
+PRIMARY KEY(sid)
+);
+指定sid列为主键列，即为sid列添加主键约束
+```
 
   *修改表时指定主键：*
   `ALTER TABLE stu ADD PRIMARY KEY(sid);`
@@ -361,7 +362,7 @@ sql语句 --> 数据库
   * 因为主键列的特性是：`必须唯一`、`不能为空`，所以我们通常会指定主键类为整型，然后设置其自动增长，这样可以保证在插入数据时主键列的唯一和非空特性。
 
   * **创建表时指定主键自增长**
-```
+```sql
   CREATE TABLE stu(
         sid INT PRIMARY KEY AUTO_INCREMENT,
         sname    VARCHAR(20),
@@ -381,27 +382,30 @@ sql语句 --> 数据库
 1. 非空约束
   * 因为某些列不能设置为NULL值，所以可以对列添加非空约束。
   * 例如：
-```
+  
+```sql
   CREATE TABLE stu(
         sid INT PRIMARY KEY AUTO_INCREMENT,
         sname    VARCHAR(20) NOT NULL,
         age        INT,
         gender    VARCHAR(10)
   );
-  * 对sname列设置了非空约束
 ```
+> 对sname列设置了非空约束
+
 2. 唯一约束
   * 车库某些列不能设置重复的值，所以可以对列添加唯一约束。
   * 例如：
-```
+
+```sql
   CREATE TABLE stu(
         sid INT PRIMARY KEY AUTO_INCREMENT,
         sname    VARCHAR(20) NOT NULL UNIQUE,
         age        INT,
         gender    VARCHAR(10)
   );
-  * 对sname列设置了唯一约束
 ```
+> 对sname列设置了唯一约束
 
 ## 十三、概述模型、对象模型、关系模型
 *对象模型：*可以双向关联，而且引用的是对象，而不是一个主键！
@@ -428,16 +432,17 @@ use a
 >   类就使用成员变量来完成关系，一般都是双向关联！
   多对一双向中关联，即员工关联部门，部门也关联员工
 
-  ```
-  class Employee {//多方关联一方
-     ...
-     private Department department;
-  }
-  class Department {//一方关联多方
-     ...
-     private List<Employee> employees;
-  }```
-```
+```sql
+class Employee {//多方关联一方
+   ...
+   private Department department;
+}
+class Department {//一方关联多方
+   ...
+   private List<Employee> employees;
+}```
+
+```sql
   class Husband {
      ...
      private Wife wife;
@@ -447,7 +452,7 @@ use a
      private Husband
   }
 ```
-```
+```sql
   class Student {
      ...
      private List<Teacher> teachers
@@ -455,7 +460,8 @@ use a
   class Teacher {
      ...
      private List<Student> students;
-  }```
+  }
+```
 
 ## 十四、外键约束
  * 外键必须是`另一表的主键的值`(外键要引用主键！)
@@ -466,7 +472,7 @@ use a
 
   *概念模型在数据库中成为表*
   数据库表中的多对一关系，只需要在多方使用一个独立的列来引用1方的主键即可
-  ```
+  ```sql
   /*员工表*/
   create talbe emp (
     empno int primary key,/*员工编号*/
@@ -485,7 +491,7 @@ use a
   我们需要给emp.deptno添加外键约束，约束它的值必须在dept.deptno中存在。外键必须是另一个表的主键！
 > 语法：`CONSTRAINT 约束名称 FOREIGN KEY(外键列名) REFERENCES 关联表(关联表的主键)`
 >* 创建表时指定外键约束
-```  
+```sql
   create talbe emp (
     empno int primary key,
     ...
@@ -494,12 +500,12 @@ use a
   );
 ```
 >* 修改表时添加外键约束
-```
+```sql
   ALERT TABLE emp
   ADD CONSTRAINT fk_emp_deptno FOREIGN KEY(deptno) REFERENCES dept(deptno);
 ```
 >* 修改表时删除外键约束
-```
+```sql
   ALTER TABLE emp
   DROP FOREIGN KEY fk_emp_deptno;/*约束名称*/
 ```
@@ -507,7 +513,7 @@ use a
 ## 十五、数据库关系
 *1.一对一关系*
 在表中建立一对一关系比较特殊，需要让其中一张表的主键，`即是主键又是外键`。
-```
+```sql
   create table husband(
     hid int PRIMARY KEY,
     ...
@@ -518,7 +524,7 @@ use a
     ADD CONSTRAINT fk_wife_wid FOREIGN KEY(wid) REFERENCES husband(hid)
   );
 ```
-	> 其中wife表的wid即是主键，又是相对husband表的外键！
+> 其中wife表的wid即是主键，又是相对husband表的外键！
   husband.hid是主键，不能重复！
   wife.wid是主键，不能重复，又是外键，必须来自husband.hid。
   所以如果在wife表中有一条记录的wid为1，那么wife表中的其他记录的wid就不能再是1了，因为它是主键。
@@ -527,7 +533,7 @@ use a
 
 *2.多对多关系*
 在表中建立多对多关系需要使用中间表，即需要三张表，在中间表中使用两个外键，分别引用其他两个表的主键。
-```
+```sql
   create table student(
     sid int PRIMARY KEY,
     ...
@@ -537,7 +543,7 @@ use a
     ...
   );
 ```
-```
+```sql
   create table stu_tea(
     sid int,
     tid int,
@@ -545,9 +551,9 @@ use a
     ADD CONSTRAINT fk_stu_tea_tid FOREIGN KEY(tid) REFERENCES teacher(tid)
   );
 ```
-  >这时在stu_tea这个中间表中的每条记录都是来说明student和teacher表的关系
-  例如在stu_tea表中的记录：sid为1001，tid为2001，这说明编号为1001的学生有一个编号为2001的老师
-  ```
+> 这时在stu_tea这个中间表中的每条记录都是来说明student和teacher表的关系
+例如在stu_tea表中的记录：sid为1001，tid为2001，这说明编号为1001的学生有一个编号为2001的老师
+  ```sql
   sid    tid
   101    201 /*编号为101的学生有一个编号为201的老师*/
   101    202 /*编号为101的学生有一个编号为202的老师*/
@@ -566,7 +572,7 @@ use a
   * 要求被合并的表中，列的`类型`和`列数`相同
   * UNION：去除重复行
   * UNION ALL：不去除重复行
-```
+```sql
 SELECT * FROM cd
 UNION ALL
 SELECT * FROM ab;

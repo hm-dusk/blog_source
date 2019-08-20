@@ -19,22 +19,22 @@ MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写�
 [参考官方安装文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
 
 #### 1. 导入public key
-```
+```bash
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 ```
 
 #### 2. 导入源（不同Ubuntu版本的源不一样，此处采用Ubuntu 16.04）
-```
+```bash
 echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 ```
 
 #### 3. 重新加载本地源
-```
+```bash
 sudo apt-get update
 ```
 
 #### 4. 安装mongodb
-```
+```bash
 sudo apt-get install -y mongodb-org
 ```
 
@@ -45,23 +45,23 @@ sudo apt-get install -y mongodb-org
 ![](http://image.hming.org/mongodb复制集搭建/%E9%BB%98%E8%AE%A4mongodb%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.jpg)
 
 #### 6. 启动mongodb 
-```
+```bash
 mongod -f /etc/mongod.conf
 ```
 
 #### 7. 卸载mongodb
 1)停止mongodb服务
-```
+```bash
 sudo service mongod stop
 ```
 2)删除软件包
 删除您以前安装的任何MongoDB包。
-```
+```bash
 sudo apt-get purge mongodb-org *
 ```
 3)删除数据目录
 删除数据库和日志文件
-```
+```bash
 sudo rm -r / var / log / mongodb 
 sudo rm -r / var / lib / mongodb
 ```
@@ -70,7 +70,7 @@ sudo rm -r / var / lib / mongodb
 到[清华开源镜像](https://mirrors.tuna.tsinghua.edu.cn/mongodb/apt/ubuntu/dists/xenial/mongodb-org/)下载相应的包
 
 #### 1. 解压到需要安装的目录
-```
+```bash
 tar zxvf mongodb-linux-x86_64-ubuntu1604-3.4.4.tgz
 ```
 >tar命令参数详解：
@@ -89,18 +89,18 @@ tar zxvf mongodb-linux-x86_64-ubuntu1604-3.4.4.tgz
 
 #### 2. 创建存放数据文件目录以及日志文件目录（可以自己指定）
 可以创建多个数据库存放路径，每个数据库对应一个conf配置文件，mongodb只需要安装一次
-```
+```bash
 mkdir -p /mongodb/db  # 创建数据文件夹
 mkdir -p /mongodb/log
 touch /mongodb/log/mongodb.log  #创建文件
 ```
 #### 3. 在适当的路径编辑配置文件（后缀可选conf和yaml）
-```
+```bash
 vi mongodb.conf
 ```
 配置文件模板：
 
-```
+```bash
 # mongodb.conf
 # Where and how to store data.
 storage:
@@ -130,7 +130,7 @@ processManagement:
 >文件路径修改为设置的存储路径，端口可自定义（一般推荐27或者28开头的5位数）
 
 #### 4. 配置环境变量PATH路径
-```
+```bash
 # 这里也可以修改~/.bashrc文件（区别见下表）
 sudo vi /etc/profile
 
@@ -154,22 +154,22 @@ export PATH=/home/dusk/mongodb/bin:$PATH
 > * *~/.bash_logout*：当该用户退出bash shell时执行
 
 #### 5. 如果修改的是/etc/profile，则需要重新启动配置文件
-```
+```bash
 source /etc/profile
 ```
 
 #### 6. 在配置文件路径启动mongodb
 
-```
+```bash
 mongod -f mongodb.conf
 ```
 ### 关闭MongoDB
 1. 使用mongod命令
-```
+```bash
 mongod --shutdown --dbpath /数据库储存路径
 ```
 2. 连接进mongodb数据库关闭
-```
+```bash
 # 进入mongoshell
 mongo --port=28001
 # 使用admin数据库（只有在admin下才能执行shutdown方法）
@@ -198,7 +198,7 @@ MongoDB Replica Set是MongoDB官方推荐的主从复制和高可用方案，用
 >*当然，你也可以在一台电脑上搭建复制集，但是端口一定不要冲突*
 
 ### 2.确保每个节点数据、日志文件都建立完毕
-```
+```bash
 # 数据目录
 mkdir -p /mongodb/data/
 # 日志目录
@@ -211,13 +211,13 @@ mkdir -p /mongodb/conf
 >参考上面的mongodb环境搭建
 
 ### 3.修改每个节点的配置文件（重点）
-```
+```bash
 # 例：
 vi /mongodb/conf/mongodb.yaml
 ```
 在文件后面追加：
 
-```
+```bash
 # 副本
 replication:
   #设置复制集名称，可自定义
@@ -232,18 +232,18 @@ replication:
 >*复制集名称每个节点一定要一样*
 
 ### 4.启动每个节点
-```
+```bash
 mongod -f /mongodb/conf/mongodb.conf
 ```
 ### 5.进入一个节点配置复制集（重点）
-```
+```bash
 #任意一个节点上(最好选在主节点node1)
 mongo --port 28001
 ```
 在mongo shell中配置副本
 *输入rs.help()可以查看rs的各种方法*
 
-```
+```bash
 # 初始化复制集
 rs.initiate()
 # 显示复制集配置对象
@@ -255,7 +255,7 @@ rs.addArb("node3:28001")
 ```
 查看副本集状态，可以看到复制集的全部信息都被显示出来
 
-```
+```json
 DBTEST:PRIMARY> rs.status()
 {
     "set" : "DBTEST",
@@ -317,14 +317,14 @@ DBTEST:PRIMARY> rs.status()
 }
 ```
 ### 6.删除子节点
-```
+```bash
 rs.remove("node3:28001")
 # 返回{"ok" : 1}
 ```
 ### 7.可能遇到的问题
 在节点中执行show方法可能出现
 
-```
+```json
 DBTEST:SECONDARY> show databases
 2017-07-28T11:15:06.856+0800 E QUERY    [thread1] Error: listDatabases failed:{
         "ok" : 0,
