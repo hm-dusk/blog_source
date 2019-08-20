@@ -8,13 +8,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/sandbox+docker.png'
+img: 'http://image.hming.org/logo/sandbox+docker.png'
 date: 2019-04-02 11:28:17
 updated: 2019-6-5 12:00:53
 password:
+summary: SandBox HDP版本3.0.1，安装环境为CentOS7
 ---
-SandBox HDP版本3.0.1，安装环境为CentOS7
-<!-- more -->
 参考官网教程：[Deploying Hortonworks Sandbox on Docker](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/)
 ### 环境准备
 |方面|要求|

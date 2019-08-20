@@ -6,13 +6,12 @@ tags:
 comments: true
 categories:
   - Linux
-thumbnail: 'http://image.hming.org/logo/linux.jpg'
+img: 'http://image.hming.org/logo/linux.jpg'
 date: 2019-08-06 16:00:24
 updated: 2019-08-06 16:00:24
 password:
+summary: 本文介绍在Centos7.6下安装VNC Viewer并通过Windows连接远程桌面的过程
 ---
-本文介绍在Centos7.6下安装VNC Viewer并通过Windows连接远程桌面的过程
-<!-- more -->
 ### 安装gnome桌面
 如果Centos7为最小化安装，则需要单独安装gnome图形化桌面
 ```bash

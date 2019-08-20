@@ -10,11 +10,9 @@ updated: 2018-11-6 14:14:02
 categories: 
   - 运动
 password:
-thumbnail: 'http://image.hming.org/keep跑步秘诀/跑步封面.jpg'
+img: 'http://image.hming.org/keep跑步秘诀/跑步封面.jpg'
+summary: keep《跑步减脂不累腿的秘诀》--笔记
 ---
-keep《跑步减脂不累腿的秘诀》--笔记
-<!-- more -->
-
 > 原文作者：Amazing_H
 > 链接：[https://www.jianshu.com/p/894f942005c9](https://www.jianshu.com/p/894f942005c9)
 > 转载來源：简书

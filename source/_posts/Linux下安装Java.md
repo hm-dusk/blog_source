@@ -9,10 +9,9 @@ comments: true
 categories: 
   - Linux
 password:
-thumbnail: 'http://image.hming.org/logo/java.jpg'
+img: 'http://image.hming.org/logo/java.jpg'
+summary: Linux下安装Java
 ---
-Linux下安装Java
-<!-- more -->
 ### 将Java压缩包传到Linux
 使用`rz`命令将tar包上传到Linux系统
 ![rz命令](http://image.hming.org/linux%E4%B8%8B%E5%AE%89%E8%A3%85java/rz%E6%88%AA%E5%9B%BE.jpg)

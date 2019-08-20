@@ -8,10 +8,9 @@ updated: 2017-07-29 19:03:26
 categories: 
   - 数据库
 password:
-thumbnail: 'http://image.hming.org/logo/mongodb.png'
+img: 'http://image.hming.org/logo/mongodb.png'
+summary: MongoDB笔记
 ---
-MongoDB笔记
-<!-- more -->
 ## 一、Mongo数据库为NoSQL数据库
 
 |关系型数据库|NoSQL数据库|

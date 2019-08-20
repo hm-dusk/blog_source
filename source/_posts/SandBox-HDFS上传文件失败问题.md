@@ -8,13 +8,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/sandbox.png'
+img: 'http://image.hming.org/logo/sandbox.png'
 date: 2019-04-16 10:02:55
 updated: 2019-04-16 10:02:55
 password:
+summary: SandBox上传文件到HDFS时，文件创建成功，向文件写入数据失败问题分析和解决方案。
 ---
-SandBox上传文件到HDFS时，文件创建成功，向文件写入数据失败问题分析和解决方案。
-<!-- more -->
 ### 问题描述
 远程（非Docker容器内、非宿主机）上传文件，新建文件成功，写入文件内容失败。查看`/var/log/hadoop/hdfs/hadoop-hdfs-namenode-sandbox-hdp.hortonworks.com.log`文件，发现如下错误：
 

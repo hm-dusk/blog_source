@@ -7,13 +7,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: ''
+img: ''
 date: 2019-07-03 14:25:43
 updated: 2019-7-19 11:22:22
 password:
+summary: Hortonworks HDP与Cloudera CDH对比。
 ---
-Hortonworks HDP与Cloudera CDH对比。
-<!-- more -->
 ### HDP与CDH的对比
 
 #### 版本更新对比

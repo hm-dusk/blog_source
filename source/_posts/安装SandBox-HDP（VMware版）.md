@@ -9,13 +9,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/sandbox+vmware.png'
+img: 'http://image.hming.org/logo/sandbox+vmware.png'
 date: 2019-04-02 11:28:35
 updated: 2019-04-02 11:28:35
 password:
+summary: SandBox HDP版本3.0.1，安装环境为Windows 10
 ---
-SandBox HDP版本3.0.1，安装环境为Windows 10
-<!-- more -->
 参考官网教程：[Deploying Hortonworks Sandbox on VMWare](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/2/)
 ### 环境准备
 

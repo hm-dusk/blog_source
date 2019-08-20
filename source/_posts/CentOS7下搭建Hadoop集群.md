@@ -10,11 +10,11 @@ date: 2018-09-16 23:40:16
 updated: 2019-2-18 15:05:06
 categories: 
   - 大数据
-password:
-thumbnail: 'http://image.hming.org/logo/hadoop.jpg'
+password: 
+img: 'http://image.hming.org/logo/hadoop.jpg'
+summary: CentOS7下搭建Hadoop集群
+cover: true
 ---
-CentOS7下搭建Hadoop集群
-<!-- more -->
 ### 本文环境
 |节点|IP地址|
 |:---:|:---:|

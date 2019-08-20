@@ -10,19 +10,18 @@ updated: 2019-5-20 16:45:43
 categories: 
   - Linux
 password:
-thumbnail: 'http://image.hming.org/logo/ssh.jpg'
+img: 'http://image.hming.org/logo/ssh.jpg'
+summary: Linux集群配置免密码登录
 ---
-Linux集群配置免密码登录
-<!-- more -->
-**本文环境：**
-
+### 本文环境
 |节点|IP地址|
 |:---:|:---:|
 |hadoopmaster|192.168.171.10|
 |hadoop001|192.168.171.11|
 |hadoop002|192.168.171.12|
-> **原理：**
-> 每台主机`authorized_keys`文件里面包含的主机（ssh秘钥），该主机都能无密码登录，所以只要每台主机的`authorized_keys`文件里面都放入其他主机（需要无密码登录的主机）的ssh秘钥就行了。
+
+### 原理
+每台主机`authorized_keys`文件里面包含的主机（ssh秘钥），该主机都能无密码登录，所以只要每台主机的`authorized_keys`文件里面都放入其他主机（需要无密码登录的主机）的ssh秘钥就行了。
 
 ### 配置每个节点的hosts文件
 `vim /etc/hosts`编辑hosts文件，添加如下代码

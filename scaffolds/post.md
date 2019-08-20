@@ -11,6 +11,7 @@ categories:
   - 
   - 
 password:
-thumbnail: ''
+img: ''
+summary: 
+cover: false
 ---
-<!-- more -->

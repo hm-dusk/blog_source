@@ -6,13 +6,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/zookeeper.png'
+img: 'http://image.hming.org/logo/zookeeper.png'
 date: 2018-12-15 11:18:14
 updated: 2018-12-15 16:29:28
 password:
+summary: 搭建zookeeper完全分布式环境
 ---
-搭建zookeeper完全分布式环境
-<!-- more -->
 ### 本文环境
 |节点|IP地址|
 |:---:|:---:|

@@ -11,11 +11,9 @@ updated: 2018-12-20 19:10:48
 categories: 
   - 容器
 password:
-thumbnail: 'http://image.hming.org/logo/docker.jpg'
+img: 'http://image.hming.org/logo/docker.jpg'
+summary: Docker替换镜像源与常用命令
 ---
-Docker替换镜像源与常用命令
-<!-- more -->
-
 ### 安装
 
 CentOS7下直接运行`yum -y install docker`

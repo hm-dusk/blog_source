@@ -7,13 +7,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/hdf.png'
+img: ''
 date: 2019-02-14 08:48:27
 updated: 2019-02-14 08:48:27
 password:
+summary: CentOS7离线安装HDF，Ambari版本：2.7.3.0，HDF版本：3.3.1.0
 ---
-CentOS7离线安装HDF，Ambari版本：2.7.3.0，HDF版本：3.3.1.0
-<!-- more -->
 ### 本文环境
 已存在Ambari和HDP环境，Ambari搭建参照[CentOS7离线安装HDP](https://blog.hming.org/2019/01/09/CentOS7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85HDP/)
 

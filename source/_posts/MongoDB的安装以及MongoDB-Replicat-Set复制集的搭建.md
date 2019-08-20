@@ -9,10 +9,9 @@ updated: 2017-07-29 11:32:03
 categories: 
   - 数据库
 password:
-thumbnail: 'http://image.hming.org/logo/mongodb.png'
+img: 'http://image.hming.org/logo/mongodb.png'
+summary: 记录MongoDB在Linux下的安装过程和MongoDB Replicat Set复制集的搭建过程。
 ---
-记录MongoDB在Linux下的安装过程和MongoDB Replicat Set复制集的搭建过程。
-<!-- more -->
 ## 一、搭建MongoDB单机环境
 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
 ### A、使用APT安装

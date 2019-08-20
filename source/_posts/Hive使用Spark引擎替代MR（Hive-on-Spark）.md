@@ -7,13 +7,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/hive+spark.png'
+img: 'http://image.hming.org/logo/hive+spark.png'
 date: 2018-12-09 17:19:50
 updated: 2018-12-09 17:19:50
 password:
+summary: Hive on Spark安装（Hive-2.3.4、Spark-2.0.0） 
 ---
-Hive on Spark安装（Hive-2.3.4、Spark-2.0.0） 
-<!-- more -->
 [官方文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Spark%3A+Getting+Started)
 [参考文章](https://blog.csdn.net/Dante_003/article/details/72867493)
 

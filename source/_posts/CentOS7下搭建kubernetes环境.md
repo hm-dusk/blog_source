@@ -10,10 +10,9 @@ categories:
 date: 2018-10-31 20:32:27
 updated: 2018-11-14 20:36:28
 password:
-thumbnail: 'http://image.hming.org/logo/kubernetes.png'
+img: 'http://image.hming.org/logo/kubernetes.png'
+summary: CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用
 ---
-CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用（进行中）
-<!-- more -->
 [1.11多主高可用](https://www.kubernetes.org.cn/4256.html)
 [1.10kubeadm安装](https://www.qikqiak.com/post/use-kubeadm-install-kubernetes-1.10/)
 ### 安装配置docker

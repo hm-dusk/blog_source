@@ -10,10 +10,9 @@ updated: 2018-10-28 15:13:14
 categories: 
   - 容器
 password:
-thumbnail: 'http://image.hming.org/logo/docker.jpg'
+img: 'http://image.hming.org/logo/docker.jpg'
+summary: Docker启动容器后一般是分配随机ip，本文将介绍如何使用Docker生成静态ip
 ---
-Docker启动容器后一般是分配随机ip，本文将介绍如何使用Docker生成静态ip
-<!-- more -->
 ### 创建自定义网络
 ```bash
 [root@hadoopmaster bin]# docker network create --subnet=172.18.0.0/16 my_network

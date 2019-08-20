@@ -7,13 +7,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/hbase.jpg'
+img: 'http://image.hming.org/logo/hbase.jpg'
 date: 2018-12-15 15:47:39
 updated: 2018-12-18 11:12:45
 password:
+summary: 搭建HBase集群，使用外部Zookeeper集群
 ---
-搭建HBase集群，使用外部Zookeeper集群
-<!-- more -->
 ### 本文环境
 
 |节点|IP地址|

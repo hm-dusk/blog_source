@@ -7,17 +7,17 @@ tags:
 comments: true
 categories:
   - Linux
-thumbnail: 'http://image.hming.org/logo/linux.jpg'
+img: 'http://image.hming.org/logo/linux.jpg'
 date: 2019-03-29 14:40:35
 updated: 2019-03-29 14:40:35
 password:
+summary: 制作离线yum源的方法
 ---
-制作离线yum源的方法
-<!-- more -->
 [参考](https://blog.csdn.net/huangjin0507/article/details/51351807)
 ### 基本步骤
 1. 制作或挂载一个本地yum源目录
 2. 修改或增加repo配置文件指向
+
 ### 离线yum包制作
 #### 利用官方包
 ##### 下载ISO文件
@@ -38,6 +38,7 @@ yum install -y yum-plugin-downloadonly
 Command line error: no such option: --downloadonly</package>
 ```
 3. 运行`yum list [package] --showduplicates` 来查看包的多个版本
+
 ##### 利用rpm包制作yum包
 1. 安装`createrepo`工具
 `createrepo`命令用来制作yum包，没有安装该软件可以通过下载`createrepo`的rpm包，通过rpm命令进行安装。
@@ -47,4 +48,5 @@ Command line error: no such option: --downloadonly</package>
  [root@hadoop001 yum-repo]# createrepo .
  ```
 4. 之后会生成一个`repodata`的目录,该目录就成了一个yum源
+
 ### 离线yum源配置

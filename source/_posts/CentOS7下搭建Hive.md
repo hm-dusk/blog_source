@@ -7,13 +7,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/hive.png'
+img: 'http://image.hming.org/logo/hive.png'
 date: 2018-12-06 15:18:49
 updated: 2019-1-3 20:45:43
 password:
+summary: CentOS7下搭建Hive
 ---
-CentOS7下搭建Hive，Hive元数据
-<!-- more -->
 ### 搭建Hadoop集群
 参考[CentOS7下搭建Hadoop集群](http://blog.hming.org/2018/09/16/CentOS7%E4%B8%8B%E6%90%AD%E5%BB%BAHadoop%E9%9B%86%E7%BE%A4/)
 

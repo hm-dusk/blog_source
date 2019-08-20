@@ -7,13 +7,12 @@ tags:
 comments: true
 categories:
   - 数据库
-thumbnail: 'http://image.hming.org/logo/mysql.png'
+img: 'http://image.hming.org/logo/mysql.png'
 date: 2018-12-09 14:43:33
 updated: 2018-12-09 14:43:33
 password:
+summary: mysql连接驱动包mysql-connector-java-x.x.x.jar很多地方都会用到，本文介绍官方下载方式
 ---
-mysql连接驱动包mysql-connector-java-x.x.x.jar很多地方都会用到，本文介绍官方下载方式
-<!-- more -->
 ### 下载链接地址
 官方下载地址：[https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/)
 ### 下载步骤

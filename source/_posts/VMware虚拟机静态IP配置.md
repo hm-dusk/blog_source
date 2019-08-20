@@ -7,10 +7,9 @@ updated: 2018-08-09 16:21:22
 categories: 
   - Linux
 password:
-thumbnail: 'http://image.hming.org/logo/vmware.png'
+img: 'http://image.hming.org/logo/vmware.png'
+summary: 使用虚拟机创建Linux服务器，固定ip地址的方法。
 ---
-使用虚拟机创建Linux服务器，固定ip地址的方法。
-<!-- more -->
 **VMware虚拟机网卡的两种模式：Bridged（桥接）和NAT（转发）。**
 1. **Bridged（桥接模式）**
 桥接模式可以让虚拟机的网络和物理机的网络处于`平行`的网络中，和物理机处于同一个网段的其他物理机就能ping通该虚拟机。

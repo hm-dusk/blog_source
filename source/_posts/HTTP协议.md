@@ -9,10 +9,9 @@ updated: 2017-08-09 22:27:24
 categories: 
   - 网络协议
 password:
-thumbnail: 'http://image.hming.org/logo/http.jpg'
+img: 'http://image.hming.org/logo/http.jpg'
+summary: HTTP协议
 ---
-HTTP协议
-<!-- more -->
 # HTTP（HyperText Transfer Protocol，超文本传输协议）
 
 ### TCP/IP的分层管理

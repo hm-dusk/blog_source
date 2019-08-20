@@ -9,10 +9,9 @@ updated: 2017-07-19 19:26:48
 categories: 
  - Java
 password:
-thumbnail: 'http://image.hming.org/logo/java.jpg'
+img: 'http://image.hming.org/logo/java.jpg'
+summary: 今天突然要用到Map的遍历，在此总结几种Map的遍历方法
 ---
-今天突然要用到Map的遍历，在此总结几种Map的遍历方法
-<!-- more -->
 ## 第一种 在for-each循环中使用entries来遍历
 * 最常见的且大多数情况下使用的方式，在`键`和`值`都需要的时候使用
 * `但是，如果要在遍历中删除某个键值对，则不能使用该方法`

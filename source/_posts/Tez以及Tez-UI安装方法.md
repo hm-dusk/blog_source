@@ -6,13 +6,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/tez.png'
+img: 'http://image.hming.org/logo/tez.png'
 date: 2019-01-03 15:16:17
 updated: 2019-01-03 15:16:17
 password:
+summary: Tez是一个基于Hadoop Yarn的新应用程序框架，可以执行一般数据处理任务的复杂有向非循环图。在许多方面，它可以被认为是map-reduce框架的一个更灵活和更强大的继承者。
 ---
-Tez是一个基于Hadoop Yarn的新应用程序框架，可以执行一般数据处理任务的复杂有向非循环图。在许多方面，它可以被认为是map-reduce框架的一个更灵活和更强大的继承者。
-<!-- more -->
 本文Tez版本：0.9.1
 ### 安装Tez
 [安装Tez 0.9.0](https://blog.csdn.net/YonJarLuo/article/details/78223843)

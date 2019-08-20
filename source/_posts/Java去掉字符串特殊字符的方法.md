@@ -8,10 +8,9 @@ updated: 2017-07-25 10:55:07
 categories: 
   - Java
 password:
-thumbnail: 'http://image.hming.org/logo/java.jpg'
+img: 'http://image.hming.org/logo/java.jpg'
+summary: java中利用Unicode编码过滤字符串中特定字符的方法
 ---
-java中利用Unicode编码过滤字符串中特定字符的方法
-<!-- more -->
 语法：
 `str = str.replaceAll("[\pP]", "");`
 \pP 中小写 `p` 是*property*的意思，表示 Unicode 属性，用于 Unicode *正表达式*的前缀。

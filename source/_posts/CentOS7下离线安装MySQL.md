@@ -6,13 +6,12 @@ tags:
 comments: true
 categories:
   - 数据库
-thumbnail: 'http://image.hming.org/logo/mysql.png'
+img: 'http://image.hming.org/logo/mysql.png'
 date: 2018-12-08 14:22:14
 updated: 2019-7-22 15:06:59
 password:
+summary: CentOS7下离线安装MySQL
 ---
-CentOS7下离线安装MySQL
-<!-- more -->
 ### 下载社区版离线安装包
 本文为`mysql-5.7.24-1.el7.x86_64.rpm-bundle.tar`
 下载路径：[https://dev.mysql.com/downloads/mysql/5.7.html#downloads](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
@@ -27,6 +26,7 @@ CentOS7下离线安装MySQL
 mariadb-libs-5.5.56-2.el7.x86_64
 [root@hadoopmaster opt]# rpm -e --nodeps mariadb-libs-5.5.56-2.el7.x86_64
 ```
+
 ### 解压mysql
 1. 使用[rz 命令](http://http://blog.hming.org/2018/08/15/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#rz%E4%B8%8Esz%EF%BC%88%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%89)上传文件到服务器
 2. 解压
@@ -117,6 +117,7 @@ mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm
 2018-12-08T07:53:54.390177Z 1 [Note] A temporary password is generated for root@localhost: qHQHahCw(7n)
 ```
 最后一串随机字符串为初始密码，本文中为`qHQHahCw(7n)`
+
 ### 修改用户及用户组，启动mysql数据库
 修改mysql数据库目录的所属用户及其所属组，然后启动mysql数据库
 ```bash
@@ -137,6 +138,7 @@ mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm
 12月 08 15:59:10 hadoopmaster systemd[1]: Starting MySQL Server...
 12月 08 15:59:12 hadoopmaster systemd[1]: Started MySQL Server.
 ```
+
 ### 设置开机自启动
 查看是否开启开机自启动
 ```bash
@@ -148,6 +150,7 @@ mysqld@.service                               disabled
 ```bash
 [root@hadoopmaster mysql]# systemctl enable mysqld.service
 ```
+
 ### 登录，更改root用户密码
 登录mysql，更改root用户密码`（系统强制要求，否则不能操作mysql）`
 ```bash
@@ -179,6 +182,7 @@ mysql> show databases;
 +--------------------+
 4 rows in set (0.00 sec)
 ```
+
 ### 远程登录授权
 命令为：
 `grant all privileges on *.* to 'root'@'%' identified by '1234' with grant option;`

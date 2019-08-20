@@ -7,11 +7,9 @@ comments: true
 categories: 
   - Linux
 password:
-thumbnail: 'http://image.hming.org/logo/linux.jpg'
+img: 'http://image.hming.org/logo/linux.jpg'
+summary: 常用Linux命令
 ---
-常用Linux命令
-<!-- more-->
-
 ### 输入界面快捷操作（命令行快捷操作）
 
 #### 操作方式及操作效果
@@ -475,6 +473,7 @@ tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("ja
 当我们使用虚拟终端软件，如Xshell、SecureCRT或PuTTY来连接远程服务器后，需要上传、下载文件到本地，可以使用该命令。
 使用前可能需要安装`lrzsz`软件：
 `yum -y install lrzsz`
+
 #### rz（Receive ZMODEM）
 ##### 命令格式
 `rz [选项]`
@@ -502,6 +501,7 @@ tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("ja
 ```bash
 [root@hadoopmaster opt]# rz -bye
 ```
+
 #### sz（Send ZMODEM）
 ##### 命令格式
 `sz [选项] [filelist]`

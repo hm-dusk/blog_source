@@ -8,10 +8,9 @@ updated: 2017-07-29 19:03:26
 categories: 
   - 数据库
 password: 
-thumbnail: 'http://image.hming.org/logo/mysql.png'
+img: 'http://image.hming.org/logo/mysql.png'
+summary: MySql笔记
 ---
-MySql笔记
-<!-- more -->
 ## 一、常见数据库
 
 Oracle：甲骨文（占有率最高）

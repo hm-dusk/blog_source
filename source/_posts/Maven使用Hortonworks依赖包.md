@@ -8,13 +8,12 @@ tags:
 comments: true
 categories:
   - 大数据
-thumbnail: 'http://image.hming.org/logo/hortonworks.png'
+img: 'http://image.hming.org/logo/hortonworks.png'
 date: 2019-01-12 11:32:16
 updated: 2019-1-17 08:53:14
 password:
+summary: 在项目中连接HDP时，会出现HortonWorks的Maven依赖包下载不了的情况，本文提供解决方案。
 ---
-在项目中连接HDP时，会出现HortonWorks的Maven依赖包下载不了的情况，本文提供解决方案。
-<!-- more -->
 参考链接：[where can i find HDP maven Repos](https://community.hortonworks.com/questions/74655/where-can-i-find-hdp-maven-repos.html)
 在项目中连接HDP时，会出现HortonWorks的Maven依赖包下载不了的情况，只需要在pom.xml中添加如下代码：
 ```xml
