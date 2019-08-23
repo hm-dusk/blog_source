@@ -14,20 +14,140 @@ password:
 cover: true
 summary: CentOS7.6离线安装CDP，Cloudera Manager版本：6.3.0，CDH版本：6.3.0-1
 ---
+环境准备部分参考文章：[Hadoop实操：CDH安装前置准备](https://mp.weixin.qq.com/s?__biz=MzI4OTY3MTUyNg==&mid=2247485512&idx=1&sn=9e953a7eb8b3b2a64a011550ab7da184&chksm=ec2ad841db5d51573f5913d14c33135180bca023de1c349fc431f561c055d1d085527107b66e&scene=21#wechat_redirect)
+
 ### 本文环境
+本文为搭建过程演示，所以只用了一台主机进行搭建
+
 |节点|IP地址|
 |:---:|:---:|
 |cdh.hming.org|192.168.146.111|
 
 ### 环境准备
 
-#### 磁盘准备
-离线安装包共计3G左右，请保证有足够空间。
-保证/opt目录有足够空间，至少20G
+#### 节点数量
+1. 最小规模，建议最小`4`台服务器，1个管理节点安装Cloudera Manager和NameNode等服务，其他3个作为工作节点，因为没有任何的高可用，所以该规模只能用于开发测试。
+2. 建议规模，生产环境中建议最小`6`台服务器，3台管理节点+3台工作节点，1个管理节点安装Cloudera Manager，另外2个安装NameNode高可用，常见的较小规模生产系统一般为`10-20`台服务器。
 
-#### 网络准备
-CDH支持IPV4，不支持IPV6
-1. 将主机名设置为全限定域名格式（FQDN：Fully Qualified Domain Name）
+附：[官方服务角色分配方案](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_host_allocations.html)
+
+#### 硬件要求
+以下Cloudera Manager，NameNode和DataNode相同：
+
+CPU：最少4 cores，推荐2路8核，2路10核，2路12核
+内存：最小16GB，推荐128GB-256GB
+网络：最小千兆，推荐两张万兆绑定
+磁盘：系统盘参考下面`系统盘/目录分配要求`章节，数据盘，工作节点推荐12块1TB-4TB的SATA/SAS盘，管理节点推荐1-2块1TB-4TB的SATA/SAS盘（具体配置可根据实际情况而定）
+
+附：[官方硬件要求说明](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_hardware_requirements.html#concept_vvv_cxt_gbb)
+
+#### 系统盘/目录分配要求
+**目录分配方案一：**
+如果只有一个根目录`/`建议工作节点最少`100G`，管理节点因为会存放MySQL数据以及一些监控数据，可以选择`200G`以上
+
+**目录分配方案二：**
+
+|目录|分配空间|
+|:--:|:--:|
+|/|可以默认比如10GB|
+|/opt|大于50GB|
+|/usr|大于50GB|
+|/var|大于20GB|
+|/var/log|大于50GB|
+|/var/lib|大于50GB|
+|/tmp|大于20GB|
+ 
+**目录分配方案三：**
+
+|目录|分配空间|
+|:--:|:--:|
+|/|可以默认比如10GB|
+|/opt|大于50GB|
+|/usr|大于50GB|
+|/var|大于50GB|
+|/tmp|大于20GB|
+
+#### 磁盘要求
+1. [磁盘阵列](https://baike.baidu.com/item/%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97/1149823?fromtitle=RAID&fromid=33858)要求：
+工作节点（DataNode/NodeManager），系统盘可以使用[RAID1](https://baike.baidu.com/item/RAID%201)或者[RAID10](https://baike.baidu.com/item/RAID%2010)，数据盘不要使用[RAID](https://baike.baidu.com/item/%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97/1149823?fromtitle=RAID&fromid=33858)，应该为[JBOD](https://baike.baidu.com/item/JBOD)。
+管理节点（NameNode，Zookeeper，JournalNode），可以使用[RAID](https://baike.baidu.com/item/%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97/1149823?fromtitle=RAID&fromid=33858)或者[JBOD](https://baike.baidu.com/item/JBOD)，因为管理节点对`I/O`延迟比较敏感，建议将NN，ZK，JN存放数据的目录配置为不同的目录，并且对应到不同的磁盘。
+
+2. DataNode数据盘格式建议选择`ext4`或`xfs`，并配置`noatime`，比如：
+```bash
+[root@cdh ~]# cat /etc/fstab
+/dev/sda1  /data/1    xfs   defaults,noatime      1 2
+/dev/sdb1  /data/2    xfs   defaults,noatime      1 2
+/dev/sdc1  /data/3    xfs   defaults,noatime      1 2
+/dev/sdd1  /data/4    xfs   defaults,noatime      1 2
+/dev/sde1  /data/5    xfs   defaults,noatime      1 2
+/dev/sdf1  /data/6    xfs   defaults,noatime      1 2
+...
+/dev/sdx1  /data/x    xfs    defaults,noatime      1 2
+[root@cdh ~]# fdisk -l
+```
+  注意: `noatime`已经包含了`nodiratime`。不需要同时指定。
+  > 参考：
+  > [fstab atime 参数](https://wiki.archlinux.org/index.php/Fstab_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#atime_%E5%8F%82%E6%95%B0)
+  > [what is noatime](https://www.linuxquestions.org/questions/linux-software-2/what-is-noatime-how-can-i-mount-a-partition-with-noatime-393617/)
+  > 默认的方式下linux会把文件访问的时间atime做记录，文件系统在文件被访问、创建、修改等的时候记录下了文件的一些时间戳，比如：文件创建时间、最近一次修改时间和最近一次访问时间；这在绝大部分的场合都是没有必要的。 
+  > 因为系统运行的时候要访问大量文件，如果能减少一些动作（比如减少时间戳的记录次数等）将会显著提高磁盘 IO 的效率、提升文件系统的性能。 
+
+3. DataNode数据盘确保没有配置分区卷LogicalVolume Manager (LVM)
+```bash
+[root@cdh ~]# df –h
+[root@cdh ~]# lsblk
+[root@cdh ~]# lvdisplay
+Additionally, look for/dev/mapper or /dev/XX (where XX isnot sd).
+```
+
+4. 确保BIOS配置正确，比如你如果使用的是SATA，请确保没有开启`IDE emulation`。
+
+5. 确保`controller firmware`是最新的，校验磁盘是否有一些潜在的问题。
+```bash
+[root@cdh ~]# dmesg | egrep -i 'sense error'
+[root@cdh ~]# dmesg | egrep -i 'ata bus error'
+```
+
+6. 目前常见的SATA读写速度大概在`150MB/S-180MB/S`，SAS或者SSD会更快，如果磁盘读写速度`小于70MB/S`，肯定是有问题的，需要检查硬件。以下为测试读写的命令，这里我们将`/data/01`挂载到`/dev/sda1`：
+```bash
+[root@cdh ~]# hdparm –t /dev/sda1
+[root@cdh ~]# ddbs=1M count=1024 if=/dev/zero of=/data/01 oflag=direct conv=fdatasync
+[root@cdh ~]# dd bs=1M count=1024 of=/dev/null if=/data/01 iflag=direct conv=fdatasync
+```
+
+7. 确保磁盘没有坏的扇区：
+```bash
+[root@cdh ~]# badblocks -v /dev/sda1
+[root@cdh ~]# badblocks -v /dev/sdb1
+...
+[root@cdh ~]#badblocks -v /dev/sdx1
+```
+
+#### 安装用户
+可以使用`root`用户安装，或者具有`sudo`权限的其他用户
+
+#### 网络要求
+CDH支持IPV4，不支持IPV6，确保没有开启IPV6
+```bash
+[root@cdh ~]# lsmod | grep ipv6 
+[root@cdh ~]# 
+```
+
+修改`/etc/sysctl.conf`文件添加一下内容禁用IPV6
+```bash
+#disable ipv6
+net.ipv6.conf.all.disable_ipv6= 1
+net.ipv6.conf.default.disable_ipv6= 1
+net.ipv6.conf.lo.disable_ipv6= 1
+```
+如果是RHEL/CentOS，可以把以下内容补充到`/etc/sysconfig/network`
+```bash
+NETWORKING_IPV6=no
+IPV6INIT=no
+```
+
+#### 主机名配置
+1. 将主机名设置为全限定域名格式[FQDN](https://baike.baidu.com/item/FQDN)（Fully Qualified Domain Name）
 `sudo hostnamectl set-hostname cdh.hming.org`
 2. 配置/etc/hosts文件，添加集群中所有全限定域名，也可以在后面继续添加非限定名
 
@@ -55,9 +175,85 @@ CDH支持IPV4，不支持IPV6
 3. 修改`SELINUX=enforcing`行内容为`SELINUX=permissive`或者`SELINUX=disabled`
 4. 重启系统或者运行`setenforce 0`命令禁用SELinux
 
-#### 配置NTP服务
-集群中所有主机必须保持时间同步，如果时间相差较大会引起各种问题，由于本文只有一个节点，故没有安装NPT
+#### 设置SWAP
+参考官网：[https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_admin_performance.html#cdh_performance__section_xpq_sdf_jq](https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_admin_performance.html#cdh_performance__section_xpq_sdf_jq)
+运行命令`sysctl -w vm.swappiness=1`临时生效
+或者修改`/etc/sysctl.conf`配置文件，增加如下配置，永久生效
+```bash
+# 配置为1时表示当内存使用超过99时，才使用交换空间，这里可以配置为1-10
+vm.swappiness = 1
+```
+
+检查是否生效
+```bash
+[root@cdh ~]# cat /proc/sys/vm/swappiness
+1
+```
+
+#### 关闭透明大页面
+参考官网：[https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_admin_performance.html#cdh_performance__section_hw3_sdf_jq](https://www.cloudera.com/documentation/enterprise/latest/topics/cdh_admin_performance.html#cdh_performance__section_hw3_sdf_jq)
+查看透明大页面配置，发现目前为开启状态`always`
+```bash
+[root@cdh ~]# cat /sys/kernel/mm/transparent_hugepage/defrag 
+[always] madvise never
+[root@cdh ~]# cat /sys/kernel/mm/transparent_hugepage/enabled 
+[always] madvise never
+```
+
+执行命令关闭透明大页面，使其立即生效
+```bash
+[root@cdh ~]# echo never > /sys/kernel/mm/transparent_hugepage/enabled 
+[root@cdh ~]# echo never > /sys/kernel/mm/transparent_hugepage/defrag 
+```
+
+再次查看，确认已经修改为`never`
+```bash
+[root@cdh ~]# cat /sys/kernel/mm/transparent_hugepage/enabled 
+always madvise [never]
+[root@cdh ~]# cat /sys/kernel/mm/transparent_hugepage/defrag 
+always madvise [never]
+```
+
+在`/etc/rc.d/rc.local`脚本文件中添加以下代码，使其永久生效
+```bash
+if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
+   echo never > /sys/kernel/mm/transparent_hugepage/enabled
+fi
+if test -f /sys/kernel/mm/transparent_hugepage/defrag; then
+   echo never > /sys/kernel/mm/transparent_hugepage/defrag
+fi
+```
+
+赋予`rc.local`脚本可执行权限
+```bash
+[root@cdh ~]# chmod +x /etc/rc.d/rc.local
+```
+
+#### 配置NTP服务（时钟同步）
 参考官网：[https://www.cloudera.com/documentation/enterprise/6/6.3/topics/install_cdh_enable_ntp.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/install_cdh_enable_ntp.html)
+参考其他文章：[https://blog.csdn.net/u010003835/article/details/84962098](https://blog.csdn.net/u010003835/article/details/84962098)
+集群中所有主机必须保持时间同步，如果时间相差较大会引起各种问题，如果企业有自己的NTP Server则可以集群中所有节点可配置企业NTP Server，如果没有自己的NTP服务器则在集群中选用一台服务器作为NTP Server，其它服务器与其保持同步
+
+#### 下载离线包
+##### Cloudera Manager安装包
+到官网下载rpm包：[https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/](https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/)
+![](http://image.hming.org/CentOS7离线安装CDH/cm包下载地址.png)
+下载allkeys文件：[https://archive.cloudera.com/cm6/6.3.0/](https://archive.cloudera.com/cm6/6.3.0/)
+![](http://image.hming.org/CentOS7离线安装CDH/allkeys文件下载地址.png)
+
+##### CDH安装包
+官方有两种离线包可供选择：
+1. [Parcel模式（推荐）](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_parcel_repo.html)（本文使用模式）
+2. [Package模式](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_package_repo.html)
+到官网下载parcel包：[https://archive.cloudera.com/cdh6/6.3.0/parcels/](https://archive.cloudera.com/cdh6/6.3.0/parcels/)，下载图中框选的三个文件
+![](http://image.hming.org/CentOS7离线安装CDH/cdh包下载地址.png)
+
+##### 其他parcel包（可选）
+YCSB：[http://archive.cloudera.com/cloudera-labs/ycsb/parcels/latest/](http://archive.cloudera.com/cloudera-labs/ycsb/parcels/latest/)
+Phoenix：[http://archive.cloudera.com/cloudera-labs/phoenix/parcels/latest/](http://archive.cloudera.com/cloudera-labs/phoenix/parcels/latest/)
+kafka: [http://archive.cloudera.com/cloudera-labs/kafka/parcels/latest/](http://archive.cloudera.com/cloudera-labs/kafka/parcels/latest/)
+csds: [http://archive.cloudera.com/cloudera-labs/csds/](http://archive.cloudera.com/cloudera-labs/csds/)
+ktrace: [http://archive.cloudera.com/cloudera-labs/htrace/parcels/latest/](http://archive.cloudera.com/cloudera-labs/htrace/parcels/latest/)
 
 #### 安装httpd服务（Apache服务，任意一个管理节点安装即可）
 > 注意：selinux未关闭可能导致Apache服务地址403。
@@ -81,43 +277,33 @@ Redirecting to /bin/systemctl restart httpd.service
 浏览器访问服务器80端口，查看httpd服务是否开启。
 > 注意：配置信息如端口、映射路径可以通过编辑`/etc/httpd/conf/httpd.conf`文件进行修改
 
-#### 下载离线包
-##### Cloudera Manager安装包
-到官网下载rpm包：[https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/](https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/)
-![](http://image.hming.org/CentOS7离线安装CDH/cm包下载地址.png)
-下载allkeys文件：[https://archive.cloudera.com/cm6/6.3.0/](https://archive.cloudera.com/cm6/6.3.0/)
-![](http://image.hming.org/CentOS7离线安装CDH/allkeys文件下载地址.png)
-
-将所有rpm包和allkeys文件一起[制作离线yum源](http://blog.hming.org/2019/03/29/Linux%E5%88%B6%E4%BD%9C%E7%A6%BB%E7%BA%BFyum%E6%BA%90/#toc-heading-6)
-> 建议将离线yum源放到httpd服务路径中，方便其他节点访问
-> ```bash
-> [root@node10 cm6.3.0]# pwd
-> /var/www/html/cloudera-repos/cm6.3.0
-> [root@node10 cm6.3.0]# ls -l
-> total 1378004
-> -rw-r--r-- 1 root root      14041 Aug  1 00:08 allkeys.asc
-> -rw-r--r-- 1 root root   10479136 Aug 16 16:26 cloudera-manager-agent-6.3.0-1281944.el7.x86_64.rpm
-> -rw-r--r-- 1 root root 1201341068 Aug 16 16:26 cloudera-manager-daemons-6.3.0-1281944.el7.x86_64.rpm
-> -rw-r--r-- 1 root root      11464 Aug 16 16:26 cloudera-manager-server-6.3.0-1281944.el7.x86_64.rpm
-> -rw-r--r-- 1 root root      10996 Aug 16 16:26 cloudera-manager-server-db-2-6.3.0-1281944.el7.x86_64.rpm
-> -rw-r--r-- 1 root root   14209884 Aug 16 16:26 enterprise-debuginfo-6.3.0-1281944.el7.x86_64.rpm
-> -rw-r--r-- 1 root root  184988341 Aug 16 16:26 oracle-j2sdk1.8-1.8.0+update181-1.x86_64.rpm
-> drwxr-xr-x 2 root root       4096 Aug 20 14:48 repodata
-> [root@node10 cm6.3.0]# 
-> ```
-
-##### CDH安装包
-官方有两种离线包可供选择：
-1. [Parcel模式（推荐）](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_parcel_repo.html)（本文使用模式）
-2. [Package模式](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_package_repo.html)
-到官网下载parcel包：[https://archive.cloudera.com/cdh6/6.3.0/parcels/](https://archive.cloudera.com/cdh6/6.3.0/parcels/)
-![](http://image.hming.org/CentOS7离线安装CDH/cdh包下载地址.png)
-下载图中框选的三个文件
-
-#### 将离线包移到httpd服务路径
+#### 配置本地yum源
 httpd默认路径为：`/var/www/html/`
 
 > 如果httpd映射路径修改过，则以修改后的为准。
+
+##### Cloudera Manager
+将下载的所有cm rpm包和allkeys文件一起[制作离线yum源](http://blog.hming.org/2019/03/29/Linux%E5%88%B6%E4%BD%9C%E7%A6%BB%E7%BA%BFyum%E6%BA%90/#toc-heading-6)
+将离线yum源放到httpd服务路径中，方便其他节点访问
+
+```bash
+[root@node10 cm6.3.0]# pwd
+/var/www/html/cloudera-repos/cm6.3.0
+[root@node10 cm6.3.0]# ls -l
+total 1378004
+-rw-r--r-- 1 root root      14041 Aug  1 00:08 allkeys.asc
+-rw-r--r-- 1 root root   10479136 Aug 16 16:26 cloudera-manager-agent-6.3.0-1281944.el7.x86_64.rpm
+-rw-r--r-- 1 root root 1201341068 Aug 16 16:26 cloudera-manager-daemons-6.3.0-1281944.el7.x86_64.rpm
+-rw-r--r-- 1 root root      11464 Aug 16 16:26 cloudera-manager-server-6.3.0-1281944.el7.x86_64.rpm
+-rw-r--r-- 1 root root      10996 Aug 16 16:26 cloudera-manager-server-db-2-6.3.0-1281944.el7.x86_64.rpm
+-rw-r--r-- 1 root root   14209884 Aug 16 16:26 enterprise-debuginfo-6.3.0-1281944.el7.x86_64.rpm
+-rw-r--r-- 1 root root  184988341 Aug 16 16:26 oracle-j2sdk1.8-1.8.0+update181-1.x86_64.rpm
+drwxr-xr-x 2 root root       4096 Aug 20 14:48 repodata
+[root@node10 cm6.3.0]# 
+```
+
+##### CDH其他parcel包
+将parcel包移到httpd服务路径
 
 创建`/var/www/html//cloudera-repos/cdh6.3.0/`目录，将parcel包放到该目录中
 
