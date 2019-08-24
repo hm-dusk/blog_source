@@ -429,6 +429,7 @@ GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '1234';
 ```
 
 上传mysql连接包到`/usr/share/java/`目录下（如果没有则创建一个），改名为：`mysql-connector-java.jar`
+> **注意：需要连接MySQL数据库的节点都需要上传连接包**
 
 ```bash
 [root@cdh java]# pwd
@@ -591,7 +592,7 @@ Cloudera Manager会根据浏览器的语言进行语言的切换，本文为中�
 
 ### 常见问题
 #### 无法复制安装文件allkeys.asc
-![](http://image.hming.org/CentOS7离线安装CDH/安装agent遇到问题1.png)
+![](http://image.hming.org/CentOS7离线安装CDH/常见问题：无法复制安装文件allkeys.png)
 因为在配置Cloudera Manager yum库时没有下载`allkeys.asc`文件
 解决方法：
 到官网：[https://archive.cloudera.com/cm6/6.3.0/](https://archive.cloudera.com/cm6/6.3.0/)下载`allkeys.asc`文件到yum离线库
@@ -607,4 +608,43 @@ active_parcels.json  cm_guid  response.avro  uuid
 [root@cdh cloudera-scm-agent]# service cloudera-scm-agent restart
 Stopping cloudera-scm-agent: [ OK ]
 Starting cloudera-scm-agent:
+```
+
+#### entropy was available（系统熵值过低）
+![](http://image.hming.org/CentOS7离线安装CDH/常见问题：entropy（系统熵值）过低.png)
+解决方法：提高系统熵值
+
+1. 查看目前熵值
+```bash
+[root@node2 ~]# cat /proc/sys/kernel/random/entropy_avail
+34
+```
+
+2. 安装`rng-tools`工具
+```bash
+[root@node3 ~]# yum install -y rng-tools
+Loaded plugins: fastestmirror
+Repository base is listed more than once in the configuration
+Repository updates is listed more than once in the configuration
+...
+Installed:
+  rng-tools.x86_64 0:6.3.1-3.el7                                                                                                                                                                                  
+Complete!
+```
+
+3. 修改/新建`/etc/sysconfig/rngd`文件，增加以下内容
+```conf
+OPTIONS="-r /dev/urandom"
+```
+
+4. 启动`rngd`服务
+```bash
+[root@node2 ~]# service rngd start
+Redirecting to /bin/systemctl start rngd.service
+```
+
+5. 再次查看熵值
+```bash
+[root@node2 ~]# cat /proc/sys/kernel/random/entropy_avail
+3081
 ```
