@@ -29,46 +29,20 @@ CDH版本更新比Apache版本慢。
 
 #### 原装支持组件对比
 
-| 必要组件                                   | HDP                     | CDH                                |
-| ------------------------------------------ | ----------------------- | ---------------------------------- |
-| Zookeeper                                  | √                       | √                                  |
-| HDFS                                       | √                       | √                                  |
-| Yarn/MapReduce                             | √                       | √                                  |
-| Hive                                       | √                       | √                                  |
-| HBase                                      | √                       | √                                  |
-| Phoenix                                    | √（最高支持5.0）        | ×（需要单独配置，最高支持版本1.3） |
-| Spark                                      | √                       | √                                  |
-| Zeppelin                                   | √                       | ×（需要自己编译安装）              |
-| Oozie                                      | √                       | √                                  |
-| Sqoop1                                     | √                       | √                                  |
-| Sqoop2                                     | ×                       | √                                  |
-| Kafka                                      | √                       | √                                  |
-| Flink                                      | ×                       | ×                                  |
-| Kerberos                                   | √                       | √                                  |
-| **次要组件**                               | **HDP**                 | **CDH**                            |
-| Tez                                        | √                       | ×                                  |
-| Druid                                      | √                       | ×                                  |
-| Knox                                       | √                       | ×                                  |
-| Ranger                                     | √                       | ×                                  |
-| Storm                                      | √                       | ×                                  |
-| Ambari                                     | √                       | ×                                  |
-| Nifi                                       | √                       | ×                                  |
-| Cloudera Manager                           | ×                       | √                                  |
-| HBase Indexer（方便在Solr中建立HBase索引） | ×                       | √                                  |
-| [Hue](https://github.com/cloudera/hue/tree/cdh6.2.0)                                        | ×                       | √                                  |
-| Impala                                     | ×（需要单独安装）       | √                                  |
-| **其他组件**                               | **HDP**                 | **CDH**                            |
-| Solr                                       | √                       | √                                  |
-| Flume                                      | √（HDP3.0之后不再支持） | √                                  |
-| Pig                                        | √                       | ×（CDH6.X不再支持）                |
-| Avro                                       | ×                       | √                                  |
+![](http://image.hming.org/HDP与CDH对比/组件对比.png)
+* CDH支持的存储组件更丰富
+* HDP支持的数据分析组件更丰富
+* HDP对多维分析及可视化有了支持，引入Druid和Superset
+* HDP的HBase数据使用Phoenix的jdbc查询；CDH的HBase数据使用映射Hive到Impala的jdbc查询，但分析数据可以存储Impala内部表，提高查询响应
+* 多维分析Druid纳入集群，会方便管理；但可视化工具Superset可以单独安装使用
+* CDH没有时序数据库，HDP将Druid作为时序数据库使用
 
 #### 安全权限模块对比
 1. HDP
 包含Ranger组件，即使在没有Kerberos的情况下，也能作一些简单的权限分配管理。由于100%开源，所以支持Ldap+Kerberos+Ranger的权限配置方式，分配权限简单易用。另外，Kerberos配置具有向导式界面。
 
 2. CDH
-不具有类似Ranger的组件，想要做权限只能加Kerberos认证，然而express免费版只支持集成Kerberos，需要Ldap支持的需要企业版，Kerberos向导页面也只有企业版才支持（[CDH免费版和企业版区别对比](#CDH免费版和企业版区别)）。
+包含Sentry组件，Sentry与Ranger差别较大，Sentry没有图像化界面，只负责同步组件间的ACL授权。Cloudera express免费版只支持集成Kerberos，需要Ldap支持的需要企业版（[CDH免费版和企业版区别对比](#CDH免费版和企业版区别)）。
 
 #### 运维管理对比
 ##### HDP

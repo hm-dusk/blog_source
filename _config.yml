@@ -13,7 +13,7 @@ timezone:
 
 # URL 网址
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://cyanide.top
+url: http://blog.hming.org
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -125,7 +125,7 @@ deploy:
   # 类型
   type: git
   # 仓库
-  repo: https://github.com/hm-dusk/hm-dusk.github.io.git
+  repo: git@github.com:hm-dusk/hm-dusk.github.io.git
   # 分支
   branch: master
 
