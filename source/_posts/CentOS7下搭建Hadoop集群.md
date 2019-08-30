@@ -11,7 +11,7 @@ updated: 2019-2-18 15:05:06
 categories: 
   - 大数据
 password: 
-img: 'http://image.hming.org/logo/hadoop.jpg'
+img: ''
 summary: CentOS7下搭建Hadoop集群
 cover: true
 ---
