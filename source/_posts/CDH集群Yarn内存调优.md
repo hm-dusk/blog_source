@@ -15,6 +15,7 @@ updated: 2019-08-30 09:13:32
 password:
 summary: 关于CDH集群中的Yarn内存参数调优，CDH版本6.x
 ---
+HDP的内存调优建议：[http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_installing_manually_book/content/rpm-chap1-11.html ](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_installing_manually_book/content/rpm-chap1-11.html )
 
 ### DRF
 
@@ -45,4 +46,5 @@ Yarn资源分配情况，虚拟CPU共分配了24核，内存则是他的两倍48
 可以发现，内存使用受限于cpu，与DRF策略吻合
 
 ### 总结
+
 **Yarn队列如果采用的是DRF调度策略，则vcpu和内存最好按照1:1比例进行分配，因为多余的资源根本不会用到。**
