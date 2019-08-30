@@ -118,12 +118,42 @@ Additionally, look for/dev/mapper or /dev/XX (where XX isnot sd).
 [root@cdh ~]# dmesg | egrep -i 'ata bus error'
 ```
 
-6. 目前常见的SATA读写速度大概在`150MB/S-180MB/S`，SAS或者SSD会更快，如果磁盘读写速度`小于70MB/S`，肯定是有问题的，需要检查硬件。以下为测试读写的命令，这里我们将`/data/01`挂载到`/dev/sda1`：
-```bash
-[root@cdh ~]# hdparm –t /dev/sda1
-[root@cdh ~]# ddbs=1M count=1024 if=/dev/zero of=/data/01 oflag=direct conv=fdatasync
-[root@cdh ~]# dd bs=1M count=1024 of=/dev/null if=/data/01 iflag=direct conv=fdatasync
-```
+6. 目前常见的SATA读写速度大概在`150MB/S-180MB/S`，SAS或者SSD会更快，如果磁盘读写速度`小于70MB/S`，肯定是有问题的，需要检查硬件。
+以下为测试读写的命令，这里我们将`/mnt/data01`挂载到`/dev/sdb1`：
+
+    * `hdparm`仅用于Linux系统。现在主要用来测试SSD固态硬盘读取速度。
+        ```bash
+        [root@cdh ~]# hdparm -t --direct /dev/sdb1
+        /dev/sdb1:
+         Timing O_DIRECT disk reads: 456 MB in  3.01 seconds = 151.67 MB/sec
+        ```
+    
+    * `dd`命令不是专业测试磁盘工具，它没考虑到缓存和物理读的区分，测试的结果仅作参考，不算权威。但是它通用于所有的Linux系统中。
+        两个特殊设备：（不产生IO，就能单独测试写速度和读速度）
+        `/dev/null` 伪设备,回收站.写该文件不会产生IO
+        `/dev/zero` 伪设备,会产生空字符流,对它不会产生IO
+        测试写入速度
+        ```bash
+        [root@cdh ~]# dd bs=1M count=1024 if=/dev/zero of=/mnt/data01/test.dbf oflag=direct conv=fdatasync
+        1024+0 records in
+        1024+0 records out
+        1073741824 bytes (1.1 GB) copied, 7.05097 s, 152 MB/s
+        ```
+        测试读取速度
+        ```bash
+        [root@cdh ~]# dd bs=1M count=1024 of=/dev/null if=/mnt/data01/test.dbf iflag=direct conv=fdatasync
+        dd: fsync failed for ‘/dev/null’: Invalid argument
+        1024+0 records in
+        1024+0 records out
+        1073741824 bytes (1.1 GB) copied, 6.77791 s, 158 MB/s
+        ```
+        测试读写速度
+        ```bash
+        [root@node10 ~]# dd if=/mnt/data01/test.dbf of=/mnt/data01/test_w.dbf bs=8k count=300000
+        131072+0 records in
+        131072+0 records out
+        1073741824 bytes (1.1 GB) copied, 7.39375 s, 145 MB/s
+        ```
 
 7. 确保磁盘没有坏的扇区：
 ```bash

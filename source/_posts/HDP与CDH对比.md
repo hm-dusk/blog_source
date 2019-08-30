@@ -27,13 +27,20 @@ CDH版本更新比Apache版本慢。
 
 目前HDP最新版支持Hadoop版本：3.1.1
 
+#### 架构对比
+##### CDH
+![](http://image.hming.org/HDP与CDH对比/CDH架构.png)
+
+##### HDP
+![](http://image.hming.org/HDP与CDH对比/HDP架构.png)
+
 #### 原装支持组件对比
 
 ![](http://image.hming.org/HDP与CDH对比/组件对比.png)
 * CDH支持的存储组件更丰富
 * HDP支持的数据分析组件更丰富
 * HDP对多维分析及可视化有了支持，引入Druid和Superset
-* HDP的HBase数据使用Phoenix的jdbc查询；CDH的HBase数据使用映射Hive到Impala的jdbc查询，但分析数据可以存储Impala内部表，提高查询响应
+* HDP的HBase数据使用Phoenix的jdbc查询；CDH的HBase数据使用映射Hive到Impala的jdbc查询（CDH6.2支持Phoenix5），但分析数据可以存储Impala内部表，提高查询响应
 * 多维分析Druid纳入集群，会方便管理；但可视化工具Superset可以单独安装使用
 * CDH没有时序数据库，HDP将Druid作为时序数据库使用
 

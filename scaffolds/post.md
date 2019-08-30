@@ -9,7 +9,6 @@ tags:
 comments: true
 categories: 
   - 
-  - 
 password:
 img: ''
 summary: 
