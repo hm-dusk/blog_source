@@ -167,6 +167,9 @@ Additionally, look for/dev/mapper or /dev/XX (where XX isnot sd).
 可以使用`root`用户安装，或者具有`sudo`权限的其他用户
 
 #### 网络要求
+
+##### IPV4设置
+
 CDH支持IPV4，不支持IPV6，确保没有开启IPV6
 ```bash
 [root@cdh ~]# lsmod | grep ipv6 
@@ -185,6 +188,47 @@ net.ipv6.conf.lo.disable_ipv6= 1
 NETWORKING_IPV6=no
 IPV6INIT=no
 ```
+
+##### 网络带宽测试
+使用`iperf3`进行网络带宽测试，两台服务器进行网络测试，一台当做服务端（master2）另一台做客户端（master1）。
+1. 服务端和客户端均安装iperf3
+```bash
+yum -y install iperf3
+```
+
+2. 服务端master2启动iperf3服务
+    ```bash
+    [root@master2 ~]# iperf3 -s
+    -----------------------------------------------------------
+    Server listening on 5201
+    -----------------------------------------------------------
+    ```
+
+3. 客户端master1进行请求，连接服务端
+    ```bash
+    [root@master1 ~]# iperf3 -c master2
+    Connecting to host master2, port 5201
+    [  4] local 172.16.0.2 port 50472 connected to 172.16.0.5 port 5201
+    [ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+    [  4]   0.00-1.00   sec   123 MBytes  1.03 Gbits/sec    0   1.40 MBytes       
+    [  4]   1.00-2.00   sec   120 MBytes  1.01 Gbits/sec    0   2.63 MBytes       
+    [  4]   2.00-3.00   sec   119 MBytes   996 Mbits/sec    0   2.96 MBytes       
+    [  4]   3.00-4.00   sec   120 MBytes  1.01 Gbits/sec    0   3.00 MBytes       
+    [  4]   4.00-5.00   sec   119 MBytes   996 Mbits/sec    0   3.00 MBytes       
+    [  4]   5.00-6.00   sec   120 MBytes  1.01 Gbits/sec    0   3.00 MBytes       
+    [  4]   6.00-7.00   sec   120 MBytes  1.01 Gbits/sec    0   3.00 MBytes       
+    [  4]   7.00-8.00   sec   119 MBytes   996 Mbits/sec    0   3.00 MBytes       
+    [  4]   8.00-9.00   sec   120 MBytes  1.01 Gbits/sec    0   3.00 MBytes       
+    [  4]   9.00-10.00  sec   119 MBytes   996 Mbits/sec    1   3.00 MBytes       
+    - - - - - - - - - - - - - - - - - - - - - - - - -
+    [ ID] Interval           Transfer     Bandwidth       Retr
+    [  4]   0.00-10.00  sec  1.17 GBytes  1.00 Gbits/sec    1             sender
+    [  4]   0.00-10.00  sec  1.17 GBytes  1.00 Gbits/sec                  receiver
+    
+    iperf Done.
+    ```
+
+可以看出千兆网卡网络带宽在`1.00 Gbits/sec`左右
 
 #### 主机名配置
 1. 将主机名设置为全限定域名格式[FQDN](https://baike.baidu.com/item/FQDN)（Fully Qualified Domain Name）
