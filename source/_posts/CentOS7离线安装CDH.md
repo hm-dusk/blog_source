@@ -9,7 +9,7 @@ categories:
   - 大数据
 img: ''
 date: 2019-08-16 15:03:41
-updated: 2019-08-16 15:03:41
+updated: 2019-9-3 19:31:09
 password:
 cover: true
 summary: CentOS7.6离线安装CDP，Cloudera Manager版本：6.3.0，CDH版本：6.3.0-1
@@ -160,7 +160,7 @@ Additionally, look for/dev/mapper or /dev/XX (where XX isnot sd).
 [root@cdh ~]# badblocks -v /dev/sda1
 [root@cdh ~]# badblocks -v /dev/sdb1
 ...
-[root@cdh ~]#badblocks -v /dev/sdx1
+[root@cdh ~]# badblocks -v /dev/sdx1
 ```
 
 #### 安装用户
@@ -322,6 +322,103 @@ fi
 参考官网：[https://www.cloudera.com/documentation/enterprise/6/6.3/topics/install_cdh_enable_ntp.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/install_cdh_enable_ntp.html)
 参考其他文章：[https://blog.csdn.net/u010003835/article/details/84962098](https://blog.csdn.net/u010003835/article/details/84962098)
 集群中所有主机必须保持时间同步，如果时间相差较大会引起各种问题，如果企业有自己的NTP Server则可以集群中所有节点可配置企业NTP Server，如果没有自己的NTP服务器则在集群中选用一台服务器作为NTP Server，其它服务器与其保持同步
+
+> 本文在`master1`上安装NTP服务，其他节点和`master1`节点同步
+
+##### 1.所有节点安装ntp服务
+`yum -y install ntp`
+##### 2.修改配置文件
+`vim /etc/ntp.conf`
+1. 所有主机在restrict附近增加下面两行
+
+```bash
+restrict 172.16.0.3 nomodify notrap nopeer noquery  # ip地址为本机主机ip
+restrict 172.16.0.1 mask 255.255.255.0 nomodify notrap  # 网关地址和子网掩码
+
+restrict 127.0.0.1  # 原本文件中的两行不要删
+restrict ::1
+```
+
+2. 作为NTP服务的节点（master1节点）注释所有server行，增加下面两行
+
+```bash
+#server 0.centos.pool.ntp.org iburst
+#server 1.centos.pool.ntp.org iburst
+#server 2.centos.pool.ntp.org iburst
+#server 3.centos.pool.ntp.org iburst
+server 127.127.1.0      # 这里如果有已经存在的NTP服务，则可以填写相应地址
+Fudge 127.127.1.0 stratum 10
+```
+
+3. 其他节点注释所有server行，增加下面两行
+
+```bash
+#server 0.centos.pool.ntp.org iburst
+#server 1.centos.pool.ntp.org iburst
+#server 2.centos.pool.ntp.org iburst
+#server 3.centos.pool.ntp.org iburst
+server 172.16.0.2      # 将时钟同步服务器地址指向master1的地址
+Fudge 172.16.0.2 stratum 10
+```
+
+##### 3.所有节点启动ntp服务
+`systemctl start ntpd`
+
+##### 4.查看服务状态
+```bash
+[root@master1 ~]# systemctl status ntpd
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Tue 2019-09-03 06:58:01 EDT; 29s ago
+  Process: 33823 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 33824 (ntpd)
+   CGroup: /system.slice/ntpd.service
+           └─33824 /usr/sbin/ntpd -u ntp:ntp -g
+
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: Listen and drop on...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: Listen normally on...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: Listen normally on...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: Listen normally on...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: Listen normally on...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: Listening on routi...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: 0.0.0.0 c016 06 re...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: 0.0.0.0 c012 02 fr...
+Sep 03 06:58:01 master1.hming.org ntpd[33824]: 0.0.0.0 c011 01 fr...
+Sep 03 06:58:02 master1.hming.org ntpd[33824]: 0.0.0.0 c514 04 fr...
+Hint: Some lines were ellipsized, use -l to show in full.
+```
+
+##### 5.查看服务状态
+master1节点
+```bash
+[root@master1 ~]# ntpstat
+synchronised to local net at stratum 6 
+   time correct to within 11 ms
+   polling server every 64 s
+```
+其他节点
+```bash
+[root@master2 ~]# ntpstat
+synchronised to NTP server (172.16.0.2) at stratum 7 
+   time correct to within 17 ms
+   polling server every 64 s
+```
+
+master1节点
+```bash
+[root@master1 ~]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*LOCAL(0)        .LOCL.           5 l    9   64  377    0.000    0.000   0.000
+```
+其他节点
+```bash
+[root@master2 ~]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*master1.hming.org LOCAL(0)         6 u   31   64  377    0.160   -3.417   1.363
+```
+
 
 #### 下载离线包
 ##### Cloudera Manager安装包
