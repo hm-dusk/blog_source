@@ -404,6 +404,16 @@ synchronised to NTP server (172.16.0.2) at stratum 7
    polling server every 64 s
 ```
 
+> 查看状态时有可能遇到以下情况：
+> ```bash
+> [root@node8 ~]# ntpstat
+> unsynchronised
+>   time server re-starting
+>    polling server every 8 s
+> ```
+> 这种情况属于正常情况，ntp服务器配置完毕后，需要等待5-10分钟才能与/etc/ntp.conf中配置的标准时间进行同步。
+> 等一段时间之后，再次使用`ntpstat`命令查看状态，就会变成正常结果
+
 master1节点
 ```bash
 [root@master1 ~]# ntpq -p
@@ -419,6 +429,14 @@ master1节点
 *master1.hming.org LOCAL(0)         6 u   31   64  377    0.160   -3.417   1.363
 ```
 
+##### 6.注意事项
+安装集群完成后可能会报错：
+> **不良 : 无法找到主机的 NTP 服务，或该服务未响应时钟偏差请求。**
+
+因为Centos7.2之后默认使用`chrony`来进行时钟同步，所以如果系统中安装有`chrony`或者正在运行，要么把`ntp`换成`chrony`，要么彻底删除`chrony`
+```bash
+[root@master1 ~]# yum -y remove chrony 
+```
 
 #### 下载离线包
 ##### Cloudera Manager安装包
