@@ -133,23 +133,3 @@ Cloudera `Quickstart`和HDP的`sandbox`类似，都是单机版的供学习交�
 截图来自[CSDN](https://blog.csdn.net/levy_cui/article/details/51143092)
 ![](http://image.hming.org/HDP与CDH对比/官网表1.jpg)
 ![](http://image.hming.org/HDP与CDH对比/官网表2.jpg)
-
-
-### CDH官方文档地址（基于6.2.x版本）
-安装教程：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/installation.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/installation.html)  
-
-Impala安装要求：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/impala_prereqs.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/impala_prereqs.html)  
-
-集群所使用端口：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_ports.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_ports.html)  
-
-集群组件服务主机分配建议：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_host_allocations.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_host_allocations.html)  
-
-定制化安装（离线安装）：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_custom_installation.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_custom_installation.html)  
-
-Cloudera Manager API：[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_intro_api.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_intro_api.html)  
-
-基于裸金属部署参考文档：[https://www.cloudera.com/documentation/other/reference-architecture/topics/ra_bare_metal_deployment.html](https://www.cloudera.com/documentation/other/reference-architecture/topics/ra_bare_metal_deployment.html)  
-
-Cloudera Manager常见问题（FAQ）[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_faqs.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_faqs.html)  
-
-CHD各组件服务依赖项[https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_service_dependencies.html](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/cm_ig_service_dependencies.html)

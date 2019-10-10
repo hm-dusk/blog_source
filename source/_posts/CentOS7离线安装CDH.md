@@ -612,9 +612,6 @@ GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '1234';
 
 CREATE DATABASE oozie DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '1234';
-
-CREATE DATABASE hive DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '1234';
 ```
 
 上传mysql连接包到`/usr/share/java/`目录下（如果没有则创建一个），改名为：`mysql-connector-java.jar`

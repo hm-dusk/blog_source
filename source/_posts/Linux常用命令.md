@@ -1,14 +1,14 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2019-6-4 09:51:03
+updated: 2019-9-18 15:22:43
 tags: [Linux,命令]
 comments: true
 categories: 
   - Linux
 password:
 img: 'http://image.hming.org/logo/linux.jpg'
-summary: 常用Linux命令
+summary: 常用Linux命令（基于CentOS7）
 ---
 ### 输入界面快捷操作（命令行快捷操作）
 
@@ -641,4 +641,62 @@ hdp002
 [root@hdp002 ~]# hostnamectl set-hostname hdp002.segma.tech
 [root@hdp002 ~]# hostnamectl --static
 hdp002.segma.tech
+```
+
+### firewall-cmd（防火墙相关命令）
+#### 命令格式
+`firewall-cmd [选项]`
+#### 命令功能
+操作防火墙相关命令。
+
+#### 使用实例
+查看防火墙所有信息
+```bash
+[root@1 ~]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: dhcpv6-client ssh
+  ports: 1996/tcp 1996/udp 80/tcp
+  protocols: 
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+```
+
+查看防火墙开放端口信息
+```bash
+[root@1 ~]# firewall-cmd --list-ports
+1996/tcp 1996/udp 80/tcp
+```
+
+新增开放端口
+```bash
+[root@1 ~]# firewall-cmd --zone=public --add-port=80/tcp --permanent
+success
+```
+> –-zone            作用域
+  –-add-port=80/tcp 添加端口，格式为：端口/通讯协议
+  –-permanent       永久生效，没有此参数重启后失效
+
+
+新增多个端口
+```bash
+[root@1 ~]# firewall-cmd --zone=public --add-port=80-90/tcp --permanent
+success
+```
+
+重新加载防火墙规则
+```bash
+[root@1 ~]# firewall-cmd --reload
+success
+```
+
+删除端口
+```bash
+[root@1 ~]# firewall-cmd --zone=public --remove-port=80/tcp --permanent
 ```
