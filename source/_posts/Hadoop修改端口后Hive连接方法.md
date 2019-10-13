@@ -13,6 +13,10 @@ password:
 img: 'http://image.hming.org/logo/hadoop.jpg'
 summary: Hadoop修改端口后，hive继续操作会报错，找不到HDFS，此时需要到元数据库中（本文为mysql）修改对应数据
 ---
+### 场景描述
+Hadoop修改端口后，hive继续操作会报错，找不到HDFS，此时需要到元数据库中（本文为mysql）修改对应数据
+
+### 操作步骤
 元数据库mysql里面两张表：
 DBS ： Hive数据仓库的路径
 SDS ： Hive每张表对应的路径
