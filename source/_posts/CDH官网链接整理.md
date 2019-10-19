@@ -60,3 +60,15 @@ summary: 文档地址基于CDH6.3版本
 
 #### Impala元数据管理(自动同步Hive元数据)
 [https://www.cloudera.com/documentation/enterprise/6/6.3/topics/impala_metadata.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/impala_metadata.html)
+
+#### Impala中SQL和HQL的区别
+[https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_langref_unsupported.html](https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_langref_unsupported.html)
+
+#### Impala聚合函数
+[https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_aggregate_functions.html#aggregate_functions](https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_aggregate_functions.html#aggregate_functions)
+
+#### Impala分析函数
+[https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_analytic_functions.html#analytic_functions](https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_analytic_functions.html#analytic_functions)
+
+#### 从其他数据库迁移Sql到Impala注意事项
+[https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_porting.html#porting](https://docs.cloudera.com/documentation/enterprise/latest/topics/impala_porting.html#porting)
