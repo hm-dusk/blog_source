@@ -553,6 +553,7 @@ max_connections = 550
 #log_bin should be on a disk with enough free space.
 #Replace '/var/lib/mysql/mysql_binary_log' with an appropriate path for your
 #system and chown the specified folder to the mysql user.
+#建议单独磁盘装binlog
 log_bin=/var/lib/mysql/mysql_binary_log
 
 #In later versions of MySQL, if you enable the binary log and do not set
