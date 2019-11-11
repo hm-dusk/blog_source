@@ -7,7 +7,7 @@ tags:
 comments: true
 categories:
   - Linux
-img: 'http://image.hming.org/logo/nginx+docker.png'
+img: 'http://47.106.179.244/logo/nginx+docker.png'
 date: 2018-12-05 00:04:13
 updated: 2018-12-05 00:04:13
 password:

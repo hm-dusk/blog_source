@@ -10,7 +10,7 @@ updated: 2019-5-20 16:45:43
 categories: 
   - Linux
 password:
-img: 'http://image.hming.org/logo/ssh.jpg'
+img: 'http://47.106.179.244/logo/ssh.jpg'
 summary: Linux集群配置免密码登录
 ---
 ### 本文环境

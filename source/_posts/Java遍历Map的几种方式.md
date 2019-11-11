@@ -9,7 +9,7 @@ updated: 2017-07-19 19:26:48
 categories: 
  - Java
 password:
-img: 'http://image.hming.org/logo/java.jpg'
+img: 'http://47.106.179.244/logo/java.jpg'
 summary: 今天突然要用到Map的遍历，在此总结几种Map的遍历方法
 ---
 ## 第一种 在for-each循环中使用entries来遍历

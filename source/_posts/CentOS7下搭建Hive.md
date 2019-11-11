@@ -7,7 +7,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/hive.png'
+img: 'http://47.106.179.244/logo/hive.png'
 date: 2018-12-06 15:18:49
 updated: 2019-1-3 20:45:43
 password:

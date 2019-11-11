@@ -6,7 +6,7 @@ tags:
 comments: true
 categories:
   - 数据库
-img: 'http://image.hming.org/logo/mysql.png'
+img: 'http://47.106.179.244/logo/mysql.png'
 date: 2018-12-08 14:22:14
 updated: 2019-7-22 15:06:59
 password:
@@ -16,9 +16,9 @@ summary: CentOS7下离线安装MySQL
 本文为`mysql-5.7.24-1.el7.x86_64.rpm-bundle.tar`
 下载路径：[https://dev.mysql.com/downloads/mysql/5.7.html#downloads](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
 1. 选择适合CentOS的版本
-![下载页面1](http://image.hming.org/centos7下安装mysql/下载页面1.png)
+![下载页面1](http://47.106.179.244/centos7下安装mysql/下载页面1.png)
 2. 跳过登录直接下载
-![下载页面2](http://image.hming.org/centos7下安装mysql/下载页面2.png)
+![下载页面2](http://47.106.179.244/centos7下安装mysql/下载页面2.png)
 
 ### 卸载系统自带的mariadb-lib
 ```bash

@@ -8,7 +8,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/hortonworks.png'
+img: 'http://47.106.179.244/logo/hortonworks.png'
 date: 2019-01-12 11:32:16
 updated: 2019-1-17 08:53:14
 password:

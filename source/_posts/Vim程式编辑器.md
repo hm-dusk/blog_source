@@ -7,7 +7,7 @@ updated: 2019-1-2 11:44:58
 categories: 
   - Linux
 password:
-img: 'http://image.hming.org/logo/vim.jpg'
+img: 'http://47.106.179.244/logo/vim.jpg'
 summary: Linux下的vim编辑器
 ---
 ## vim编辑器常用指令

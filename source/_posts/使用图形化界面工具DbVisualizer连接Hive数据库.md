@@ -7,7 +7,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/DbVisualizer.png'
+img: 'http://47.106.179.244/logo/DbVisualizer.png'
 date: 2018-12-08 10:53:42
 updated: 2018-12-08 10:53:42
 password:

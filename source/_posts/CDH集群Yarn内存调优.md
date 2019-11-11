@@ -44,12 +44,12 @@ DRF: `Dominant Resource Fairness`，根据CPU和内存公平调度资源。CDH�
 
 ### 测试情况
 Yarn资源分配情况，虚拟CPU共分配了24核，内存则是他的两倍48G
-![](http://image.hming.org/CDH集群Yarn内存调优/yarn资源配置.png)
+![](http://47.106.179.244/CDH集群Yarn内存调优/yarn资源配置.png)
 
 执行任务，队列调度策略为DRF，查看内存和CPU使用情况
-![](http://image.hming.org/CDH集群Yarn内存调优/内存CPU使用对比.png)
-![](http://image.hming.org/CDH集群Yarn内存调优/内存使用情况.png)
-![](http://image.hming.org/CDH集群Yarn内存调优/CPU使用情况.png)
+![](http://47.106.179.244/CDH集群Yarn内存调优/内存CPU使用对比.png)
+![](http://47.106.179.244/CDH集群Yarn内存调优/内存使用情况.png)
+![](http://47.106.179.244/CDH集群Yarn内存调优/CPU使用情况.png)
 可以发现，内存使用受限于cpu，与DRF策略吻合
 
 ### 总结

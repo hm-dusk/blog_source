@@ -6,7 +6,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/tez.png'
+img: 'http://47.106.179.244/logo/tez.png'
 date: 2019-01-03 15:16:17
 updated: 2019-01-03 15:16:17
 password:

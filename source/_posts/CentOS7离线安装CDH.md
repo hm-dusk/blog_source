@@ -32,7 +32,7 @@ CPU：16核
 磁盘：管理节点外挂一块2T HDD到/mnt/data01目录，工作节点挂载三块2T HDD到/mnt/data01-03目录
 
 **组件角色分配规划表：**
-![](http://image.hming.org/CentOS7离线安装CDH/角色分配表.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/角色分配表.png)
 附：[官方服务角色分配方案](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_host_allocations.html)
 
 ### 环境准备
@@ -441,16 +441,16 @@ master1节点
 #### 下载离线包
 ##### Cloudera Manager安装包
 到官网下载rpm包：[https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/](https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/)
-![](http://image.hming.org/CentOS7离线安装CDH/cm包下载地址.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/cm包下载地址.png)
 下载allkeys文件：[https://archive.cloudera.com/cm6/6.3.0/](https://archive.cloudera.com/cm6/6.3.0/)
-![](http://image.hming.org/CentOS7离线安装CDH/allkeys文件下载地址.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/allkeys文件下载地址.png)
 
 ##### CDH安装包
 官方有两种离线包可供选择：
 1. [Parcel模式（推荐）](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_parcel_repo.html)（本文使用模式）
 2. [Package模式](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_package_repo.html)
 到官网下载parcel包：[https://archive.cloudera.com/cdh6/6.3.0/parcels/](https://archive.cloudera.com/cdh6/6.3.0/parcels/)，下载图中框选的三个文件
-![](http://image.hming.org/CentOS7离线安装CDH/cdh包下载地址.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/cdh包下载地址.png)
 
 ##### 其他parcel包（可选）
 YCSB：[http://archive.cloudera.com/cloudera-labs/ycsb/parcels/latest/](http://archive.cloudera.com/cloudera-labs/ycsb/parcels/latest/)
@@ -727,59 +727,59 @@ All done, your SCM database is configured correctly!
 ### 浏览器访问7180端口，进行CDH安装
 Cloudera Manager会根据浏览器的语言进行语言的切换，本文为中文
 初始用户名和密码均为：`admin`
-![](http://image.hming.org/CentOS7离线安装CDH/cm登录页面.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/cm登录页面.png)
 登录后看到第一个欢迎页面，点击继续
-![](http://image.hming.org/CentOS7离线安装CDH/欢迎页面1.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/欢迎页面1.png)
 接受许可条款
-![](http://image.hming.org/CentOS7离线安装CDH/接受许可条款.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/接受许可条款.png)
 选择安装版本，这里选择免费版（之前免费版会有100个节点限制，现在已经没有了）
-![](http://image.hming.org/CentOS7离线安装CDH/选择安装免费版.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/选择安装免费版.png)
 
 进入第二个欢迎页面，左边列出了安装的步骤
-![](http://image.hming.org/CentOS7离线安装CDH/欢迎页面2.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/欢迎页面2.png)
 输入集群名称，本文默认
-![](http://image.hming.org/CentOS7离线安装CDH/输入集群名称.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/输入集群名称.png)
 输入主机名后进行搜索
-![](http://image.hming.org/CentOS7离线安装CDH/输入主机名.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/输入主机名.png)
 配置cloudera manager yum离线库地址，点击更多选项
-![](http://image.hming.org/CentOS7离线安装CDH/配置cm库地址.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/配置cm库地址.png)
 配置parcel库地址，前两个选项默认就行，远程Parcel库删除默认的地址，输入httpd服务的Parcel库地址，点击保存更改
-![](http://image.hming.org/CentOS7离线安装CDH/配置parcel库地址.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/配置parcel库地址.png)
 保存后会自动搜索Parcel包，如图，已经搜索到了之前下载的CDH6.3.0包，点击继续
-![](http://image.hming.org/CentOS7离线安装CDH/自动搜索本地parcel包.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/自动搜索本地parcel包.png)
 如果之前只安装了cm server节点的jdk，则需要勾选上，如果每个节点都安装了jdk就不需要勾选
-![](http://image.hming.org/CentOS7离线安装CDH/安装jdk.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装jdk.png)
 配置ssh，如果主机的密码不相同，则需要选择使用秘钥的形式，如果密码相同，直接输入密码即可
-![](http://image.hming.org/CentOS7离线安装CDH/ssh配置.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/ssh配置.png)
 安装cloudera agent（安装过程中遇到问题可以根据提示进行解决），点击继续
-![](http://image.hming.org/CentOS7离线安装CDH/安装agent1.png)
-![](http://image.hming.org/CentOS7离线安装CDH/安装agent2.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装agent1.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装agent2.png)
 开始自动安装Parcel包，由于需要拷贝到相应节点然后解压，所以时间消耗比较久，耐心等待完成
-![](http://image.hming.org/CentOS7离线安装CDH/安装parcel.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装parcel.png)
 进行集群检测，包括网络检测和节点其他检测，如果检测有问题可以按照提示进行修复
-![](http://image.hming.org/CentOS7离线安装CDH/集群检测1.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/集群检测1.png)
 建议完全通过检测后再点击继续
-![](http://image.hming.org/CentOS7离线安装CDH/集群检测2.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/集群检测2.png)
 
 > 如果只有一个节点，网络检测不会通过
-> ![](http://image.hming.org/CentOS7离线安装CDH/单节点不支持网络检测.png)
+> ![](http://47.106.179.244/CentOS7离线安装CDH/单节点不支持网络检测.png)
 
 开始安装组件服务，可以选择官方的配置方案，也可以选择自定义
 本文选择自定义服务，先安装HDFS和Zookeeper
-![](http://image.hming.org/CentOS7离线安装CDH/安装组件1.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装组件1.png)
 按照之前的**组件角色分配规划**，选择组件相应服务安装的节点
 官网组件服务分配参考：[https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_host_allocations.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_host_allocations.html)
-![](http://image.hming.org/CentOS7离线安装CDH/安装组件2.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装组件2.png)
 选择组件初始化配置，比如选择HDFS DataNode储存目录等
-![](http://image.hming.org/CentOS7离线安装CDH/安装组件3.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装组件3.png)
 点击继续后就会开始安装组件，等待安装完成
-![](http://image.hming.org/CentOS7离线安装CDH/安装组件4.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装组件4.png)
 最后一步，没有问题直接点完成即可
-![](http://image.hming.org/CentOS7离线安装CDH/安装组件5.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/安装组件5.png)
 
 ### 常见问题
 #### 无法复制安装文件allkeys.asc
-![](http://image.hming.org/CentOS7离线安装CDH/常见问题：无法复制安装文件allkeys.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/常见问题：无法复制安装文件allkeys.png)
 因为在配置Cloudera Manager yum库时没有下载`allkeys.asc`文件
 解决方法：
 到官网：[https://archive.cloudera.com/cm6/6.3.0/](https://archive.cloudera.com/cm6/6.3.0/)下载`allkeys.asc`文件到yum离线库
@@ -798,7 +798,7 @@ Starting cloudera-scm-agent:
 ```
 
 #### entropy was available（系统熵值过低）
-![](http://image.hming.org/CentOS7离线安装CDH/常见问题：entropy（系统熵值）过低.png)
+![](http://47.106.179.244/CentOS7离线安装CDH/常见问题：entropy（系统熵值）过低.png)
 解决方法：提高系统熵值
 
 1. 查看目前熵值

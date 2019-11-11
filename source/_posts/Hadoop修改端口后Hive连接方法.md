@@ -10,7 +10,7 @@ categories:
 date: 2018-11-16 14:31:10
 updated: 2018-11-19 19:48:44
 password:
-img: 'http://image.hming.org/logo/hadoop.jpg'
+img: 'http://47.106.179.244/logo/hadoop.jpg'
 summary: Hadoop修改端口后，hive继续操作会报错，找不到HDFS，此时需要到元数据库中（本文为mysql）修改对应数据
 ---
 ### 场景描述

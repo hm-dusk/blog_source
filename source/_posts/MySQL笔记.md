@@ -8,7 +8,7 @@ updated: 2017-07-29 19:03:26
 categories: 
   - 数据库
 password: 
-img: 'http://image.hming.org/logo/mysql.png'
+img: 'http://47.106.179.244/logo/mysql.png'
 summary: MySql笔记
 ---
 ## 一、常见数据库
@@ -20,10 +20,10 @@ Sybase：赛尔斯
 MySQL：甲骨文
 
 ## 二、RDBMS（关系型数据库管理系统）
-![](http://image.hming.org/mysql笔记/RDBMS.png)
-![](http://image.hming.org/mysql笔记/DATABASE.png)
+![](http://47.106.179.244/mysql笔记/RDBMS.png)
+![](http://47.106.179.244/mysql笔记/DATABASE.png)
 表结构：
-![](http://image.hming.org/mysql笔记/%E8%A1%A8%E7%BB%93%E6%9E%84.png)
+![](http://47.106.179.244/mysql笔记/%E8%A1%A8%E7%BB%93%E6%9E%84.png)
 ## 三、SQL（结构化查询语句）
 SQL语句分类：
 

@@ -10,7 +10,7 @@ categories:
 date: 2018-10-31 20:32:27
 updated: 2018-11-14 20:36:28
 password:
-img: 'http://image.hming.org/logo/kubernetes.png'
+img: 'http://47.106.179.244/logo/kubernetes.png'
 summary: CentOS7使用kubeadm安装kubernetes 1.11版本多主高可用
 ---
 [1.11多主高可用](https://www.kubernetes.org.cn/4256.html)

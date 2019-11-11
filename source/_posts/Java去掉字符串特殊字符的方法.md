@@ -8,7 +8,7 @@ updated: 2017-07-25 10:55:07
 categories: 
   - Java
 password:
-img: 'http://image.hming.org/logo/java.jpg'
+img: 'http://47.106.179.244/logo/java.jpg'
 summary: java中利用Unicode编码过滤字符串中特定字符的方法
 ---
 语法：

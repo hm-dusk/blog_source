@@ -10,7 +10,7 @@ categories:
 date: 2018-11-19 19:57:43
 updated: 2019-2-16 12:01:41
 password:
-img: 'http://image.hming.org/logo/spring-boot.png'
+img: 'http://47.106.179.244/logo/spring-boot.png'
 summary: 项目中需要使用SpringBoot操作Hive进行开发，这里记录SpringBoot使用JdbcTemplate连接Hive的方法。开发环境使用Maven。
 ---
 ### 添加Maven依赖

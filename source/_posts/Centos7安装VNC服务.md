@@ -6,7 +6,7 @@ tags:
 comments: true
 categories:
   - Linux
-img: 'http://image.hming.org/logo/linux.jpg'
+img: 'http://47.106.179.244/logo/linux.jpg'
 date: 2019-08-06 16:00:24
 updated: 2019-08-06 16:00:24
 password:

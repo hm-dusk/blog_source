@@ -7,7 +7,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/hbase.jpg'
+img: 'http://47.106.179.244/logo/hbase.jpg'
 date: 2018-12-15 15:47:39
 updated: 2018-12-18 11:12:45
 password:

@@ -6,7 +6,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/zookeeper.png'
+img: 'http://47.106.179.244/logo/zookeeper.png'
 date: 2018-12-15 11:18:14
 updated: 2018-12-15 16:29:28
 password:

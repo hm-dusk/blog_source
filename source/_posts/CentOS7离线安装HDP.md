@@ -93,7 +93,7 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
 ```
 
 访问服务器80端口相应/ambari/地址，可以访问到文件和文件夹即可
-![](http://image.hming.org/CentOS7离线安装HDP/httpd访问ambari地址.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/httpd访问ambari地址.png)
 ### 制作本地源
 1. 修改repo源文件
     ```bash
@@ -309,17 +309,17 @@ Ambari Server 'start' completed successfully.
 
 #### 访问服务器8080端口
 默认用户名和密码都为admin
-![](http://image.hming.org/CentOS7离线安装HDP/ambari登录页面.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/ambari登录页面.png)
 根据提示安装集群
-![](http://image.hming.org/CentOS7离线安装HDP/根据提示安装集群.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/根据提示安装集群.png)
 设置集群名字，比如my_hadoop
-![](http://image.hming.org/CentOS7离线安装HDP/为集群起名字.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/为集群起名字.png)
 选择HDP版本，配置yum源地址
-![](http://image.hming.org/CentOS7离线安装HDP/HDP版本选择与yum源地址配置.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/HDP版本选择与yum源地址配置.png)
 配置host与ssh
-![](http://image.hming.org/CentOS7离线安装HDP/配置host与ssh.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/配置host与ssh.png)
 确认后开始在节点上安装ambari-agent
-![](http://image.hming.org/CentOS7离线安装HDP/agent安装页面.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/agent安装页面.png)
 
 > 安装agent时可能报错：
 > ```bash
@@ -346,22 +346,22 @@ Ambari Server 'start' completed successfully.
 > ```
 
 ambari-agent安装成功
-![](http://image.hming.org/CentOS7离线安装HDP/agent安装成功.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/agent安装成功.png)
 选择hadoop组件进行安装，建议安装少量组件，之后可以再添加
-![](http://image.hming.org/CentOS7离线安装HDP/选择需要安装的hadoop组件.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/选择需要安装的hadoop组件.png)
 选择主节点安装位置（如NameNode）
-![](http://image.hming.org/CentOS7离线安装HDP/选择主节点.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/选择主节点.png)
 选择从节点安装位置（如DataNode）
-![](http://image.hming.org/CentOS7离线安装HDP/选择从节点.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/选择从节点.png)
 进行其他设置（如密码、数据保存路径、用户/用户组、参数配置等）
-![](http://image.hming.org/CentOS7离线安装HDP/其他设置1.png)
-![](http://image.hming.org/CentOS7离线安装HDP/其他设置2.png)
-![](http://image.hming.org/CentOS7离线安装HDP/其他设置3.png)
-![](http://image.hming.org/CentOS7离线安装HDP/其他设置4.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/其他设置1.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/其他设置2.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/其他设置3.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/其他设置4.png)
 配置完成后，查看配置项是否无误，确认无误后点击发布开始安装
-![](http://image.hming.org/CentOS7离线安装HDP/配置完成确认安装.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/配置完成确认安装.png)
 等待安装进度完成即可，如果安装过程中出错，可根据报错信息进行修改直到安装成功
-![](http://image.hming.org/CentOS7离线安装HDP/hadoop组件安装进度.png)
+![](http://47.106.179.244/CentOS7离线安装HDP/hadoop组件安装进度.png)
 
 ### 使用HDP
 #### HDP安装路径

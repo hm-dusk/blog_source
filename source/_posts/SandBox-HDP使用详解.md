@@ -7,7 +7,7 @@ tags:
 comments: true
 categories:
   - 大数据
-img: 'http://image.hming.org/logo/sandbox.png'
+img: 'http://47.106.179.244/logo/sandbox.png'
 date: 2019-04-04 09:36:23
 updated: 2019-04-04 09:36:23
 password:
@@ -33,12 +33,12 @@ SandBox提供三种安装方式：`VirtualBox虚拟机`、`VMware虚拟机`、`D
 一个运行中的SandBox-HDP 3.0.1
 ### web访问
 1080端口为sandbox容器web服务端口，可以通过浏览器访问该端口，得到以下界面：
-![sandbox页面](http://image.hming.org/sandbox-hdp使用详解/sandbox页面.png)
+![sandbox页面](http://47.106.179.244/sandbox-hdp使用详解/sandbox页面.png)
 左侧launch dashboard直接进入ambari管理界面，登录admin账号需要进入容器修改ambari管理员密码
 右侧则是一些链接，包括ambari管理地址、Ranger地址、DAS地址等
 
 4200端口则提供了一个浏览器访问命令行的接口：
-![浏览器访问hdp容器](http://image.hming.org/sandbox-hdp使用详解/浏览器访问hdp容器.png)
+![浏览器访问hdp容器](http://47.106.179.244/sandbox-hdp使用详解/浏览器访问hdp容器.png)
 使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码，对密码强度会有要求
 
 ### 登录到HDP环境主机

@@ -7,7 +7,7 @@ comments: true
 categories: 
   - Linux
 password:
-img: 'http://image.hming.org/logo/linux.jpg'
+img: 'http://47.106.179.244/logo/linux.jpg'
 summary: 常用Linux命令（基于CentOS7）
 ---
 ### 输入界面快捷操作（命令行快捷操作）
@@ -496,7 +496,7 @@ tcp    LISTEN     0      128     ::ffff:10.75.4.31:8088     :::*     users:(("ja
 > `--version`：显示版本信息
 > `--h`, --help：显示帮助信息
 ##### 命令实例
-1. 输入rz，然后回车，选择本地文件上传![rz上传jdk](http://image.hming.org/linux下安装java/rz%E6%88%AA%E5%9B%BE.jpg)
+1. 输入rz，然后回车，选择本地文件上传![rz上传jdk](http://47.106.179.244/linux下安装java/rz%E6%88%AA%E5%9B%BE.jpg)
 2. 以二进制，并对控制字符进行转义，替换已存在的同名文件。
 ```bash
 [root@hadoopmaster opt]# rz -bye
