@@ -326,9 +326,17 @@ fi
 > 本文在`master1`上安装NTP服务，其他节点和`master1`节点同步
 
 ##### 1.所有节点安装ntp服务
-`yum -y install ntp`
+
+```bash
+yum -y install ntp
+```
+
 ##### 2.修改配置文件
-`vim /etc/ntp.conf`
+
+```bash
+vim /etc/ntp.conf
+```
+
 1. 所有主机在restrict附近增加下面两行
 
 ```bash
@@ -362,7 +370,11 @@ Fudge 172.16.0.2 stratum 10
 ```
 
 ##### 3.所有节点启动ntp服务
-`systemctl start ntpd`
+
+```bash
+systemctl start ntpd
+systemctl enable ntpd
+```
 
 ##### 4.查看服务状态
 ```bash
