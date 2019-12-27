@@ -33,6 +33,7 @@ summary: 常用Linux命令（基于CentOS7）
 | 说明 | 命令 |
 | -------- | --------------------- |
 | 查看内存使用情况 | `free -h` |
+| 强制被改变的内容立刻写入磁盘，更新超块信息 | `sync` |
 | 仅清除页面缓存（PageCache） | `echo 1 > /proc/sys/vm/drop_caches` |
 | 清除目录项和inode | `echo 2 > /proc/sys/vm/drop_caches   ` |
 | 清除页面缓存，目录项和inode | `echo 3 > /proc/sys/vm/drop_caches ` |
