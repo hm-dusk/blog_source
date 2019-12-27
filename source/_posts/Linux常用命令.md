@@ -39,6 +39,9 @@ summary: 常用Linux命令（基于CentOS7）
 | 清除页面缓存，目录项和inode | `echo 3 > /proc/sys/vm/drop_caches ` |
 每个 Linux 系统有三种选项来清除缓存而不需要中断任何进程或服务。
 （LCTT 译注：Cache，译作“缓存”，指 CPU 和内存之间高速缓存。Buffer，译作“缓冲区”，指在写入磁盘前的存储再内存中的内容。）
+参考：
+[https://blog.csdn.net/ailice001/article/details/80353924](https://blog.csdn.net/ailice001/article/details/80353924)
+[https://www.cnblogs.com/yorkyang/p/9226121.html](https://www.cnblogs.com/yorkyang/p/9226121.html)
 
 ### 查看CPU信息
 总核数 = 物理CPU个数 X 每颗物理CPU的核数 
