@@ -699,6 +699,87 @@ Loading mirror speeds from cached hostfile
 Complete!
 ```
 
+> **安装agent时可能遇到的问题：**
+> 如果不是纯净的Centos镜像包（经过修改或升级）安装的操作系统，则可能遇到以下问题：
+> ```bash
+> [root@cdh ~]# yum -y install cloudera-manager-agent
+> ...
+> Error: Package: krb5-devel-1.15.1-34.el7.x86_64 (iso-7.6)
+>            Requires: krb5-libs(x86-64) = 1.15.1-34.el7
+>            Installed: krb5-libs-1.15.1-37.el7_6.x86_64 (@updates)
+>                krb5-libs(x86-64) = 1.15.1-37.el7_6
+>            Available: krb5-libs-1.15.1-18.el7.x86_64 (iso)
+>                krb5-libs(x86-64) = 1.15.1-18.el7
+>            Available: krb5-libs-1.15.1-34.el7.x86_64 (iso-7.6)
+>                krb5-libs(x86-64) = 1.15.1-34.el7
+> Error: Package: 1:openssl-devel-1.0.2k-16.el7.x86_64 (iso-7.6)
+>            Requires: openssl-libs(x86-64) = 1:1.0.2k-16.el7
+>            Installed: 1:openssl-libs-1.0.2k-16.el7_6.1.x86_64 (@updates)
+>                openssl-libs(x86-64) = 1:1.0.2k-16.el7_6.1
+>            Available: 1:openssl-libs-1.0.2k-12.el7.x86_64 (iso)
+>                openssl-libs(x86-64) = 1:1.0.2k-12.el7
+>            Available: 1:openssl-libs-1.0.2k-16.el7.x86_64 (iso-7.6)
+>                openssl-libs(x86-64) = 1:1.0.2k-16.el7
+> Error: Package: 32:bind-libs-9.9.4-72.el7.x86_64 (iso-7.6)
+>            Requires: bind-license = 32:9.9.4-72.el7
+>            Installed: 32:bind-license-9.9.4-74.el7_6.1.noarch (@updates)
+>                bind-license = 32:9.9.4-74.el7_6.1
+>            Available: 32:bind-license-9.9.4-61.el7.noarch (iso)
+>                bind-license = 32:9.9.4-61.el7
+>            Available: 32:bind-license-9.9.4-72.el7.noarch (iso-7.6)
+>                bind-license = 32:9.9.4-72.el7
+> Error: Package: libkadm5-1.15.1-34.el7.x86_64 (iso-7.6)
+>            Requires: krb5-libs(x86-64) = 1.15.1-34.el7
+>            Installed: krb5-libs-1.15.1-37.el7_6.x86_64 (@updates)
+>                krb5-libs(x86-64) = 1.15.1-37.el7_6
+>            Available: krb5-libs-1.15.1-18.el7.x86_64 (iso)
+>                krb5-libs(x86-64) = 1.15.1-18.el7
+>            Available: krb5-libs-1.15.1-34.el7.x86_64 (iso-7.6)
+>                krb5-libs(x86-64) = 1.15.1-34.el7
+>  You could try using --skip-broken to work around the problem
+>  You could try running: rpm -Va --nofiles --nodigest
+> ...
+> ```
+> 根据提示可以看处是yum依赖包冲突，已经安装了更高的版本，解决方法是对相关rpm包降级。
+> 以下解决krb5-devel包的冲突，其他包操作步骤类似：
+> 根据保存提示可以知道，krb5-devel依赖的krb5-libs包需要的版本为34，但是已经安装了37版本，高于要求的版本
+> 1)搜索目前可用的版本
+> ```bash
+> [root@cdh ~]# yum search --showduplicates krb5-libs
+> Loaded plugins: fastestmirror
+> Loading mirror speeds from cached hostfile
+> =================================================================================== N/S matched: krb5-libs ====================================================================================
+> krb5-libs-1.15.1-18.el7.i686 : The non-admin shared libraries used by Kerberos 5
+> krb5-libs-1.15.1-18.el7.x86_64 : The non-admin shared libraries used by Kerberos 5
+> krb5-libs-1.15.1-34.el7.i686 : The non-admin shared libraries used by Kerberos 5
+> krb5-libs-1.15.1-34.el7.x86_64 : The non-admin shared libraries used by Kerberos 5
+> krb5-libs-1.15.1-37.el7_6.x86_64 : The non-admin shared libraries used by Kerberos 5
+> 
+>   Name and summary matches only, use "search all" for everything.
+> ```
+> 2)将包降级为34版本
+> ```bash
+> [root@cdh ~]# yum -y downgrade krb5-libs-1.15.1-34.el7.x86_64
+> ...
+> Removed:
+>   krb5-libs.x86_64 0:1.15.1-37.el7_6                  
+> 
+> Installed:
+>   krb5-libs.x86_64 0:1.15.1-34.el7                 
+> 
+> Complete!
+> ```
+> 
+> 注：如果降级还是报冲突错误，则可以将包卸载后重新安装：
+> ```bash
+> #查看已安装版本
+> rpm -qa | grep bind-libs
+> #卸载已安装版本
+> rpm -e --nodeps [完整包名]
+> #安装需要的版本
+> rpm -ivh [需要安装的rpm包rpm文件]
+> ```
+
 ### 初始化Cloudera Manager数据库
 参照官网：[https://www.cloudera.com/documentation/enterprise/6/6.3/topics/prepare_cm_database.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/prepare_cm_database.html)
 由于我们MySQL是安装在本地，所以直接执行
