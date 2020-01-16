@@ -1,5 +1,5 @@
 ---
-title: '''使用Zookeeper实现HiveServer2的HA'''
+title: 使用Zookeeper实现HiveServer2的HA
 tags:
   - 大数据
   - CDH
