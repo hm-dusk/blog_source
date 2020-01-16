@@ -11,7 +11,7 @@ categories:
 img: ''
 cover: false
 date: 2019-09-18 10:43:34
-updated: 2019-09-18 10:43:34
+updated: 2020-1-16 19:36:16
 password:
 summary: impala配置优化，版本3.2.0+cdh6.3.0
 ---

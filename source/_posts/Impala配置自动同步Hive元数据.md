@@ -11,7 +11,7 @@ categories:
 img: ''
 cover: false
 date: 2019-09-10 15:12:15
-updated: 2019-09-10 15:12:15
+updated: 2020-1-16 19:36:08
 password:
 summary: Impala同步Hive元数据是一大问题，好在CDH6.3.0推出了自动同步的配置
 ---
