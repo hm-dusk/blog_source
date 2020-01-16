@@ -23,10 +23,14 @@ Impala安装后的推荐配置[https://www.cloudera.com/documentation/enterprise
 cloudera manager进入impala配置页面，搜索`dfs.client.read.shortcircuit`，勾选后重启。
 
 ### 设置内存限制
+进入impala配置页面，搜索`mem_limit`
 
 ### 设置连接超时时间
+进入impala配置页面，搜索`idle_session_timeout`
+> 注意：超时时间设置过短可能导致服务端连接关闭而客户端未关闭，可能造成客户端无法使用impala的问题
 
 ### 设置连接数
+进入impala配置页面，搜索`fe_service_threads`
 
 ### 使用HDFS缓存
 参考官网文档：
