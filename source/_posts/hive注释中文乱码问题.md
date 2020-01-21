@@ -52,3 +52,8 @@ alter table INDEX_PARAMS modify column PARAM_VALUE varchar(4000) character set u
 ALTER TABLE TBLS modify COLUMN VIEW_EXPANDED_TEXT mediumtext CHARACTER SET utf8;
 ALTER TABLE TBLS modify COLUMN VIEW_ORIGINAL_TEXT mediumtext CHARACTER SET utf8;
 ```
+
+#### 修改数据库注释，支持中文表示
+```sql
+ALTER TABLE DBS MODIFY COLUMN `DESC` VARCHAR (4000) CHARACTER SET utf8;
+```
