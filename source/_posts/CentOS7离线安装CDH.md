@@ -534,7 +534,115 @@ total 2036848
 [root@cdh cdh6.3.0]# 
 ```
 
-#### 安装MySQL
+#### 安装并配置元数据库
+可以选择MySQL或者Mariadb
+
+##### 安装Mariadb
+参考[官网](https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/install_cm_mariadb.html)
+1. 安装server
+
+```bash
+yum -y install mariadb-server
+```
+
+2. 修改配置文件`/etc/my.cnf`为以下内容
+
+```bash
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+transaction-isolation = READ-COMMITTED
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+symbolic-links = 0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+key_buffer = 16M
+key_buffer_size = 32M
+max_allowed_packet = 32M
+thread_stack = 256K
+thread_cache_size = 64
+query_cache_limit = 8M
+query_cache_size = 64M
+query_cache_type = 1
+
+max_connections = 550
+#expire_logs_days = 10
+#max_binlog_size = 100M
+
+#log_bin should be on a disk with enough free space.
+#Replace '/var/lib/mysql/mysql_binary_log' with an appropriate path for your
+#system and chown the specified folder to the mysql user.
+#建议单独磁盘装binlog，并且修改目录拥有者为mysql
+log_bin=/var/lib/mysql/mysql_binary_log
+
+#In later versions of MariaDB, if you enable the binary log and do not set
+#a server_id, MariaDB will not start. The server_id must be unique within
+#the replicating group.
+server_id=1
+
+binlog_format = mixed
+
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 8M
+join_buffer_size = 8M
+
+# InnoDB settings
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit  = 2
+innodb_log_buffer_size = 64M
+innodb_buffer_pool_size = 4G
+innodb_thread_concurrency = 8
+innodb_flush_method = O_DIRECT
+innodb_log_file_size = 512M
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+```
+
+3. 启动Mariadb，并加入开机自启动
+
+```bash
+systemctl start mariadb
+systemctl enable mariadb
+```
+
+4. 初始化Mariadb
+
+```bash
+[...]
+Enter current password for root (enter for none): #第一次直接回车
+OK, successfully used password, moving on...
+[...]
+Set root password? [Y/n] Y
+New password: # 设置root密码
+Re-enter new password: 
+[...]
+Remove anonymous users? [Y/n] Y
+[...]
+Disallow root login remotely? [Y/n] N
+[...]
+Remove test database and access to it [Y/n] Y
+[...]
+Reload privilege tables now? [Y/n] Y
+[...]
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+```
+
+##### 安装MySQL
 离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/CentOS7%E4%B8%8B%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85MySQL/)
 > 注意安装mysql时需要安装mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm包，不然安装cm server时会报错：
 > Requires: libmysqlclient.so.18()(64bit)
@@ -565,7 +673,7 @@ max_connections = 550
 #log_bin should be on a disk with enough free space.
 #Replace '/var/lib/mysql/mysql_binary_log' with an appropriate path for your
 #system and chown the specified folder to the mysql user.
-#建议单独磁盘装binlog
+#建议单独磁盘装binlog，并且修改目录拥有者为mysql
 log_bin=/var/lib/mysql/mysql_binary_log
 
 #In later versions of MySQL, if you enable the binary log and do not set
@@ -596,17 +704,12 @@ pid-file=/var/run/mysqld/mysqld.pid
 sql_mode=STRICT_ALL_TABLES
 ```
 
+##### 配置组件数据库
 新建各组件数据库，为后续安装做准备（这里可以根据安装的组件进行选择创建，其中密码`'1234'`建议设置为自己的密码）
 
 ```sql
 CREATE DATABASE scm DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON scm.* TO 'scm'@'%' IDENTIFIED BY '1234';
-
-CREATE DATABASE amon DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '1234';
-
-CREATE DATABASE rman DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '1234';
 
 CREATE DATABASE hue DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '1234';
@@ -617,16 +720,11 @@ GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '1234';
 CREATE DATABASE sentry DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '1234';
 
-CREATE DATABASE nav DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '1234';
-
-CREATE DATABASE navms DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '1234';
-
 CREATE DATABASE oozie DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '1234';
 ```
 
+##### 配置连接jar包
 上传mysql连接包到`/usr/share/java/`目录下（如果没有则创建一个），改名为：`mysql-connector-java.jar`
 > **注意：需要连接MySQL数据库的节点都需要上传连接包**
 
