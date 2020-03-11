@@ -13,7 +13,7 @@ categories:
 password: 
 img: ''
 summary: CentOS7下搭建Hadoop集群
-cover: true
+cover: false
 ---
 ### 本文环境
 |节点|IP地址|

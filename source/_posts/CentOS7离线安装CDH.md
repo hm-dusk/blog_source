@@ -9,9 +9,10 @@ categories:
   - 大数据
 img: ''
 date: 2019-08-16 15:03:41
-updated: 2019-9-3 19:31:09
+updated: 2020-3-11 11:04:27
 password:
 cover: true
+top: true
 summary: CentOS7.6离线安装CDP，Cloudera Manager版本：6.3.0，CDH版本：6.3.0-1
 ---
 环境准备部分参考文章：[Hadoop实操：CDH安装前置准备](https://mp.weixin.qq.com/s?__biz=MzI4OTY3MTUyNg==&mid=2247485512&idx=1&sn=9e953a7eb8b3b2a64a011550ab7da184&chksm=ec2ad841db5d51573f5913d14c33135180bca023de1c349fc431f561c055d1d085527107b66e&scene=21#wechat_redirect)

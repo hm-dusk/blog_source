@@ -11,7 +11,7 @@ img: ''
 date: 2019-01-09 20:07:15
 updated: 2019-4-9 09:52:24
 password:
-cover: true
+cover: false
 summary: CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 ---
 ### 本文环境

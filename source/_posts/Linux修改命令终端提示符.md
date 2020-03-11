@@ -6,11 +6,13 @@ tags:
 comments: true
 categories:
   - Linux
-img: 'http://47.106.179.244/logo/linux.jpg'
+img: ''
 date: 2019-03-29 11:47:18
 updated: 2019-03-29 11:47:18
 password:
 summary: Linux命令行是操作Linux的重要手段，命令行提示符千篇一律的格式有时会让命令和输出难以辨认，本文将介绍如何修改命令行提示符的格式。
+top: true
+cover: true
 ---
 ### 命令行提示符代表含义
 命令行提示符一般格式含义：

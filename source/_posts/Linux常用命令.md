@@ -7,8 +7,10 @@ comments: true
 categories: 
   - Linux
 password:
-img: 'http://47.106.179.244/logo/linux.jpg'
+img: ''
 summary: 常用Linux命令（基于CentOS7）
+top: true
+cover: true
 ---
 ### 输入界面快捷操作（命令行快捷操作）
 

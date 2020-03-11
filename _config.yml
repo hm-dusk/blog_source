@@ -18,6 +18,12 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
+# 中文链接转拼音
+# 如果你的文章名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 SEO，且 gitment 评论对中文链接也不支持。我们可以用 hexo-permalink-pinyin Hexo 插件使在生成文章时生成中文拼音的永久链接。
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
 # Directory 目录
 source_dir: source
 public_dir: public
@@ -50,7 +56,7 @@ highlight: # 代码高亮（禁用自带代码高亮）
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
   theme: 'xonokai'
-  line_number: false  # 是否显示行号 默认 false
+  line_number: true  # 是否显示行号 默认 false
   custom_css:
 
 
@@ -83,7 +89,7 @@ pagination_dir: page
 # Extensions #主题
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-matery
+theme: hexo-theme-matery-1.2.2
 #theme_config: # 主题的配置文件。在这里放置的配置会覆盖主题目录下的 _config.yml 中的配置
 
 jsonContent:
@@ -128,6 +134,26 @@ deploy:
   repo: git@github.com:hm-dusk/hm-dusk.github.io.git
   # 分支
   branch: master
+
+# 添加emoji表情支持
+# 本主题新增了对emoji表情的支持，使用到了 hexo-filter-github-emojis 的 Hexo 插件来支持 emoji表情的生成，把对应的markdown emoji语法（::,例如：:smile:）转变成会跳跃的emoji表情，安装命令如下：
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+
+# 添加 RSS 订阅支持
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
 
 # Local search 启用本地搜索功能
 # Dependencies: https://github.com/flashlab/hexo-generator-search
