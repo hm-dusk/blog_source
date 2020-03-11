@@ -19,6 +19,9 @@ summary: 文档地址基于CDH6.3版本
 #### CDH安装教程
 [https://www.cloudera.com/documentation/enterprise/6/6.3/topics/installation.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/installation.html)  
 
+#### CDH、CM安装包下载地址
+[https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_version_packaging_download.html](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_version_packaging_download.html)
+
 #### 集群所使用端口
 [https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_ports.html](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_ports.html)  
 

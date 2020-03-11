@@ -451,6 +451,9 @@ master1节点
 ```
 
 #### 下载离线包
+官网下载地址合集（当其他地址失效时尝试通过该链接找到最新下载地址）：
+[https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_version_packaging_download.html](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_version_packaging_download.html)
+
 ##### Cloudera Manager安装包
 到官网下载rpm包：[https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/](https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/RPMS/x86_64/)
 ![](http://47.106.179.244/CentOS7离线安装CDH/cm包下载地址.png)
@@ -461,8 +464,12 @@ master1节点
 官方有两种离线包可供选择：
 1. [Parcel模式（推荐）](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_parcel_repo.html)（本文使用模式）
 2. [Package模式](https://www.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_package_repo.html)
-到官网下载parcel包：[https://archive.cloudera.com/cdh6/6.3.0/parcels/](https://archive.cloudera.com/cdh6/6.3.0/parcels/)，下载图中框选的三个文件
+~~到官网下载parcel包：[https://archive.cloudera.com/cdh6/6.3.0/parcels/](https://archive.cloudera.com/cdh6/6.3.0/parcels/)~~
+下载图中框选的三个文件
 ![](http://47.106.179.244/CentOS7离线安装CDH/cdh包下载地址.png)
+
+> 此条消息2020-3-11更新
+> 6.3.0parcel包已经被官网下架了，可以去[官网下载地址合集](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_version_packaging_download.html)找其他版本parcel下载
 
 ##### 其他parcel包（可选）
 YCSB：[http://archive.cloudera.com/cloudera-labs/ycsb/parcels/latest/](http://archive.cloudera.com/cloudera-labs/ycsb/parcels/latest/)
@@ -620,22 +627,23 @@ systemctl enable mariadb
 4. 初始化Mariadb
 
 ```bash
-[...]
+[root@cdh cdh6.3.0]# mysql_secure_installation
+...
 Enter current password for root (enter for none): #第一次直接回车
 OK, successfully used password, moving on...
-[...]
+...
 Set root password? [Y/n] Y
 New password: # 设置root密码
 Re-enter new password: 
-[...]
+...
 Remove anonymous users? [Y/n] Y
-[...]
+...
 Disallow root login remotely? [Y/n] N
-[...]
+...
 Remove test database and access to it [Y/n] Y
-[...]
+...
 Reload privilege tables now? [Y/n] Y
-[...]
+...
 All done!  If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
