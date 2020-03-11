@@ -166,7 +166,7 @@ search:
 # 配置图片懒加载
 lazyload:
   enable: true  # 是否开启图片懒加载
-  onlypost: false  # 是否只对文章的图片做懒加载
+  onlypost: true  # 是否只对文章的图片做懒加载
   loadingImg: /loading.gif # eg ./images/loading.gif
 
 # 页面宠物
