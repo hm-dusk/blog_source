@@ -247,7 +247,7 @@ yum -y install iperf3
 
 #### 配置免密登录（可选）
 如果所有主机节点root用户密码相同，则可以不用配置
-配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
+配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/linux-ji-qun-pei-zhi-mian-mi-ma-deng-lu/)
 
 #### 关闭防火墙
 查看防火墙状态
@@ -507,7 +507,7 @@ httpd默认路径为：`/var/www/html/`
 > 如果httpd映射路径修改过，则以修改后的为准。
 
 ##### Cloudera Manager
-将下载的所有cm rpm包和allkeys文件一起[制作离线yum源](http://blog.hming.org/2019/03/29/Linux%E5%88%B6%E4%BD%9C%E7%A6%BB%E7%BA%BFyum%E6%BA%90/#toc-heading-6)
+将下载的所有cm rpm包和allkeys文件一起[制作离线yum源](http://blog.hming.org/2019/03/29/linux-zhi-zuo-chi-xian-yum-yuan/)
 将离线yum源放到httpd服务路径中，方便其他节点访问
 
 ```bash
@@ -652,7 +652,7 @@ Thanks for using MariaDB!
 ```
 
 ##### 安装MySQL
-离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/CentOS7%E4%B8%8B%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85MySQL/)
+离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/centos7-xia-chi-xian-an-zhuang-mysql/)
 > 注意安装mysql时需要安装mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm包，不然安装cm server时会报错：
 > Requires: libmysqlclient.so.18()(64bit)
 

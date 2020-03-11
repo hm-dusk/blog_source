@@ -27,7 +27,7 @@ summary: CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 离线安装包共计10G左右，解压后共计11G左右，请保证有足够空间。
 
 #### 配置免密登录
-配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/Linux%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/)
+配置免密码登录教程请点击[这里](http://blog.hming.org/2018/09/16/linux-ji-qun-pei-zhi-mian-mi-ma-deng-lu/)
 
 #### 关闭防火墙
 查看防火墙状态
@@ -46,9 +46,9 @@ summary: CentOS7离线安装HDP，Ambari版本：2.7.3.0，HDP版本：3.1.0.0
 4. 重启系统或者运行`setenforce 0`命令禁用SELinux
 
 #### 安装jdk、Python（所有节点）、MySQL（安装一个即可）
-1. 配置java环境教程点击[这里](http://blog.hming.org/2018/09/14/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java/)
+1. 配置java环境教程点击[这里](http://blog.hming.org/2018/09/14/linux-xia-an-zhuang-java/)
 2. 安装/更新Python `yum -y install python`
-3. 离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/CentOS7%E4%B8%8B%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85MySQL/)
+3. 离线安装MySQL教程点击[这里](http://blog.hming.org/2018/12/08/centos7-xia-chi-xian-an-zhuang-mysql/)
 新建数据库hive、ambari（为后续安装做准备）。
 
 ```bash
@@ -164,7 +164,7 @@ ambari ambari-2.7.3.0-centos7.tar.gz  HDP HDP-3.1.0.0-centos7-rpm.tar.gz  HDP-UT
 
 ### 安装Ambari-server
 本次安装使用第三方数据库MySQL模式，默认为PostgreSQL模式（生产环境不推荐）。
-需提前准备好MySQL数据库连接jar包，[MySQL连接驱动包下载方法](http://blog.hming.org/2018/12/09/MySQL%E8%BF%9E%E6%8E%A5%E9%A9%B1%E5%8A%A8%E5%8C%85%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%B3%95/)
+需提前准备好MySQL数据库连接jar包，[MySQL连接驱动包下载方法](http://blog.hming.org/2018/12/09/mysql-lian-jie-qu-dong-bao-xia-zai-fang-fa/)
 #### Ambari-server节点（主节点）安装Ambari-server
 
 ```bash
