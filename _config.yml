@@ -163,6 +163,12 @@ search:
 #  format: html
 #  limit: 10000
 
+# 配置图片懒加载
+lazyload:
+  enable: true  # 是否开启图片懒加载
+  onlypost: false  # 是否只对文章的图片做懒加载
+  loadingImg: /loading.gif # eg ./images/loading.gif
+
 # 页面宠物
 # model 模型名称 默认值: z16
 #
