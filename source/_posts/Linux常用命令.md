@@ -1,7 +1,7 @@
 ---
 title: Linux常用命令
 date: 2018-08-15 13:42:08
-updated: 2019-9-18 15:22:43
+updated: 2020-05-12 23:46:43
 tags: [Linux,命令]
 comments: true
 categories: 
@@ -576,7 +576,7 @@ root     pts/0    10.75.4.14       16:26    9:05   0.00s  0.00s -bash
 root     pts/1    10.75.4.12       15:43    2:49   2:15   2:15  -bash
 root     pts/2    10.75.4.11       16:35    1.00s 20.22s  0.00s w
 root     pts/3    10.75.4.12       16:23    2:49   1:27   1:27  -bash
-[root@centos3 ~]#  ps aux | grep sshd
+[root@centos3 ~]#  ps -aux | grep sshd
 root      1105  0.0  0.0 112796  1280 ?        Ss   Feb18   0:00 /usr/sbin/sshd -D
 root      4368  1.2  0.0 161400  6192 ?        Ss   15:43   0:40 sshd: root@pts/1
 root     19926 11.3  0.0 161400  6200 ?        Ss   16:23   1:39 sshd: root@pts/3
@@ -705,4 +705,73 @@ success
 删除端口
 ```bash
 [root@1 ~]# firewall-cmd --zone=public --remove-port=80/tcp --permanent
+```
+
+### ps（查看进程状态命令）
+
+#### 命令格式
+
+`ps [参数] `
+
+#### 命令功能
+
+ps命令是Process Status的缩写。ps命令用来列出系统中当前运行的那些进程。ps命令列出的是当前那些进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。
+
+#### 命令参数
+一般常用的组合为`-aux`和`-ef`
+> -a 表示显示当前终端所有进程信息
+> -u 表示以用户格式显示
+> -x 表示显示进程运行的参数
+
+> -e 显示所有进程
+> -f 以全格式显示
+
+#### 使用实例
+查看当前运行的进程，其中各列代表含义为：
+USER：用户
+PID：进程号
+%CPU：占用cpu情况
+%MEM：占用内存情况
+VSZ：使用的虚拟内存
+RSS：使用的物理内存
+TTY：使用的终端
+STAT：进程的状态，S为休眠，R为运行，Z为僵尸进程，
+START：启动时间
+TIME：占用CPU时间
+COMMAND：进程执行时的命令行
+```bash
+[root@cdh1 ~]# ps -aux
+USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root          1  0.0  0.0 190972  1800 ?        Ss   May09   0:09 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+root          2  0.0  0.0      0     0 ?        S    May09   0:00 [kthreadd]
+root          3  0.0  0.0      0     0 ?        S    May09   0:11 [ksoftirqd/0]
+root          5  0.0  0.0      0     0 ?        S<   May09   0:00 [kworker/0:0H]
+...
+root      20364  0.0  0.0 249952  2780 ?        Ss   May09   0:09 /usr/sbin/httpd -DFOREGROUND
+root      20480  0.1  0.1 692504 18296 ?        Sl   May09   6:31 /usr/bin/python2 /opt/cloudera/cm-agent/bin/../bin/flood
+clouder+  20517  0.0  0.2 256844 20880 ?        S    May09   0:01 /usr/bin/python2 /opt/cloudera/cm-agent/bin/cm proc_watcher 20566
+...
+```
+
+查看当前运行进程，并显示父进程，其列代表含义为：
+UID：用户ID
+PID：进程ID
+PPID：父进程ID
+C：CPU用于计算执行优先级的因子。数值越大，表明进程是CPU密集型运算，执行优先级会降低；数值越小，表明进程是I/O密集型运算，执行优先级会提高。
+STIME：进程启动的时间
+TTY：完整的终端名称
+TIME：CPU时间
+CMD：启动进程所用的命令和参数
+```bash
+[root@cdh1 ~]# ps -ef
+UID         PID   PPID  C STIME TTY          TIME CMD
+root          1      0  0 May09 ?        00:00:09 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+root          2      0  0 May09 ?        00:00:00 [kthreadd]
+root          3      2  0 May09 ?        00:00:11 [ksoftirqd/0]
+root          5      2  0 May09 ?        00:00:00 [kworker/0:0H]
+...
+root      20364      1  0 May09 ?        00:00:09 /usr/sbin/httpd -DFOREGROUND
+root      20480   9403  0 May09 ?        00:06:32 /usr/bin/python2 /opt/cloudera/cm-agent/bin/../bin/flood
+clouder+  20517   9403  0 May09 ?        00:00:01 /usr/bin/python2 /opt/cloudera/cm-agent/bin/cm proc_watcher 20566
+...
 ```
