@@ -586,6 +586,8 @@ max_connections = 550
 #system and chown the specified folder to the mysql user.
 #建议单独磁盘装binlog，并且修改目录拥有者为mysql
 log_bin=/var/lib/mysql/mysql_binary_log
+#日志超过3天自动过期
+expire_logs_days = 3
 
 #In later versions of MariaDB, if you enable the binary log and do not set
 #a server_id, MariaDB will not start. The server_id must be unique within
@@ -932,7 +934,7 @@ Cloudera Manager会根据浏览器的语言进行语言的切换，本文为中�
 ![](http://47.106.179.244/CentOS7离线安装CDH/欢迎页面1.png)
 接受许可条款
 ![](http://47.106.179.244/CentOS7离线安装CDH/接受许可条款.png)
-选择安装版本，这里选择免费版（之前免费版会有100个节点限制，现在已经没有了）
+选择安装版本，这里选择免费版
 ![](http://47.106.179.244/CentOS7离线安装CDH/选择安装免费版.png)
 
 进入第二个欢迎页面，左边列出了安装的步骤
