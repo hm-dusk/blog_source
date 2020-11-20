@@ -9,7 +9,7 @@ categories:
   - 大数据
 img: ''
 date: 2019-08-16 15:03:41
-updated: 2020-3-11 11:04:27
+updated: 2020-11-20 16:24:28
 password:
 cover: true
 top: true
@@ -605,7 +605,7 @@ join_buffer_size = 8M
 innodb_file_per_table = 1
 innodb_flush_log_at_trx_commit  = 2
 innodb_log_buffer_size = 64M
-innodb_buffer_pool_size = 4G
+innodb_buffer_pool_size = 4G #内存大小根据实际情况调整，该值超过物理内存会导致Mariadb无法启动
 innodb_thread_concurrency = 8
 innodb_flush_method = O_DIRECT
 innodb_log_file_size = 512M
@@ -686,6 +686,8 @@ max_connections = 550
 #system and chown the specified folder to the mysql user.
 #建议单独磁盘装binlog，并且修改目录拥有者为mysql
 log_bin=/var/lib/mysql/mysql_binary_log
+#日志超过3天自动过期
+expire_logs_days = 3
 
 #In later versions of MySQL, if you enable the binary log and do not set
 #a server_id, MySQL will not start. The server_id must be unique within
@@ -703,7 +705,7 @@ join_buffer_size = 8M
 innodb_file_per_table = 1
 innodb_flush_log_at_trx_commit  = 2
 innodb_log_buffer_size = 64M
-innodb_buffer_pool_size = 4G
+innodb_buffer_pool_size = 4G #内存大小根据实际情况调整，该值超过物理内存会导致MySQL无法启动
 innodb_thread_concurrency = 8
 innodb_flush_method = O_DIRECT
 innodb_log_file_size = 512M

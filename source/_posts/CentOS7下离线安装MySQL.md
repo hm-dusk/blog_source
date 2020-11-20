@@ -1,17 +1,132 @@
 ---
-title: CentOS7下离线安装MySQL
+title: CentOS7下离线安装MySQL/Mariadb
 tags:
   - MySQL
+  - Mariadb
   - Linux
 comments: true
 categories:
   - 数据库
 img: 'http://47.106.179.244/logo/mysql.png'
 date: 2018-12-08 14:22:14
-updated: 2019-7-22 15:06:59
+updated: 2020-11-20 16:24:14
 password:
-summary: CentOS7下离线安装MySQL
+summary: CentOS7下离线安装MySQL/Mariadb
 ---
+## 安装Mariadb
+### 配置离线yum源
+配置了离线yum源之后就可以直接用yum命令进行安装，非常方便。
+参考：[Linux制作离线yum源](http://blog.hming.org/2019/03/29/linux-zhi-zuo-chi-xian-yum-yuan/)
+
+### 安装Mariadb
+直接用yum命令进行安装server
+
+```bash
+yum -y install mariadb-server
+```
+
+### 修改配置文件（可选）
+修改配置文件`/etc/my.cnf`为以下内容
+
+```bash
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+transaction-isolation = READ-COMMITTED
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+symbolic-links = 0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+key_buffer = 16M
+key_buffer_size = 32M
+max_allowed_packet = 32M
+thread_stack = 256K
+thread_cache_size = 64
+query_cache_limit = 8M
+query_cache_size = 64M
+query_cache_type = 1
+
+max_connections = 550
+#expire_logs_days = 10
+#max_binlog_size = 100M
+
+#log_bin should be on a disk with enough free space.
+#Replace '/var/lib/mysql/mysql_binary_log' with an appropriate path for your
+#system and chown the specified folder to the mysql user.
+#建议单独磁盘装binlog，并且修改目录拥有者为mysql
+log_bin=/var/lib/mysql/mysql_binary_log
+#日志超过3天自动过期
+expire_logs_days = 3
+
+#In later versions of MariaDB, if you enable the binary log and do not set
+#a server_id, MariaDB will not start. The server_id must be unique within
+#the replicating group.
+server_id=1
+
+binlog_format = mixed
+
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 8M
+join_buffer_size = 8M
+
+# InnoDB settings
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit  = 2
+innodb_log_buffer_size = 64M
+innodb_buffer_pool_size = 4G #内存大小根据实际情况调整，该值超过物理内存会导致Mariadb无法启动
+innodb_thread_concurrency = 8
+innodb_flush_method = O_DIRECT
+innodb_log_file_size = 512M
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+```
+
+### 启动Mariadb，并加入开机自启动
+
+```bash
+systemctl start mariadb
+systemctl enable mariadb
+```
+
+### 初始化Mariadb
+
+```bash
+[root@cdh cdh6.3.0]# mysql_secure_installation
+...
+Enter current password for root (enter for none): #第一次直接回车
+OK, successfully used password, moving on...
+...
+Set root password? [Y/n] Y
+New password: # 设置root密码
+Re-enter new password: 
+...
+Remove anonymous users? [Y/n] Y
+...
+Disallow root login remotely? [Y/n] N
+...
+Remove test database and access to it [Y/n] Y
+...
+Reload privilege tables now? [Y/n] Y
+...
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+```
+
+## 安装MySQL
 ### 下载社区版离线安装包
 本文为`mysql-5.7.24-1.el7.x86_64.rpm-bundle.tar`
 下载路径：[https://dev.mysql.com/downloads/mysql/5.7.html#downloads](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
@@ -118,6 +233,66 @@ mysql-community-libs-compat-5.7.24-1.el7.x86_64.rpm
 ```
 最后一串随机字符串为初始密码，本文中为`qHQHahCw(7n)`
 
+### 修改配置文件（可选）
+
+
+```bash
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+transaction-isolation = READ-COMMITTED
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+symbolic-links = 0
+
+key_buffer_size = 32M
+max_allowed_packet = 32M
+thread_stack = 256K
+thread_cache_size = 64
+query_cache_limit = 8M
+query_cache_size = 64M
+query_cache_type = 1
+
+max_connections = 550
+#expire_logs_days = 10
+#max_binlog_size = 100M
+
+#log_bin should be on a disk with enough free space.
+#Replace '/var/lib/mysql/mysql_binary_log' with an appropriate path for your
+#system and chown the specified folder to the mysql user.
+#建议单独磁盘装binlog，并且修改目录拥有者为mysql
+log_bin=/var/lib/mysql/mysql_binary_log
+#日志超过3天自动过期
+expire_logs_days = 3
+
+#In later versions of MySQL, if you enable the binary log and do not set
+#a server_id, MySQL will not start. The server_id must be unique within
+#the replicating group.
+server_id=1
+
+binlog_format = mixed
+
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 8M
+join_buffer_size = 8M
+
+# InnoDB settings
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit  = 2
+innodb_log_buffer_size = 64M
+innodb_buffer_pool_size = 4G #内存大小根据实际情况调整，该值超过物理内存会导致MySQL无法启动
+innodb_thread_concurrency = 8
+innodb_flush_method = O_DIRECT
+innodb_log_file_size = 512M
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+sql_mode=STRICT_ALL_TABLES
+```
+
 ### 修改用户及用户组，启动mysql数据库
 修改mysql数据库目录的所属用户及其所属组，然后启动mysql数据库
 ```bash
@@ -183,7 +358,7 @@ mysql> show databases;
 4 rows in set (0.00 sec)
 ```
 
-### 远程登录授权
+## 远程登录授权
 命令为：
 `grant all privileges on *.* to 'root'@'%' identified by '1234' with grant option;`
 `flush privileges;`
