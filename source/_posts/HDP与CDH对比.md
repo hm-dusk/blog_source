@@ -9,7 +9,7 @@ categories:
   - 大数据
 img: ''
 date: 2019-07-03 14:25:43
-updated: 2019-7-19 11:22:22
+updated: 2020-11-24 17:17:31
 password:
 summary: Hortonworks HDP与Cloudera CDH对比。
 ---
@@ -26,6 +26,31 @@ CDH版本更新比Apache版本慢。
 目前CDH最新版支持Hadoop版本：3.0.0
 
 目前HDP最新版支持Hadoop版本：3.1.1
+
+#### 支持主流组件版本对比
+参考官网：
+[HDP3.1.5组件版本](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.5/release-notes/content/comp_versions.html)
+[CDH6.3.0组件版本](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_63_packaging.html#concept_rtm_b5p_m3b)
+
+| 组件          | CDH 6.3.0 | HDP 3.1.5           |
+| :------------ | :-------- | :------------------ |
+| **Hadoop**    | 3.0.0     | 3.1.1🔺              |
+| **ZooKeeper** | 3.4.5     | 3.4.6🔺              |
+| **Hive**      | 2.1.1     | 3.1.0🔺              |
+| **HBase**     | 2.1.0     | 2.1.6🔺              |
+| **Kafka**     | 2.2.1🔺    | 2.0.0               |
+| **Oozie**     | 5.1.0🔺    | 4.3.1               |
+| **Spark**     | 2.4.0🔺    | 2.3.2               |
+| Impala        | 3.2.0     | \                   |
+| Sentry        | 2.1.0     | \                   |
+| Ranger        | \         | 1.2.0               |
+| Livy          | \         | 0.5.0               |
+| TEZ           | \         | 0.9.1               |
+| Zeppelin      | \         | 0.8.0               |
+| Phoenix       | \         | 5.0.0               |
+| Knox          | \         | 1.0.0               |
+| Atlas         | \         | 2.0.0               |
+| Druid         | \         | 0.12.1 (incubating) |
 
 #### 架构对比
 ##### CDH
@@ -86,6 +111,8 @@ CDH版本更新比Apache版本慢。
 6. cm支持数据加密，无论是静态加密或保护数据传输，但是可惜的是免费版cm支持很有限。另外加密前官方强烈建议安装Kerberos
 参考官网：[Encryption Overview](https://www.cloudera.com/documentation/enterprise/6/6.2/topics/sg_enc_overview.html)
 ![](http://47.106.179.244/HDP与CDH对比/CDH加密配置页面.png)
+7. Cloudera Manager本身支持高可用，但是需要其他服务的配合。
+    参考：[Configuring Cloudera Manager for High Availability With a Load Balancer](https://docs.cloudera.com/documentation/enterprise/latest/topics/admin_cm_ha_overview.html)
 
 ### CDH版本说明
 
