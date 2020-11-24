@@ -26,8 +26,8 @@ SandBox是Hortonworks提供的单机版HDP或HDF环境，主要用于测试和�
 SandBox提供三种安装方式：`VirtualBox虚拟机`、`VMware虚拟机`、`Docker容器`。
 本文主要针对讲SandBox-HDP，HDF安装使用和HDP大致相同。
 安装教程参考：
-[安装SandBox HDP（Docker版）](http://blog.hming.org/2019/04/02/安装SandBox-HDP（Docker版）)
-[安装SandBox HDP（VMware版）](http://blog.hming.org/2019/04/02/安装SandBox-HDP（VMware版）)
+[安装SandBox HDP（Docker版）](http://blog.hming.org/2019/04/02/an-zhuang-sandbox-hdp-docker-ban/)
+[安装SandBox HDP（VMware版）](http://blog.hming.org/2019/04/02/an-zhuang-sandbox-hdp-vmware-ban/)
 
 ### 环境准备
 一个运行中的SandBox-HDP 3.0.1
@@ -62,7 +62,7 @@ Last login: Thu Apr  4 08:22:27 2019 from 172.18.0.3
 
 |用户|密码|
 |:--:|:--:|
-|admin|参考[重置管理员密码](http://blog.hming.org/2019/04/04/SandBox-HDP使用详解/#重置Ambari管理员密码)|
+|admin|参考[重置管理员密码](http://blog.hming.org/2019/04/04/sandbox-hdp-shi-yong-xiang-jie/#toc-heading-6)|
 |maria_dev|maria_dev|
 |raj_ops|raj_ops|
 |holger_gov|holger_gov|
@@ -150,4 +150,4 @@ ambari=> select version,config_id,type_name,config_data from clusterconfig where
 在结果里查找内容：javax.jdo.option.ConnectionPassword
 ### 常见错误
 #### 远程向HDFS上传文件失败问题
-参照[SandBox HDFS上传文件失败问题](http://blog.hming.org/2019/04/16/SandBox-HDFS%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/)
+参照[SandBox HDFS上传文件失败问题](http://blog.hming.org/2019/04/16/sandbox-hdfs-shang-chuan-wen-jian-shi-bai-wen-ti/)
