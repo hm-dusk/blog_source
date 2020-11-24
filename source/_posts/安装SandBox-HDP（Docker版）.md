@@ -161,7 +161,7 @@ docker rmi hortonworks/sandbox-hdp:{release}
 ![浏览器访问hdp容器](http://47.106.179.244/sandbox-hdp使用详解/浏览器访问hdp容器.png)
 使用`root`登录，默认密码为`hadoop`，第一次登录会提示修改root密码，对密码强度会有要求
 
-本文到此为止，更详细的使用教程，请参照[SandBox-HDP使用详解](http://blog.hming.org/2019/04/04/SandBox-HDP使用详解/)
+本文到此为止，更详细的使用教程，请参照[SandBox-HDP使用详解](http://blog.hming.org/2019/04/04/sandbox-hdp-shi-yong-xiang-jie/)
 
 ### 可能遇到的问题
 ```bash
