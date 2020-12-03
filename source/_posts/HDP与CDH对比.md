@@ -29,15 +29,15 @@ CDH版本更新比Apache版本慢。
 
 #### 支持主流组件版本对比
 参考官网：
-[HDP3.1.5组件版本](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.5/release-notes/content/comp_versions.html)
+[HDP3.1.4组件版本](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.4/release-notes/content/comp_versions.html)
 [CDH6.3.0组件版本](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_63_packaging.html#concept_rtm_b5p_m3b)
 
-| 组件          | CDH 6.3.0 | HDP 3.1.5           |
+| 组件          | CDH 6.3.0 | HDP 3.1.4           |
 | :------------ | :-------- | :------------------ |
 | **Hadoop**    | 3.0.0     | 3.1.1🔺              |
 | **ZooKeeper** | 3.4.5     | 3.4.6🔺              |
 | **Hive**      | 2.1.1     | 3.1.0🔺              |
-| **HBase**     | 2.1.0     | 2.1.6🔺              |
+| **HBase**     | 2.1.0🔺    | 2.0.2               |
 | **Kafka**     | 2.2.1🔺    | 2.0.0               |
 | **Oozie**     | 5.1.0🔺    | 4.3.1               |
 | **Spark**     | 2.4.0🔺    | 2.3.2               |
@@ -49,7 +49,7 @@ CDH版本更新比Apache版本慢。
 | Zeppelin      | \         | 0.8.0               |
 | Phoenix       | \         | 5.0.0               |
 | Knox          | \         | 1.0.0               |
-| Atlas         | \         | 2.0.0               |
+| Atlas         | \         | 1.1.0               |
 | Druid         | \         | 0.12.1 (incubating) |
 
 #### 架构对比
